@@ -9,7 +9,7 @@
 import XCTest
 @testable import waosSwift
 
-class waosSwiftTests: XCTestCase {
+class WaosSwiftTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
