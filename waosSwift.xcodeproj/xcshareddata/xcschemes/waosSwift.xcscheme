@@ -28,6 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BF425495221EBB9800395AE6"
+               BuildableName = "waosSwiftTests.xctest"
+               BlueprintName = "waosSwiftTests"
+               ReferencedContainer = "container:waosSwift.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BF4254A0221EBB9800395AE6"
+               BuildableName = "waosSwiftUITests.xctest"
+               BlueprintName = "waosSwiftUITests"
+               ReferencedContainer = "container:waosSwift.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
