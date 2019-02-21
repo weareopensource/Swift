@@ -7,66 +7,66 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BF941E0B221EA67E0073AF6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF941E0A221EA67E0073AF6C /* AppDelegate.swift */; };
-		BF941E0D221EA67E0073AF6C /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF941E0C221EA67E0073AF6C /* FirstViewController.swift */; };
-		BF941E0F221EA67E0073AF6C /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF941E0E221EA67E0073AF6C /* SecondViewController.swift */; };
-		BF941E12221EA67E0073AF6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF941E10221EA67E0073AF6C /* Main.storyboard */; };
-		BF941E14221EA67F0073AF6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF941E13221EA67F0073AF6C /* Assets.xcassets */; };
-		BF941E17221EA67F0073AF6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF941E15221EA67F0073AF6C /* LaunchScreen.storyboard */; };
-		BF941E22221EA67F0073AF6C /* swiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF941E21221EA67F0073AF6C /* swiftTests.swift */; };
-		BF941E2D221EA67F0073AF6C /* swiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF941E2C221EA67F0073AF6C /* swiftUITests.swift */; };
+		BF425484221EBB9700395AE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF425483221EBB9700395AE6 /* AppDelegate.swift */; };
+		BF425486221EBB9700395AE6 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF425485221EBB9700395AE6 /* FirstViewController.swift */; };
+		BF425488221EBB9700395AE6 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF425487221EBB9700395AE6 /* SecondViewController.swift */; };
+		BF42548B221EBB9700395AE6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF425489221EBB9700395AE6 /* Main.storyboard */; };
+		BF42548D221EBB9800395AE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF42548C221EBB9800395AE6 /* Assets.xcassets */; };
+		BF425490221EBB9800395AE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF42548E221EBB9800395AE6 /* LaunchScreen.storyboard */; };
+		BF42549B221EBB9800395AE6 /* waosSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF42549A221EBB9800395AE6 /* waosSwiftTests.swift */; };
+		BF4254A6221EBB9800395AE6 /* waosSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4254A5221EBB9800395AE6 /* waosSwiftUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		BF941E1E221EA67F0073AF6C /* PBXContainerItemProxy */ = {
+		BF425497221EBB9800395AE6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = BF941DFF221EA67E0073AF6C /* Project object */;
+			containerPortal = BF425478221EBB9700395AE6 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = BF941E06221EA67E0073AF6C;
-			remoteInfo = swift;
+			remoteGlobalIDString = BF42547F221EBB9700395AE6;
+			remoteInfo = waosSwift;
 		};
-		BF941E29221EA67F0073AF6C /* PBXContainerItemProxy */ = {
+		BF4254A2221EBB9800395AE6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = BF941DFF221EA67E0073AF6C /* Project object */;
+			containerPortal = BF425478221EBB9700395AE6 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = BF941E06221EA67E0073AF6C;
-			remoteInfo = swift;
+			remoteGlobalIDString = BF42547F221EBB9700395AE6;
+			remoteInfo = waosSwift;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BF941E07221EA67E0073AF6C /* swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BF941E0A221EA67E0073AF6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BF941E0C221EA67E0073AF6C /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		BF941E0E221EA67E0073AF6C /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
-		BF941E11221EA67E0073AF6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BF941E13221EA67F0073AF6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BF941E16221EA67F0073AF6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		BF941E18221EA67F0073AF6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BF941E1D221EA67F0073AF6C /* swiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = swiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BF941E21221EA67F0073AF6C /* swiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftTests.swift; sourceTree = "<group>"; };
-		BF941E23221EA67F0073AF6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BF941E28221EA67F0073AF6C /* swiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = swiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BF941E2C221EA67F0073AF6C /* swiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftUITests.swift; sourceTree = "<group>"; };
-		BF941E2E221EA67F0073AF6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF425480221EBB9700395AE6 /* waosSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = waosSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF425483221EBB9700395AE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BF425485221EBB9700395AE6 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		BF425487221EBB9700395AE6 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		BF42548A221EBB9700395AE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BF42548C221EBB9800395AE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BF42548F221EBB9800395AE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BF425491221EBB9800395AE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF425496221EBB9800395AE6 /* waosSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = waosSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF42549A221EBB9800395AE6 /* waosSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = waosSwiftTests.swift; sourceTree = "<group>"; };
+		BF42549C221EBB9800395AE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF4254A1221EBB9800395AE6 /* waosSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = waosSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF4254A5221EBB9800395AE6 /* waosSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = waosSwiftUITests.swift; sourceTree = "<group>"; };
+		BF4254A7221EBB9800395AE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		BF941E04221EA67E0073AF6C /* Frameworks */ = {
+		BF42547D221EBB9700395AE6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BF941E1A221EA67F0073AF6C /* Frameworks */ = {
+		BF425493221EBB9800395AE6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BF941E25221EA67F0073AF6C /* Frameworks */ = {
+		BF42549E221EBB9800395AE6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -76,138 +76,138 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BF941DFE221EA67E0073AF6C = {
+		BF425477221EBB9700395AE6 = {
 			isa = PBXGroup;
 			children = (
-				BF941E09221EA67E0073AF6C /* swift */,
-				BF941E20221EA67F0073AF6C /* swiftTests */,
-				BF941E2B221EA67F0073AF6C /* swiftUITests */,
-				BF941E08221EA67E0073AF6C /* Products */,
+				BF425482221EBB9700395AE6 /* waosSwift */,
+				BF425499221EBB9800395AE6 /* waosSwiftTests */,
+				BF4254A4221EBB9800395AE6 /* waosSwiftUITests */,
+				BF425481221EBB9700395AE6 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		BF941E08221EA67E0073AF6C /* Products */ = {
+		BF425481221EBB9700395AE6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BF941E07221EA67E0073AF6C /* swift.app */,
-				BF941E1D221EA67F0073AF6C /* swiftTests.xctest */,
-				BF941E28221EA67F0073AF6C /* swiftUITests.xctest */,
+				BF425480221EBB9700395AE6 /* waosSwift.app */,
+				BF425496221EBB9800395AE6 /* waosSwiftTests.xctest */,
+				BF4254A1221EBB9800395AE6 /* waosSwiftUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BF941E09221EA67E0073AF6C /* swift */ = {
+		BF425482221EBB9700395AE6 /* waosSwift */ = {
 			isa = PBXGroup;
 			children = (
-				BF941E0A221EA67E0073AF6C /* AppDelegate.swift */,
-				BF941E0C221EA67E0073AF6C /* FirstViewController.swift */,
-				BF941E0E221EA67E0073AF6C /* SecondViewController.swift */,
-				BF941E10221EA67E0073AF6C /* Main.storyboard */,
-				BF941E13221EA67F0073AF6C /* Assets.xcassets */,
-				BF941E15221EA67F0073AF6C /* LaunchScreen.storyboard */,
-				BF941E18221EA67F0073AF6C /* Info.plist */,
+				BF425483221EBB9700395AE6 /* AppDelegate.swift */,
+				BF425485221EBB9700395AE6 /* FirstViewController.swift */,
+				BF425487221EBB9700395AE6 /* SecondViewController.swift */,
+				BF425489221EBB9700395AE6 /* Main.storyboard */,
+				BF42548C221EBB9800395AE6 /* Assets.xcassets */,
+				BF42548E221EBB9800395AE6 /* LaunchScreen.storyboard */,
+				BF425491221EBB9800395AE6 /* Info.plist */,
 			);
-			path = swift;
+			path = waosSwift;
 			sourceTree = "<group>";
 		};
-		BF941E20221EA67F0073AF6C /* swiftTests */ = {
+		BF425499221EBB9800395AE6 /* waosSwiftTests */ = {
 			isa = PBXGroup;
 			children = (
-				BF941E21221EA67F0073AF6C /* swiftTests.swift */,
-				BF941E23221EA67F0073AF6C /* Info.plist */,
+				BF42549A221EBB9800395AE6 /* waosSwiftTests.swift */,
+				BF42549C221EBB9800395AE6 /* Info.plist */,
 			);
-			path = swiftTests;
+			path = waosSwiftTests;
 			sourceTree = "<group>";
 		};
-		BF941E2B221EA67F0073AF6C /* swiftUITests */ = {
+		BF4254A4221EBB9800395AE6 /* waosSwiftUITests */ = {
 			isa = PBXGroup;
 			children = (
-				BF941E2C221EA67F0073AF6C /* swiftUITests.swift */,
-				BF941E2E221EA67F0073AF6C /* Info.plist */,
+				BF4254A5221EBB9800395AE6 /* waosSwiftUITests.swift */,
+				BF4254A7221EBB9800395AE6 /* Info.plist */,
 			);
-			path = swiftUITests;
+			path = waosSwiftUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BF941E06221EA67E0073AF6C /* swift */ = {
+		BF42547F221EBB9700395AE6 /* waosSwift */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BF941E31221EA67F0073AF6C /* Build configuration list for PBXNativeTarget "swift" */;
+			buildConfigurationList = BF4254AA221EBB9800395AE6 /* Build configuration list for PBXNativeTarget "waosSwift" */;
 			buildPhases = (
-				BF941E03221EA67E0073AF6C /* Sources */,
-				BF941E04221EA67E0073AF6C /* Frameworks */,
-				BF941E05221EA67E0073AF6C /* Resources */,
+				BF42547C221EBB9700395AE6 /* Sources */,
+				BF42547D221EBB9700395AE6 /* Frameworks */,
+				BF42547E221EBB9700395AE6 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = swift;
-			productName = swift;
-			productReference = BF941E07221EA67E0073AF6C /* swift.app */;
+			name = waosSwift;
+			productName = waosSwift;
+			productReference = BF425480221EBB9700395AE6 /* waosSwift.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BF941E1C221EA67F0073AF6C /* swiftTests */ = {
+		BF425495221EBB9800395AE6 /* waosSwiftTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BF941E34221EA67F0073AF6C /* Build configuration list for PBXNativeTarget "swiftTests" */;
+			buildConfigurationList = BF4254AD221EBB9800395AE6 /* Build configuration list for PBXNativeTarget "waosSwiftTests" */;
 			buildPhases = (
-				BF941E19221EA67F0073AF6C /* Sources */,
-				BF941E1A221EA67F0073AF6C /* Frameworks */,
-				BF941E1B221EA67F0073AF6C /* Resources */,
+				BF425492221EBB9800395AE6 /* Sources */,
+				BF425493221EBB9800395AE6 /* Frameworks */,
+				BF425494221EBB9800395AE6 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				BF941E1F221EA67F0073AF6C /* PBXTargetDependency */,
+				BF425498221EBB9800395AE6 /* PBXTargetDependency */,
 			);
-			name = swiftTests;
-			productName = swiftTests;
-			productReference = BF941E1D221EA67F0073AF6C /* swiftTests.xctest */;
+			name = waosSwiftTests;
+			productName = waosSwiftTests;
+			productReference = BF425496221EBB9800395AE6 /* waosSwiftTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		BF941E27221EA67F0073AF6C /* swiftUITests */ = {
+		BF4254A0221EBB9800395AE6 /* waosSwiftUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BF941E37221EA67F0073AF6C /* Build configuration list for PBXNativeTarget "swiftUITests" */;
+			buildConfigurationList = BF4254B0221EBB9800395AE6 /* Build configuration list for PBXNativeTarget "waosSwiftUITests" */;
 			buildPhases = (
-				BF941E24221EA67F0073AF6C /* Sources */,
-				BF941E25221EA67F0073AF6C /* Frameworks */,
-				BF941E26221EA67F0073AF6C /* Resources */,
+				BF42549D221EBB9800395AE6 /* Sources */,
+				BF42549E221EBB9800395AE6 /* Frameworks */,
+				BF42549F221EBB9800395AE6 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				BF941E2A221EA67F0073AF6C /* PBXTargetDependency */,
+				BF4254A3221EBB9800395AE6 /* PBXTargetDependency */,
 			);
-			name = swiftUITests;
-			productName = swiftUITests;
-			productReference = BF941E28221EA67F0073AF6C /* swiftUITests.xctest */;
+			name = waosSwiftUITests;
+			productName = waosSwiftUITests;
+			productReference = BF4254A1221EBB9800395AE6 /* waosSwiftUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		BF941DFF221EA67E0073AF6C /* Project object */ = {
+		BF425478221EBB9700395AE6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = WeAreOpenSource;
 				TargetAttributes = {
-					BF941E06221EA67E0073AF6C = {
+					BF42547F221EBB9700395AE6 = {
 						CreatedOnToolsVersion = 10.1;
 					};
-					BF941E1C221EA67F0073AF6C = {
+					BF425495221EBB9800395AE6 = {
 						CreatedOnToolsVersion = 10.1;
-						TestTargetID = BF941E06221EA67E0073AF6C;
+						TestTargetID = BF42547F221EBB9700395AE6;
 					};
-					BF941E27221EA67F0073AF6C = {
+					BF4254A0221EBB9800395AE6 = {
 						CreatedOnToolsVersion = 10.1;
-						TestTargetID = BF941E06221EA67E0073AF6C;
+						TestTargetID = BF42547F221EBB9700395AE6;
 					};
 				};
 			};
-			buildConfigurationList = BF941E02221EA67E0073AF6C /* Build configuration list for PBXProject "swift" */;
+			buildConfigurationList = BF42547B221EBB9700395AE6 /* Build configuration list for PBXProject "waosSwift" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -215,37 +215,37 @@
 				en,
 				Base,
 			);
-			mainGroup = BF941DFE221EA67E0073AF6C;
-			productRefGroup = BF941E08221EA67E0073AF6C /* Products */;
+			mainGroup = BF425477221EBB9700395AE6;
+			productRefGroup = BF425481221EBB9700395AE6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BF941E06221EA67E0073AF6C /* swift */,
-				BF941E1C221EA67F0073AF6C /* swiftTests */,
-				BF941E27221EA67F0073AF6C /* swiftUITests */,
+				BF42547F221EBB9700395AE6 /* waosSwift */,
+				BF425495221EBB9800395AE6 /* waosSwiftTests */,
+				BF4254A0221EBB9800395AE6 /* waosSwiftUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		BF941E05221EA67E0073AF6C /* Resources */ = {
+		BF42547E221EBB9700395AE6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF941E17221EA67F0073AF6C /* LaunchScreen.storyboard in Resources */,
-				BF941E14221EA67F0073AF6C /* Assets.xcassets in Resources */,
-				BF941E12221EA67E0073AF6C /* Main.storyboard in Resources */,
+				BF425490221EBB9800395AE6 /* LaunchScreen.storyboard in Resources */,
+				BF42548D221EBB9800395AE6 /* Assets.xcassets in Resources */,
+				BF42548B221EBB9700395AE6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BF941E1B221EA67F0073AF6C /* Resources */ = {
+		BF425494221EBB9800395AE6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BF941E26221EA67F0073AF6C /* Resources */ = {
+		BF42549F221EBB9800395AE6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -255,60 +255,60 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		BF941E03221EA67E0073AF6C /* Sources */ = {
+		BF42547C221EBB9700395AE6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF941E0F221EA67E0073AF6C /* SecondViewController.swift in Sources */,
-				BF941E0B221EA67E0073AF6C /* AppDelegate.swift in Sources */,
-				BF941E0D221EA67E0073AF6C /* FirstViewController.swift in Sources */,
+				BF425488221EBB9700395AE6 /* SecondViewController.swift in Sources */,
+				BF425484221EBB9700395AE6 /* AppDelegate.swift in Sources */,
+				BF425486221EBB9700395AE6 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BF941E19221EA67F0073AF6C /* Sources */ = {
+		BF425492221EBB9800395AE6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF941E22221EA67F0073AF6C /* swiftTests.swift in Sources */,
+				BF42549B221EBB9800395AE6 /* waosSwiftTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BF941E24221EA67F0073AF6C /* Sources */ = {
+		BF42549D221EBB9800395AE6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF941E2D221EA67F0073AF6C /* swiftUITests.swift in Sources */,
+				BF4254A6221EBB9800395AE6 /* waosSwiftUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		BF941E1F221EA67F0073AF6C /* PBXTargetDependency */ = {
+		BF425498221EBB9800395AE6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BF941E06221EA67E0073AF6C /* swift */;
-			targetProxy = BF941E1E221EA67F0073AF6C /* PBXContainerItemProxy */;
+			target = BF42547F221EBB9700395AE6 /* waosSwift */;
+			targetProxy = BF425497221EBB9800395AE6 /* PBXContainerItemProxy */;
 		};
-		BF941E2A221EA67F0073AF6C /* PBXTargetDependency */ = {
+		BF4254A3221EBB9800395AE6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BF941E06221EA67E0073AF6C /* swift */;
-			targetProxy = BF941E29221EA67F0073AF6C /* PBXContainerItemProxy */;
+			target = BF42547F221EBB9700395AE6 /* waosSwift */;
+			targetProxy = BF4254A2221EBB9800395AE6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		BF941E10221EA67E0073AF6C /* Main.storyboard */ = {
+		BF425489221EBB9700395AE6 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				BF941E11221EA67E0073AF6C /* Base */,
+				BF42548A221EBB9700395AE6 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		BF941E15221EA67F0073AF6C /* LaunchScreen.storyboard */ = {
+		BF42548E221EBB9800395AE6 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				BF941E16221EA67F0073AF6C /* Base */,
+				BF42548F221EBB9800395AE6 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -316,7 +316,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		BF941E2F221EA67F0073AF6C /* Debug */ = {
+		BF4254A8221EBB9800395AE6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -377,7 +377,7 @@
 			};
 			name = Debug;
 		};
-		BF941E30221EA67F0073AF6C /* Release */ = {
+		BF4254A9221EBB9800395AE6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -432,158 +432,158 @@
 			};
 			name = Release;
 		};
-		BF941E32221EA67F0073AF6C /* Debug */ = {
+		BF4254AB221EBB9800395AE6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = swift/Info.plist;
+				INFOPLIST_FILE = waosSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.swift;
+				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.waosSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		BF941E33221EA67F0073AF6C /* Release */ = {
+		BF4254AC221EBB9800395AE6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = swift/Info.plist;
+				INFOPLIST_FILE = waosSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.swift;
+				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.waosSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
-		BF941E35221EA67F0073AF6C /* Debug */ = {
+		BF4254AE221EBB9800395AE6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = swiftTests/Info.plist;
+				INFOPLIST_FILE = waosSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.swiftTests;
+				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.waosSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/swift.app/swift";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/waosSwift.app/waosSwift";
 			};
 			name = Debug;
 		};
-		BF941E36221EA67F0073AF6C /* Release */ = {
+		BF4254AF221EBB9800395AE6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = swiftTests/Info.plist;
+				INFOPLIST_FILE = waosSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.swiftTests;
+				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.waosSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/swift.app/swift";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/waosSwift.app/waosSwift";
 			};
 			name = Release;
 		};
-		BF941E38221EA67F0073AF6C /* Debug */ = {
+		BF4254B1221EBB9800395AE6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = swiftUITests/Info.plist;
+				INFOPLIST_FILE = waosSwiftUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.swiftUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.waosSwiftUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = swift;
+				TEST_TARGET_NAME = waosSwift;
 			};
 			name = Debug;
 		};
-		BF941E39221EA67F0073AF6C /* Release */ = {
+		BF4254B2221EBB9800395AE6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = swiftUITests/Info.plist;
+				INFOPLIST_FILE = waosSwiftUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.swiftUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.waosSwiftUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = swift;
+				TEST_TARGET_NAME = waosSwift;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BF941E02221EA67E0073AF6C /* Build configuration list for PBXProject "swift" */ = {
+		BF42547B221EBB9700395AE6 /* Build configuration list for PBXProject "waosSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BF941E2F221EA67F0073AF6C /* Debug */,
-				BF941E30221EA67F0073AF6C /* Release */,
+				BF4254A8221EBB9800395AE6 /* Debug */,
+				BF4254A9221EBB9800395AE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BF941E31221EA67F0073AF6C /* Build configuration list for PBXNativeTarget "swift" */ = {
+		BF4254AA221EBB9800395AE6 /* Build configuration list for PBXNativeTarget "waosSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BF941E32221EA67F0073AF6C /* Debug */,
-				BF941E33221EA67F0073AF6C /* Release */,
+				BF4254AB221EBB9800395AE6 /* Debug */,
+				BF4254AC221EBB9800395AE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BF941E34221EA67F0073AF6C /* Build configuration list for PBXNativeTarget "swiftTests" */ = {
+		BF4254AD221EBB9800395AE6 /* Build configuration list for PBXNativeTarget "waosSwiftTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BF941E35221EA67F0073AF6C /* Debug */,
-				BF941E36221EA67F0073AF6C /* Release */,
+				BF4254AE221EBB9800395AE6 /* Debug */,
+				BF4254AF221EBB9800395AE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BF941E37221EA67F0073AF6C /* Build configuration list for PBXNativeTarget "swiftUITests" */ = {
+		BF4254B0221EBB9800395AE6 /* Build configuration list for PBXNativeTarget "waosSwiftUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BF941E38221EA67F0073AF6C /* Debug */,
-				BF941E39221EA67F0073AF6C /* Release */,
+				BF4254B1221EBB9800395AE6 /* Debug */,
+				BF4254B2221EBB9800395AE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = BF941DFF221EA67E0073AF6C /* Project object */;
+	rootObject = BF425478221EBB9700395AE6 /* Project object */;
 }

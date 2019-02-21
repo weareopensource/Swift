@@ -1,15 +1,15 @@
 //
-//  swiftTests.swift
-//  swiftTests
+//  waosSwiftTests.swift
+//  waosSwiftTests
 //
 //  Created by pierre brisorgueil on 21/02/2019.
 //  Copyright © 2019 WeAreOpenSource. All rights reserved.
 //
 
 import XCTest
-@testable import swift
+@testable import waosSwift
 
-class swiftTests: XCTestCase {
+class waosSwiftTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
