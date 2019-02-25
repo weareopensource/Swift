@@ -3,6 +3,6 @@ osx_image: xcode10.1
 xcode_workspace: waosSwift.xcworkspace
 xcode_scheme: waosSwift
 xcode_destination: platform=iOS Simulator,OS=12.1,name=iPhone X
-script: 
+after_script:
   - swiftlint --reporter junit
-  – fastlane ios coverage
+  - fastlane ios coverage
