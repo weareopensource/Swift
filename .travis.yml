@@ -3,5 +3,11 @@ osx_image: xcode10.1
 xcode_workspace: waosSwift.xcworkspace
 xcode_scheme: waosSwift
 xcode_destination: platform=iOS Simulator,OS=12.1,name=iPhone X
- script: 
-  - swiftlint --reporter junit
+cache:
+  - bundler
+before_install:
+  - rvm use $RVM_RUBY_VERSION #slather
+install: bundle install --without=documentation --path ../travis_bundle_dir
+after_success:
+  - fastlane lint
+  - fastlane test

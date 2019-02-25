@@ -24,7 +24,7 @@ Our stack Swift is actually in development.
 | **in development** | 
 | Architecture | vertical modules architecture with a core to assemble all the modulese
 | Linter  | [SwiftLint](https://github.com/realm/SwiftLint)
-| CI  | [Travis CI](https://travis-ci.org/weareopensource/Node) 
+| CI  | [Travis CI](https://travis-ci.org/weareopensource/Node) <br> [fastlane](https://github.com/fastlane/fastlane) & [Slather](https://github.com/SlatherOrg/slather)
 | Dependencies  | [Carthage](https://github.com/Carthage/Carthage) 
 | in development  | ....
 | **Being released** | 
@@ -50,12 +50,17 @@ Make sure you have installed all of the following prerequisites on your developm
 
 * Git - [Download & Install Git](https://git-scm.com/downloads)
 * Xcode (10.x) - [Download & Install Xcode](https://itunes.apple.com/us/app/xcode/id497799835?mt=12)
+* HomeBrew - `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+* Carthage - `brew update && brew install carthage`
 
 For development : 
 
-* HomeBrew - `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
-* Carthage - `brew update && brew install carthage`
-* SwiftLint - `brew update && brew install swiftlint`
+* SwiftLint - `brew update && brew install swiftlint` (`swiftlint autocorrect`)
+
+For CI : 
+
+* [install ruby for MacOs users](https://usabilityetc.com/articles/ruby-on-mac-os-x-with-rvm/)
+* Fastlane & Slather - `bundle install`
 
 ## Installation
 It's straightforward (you can use yarn if you want)
