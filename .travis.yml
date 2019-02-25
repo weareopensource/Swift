@@ -3,6 +3,11 @@ osx_image: xcode10.1
 xcode_workspace: waosSwift.xcworkspace
 xcode_scheme: waosSwift
 xcode_destination: platform=iOS Simulator,OS=12.1,name=iPhone X
-after_script:
+cache:
+  - bundler
+before_install:
+  - bundle install
+  - bundle update
+script:
   - swiftlint --reporter junit
-  - fastlane ios coverage
+  - bundle exec fastlane ios unit_test
