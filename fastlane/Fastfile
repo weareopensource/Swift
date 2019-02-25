@@ -1,0 +1,40 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+
+  desc “Runs all the tests”
+  lane :test do
+  scan(
+    scheme: “waosSwift”,
+    code_coverage: true
+  )
+  end
+
+  desc “Runs coverage”
+  lane :coverage do
+  test
+  slather(
+    travis: true,
+    scheme: “waosSwift”,
+    coveralls: true,
+    proj: “waosSwift.xcodeproj”,
+    workspace: “waosSwift.xcworkspace”
+  )
+  end
+
+end

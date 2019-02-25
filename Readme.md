@@ -57,6 +57,8 @@ For development :
 * Carthage - `brew update && brew install carthage`
 * SwiftLint - `brew update && brew install swiftlint`
 
+* bonus fastlane - `brew update && brew cask install fastlane` &  `export PATH="$HOME/.fastlane/bin:$PATH"` ([install ruby for MacOs users](https://usabilityetc.com/articles/ruby-on-mac-os-x-with-rvm/))
+
 ## Installation
 It's straightforward (you can use yarn if you want)
 ```bash
