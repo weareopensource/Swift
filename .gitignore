@@ -9,6 +9,7 @@ Thumbs.db
 # ==========================
 .coveralls.yml
 reports/
+coverage
 *.hmap
 *.ipa
 *.dSYM.zip
