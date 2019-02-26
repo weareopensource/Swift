@@ -10,4 +10,4 @@ before_install:
   - bundle update
 script:
   - swiftlint --reporter junit
-  - bundle exec fastlane ios unit_test
+  - fastlane ios unit_test
