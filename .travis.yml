@@ -6,8 +6,8 @@ xcode_destination: platform=iOS Simulator,OS=12.1,name=iPhone X
 cache:
   - bundler
 before_install:
-  - bundle install
-  - bundle update
-script:
-  - swiftlint --reporter junit
-  - fastlane unit_test
+  - rvm use $RVM_RUBY_VERSION #slather
+install: bundle install --without=documentation --path ../travis_bundle_dir
+after_success:
+  - fastlane lint
+  - fastlane test
