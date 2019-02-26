@@ -49,7 +49,7 @@ platform :ios do
     workspace: ENV["WORKSPACE"],
     coveralls: true, 
     ignore: slather_ignore,
-		output_directory: "./reports"
+		output_directory: "./coverage"
 	})
 end
     
