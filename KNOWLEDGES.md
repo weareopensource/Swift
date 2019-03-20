@@ -3,13 +3,13 @@ This includes links to knowledge and information explaining the reason for the o
 * **Bold** : used
 * _Italic_ : not used
 
-# Swift Links
+## Swift Links
 
 - [libhunt](https://ios.libhunt.com/)
 - [awesome-swift](https://github.com/matteocrippa/awesome-swift)
 - [open-source-ios-apps](https://github.com/dkhamsing/open-source-ios-apps)
 
-# Architecture / RP framework
+## Architecture / RP framework
 
 ### Informations :
 - [reactive-programming](https://ios.libhunt.com/categories/1356-reactive-programming)
@@ -34,7 +34,7 @@ This includes links to knowledge and information explaining the reason for the o
 Store Based like MVVM (= Angular repository)
 Framework ??? in reflexion
 
-# Dependencies 
+## Dependencies 
 
 ### Informations :
 - [pods-carthage-and-spm-swifts-package-management-dilemma](https://medium.com/@ntrupin/pods-carthage-and-spm-swifts-package-management-dilemma-7da4ec87a20c )
