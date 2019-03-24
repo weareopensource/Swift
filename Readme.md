@@ -10,7 +10,7 @@
 
 This project is a stack Swift that can be ran as a standalone backend. Or in a fullstack with another of our repo of your choice (ex: [Node](https://github.com/weareopensource/Node)). 
 
-You can have more informations about : 
+You can have more informations about us in our [global repo](https://github.com/weareopensource/weareopensource.github.io): 
 
 * our mindset and what we would like to create in our [introduction](https://weareopensource.me/introduction/) (in construction)
 * how to create a fullstack from our repo in our [wiki](https://github.com/weareopensource/weareopensource.github.io/wiki) (in construciton).
@@ -20,6 +20,9 @@ You can have more informations about :
 Our stack Swift is actually in development. 
 
 # Swift / RxSwift / ReSwift
+
+* [Swift wiki](https://github.com/weareopensource/Swift/blob/master/WIKI.md) (in construciton).
+* [Swift knowledges](https://github.com/weareopensource/Swift/blob/master/KNOWLEDGES.md) (in construciton).
 
 ## Technology Overview
 
