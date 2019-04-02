@@ -5,6 +5,10 @@ ehthumbs.db
 Icon?
 Thumbs.db
 
+# Node and related ecosystem
+# ==========================
+node_modules/
+
 # Swift and related ecosystem
 # ==========================
 .coveralls.yml

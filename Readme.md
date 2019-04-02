@@ -29,7 +29,8 @@ Our stack Swift is actually in development.
 | Architecture | vertical modules architecture with a core to assemble all the modulese
 | Linter  | [SwiftLint](https://github.com/realm/SwiftLint)
 | CI  | [Travis CI](https://travis-ci.org/weareopensource/Node) <br> [fastlane](https://github.com/fastlane/fastlane) & [Slather](https://github.com/SlatherOrg/slather)
-| Dependencies  | [Carthage](https://github.com/Carthage/Carthage) 
+| Developer  | [Coveralls](https://coveralls.io/github/weareopensource/Swift) - [Code Climate](https://codeclimate.com/github/weareopensource/Swift) - [standard-version](https://github.com/conventional-changelog/standard-version) - [commitlint](https://github.com/conventional-changelog/commitlint)
+| Dependencies | [Carthage](https://github.com/Carthage/Carthage)
 | in development  | ....
 | **Being released** | 
 | in development  | ....
@@ -60,6 +61,7 @@ Make sure you have installed all of the following prerequisites on your developm
 For development : 
 
 * SwiftLint - `brew update && brew install swiftlint` (`swiftlint autocorrect`)
+* commitizen - `npm install --global commitizen cz-conventional-changelog-emoji`
 
 For CI : 
 
@@ -82,8 +84,8 @@ $ open open waosSwift.xcodeproj
 * in develompment
 
 ### others 
-* swiftlint autocorrect
-* in develompment
+* lint:  `swiftlint autocorrect `
+* commit : `npm run commit`
 
 
 ### Configuration
