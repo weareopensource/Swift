@@ -32,7 +32,8 @@ Our stack Swift is actually in development.
 | Architecture | vertical modules architecture with a core to assemble all the modulese
 | Linter  | [SwiftLint](https://github.com/realm/SwiftLint)
 | CI  | [Travis CI](https://travis-ci.org/weareopensource/Node) <br> [fastlane](https://github.com/fastlane/fastlane) & [Slather](https://github.com/SlatherOrg/slather)
-| Dependencies  | [Carthage](https://github.com/Carthage/Carthage) 
+| Developer  | [Coveralls](https://coveralls.io/github/weareopensource/Swift) - [Code Climate](https://codeclimate.com/github/weareopensource/Swift) - [standard-version](https://github.com/conventional-changelog/standard-version) - [commitlint](https://github.com/conventional-changelog/commitlint) - [commitizen](https://github.com/commitizen/cz-cli) - [waos-conventional-changelog](https://github.com/WeAreOpenSourceProjects/)
+| Dependencies | [Carthage](https://github.com/Carthage/Carthage)
 | in development  | ....
 | **Being released** | 
 | in development  | ....
@@ -85,8 +86,8 @@ $ open open waosSwift.xcodeproj
 * in develompment
 
 ### others 
-* swiftlint autocorrect
-* in develompment
+* lint:  `swiftlint autocorrect `
+* commit : `npm run commit`
 
 
 ### Configuration
