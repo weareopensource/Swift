@@ -29,7 +29,7 @@ Our stack Swift is actually in development.
 | Architecture | vertical modules architecture with a core to assemble all the modulese
 | Linter  | [SwiftLint](https://github.com/realm/SwiftLint)
 | CI  | [Travis CI](https://travis-ci.org/weareopensource/Node) <br> [fastlane](https://github.com/fastlane/fastlane) & [Slather](https://github.com/SlatherOrg/slather)
-| Developer  | [Coveralls](https://coveralls.io/github/weareopensource/Swift) - [Code Climate](https://codeclimate.com/github/weareopensource/Swift) - [standard-version](https://github.com/conventional-changelog/standard-version) - [commitlint](https://github.com/conventional-changelog/commitlint)
+| Developer  | [Coveralls](https://coveralls.io/github/weareopensource/Swift) - [Code Climate](https://codeclimate.com/github/weareopensource/Swift) - [standard-version](https://github.com/conventional-changelog/standard-version) - [commitlint](https://github.com/conventional-changelog/commitlint) - [commitizen](https://github.com/commitizen/cz-cli) - [waos-conventional-changelog](https://github.com/WeAreOpenSourceProjects/)
 | Dependencies | [Carthage](https://github.com/Carthage/Carthage)
 | in development  | ....
 | **Being released** | 
@@ -61,7 +61,6 @@ Make sure you have installed all of the following prerequisites on your developm
 For development : 
 
 * SwiftLint - `brew update && brew install swiftlint` (`swiftlint autocorrect`)
-* commitizen - `npm install --global commitizen cz-conventional-changelog-emoji`
 
 For CI : 
 
