@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  waosSwift
+
+  Created by pierre brisorgueil on 04/04/2019.
+  Copyright © 2019 WeAreOpenSource. All rights reserved.
+*/
+
+"firstViewTitle"= "title 1";
+"secondViewTitle"= "title 2";
