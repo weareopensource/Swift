@@ -71,7 +71,8 @@ For CI :
 It's straightforward (you can use yarn if you want)
 ```bash
 $ git clone https://github.com/weareopensource/swift.git && cd Swift
-$ open open waosSwift.xcodeproj
+$ carthage update --platform iOS
+$ open waosSwift.xcodeproj
 ```
 
 ## Running Your Application

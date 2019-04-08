@@ -17,6 +17,12 @@
 		BF425490221EBB9800395AE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF42548E221EBB9800395AE6 /* LaunchScreen.storyboard */; };
 		BF42549B221EBB9800395AE6 /* waosSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF42549A221EBB9800395AE6 /* waosSwiftTests.swift */; };
 		BF4254A6221EBB9800395AE6 /* waosSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4254A5221EBB9800395AE6 /* waosSwiftUITests.swift */; };
+		BF4A2F37225B4F7F0001B4CE /* RxFlow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4A2F31225B4F7F0001B4CE /* RxFlow.framework */; };
+		BF4A2F38225B4F7F0001B4CE /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4A2F32225B4F7F0001B4CE /* RxBlocking.framework */; };
+		BF4A2F39225B4F7F0001B4CE /* RxAtomic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4A2F33225B4F7F0001B4CE /* RxAtomic.framework */; };
+		BF4A2F3A225B4F7F0001B4CE /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4A2F34225B4F7F0001B4CE /* RxCocoa.framework */; };
+		BF4A2F3B225B4F7F0001B4CE /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4A2F35225B4F7F0001B4CE /* RxSwift.framework */; };
+		BF4A2F3C225B4F7F0001B4CE /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4A2F36225B4F7F0001B4CE /* RxTest.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +62,12 @@
 		BF4254A1221EBB9800395AE6 /* waosSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = waosSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF4254A5221EBB9800395AE6 /* waosSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = waosSwiftUITests.swift; sourceTree = "<group>"; };
 		BF4254A7221EBB9800395AE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF4A2F31225B4F7F0001B4CE /* RxFlow.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxFlow.framework; path = Carthage/Build/iOS/RxFlow.framework; sourceTree = "<group>"; };
+		BF4A2F32225B4F7F0001B4CE /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
+		BF4A2F33225B4F7F0001B4CE /* RxAtomic.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAtomic.framework; path = Carthage/Build/iOS/RxAtomic.framework; sourceTree = "<group>"; };
+		BF4A2F34225B4F7F0001B4CE /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		BF4A2F35225B4F7F0001B4CE /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		BF4A2F36225B4F7F0001B4CE /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +75,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF4A2F37225B4F7F0001B4CE /* RxFlow.framework in Frameworks */,
+				BF4A2F38225B4F7F0001B4CE /* RxBlocking.framework in Frameworks */,
+				BF4A2F39225B4F7F0001B4CE /* RxAtomic.framework in Frameworks */,
+				BF4A2F3A225B4F7F0001B4CE /* RxCocoa.framework in Frameworks */,
+				BF4A2F3B225B4F7F0001B4CE /* RxSwift.framework in Frameworks */,
+				BF4A2F3C225B4F7F0001B4CE /* RxTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +125,7 @@
 				BF425499221EBB9800395AE6 /* waosSwiftTests */,
 				BF4254A4221EBB9800395AE6 /* waosSwiftUITests */,
 				BF425481221EBB9700395AE6 /* Products */,
+				BF4A2F30225B4F7F0001B4CE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -153,6 +172,19 @@
 			path = waosSwiftUITests;
 			sourceTree = "<group>";
 		};
+		BF4A2F30225B4F7F0001B4CE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF4A2F33225B4F7F0001B4CE /* RxAtomic.framework */,
+				BF4A2F32225B4F7F0001B4CE /* RxBlocking.framework */,
+				BF4A2F34225B4F7F0001B4CE /* RxCocoa.framework */,
+				BF4A2F31225B4F7F0001B4CE /* RxFlow.framework */,
+				BF4A2F35225B4F7F0001B4CE /* RxSwift.framework */,
+				BF4A2F36225B4F7F0001B4CE /* RxTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -165,6 +197,7 @@
 				BF42547E221EBB9700395AE6 /* Resources */,
 				BF8E75CD221EBCA30057F710 /* SwiftLint */,
 				BF85C200225639BC00C8DDB8 /* SwiftGen */,
+				BF4A2F19225B4A310001B4CE /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -284,6 +317,30 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		BF4A2F19225B4A310001B4CE /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/RxAtomic.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxBlocking.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxFlow.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxTest.framework",
+			);
+			name = Carthage;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
 		BF85C200225639BC00C8DDB8 /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -300,7 +357,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftgen >/dev/null; then\nswiftgen\nelse\necho \"warning: swiftgen not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if which swiftgen >/dev/null; then\nswiftgen\nelse\necho \"warning: swiftgen not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		BF8E75CD221EBCA30057F710 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -318,7 +375,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\nswiftlint autocorrect\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint autocorrect\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -519,6 +576,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = waosSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -536,6 +597,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = waosSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -35,6 +35,7 @@ iOSInjectionProject/
 build/
 DerivedData/
 Carthage/Build
+Carthage/Checkouts
 
 # Ignoring waos Node's gh-pages branch for documenation
 _site/
