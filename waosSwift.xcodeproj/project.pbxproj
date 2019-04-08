@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF0CD6AB22563C9800844F9A /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0CD6AA22563C9800844F9A /* Strings.swift */; };
+		BF0CD6B622563CC200844F9A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF0CD6B822563CC200844F9A /* Localizable.strings */; };
 		BF425484221EBB9700395AE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF425483221EBB9700395AE6 /* AppDelegate.swift */; };
 		BF425486221EBB9700395AE6 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF425485221EBB9700395AE6 /* FirstViewController.swift */; };
 		BF425488221EBB9700395AE6 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF425487221EBB9700395AE6 /* SecondViewController.swift */; };
@@ -35,6 +37,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF0CD6A222563B3900844F9A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		BF0CD6A322563B3900844F9A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		BF0CD6AA22563C9800844F9A /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		BF0CD6B722563CC200844F9A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BF0CD6B922563CC300844F9A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BF425480221EBB9700395AE6 /* waosSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = waosSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF425483221EBB9700395AE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF425485221EBB9700395AE6 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +83,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF0CD6A822563C7700844F9A /* config */ = {
+			isa = PBXGroup;
+			children = (
+				BF0CD6A922563C8200844F9A /* localizations */,
+			);
+			path = config;
+			sourceTree = "<group>";
+		};
+		BF0CD6A922563C8200844F9A /* localizations */ = {
+			isa = PBXGroup;
+			children = (
+				BF0CD6AA22563C9800844F9A /* Strings.swift */,
+				BF0CD6B822563CC200844F9A /* Localizable.strings */,
+			);
+			path = localizations;
+			sourceTree = "<group>";
+		};
 		BF425477221EBB9700395AE6 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +123,7 @@
 		BF425482221EBB9700395AE6 /* waosSwift */ = {
 			isa = PBXGroup;
 			children = (
+				BF0CD6A822563C7700844F9A /* config */,
 				BF425483221EBB9700395AE6 /* AppDelegate.swift */,
 				BF425485221EBB9700395AE6 /* FirstViewController.swift */,
 				BF425487221EBB9700395AE6 /* SecondViewController.swift */,
@@ -138,7 +163,8 @@
 				BF42547C221EBB9700395AE6 /* Sources */,
 				BF42547D221EBB9700395AE6 /* Frameworks */,
 				BF42547E221EBB9700395AE6 /* Resources */,
-				BF8E75CD221EBCA30057F710 /* ShellScript */,
+				BF8E75CD221EBCA30057F710 /* SwiftLint */,
+				BF85C200225639BC00C8DDB8 /* SwiftGen */,
 			);
 			buildRules = (
 			);
@@ -215,6 +241,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = BF425477221EBB9700395AE6;
 			productRefGroup = BF425481221EBB9700395AE6 /* Products */;
@@ -234,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF425490221EBB9800395AE6 /* LaunchScreen.storyboard in Resources */,
+				BF0CD6B622563CC200844F9A /* Localizable.strings in Resources */,
 				BF42548D221EBB9800395AE6 /* Assets.xcassets in Resources */,
 				BF42548B221EBB9700395AE6 /* Main.storyboard in Resources */,
 			);
@@ -256,7 +284,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		BF8E75CD221EBCA30057F710 /* ShellScript */ = {
+		BF85C200225639BC00C8DDB8 /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -265,13 +293,32 @@
 			);
 			inputPaths = (
 			);
+			name = SwiftGen;
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftgen >/dev/null; then\nswiftgen\nelse\necho \"warning: swiftgen not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		BF8E75CD221EBCA30057F710 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\nswiftlint autocorrect\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -282,6 +329,7 @@
 			files = (
 				BF425488221EBB9700395AE6 /* SecondViewController.swift in Sources */,
 				BF425484221EBB9700395AE6 /* AppDelegate.swift in Sources */,
+				BF0CD6AB22563C9800844F9A /* Strings.swift in Sources */,
 				BF425486221EBB9700395AE6 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,10 +366,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		BF0CD6B822563CC200844F9A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF0CD6B722563CC200844F9A /* en */,
+				BF0CD6B922563CC300844F9A /* fr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		BF425489221EBB9700395AE6 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				BF42548A221EBB9700395AE6 /* Base */,
+				BF0CD6A222563B3900844F9A /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -330,6 +388,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				BF42548F221EBB9800395AE6 /* Base */,
+				BF0CD6A322563B3900844F9A /* fr */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -341,6 +400,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -402,6 +462,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

@@ -30,9 +30,8 @@ Our stack Swift is actually in development.
 | ------- | --------
 | **in development** | 
 | Architecture | vertical modules architecture with a core to assemble all the modulese
-| Linter  | [SwiftLint](https://github.com/realm/SwiftLint)
 | CI  | [Travis CI](https://travis-ci.org/weareopensource/Node) <br> [fastlane](https://github.com/fastlane/fastlane) & [Slather](https://github.com/SlatherOrg/slather)
-| Developer  | [Coveralls](https://coveralls.io/github/weareopensource/Swift) - [Code Climate](https://codeclimate.com/github/weareopensource/Swift) - [standard-version](https://github.com/conventional-changelog/standard-version) - [commitlint](https://github.com/conventional-changelog/commitlint) - [commitizen](https://github.com/commitizen/cz-cli) - [waos-conventional-changelog](https://github.com/WeAreOpenSourceProjects/)
+| Developer  | [Coveralls](https://coveralls.io/github/weareopensource/Swift) - [Code Climate](https://codeclimate.com/github/weareopensource/Swift) <br> [standard-version](https://github.com/conventional-changelog/standard-version) - [commitlint](https://github.com/conventional-changelog/commitlint) - [commitizen](https://github.com/commitizen/cz-cli) - [waos-conventional-changelog](https://github.com/WeAreOpenSourceProjects/) <br>  [SwiftLint](https://github.com/realm/SwiftLint) - [SwiftGen](https://github.com/SwiftGen/SwiftGen)
 | Dependencies | [Carthage](https://github.com/Carthage/Carthage)
 | in development  | ....
 | **Being released** | 
@@ -60,10 +59,8 @@ Make sure you have installed all of the following prerequisites on your developm
 * Xcode (10.x) - [Download & Install Xcode](https://itunes.apple.com/us/app/xcode/id497799835?mt=12)
 * HomeBrew - `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
 * Carthage - `brew update && brew install carthage`
-
-For development : 
-
 * SwiftLint - `brew update && brew install swiftlint` (`swiftlint autocorrect`)
+* SwiftGen - `brew update && brew install swiftgen`
 
 For CI : 
 
