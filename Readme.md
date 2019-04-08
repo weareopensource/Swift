@@ -75,6 +75,13 @@ $ carthage update --platform iOS
 $ open waosSwift.xcodeproj
 ```
 
+if you have some toruble with ReactorKit :
+```bash
+carthage update 2>/dev/null
+(cd Carthage/Checkouts/ReactorKit && swift package generate-xcodeproj)
+carthage build
+```
+
 ## Running Your Application
 
 ### Development

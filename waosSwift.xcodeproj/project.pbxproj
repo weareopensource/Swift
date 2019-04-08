@@ -23,6 +23,8 @@
 		BF4A2F3A225B4F7F0001B4CE /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4A2F34225B4F7F0001B4CE /* RxCocoa.framework */; };
 		BF4A2F3B225B4F7F0001B4CE /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4A2F35225B4F7F0001B4CE /* RxSwift.framework */; };
 		BF4A2F3C225B4F7F0001B4CE /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4A2F36225B4F7F0001B4CE /* RxTest.framework */; };
+		BF4A2F3F225B53150001B4CE /* ReactorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4A2F3D225B53150001B4CE /* ReactorKit.framework */; };
+		BF4A2F40225B53150001B4CE /* ReactorKitRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4A2F3E225B53150001B4CE /* ReactorKitRuntime.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,8 @@
 		BF4A2F34225B4F7F0001B4CE /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		BF4A2F35225B4F7F0001B4CE /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		BF4A2F36225B4F7F0001B4CE /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
+		BF4A2F3D225B53150001B4CE /* ReactorKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactorKit.framework; path = Carthage/Build/iOS/ReactorKit.framework; sourceTree = "<group>"; };
+		BF4A2F3E225B53150001B4CE /* ReactorKitRuntime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactorKitRuntime.framework; path = Carthage/Build/iOS/ReactorKitRuntime.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +85,8 @@
 				BF4A2F3A225B4F7F0001B4CE /* RxCocoa.framework in Frameworks */,
 				BF4A2F3B225B4F7F0001B4CE /* RxSwift.framework in Frameworks */,
 				BF4A2F3C225B4F7F0001B4CE /* RxTest.framework in Frameworks */,
+				BF4A2F3F225B53150001B4CE /* ReactorKit.framework in Frameworks */,
+				BF4A2F40225B53150001B4CE /* ReactorKitRuntime.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,6 +181,8 @@
 		BF4A2F30225B4F7F0001B4CE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BF4A2F3D225B53150001B4CE /* ReactorKit.framework */,
+				BF4A2F3E225B53150001B4CE /* ReactorKitRuntime.framework */,
 				BF4A2F33225B4F7F0001B4CE /* RxAtomic.framework */,
 				BF4A2F32225B4F7F0001B4CE /* RxBlocking.framework */,
 				BF4A2F34225B4F7F0001B4CE /* RxCocoa.framework */,
@@ -331,6 +339,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxFlow.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxTest.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ReactorKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ReactorKitRuntime.framework",
 			);
 			name = Carthage;
 			outputFileListPaths = (
