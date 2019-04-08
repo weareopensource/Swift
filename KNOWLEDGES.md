@@ -79,8 +79,9 @@ WIP
 - **[Coveralls](https://coveralls.io)** - See coverage trends emerge
 - **[CodeClimate](https://codeclimate.com/dashboard)** - Get automated code coverage, complexity, duplication ..
 - **[SwiftLint](https://github.com/realm/SwiftLint)** - A tool to enforce Swift style and conventions
+- **[SwiftGen](https://github.com/SwiftGen/SwiftGen)** - Swift code generator for assets, storyboards, Localizable ...
 - **[slather](https://github.com/SlatherOrg/slather)** - Generate test coverage reports for Xcode projects 
 - _[Danger](https://danger.systems)_ - runs after your CI, automating your team's conventions 
 
 #### Conclusion
-Travis, Codeclimate, Fastlane + Slather + Coveralls, SwiftLint the goal being to stay close to the functioning of repo node / angular
+Travis, Codeclimate, Fastlane + Slather + Coveralls, SwiftLint & SwiftGen, the goal being to stay close to the functioning of repo node / angular
