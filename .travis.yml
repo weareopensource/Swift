@@ -5,8 +5,14 @@ xcode_scheme: waosSwift
 xcode_destination: platform=iOS Simulator,OS=12.1,name=iPhone X
 cache:
   - bundler
+  directories:
+    - Carthage
 before_install:
+  - brew install carthage || true
+  - brew outdated carthage || brew upgrade carthag
   - rvm use $RVM_RUBY_VERSION #slather
+before_script:
+  - carthage bootstrap --platform iOS --no-use-binaries --cache-builds
 install: bundle install --without=documentation --path ../travis_bundle_dir
 after_success:
   - fastlane lint
