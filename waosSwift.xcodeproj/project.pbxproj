@@ -40,20 +40,9 @@
 		BF4A2F87225C8F160001B4CE /* UILocalizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A2F86225C8F160001B4CE /* UILocalizations.swift */; };
 		BF4A2F8A225C9C830001B4CE /* OnboardingIntroViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF4A2F5D225B7C200001B4CE /* OnboardingIntroViewController.storyboard */; };
 		BF4A2F9E225CA6DB0001B4CE /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = BF4A2F8D225CA6DB0001B4CE /* CHANGELOG.md */; };
-		BF4A2F9F225CA6DB0001B4CE /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = BF4A2F8E225CA6DB0001B4CE /* Cartfile */; };
 		BF4A2FA0225CA6DB0001B4CE /* KNOWLEDGES.md in Resources */ = {isa = PBXBuildFile; fileRef = BF4A2F8F225CA6DB0001B4CE /* KNOWLEDGES.md */; };
-		BF4A2FA1225CA6DB0001B4CE /* report.html in Resources */ = {isa = PBXBuildFile; fileRef = BF4A2F92225CA6DB0001B4CE /* report.html */; };
-		BF4A2FA2225CA6DB0001B4CE /* report.junit in Resources */ = {isa = PBXBuildFile; fileRef = BF4A2F93225CA6DB0001B4CE /* report.junit */; };
-		BF4A2FA3225CA6DB0001B4CE /* Appfile in Resources */ = {isa = PBXBuildFile; fileRef = BF4A2F94225CA6DB0001B4CE /* Appfile */; };
-		BF4A2FA4225CA6DB0001B4CE /* Fastfile in Resources */ = {isa = PBXBuildFile; fileRef = BF4A2F95225CA6DB0001B4CE /* Fastfile */; };
-		BF4A2FA5225CA6DB0001B4CE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BF4A2F96225CA6DB0001B4CE /* README.md */; };
-		BF4A2FA6225CA6DB0001B4CE /* .env in Resources */ = {isa = PBXBuildFile; fileRef = BF4A2F97225CA6DB0001B4CE /* .env */; };
-		BF4A2FA7225CA6DB0001B4CE /* report.xml in Resources */ = {isa = PBXBuildFile; fileRef = BF4A2F98225CA6DB0001B4CE /* report.xml */; };
-		BF4A2FA8225CA6DB0001B4CE /* commitlint.config.js in Resources */ = {isa = PBXBuildFile; fileRef = BF4A2F99225CA6DB0001B4CE /* commitlint.config.js */; };
 		BF4A2FA9225CA6DB0001B4CE /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = BF4A2F9A225CA6DB0001B4CE /* Readme.md */; };
-		BF4A2FAA225CA6DB0001B4CE /* package.json in Resources */ = {isa = PBXBuildFile; fileRef = BF4A2F9B225CA6DB0001B4CE /* package.json */; };
 		BF4A2FAB225CA6DB0001B4CE /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = BF4A2F9C225CA6DB0001B4CE /* LICENSE.md */; };
-		BF4A2FAC225CA6DB0001B4CE /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = BF4A2F9D225CA6DB0001B4CE /* swiftgen.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,20 +107,9 @@
 		BF4A2F83225BBA4D0001B4CE /* SecondViewFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewFlow.swift; sourceTree = "<group>"; };
 		BF4A2F86225C8F160001B4CE /* UILocalizations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILocalizations.swift; sourceTree = "<group>"; };
 		BF4A2F8D225CA6DB0001B4CE /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = SOURCE_ROOT; };
-		BF4A2F8E225CA6DB0001B4CE /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = SOURCE_ROOT; };
 		BF4A2F8F225CA6DB0001B4CE /* KNOWLEDGES.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = KNOWLEDGES.md; sourceTree = SOURCE_ROOT; };
-		BF4A2F92225CA6DB0001B4CE /* report.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = report.html; sourceTree = "<group>"; };
-		BF4A2F93225CA6DB0001B4CE /* report.junit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = report.junit; sourceTree = "<group>"; };
-		BF4A2F94225CA6DB0001B4CE /* Appfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Appfile; sourceTree = "<group>"; };
-		BF4A2F95225CA6DB0001B4CE /* Fastfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fastfile; sourceTree = "<group>"; };
-		BF4A2F96225CA6DB0001B4CE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		BF4A2F97225CA6DB0001B4CE /* .env */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .env; sourceTree = "<group>"; };
-		BF4A2F98225CA6DB0001B4CE /* report.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = report.xml; sourceTree = "<group>"; };
-		BF4A2F99225CA6DB0001B4CE /* commitlint.config.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = commitlint.config.js; sourceTree = SOURCE_ROOT; };
 		BF4A2F9A225CA6DB0001B4CE /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = SOURCE_ROOT; };
-		BF4A2F9B225CA6DB0001B4CE /* package.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = package.json; sourceTree = SOURCE_ROOT; };
 		BF4A2F9C225CA6DB0001B4CE /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = SOURCE_ROOT; };
-		BF4A2F9D225CA6DB0001B4CE /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = swiftgen.yml; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,11 +191,6 @@
 				BF4A2F4E225B7C200001B4CE /* modules */,
 				BF42548C221EBB9800395AE6 /* Assets.xcassets */,
 				BF425491221EBB9800395AE6 /* Info.plist */,
-				BF4A2F90225CA6DB0001B4CE /* fastlane */,
-				BF4A2F9D225CA6DB0001B4CE /* swiftgen.yml */,
-				BF4A2F99225CA6DB0001B4CE /* commitlint.config.js */,
-				BF4A2F8E225CA6DB0001B4CE /* Cartfile */,
-				BF4A2F9B225CA6DB0001B4CE /* package.json */,
 				BF4A2F9A225CA6DB0001B4CE /* Readme.md */,
 				BF4A2F8D225CA6DB0001B4CE /* CHANGELOG.md */,
 				BF4A2F8F225CA6DB0001B4CE /* KNOWLEDGES.md */,
@@ -350,28 +323,6 @@
 			path = app;
 			sourceTree = "<group>";
 		};
-		BF4A2F90225CA6DB0001B4CE /* fastlane */ = {
-			isa = PBXGroup;
-			children = (
-				BF4A2F91225CA6DB0001B4CE /* test_output */,
-				BF4A2F94225CA6DB0001B4CE /* Appfile */,
-				BF4A2F95225CA6DB0001B4CE /* Fastfile */,
-				BF4A2F96225CA6DB0001B4CE /* README.md */,
-				BF4A2F97225CA6DB0001B4CE /* .env */,
-				BF4A2F98225CA6DB0001B4CE /* report.xml */,
-			);
-			path = fastlane;
-			sourceTree = SOURCE_ROOT;
-		};
-		BF4A2F91225CA6DB0001B4CE /* test_output */ = {
-			isa = PBXGroup;
-			children = (
-				BF4A2F92225CA6DB0001B4CE /* report.html */,
-				BF4A2F93225CA6DB0001B4CE /* report.junit */,
-			);
-			path = test_output;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -481,25 +432,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF4A2FAB225CA6DB0001B4CE /* LICENSE.md in Resources */,
-				BF4A2FA6225CA6DB0001B4CE /* .env in Resources */,
-				BF4A2FA4225CA6DB0001B4CE /* Fastfile in Resources */,
-				BF4A2FA3225CA6DB0001B4CE /* Appfile in Resources */,
 				BF4A2F8A225C9C830001B4CE /* OnboardingIntroViewController.storyboard in Resources */,
-				BF4A2FAA225CA6DB0001B4CE /* package.json in Resources */,
 				BF4A2F7A225BB6FE0001B4CE /* FirstViewController.storyboard in Resources */,
-				BF4A2FA7225CA6DB0001B4CE /* report.xml in Resources */,
-				BF4A2FAC225CA6DB0001B4CE /* swiftgen.yml in Resources */,
 				BF4A2FA0225CA6DB0001B4CE /* KNOWLEDGES.md in Resources */,
-				BF4A2F9F225CA6DB0001B4CE /* Cartfile in Resources */,
 				BF4A2FA9225CA6DB0001B4CE /* Readme.md in Resources */,
 				BF425490221EBB9800395AE6 /* LaunchScreen.storyboard in Resources */,
 				BF4A2F7C225BB89C0001B4CE /* SecondViewController.storyboard in Resources */,
-				BF4A2FA8225CA6DB0001B4CE /* commitlint.config.js in Resources */,
 				BF0CD6B622563CC200844F9A /* Localizable.strings in Resources */,
-				BF4A2FA2225CA6DB0001B4CE /* report.junit in Resources */,
-				BF4A2FA5225CA6DB0001B4CE /* README.md in Resources */,
 				BF4A2F9E225CA6DB0001B4CE /* CHANGELOG.md in Resources */,
-				BF4A2FA1225CA6DB0001B4CE /* report.html in Resources */,
 				BF42548D221EBB9800395AE6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
