@@ -4,9 +4,8 @@ xcode_workspace: waosSwift.xcworkspace
 xcode_scheme: waosSwift
 xcode_destination: platform=iOS Simulator,OS=12.1,name=iPhone X
 cache:
-  - bundler
   directories:
-    - Carthage
+  - Carthage
 before_install:
   - brew install carthage || true
   - brew outdated carthage || brew upgrade carthag
