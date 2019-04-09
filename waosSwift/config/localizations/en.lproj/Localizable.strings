@@ -1,10 +1,14 @@
-/* 
-  Localizable.strings
-  waosSwift
+/**
+ * Modules
+ */
 
-  Created by pierre brisorgueil on 04/04/2019.
-  Copyright © 2019 WeAreOpenSource. All rights reserved.
-*/
+// onBoarding
+"onBoarding_title"= "onBoarding";
+"onBoarding_introduction"= "this is the first page of the application, it will only be affixed once after installation. We call it onBoarding.";
+"onBoarding_validation"= "I'm in !";
 
-"firstViewTitle"= "title 1";
-"secondViewTitle"= "title 2";
+// first
+"first_title"= "title 1";
+
+// second
+"second_title"= "title 2";
