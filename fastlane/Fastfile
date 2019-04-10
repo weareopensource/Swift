@@ -39,6 +39,9 @@ platform :ios do
 		clean: true,
 		code_coverage: true,
 		output_types: "html, junit",
+    devices: [
+      "iPhone X (12.2)",
+    ],
 	})
 
 	# Generate code coverage report
