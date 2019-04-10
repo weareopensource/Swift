@@ -1,0 +1,4 @@
+github "AliSoftware/Reusable" "4.0.5"
+github "ReactiveX/RxSwift" "4.5.0"
+github "ReactorKit/ReactorKit" "1.2.1"
+github "RxSwiftCommunity/RxFlow" "2.1.0"

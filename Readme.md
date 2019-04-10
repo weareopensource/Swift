@@ -71,7 +71,15 @@ For CI :
 It's straightforward (you can use yarn if you want)
 ```bash
 $ git clone https://github.com/weareopensource/swift.git && cd Swift
-$ open open waosSwift.xcodeproj
+$ carthage update --platform iOS
+$ open waosSwift.xcodeproj
+```
+
+if you have some toruble with ReactorKit :
+```bash
+carthage update 2>/dev/null
+(cd Carthage/Checkouts/ReactorKit && swift package generate-xcodeproj)
+carthage build
 ```
 
 ## Running Your Application
