@@ -86,3 +86,14 @@ WIP
 
 #### Conclusion
 Travis, Codeclimate, Fastlane + Slather + Coveralls, SwiftLint & SwiftGen, the goal being to stay close to the functioning of repo node / angular
+
+## Logs :loud_sound: 
+
+#### Articles :
+- ...
+
+#### Tools :
+- **[CocoaLumberjack](https://github.com/CocoaLumberjack/CocoaLumberjack)** - A fast & simple, yet powerful & flexible logging framework for Mac and iOS
+
+#### Conclusion
+CocoaLumberjack due to [libhunt](https://ios.libhunt.com/cocoalumberjack-alternatives)
