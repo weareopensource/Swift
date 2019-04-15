@@ -98,3 +98,16 @@ Travis, Codeclimate, Fastlane + Slather + Coveralls, SwiftLint & SwiftGen, the g
 
 #### Conclusion
 CocoaLumberjack due to [libhunt](https://ios.libhunt.com/cocoalumberjack-alternatives)
+
+## Configuration :wrench: 
+
+#### Articles :
+- [managing-swift-application-configuration](https://developer.ibm.com/swift/2017/04/06/managing-swift-application-configuration/)
+- [managing-different-environments-and-configurations](https://medium.freecodecamp.org/managing-different-environments-and-configurations-for-ios-projects-7970327dd9c9)
+- [switching-environments-with-configurations](https://cocoacasts.com/switching-environments-with-configurations/)
+
+#### Tools :
+- [IBM-Swift/Configuration](https://github.com/IBM-Swift/Configuration) - Hierarchical configuration manager for Swift applications 
+
+#### Conclusion
+We search a simple way to manage hierarchical configuration in the Node repo style (one by env, merged on build). We did not find anything, the IBM package is server side, so it will be done by hand ..
