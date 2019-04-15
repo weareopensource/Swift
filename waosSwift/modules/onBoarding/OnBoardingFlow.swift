@@ -19,6 +19,7 @@ final class OnboardingFlow: Flow {
     }
 
     deinit {
+        log.info("\(type(of: self)): \(#function)")
     }
 
     func navigate(to step: Step) -> FlowContributors {

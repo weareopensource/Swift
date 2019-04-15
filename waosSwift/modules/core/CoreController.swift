@@ -8,5 +8,6 @@ class CoreViewController: UIViewController {
     var disposeBag = DisposeBag()
 
     deinit {
+        log.info("DEINIT: \(self.className)")
     }
 }

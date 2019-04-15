@@ -43,6 +43,9 @@
 		BF4A2FA0225CA6DB0001B4CE /* KNOWLEDGES.md in Resources */ = {isa = PBXBuildFile; fileRef = BF4A2F8F225CA6DB0001B4CE /* KNOWLEDGES.md */; };
 		BF4A2FA9225CA6DB0001B4CE /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = BF4A2F9A225CA6DB0001B4CE /* Readme.md */; };
 		BF4A2FAB225CA6DB0001B4CE /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = BF4A2F9C225CA6DB0001B4CE /* LICENSE.md */; };
+		BF4A2FAE2260F0040001B4CE /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A2FAD2260F0040001B4CE /* Logger.swift */; };
+		BF4A2FB3226330470001B4CE /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4A2FAF2260F1710001B4CE /* CocoaLumberjackSwift.framework */; };
+		BF4A2FB4226331B30001B4CE /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4A2FB12260F40E0001B4CE /* CocoaLumberjack.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +113,9 @@
 		BF4A2F8F225CA6DB0001B4CE /* KNOWLEDGES.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = KNOWLEDGES.md; sourceTree = SOURCE_ROOT; };
 		BF4A2F9A225CA6DB0001B4CE /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = SOURCE_ROOT; };
 		BF4A2F9C225CA6DB0001B4CE /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = SOURCE_ROOT; };
+		BF4A2FAD2260F0040001B4CE /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		BF4A2FAF2260F1710001B4CE /* CocoaLumberjackSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjackSwift.framework; path = Carthage/Build/iOS/CocoaLumberjackSwift.framework; sourceTree = "<group>"; };
+		BF4A2FB12260F40E0001B4CE /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = Carthage/Build/iOS/CocoaLumberjack.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +129,8 @@
 				BF4A2F3B225B4F7F0001B4CE /* RxSwift.framework in Frameworks */,
 				BF4A2F3F225B53150001B4CE /* ReactorKit.framework in Frameworks */,
 				BF4A2F40225B53150001B4CE /* ReactorKitRuntime.framework in Frameworks */,
+				BF4A2FB4226331B30001B4CE /* CocoaLumberjack.framework in Frameworks */,
+				BF4A2FB3226330470001B4CE /* CocoaLumberjackSwift.framework in Frameworks */,
 				BF4A2F6D225B7D0B0001B4CE /* Reusable.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,6 +228,8 @@
 		BF4A2F30225B4F7F0001B4CE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BF4A2FB12260F40E0001B4CE /* CocoaLumberjack.framework */,
+				BF4A2FAF2260F1710001B4CE /* CocoaLumberjackSwift.framework */,
 				BF4A2F6C225B7D0B0001B4CE /* Reusable.framework */,
 				BF4A2F3D225B53150001B4CE /* ReactorKit.framework */,
 				BF4A2F3E225B53150001B4CE /* ReactorKitRuntime.framework */,
@@ -246,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				BF4A2F4C225B79A80001B4CE /* Preferences.swift */,
+				BF4A2FAD2260F0040001B4CE /* Logger.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -476,6 +487,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/ReactorKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ReactorKitRuntime.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Reusable.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CocoaLumberjack.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CocoaLumberjackSwift.framework",
 			);
 			name = Carthage;
 			outputFileListPaths = (
@@ -542,6 +555,7 @@
 				BF4A2F71225BB2CD0001B4CE /* CoreFlow.swift in Sources */,
 				BF4A2F6F225BB2B10001B4CE /* OnBoardingFlow.swift in Sources */,
 				BF4A2F45225B751F0001B4CE /* AppFlow.swift in Sources */,
+				BF4A2FAE2260F0040001B4CE /* Logger.swift in Sources */,
 				BF4A2F74225BB4B90001B4CE /* CoreSteps.swift in Sources */,
 				BF4A2F82225BBA3F0001B4CE /* FirstViewFlow.swift in Sources */,
 				BF4A2F84225BBA4D0001B4CE /* SecondViewFlow.swift in Sources */,

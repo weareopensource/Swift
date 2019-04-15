@@ -16,8 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         guard let window = self.window else { return false }
 
-        coordinator.rx.willNavigate.subscribe(onNext: { (_, _) in }).disposed(by: self.disposeBag)
-        coordinator.rx.didNavigate.subscribe(onNext: { (_, _) in }).disposed(by: self.disposeBag)
+        coordinator.rx.willNavigate.subscribe(onNext: { (flow, step) in
+            log.debug("🚀 will nav to \(flow) & step \(step)")
+        }).disposed(by: self.disposeBag)
+
+        coordinator.rx.didNavigate.subscribe(onNext: { (flow, step) in
+            log.debug("🚀 did nav to \(flow) & step \(step)")
+        }).disposed(by: self.disposeBag)
 
         self.appFlow = AppFlow(withWindow: window, andServices: self.appServices)
 

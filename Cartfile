@@ -1,4 +1,5 @@
 github "ReactiveX/RxSwift"
 github "RxSwiftCommunity/RxFlow"
 github "ReactorKit/ReactorKit"
+github "CocoaLumberjack/CocoaLumberjack"
 github "AliSoftware/Reusable"
