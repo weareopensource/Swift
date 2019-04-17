@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--First View Controller-->
+        <!--Todo View Controller-->
         <scene sceneID="1U8-YA-1ff">
             <objects>
-                <viewController id="u3l-wc-SpD" customClass="FirstViewController" customModule="waosSwift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="u3l-wc-SpD" userLabel="Todo View Controller" customClass="TodoViewController" customModule="waosSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="j3d-tO-mip">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

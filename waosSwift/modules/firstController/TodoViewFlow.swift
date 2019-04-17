@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-final class FirstViewFlow: Flow {
+final class TodoViewFlow: Flow {
     var root: Presentable {
         return self.rootViewController
     }
@@ -23,18 +23,18 @@ final class FirstViewFlow: Flow {
 
         switch step {
 
-        case .firstViewIsRequired:
-            return navigateToFirstViewScreen()
+        case .todoViewIsRequired:
+            return navigateToTodoViewScreen()
         default:
             return FlowContributors.none
         }
     }
 
-    private func navigateToFirstViewScreen() -> FlowContributors {
-        let viewController = FirstViewController.instantiate()
+    private func navigateToTodoViewScreen() -> FlowContributors {
+        let viewController = TodoViewController.instantiate()
         viewController.title = L10n.firstTitle
 
         self.rootViewController.pushViewController(viewController, animated: true)
-        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: OneStepper(withSingleStep: SampleStep.firstViewIsRequired)))
+        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: OneStepper(withSingleStep: SampleStep.todoViewIsRequired)))
     }
 }

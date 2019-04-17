@@ -1,6 +1,6 @@
 import ReactorKit
 
-final class FirstViewReactor: Reactor {
+final class TodoViewReactor: Reactor {
 
     enum Action {
     }
