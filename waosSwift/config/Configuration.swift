@@ -1,6 +1,6 @@
 struct Config {
     /**
-     * @desc global var for default configuraiton, develoment / production
+     * @desc global var for default configuration, development / production
      */
     lazy var global: JSON = {
         // init development config

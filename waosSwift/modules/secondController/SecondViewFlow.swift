@@ -7,9 +7,9 @@ final class SecondViewFlow: Flow {
     }
 
     private let rootViewController = UINavigationController()
-    private let services: AppServices
+    private let services: ServicesProvider
 
-    init(withServices services: AppServices) {
+    init(withServices services: ServicesProvider) {
         self.services = services
     }
 
