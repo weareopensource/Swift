@@ -1,7 +1,7 @@
 import Foundation
 import ReactorKit
 
-final class OnboardingIntroViewReactor: Reactor, HasPreferencesService {
+final class OnboardingIntroViewReactor: Reactor, ServicesProviderType {
     let preferencesService = PreferencesService()
 
     enum Action {
@@ -21,7 +21,7 @@ final class OnboardingIntroViewReactor: Reactor, HasPreferencesService {
     func mutate(action: OnboardingIntroViewReactor.Action) -> Observable<OnboardingIntroViewReactor.Mutation> {
         switch action {
         case .introIsComplete:
-            preferencesService.setOnboarded()
+            preferencesService.onBoarded = true
             return Observable.just(Mutation.moveDashboard)
         }
     }

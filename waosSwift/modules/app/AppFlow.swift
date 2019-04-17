@@ -7,9 +7,9 @@ final class AppFlow: Flow {
     }
 
     private let rootWindow: UIWindow
-    private let services: AppServices
+    private let services: ServicesProvider
 
-    init(withWindow window: UIWindow, andServices services: AppServices) {
+    init(withWindow window: UIWindow, andServices services: ServicesProvider) {
         self.rootWindow = window
         self.services = services
     }
@@ -46,13 +46,13 @@ final class AppFlow: Flow {
     }
 
     private func navigationToDashboardScreen() -> FlowContributors {
-        let dashboardFlow = DashboardFlow(withServices: self.services)
+        let coreFlow = CoreFlow(withServices: self.services)
 
-        Flows.whenReady(flow1: dashboardFlow) { [unowned self] (root) in
+        Flows.whenReady(flow1: coreFlow) { [unowned self] (root) in
             self.rootWindow.rootViewController = root
         }
 
-        return .one(flowContributor: .contribute(withNextPresentable: dashboardFlow,
+        return .one(flowContributor: .contribute(withNextPresentable: coreFlow,
                                                  withNextStepper: OneStepper(withSingleStep: SampleStep.dashboardIsRequired)))
     }
 }
@@ -60,11 +60,11 @@ final class AppFlow: Flow {
 class AppStepper: Stepper {
 
     let steps = PublishRelay<Step>()
-    private let appServices: AppServices
+    private let servicesProvider: ServicesProvider
     private let disposeBag = DisposeBag()
 
-    init(withServices services: AppServices) {
-        self.appServices = services
+    init(withServices services: ServicesProvider) {
+        self.servicesProvider = services
     }
 
     var initialStep: Step {
@@ -74,9 +74,9 @@ class AppStepper: Stepper {
 
     /// callback used to emit steps once the FlowCoordinator is ready to listen to them to contribute to the Flow
     func readyToEmitSteps() {
-        self.appServices
+        self.servicesProvider
             .preferencesService.rx
-            .isOnboarded
+            .onBoarded
             .debug()
             .map { $0 ? SampleStep.onboardingIsComplete : SampleStep.onboardingIsRequired }
             .debug()

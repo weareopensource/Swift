@@ -12,9 +12,9 @@ final class OnboardingFlow: Flow {
         return viewController
     }()
 
-    private let services: AppServices
+    private let services: ServicesProvider
 
-    init(withServices services: AppServices) {
+    init(withServices services: ServicesProvider) {
         self.services = services
     }
 

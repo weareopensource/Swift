@@ -1,15 +1,15 @@
 import Foundation
 import UIKit
 
-final class DashboardFlow: Flow {
+final class CoreFlow: Flow {
     var root: Presentable {
         return self.rootViewController
     }
 
     let rootViewController = UITabBarController()
-    private let services: AppServices
+    private let services: ServicesProvider
 
-    init(withServices services: AppServices) {
+    init(withServices services: ServicesProvider) {
         self.services = services
     }
 
