@@ -29,7 +29,7 @@ final class CoreFlow: Flow {
     }
 
     private func navigateToDashboard() -> FlowContributors {
-        let counterFlow = TodoViewFlow(withServices: self.services)
+        let counterFlow = TasksViewFlow(withServices: self.services)
         let githubSearchFlow = SecondViewFlow(withServices: self.services)
 
         Flows.whenReady(flow1: counterFlow, flow2: githubSearchFlow) { [unowned self] (root1: UINavigationController, root2: UINavigationController) in
@@ -45,7 +45,7 @@ final class CoreFlow: Flow {
         }
 
         return .multiple(flowContributors: [.contribute(withNextPresentable: counterFlow,
-                                                        withNextStepper: OneStepper(withSingleStep: SampleStep.todoViewIsRequired)),
+                                                        withNextStepper: OneStepper(withSingleStep: SampleStep.tasksListIsRequired)),
                                             .contribute(withNextPresentable: githubSearchFlow,
                                                         withNextStepper: OneStepper(withSingleStep: SampleStep.secondViewIsRequired))])
     }

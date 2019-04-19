@@ -7,7 +7,7 @@ enum SampleStep: Step {
 
     case dashboardIsRequired
 
-    case todoViewIsRequired
+    case tasksListIsRequired
 
     case secondViewIsRequired
 
