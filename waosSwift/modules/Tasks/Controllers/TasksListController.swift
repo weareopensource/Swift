@@ -1,8 +1,16 @@
+/**
+ * Dependencies
+ */
+
 import UIKit
 import Foundation
 import Reusable
 import ReactorKit
 import RxDataSources
+
+/**
+ * Section
+ */
 
 struct MySection {
     var header: String
@@ -29,11 +37,18 @@ func ==(lhs: Task, rhs: Task) -> Bool {
     return lhs.id == rhs.id
 }
 
+/**
+ * Controller
+ */
+
 class TasksListController: CoreViewController, StoryboardView, StoryboardBased {
+
+    // MARK: UI
 
     @IBOutlet var tableView: UITableView!
 
-    let refreshControl = UIRefreshControl()
+    // MARK: Properties
+
     let dataSource = RxTableViewSectionedAnimatedDataSource<MySection>(
         configureCell: { ds, tv, _, item in
             let cell = tv.dequeueReusableCell(withIdentifier: "Cell") ?? UITableViewCell(style: .default, reuseIdentifier: "Cell")
@@ -41,6 +56,8 @@ class TasksListController: CoreViewController, StoryboardView, StoryboardBased {
             return cell
     }, titleForHeaderInSection: { ds, index in return ds.sectionModels[index].header })
     let addButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
+
+    // MARK: Initializing
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +68,8 @@ class TasksListController: CoreViewController, StoryboardView, StoryboardBased {
         self.reactor = TasksListReactor() // inject reactor
     }
 
+    // MARK: Binding
+
     func bind(reactor: TasksListReactor) {
         bindAction(reactor)
         bindState(reactor)
@@ -59,23 +78,33 @@ class TasksListController: CoreViewController, StoryboardView, StoryboardBased {
 }
 
 private extension TasksListController {
-    func bindView(_ reactor: TasksListReactor) {}
 
-    // action (View -> Reactor)
+    // MARK: views (View -> View)
+
+    func bindView(_ reactor: TasksListReactor) {
+        // add
+        addButtonItem.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                guard let `self` = self else { return }
+                let viewController = TaskEditController()
+                let navigationController = UINavigationController(rootViewController: viewController)
+                self.present(navigationController, animated: true, completion: nil)
+            })
+            .disposed(by: self.disposeBag)
+    }
+
+    // MARK: actions (View -> Reactor)
+
     func bindAction(_ reactor: TasksListReactor) {
         // viewDidLoad
         Observable.just(Void())
             .map { Reactor.Action.get }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
-        // add
-        addButtonItem.rx.tap
-            .map { Reactor.Action.create }
-            .bind(to: reactor.action)
-            .disposed(by: disposeBag)
     }
 
-    // state (Reactor -> View)
+    // MARK: states (Reactor -> View)
+
     func bindState(_ reactor: TasksListReactor) {
         // data
         reactor.state.asObservable().map { [MySection(header: "", items: $0.tasks)] }
@@ -83,6 +112,10 @@ private extension TasksListController {
             .disposed(by: self.disposeBag)
     }
 }
+
+/**
+ * Extensions
+ */
 
 extension TasksListController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

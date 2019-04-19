@@ -29,7 +29,7 @@ final class SecondViewReactor: Reactor {
     let initialState = State()
 
     // MARK: Action -> Mutation (mutate() receives an Action and generates an Observable<Mutation>)
-    //
+
     //    func mutate(action: Action) -> Observable<Mutation> {
     //        switch action {
     //

@@ -1,9 +1,47 @@
-//
-//  TaskEditController.swift
-//  waosSwift
-//
-//  Created by pierre brisorgueil on 19/04/2019.
-//  Copyright © 2019 WeAreOpenSource. All rights reserved.
-//
+/**
+ * Dependencies
+ */
 
-import Foundation
+import UIKit
+import Reusable
+import ReactorKit
+
+/**
+ * Controller
+ */
+
+class TaskEditController: CoreViewController, StoryboardView, StoryboardBased {
+
+    // MARK: Initializing
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
+    // MARK: Binding
+
+    func bind(reactor: TaskEditReactor) {
+        bindAction(reactor)
+        bindState(reactor)
+        bindView(reactor)
+    }
+}
+
+/**
+ * Extensions
+ */
+
+private extension TaskEditController {
+
+    // MARK: views (View -> View)
+
+    func bindView(_ reactor: TaskEditReactor) {}
+
+    // MARK: actions (View -> Reactor)
+
+    func bindAction(_ reactor: TaskEditReactor) {}
+
+    // MARK: states (Reactor -> View)
+
+    func bindState(_ reactor: TaskEditReactor) {}
+}

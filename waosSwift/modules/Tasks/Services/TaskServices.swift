@@ -1,7 +1,12 @@
+/**
+ * Dependencies
+ */
+
 import RxSwift
 
-enum TaskEvent {
-}
+/**
+ * Service
+ */
 
 protocol TaskServiceType {
     func get() -> Observable<[Task]>

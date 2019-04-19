@@ -1,5 +1,13 @@
+/**
+ * Dependencies
+ */
+
 import Foundation
 import UIKit
+
+/**
+ * Flow
+ */
 
 final class OnboardingFlow: Flow {
     var root: Presentable {

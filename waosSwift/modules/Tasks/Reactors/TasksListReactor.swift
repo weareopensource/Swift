@@ -1,21 +1,31 @@
+/**
+ * Dependencies
+ */
+
 import ReactorKit
+
+/**
+ * Reactor
+ */
 
 final class TasksListReactor: Reactor {
 
-    // represent user actions
+    // MARK: Constants
+
+    // user actions
     enum Action {
         case get
         case create
     }
 
-    // represent state changes
+    // state changes
     enum Mutation {
         case createTask
         case getTasks([Task])
         case setLoading(Bool)
     }
 
-    // represents the current view state
+    // the current view state
     struct State {
         var isLoading: Bool
         var tasks: [Task]
@@ -26,14 +36,13 @@ final class TasksListReactor: Reactor {
         }
     }
 
+    // MARK: Properties
+
     let taskService = TaskService()
-    let initialState: State
+    let initialState = State()
 
-    init() {
-        self.initialState = State()
-    }
+    // MARK: Action -> Mutation (mutate() receives an Action and generates an Observable<Mutation>)
 
-    // Action -> Mutation (mutate() receives an Action and generates an Observable<Mutation>)
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         // get
@@ -54,7 +63,8 @@ final class TasksListReactor: Reactor {
         }
     }
 
-    // Mutation -> State (reduce() generates a new State from a previous State and a Mutation)
+    // MARK: Mutation -> State (reduce() generates a new State from a previous State and a Mutation)
+
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {

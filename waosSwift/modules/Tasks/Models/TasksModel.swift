@@ -1,4 +1,12 @@
+/**
+ * Dependencies
+ */
+
 import Foundation
+
+/**
+ * Model
+ */
 
 struct Task {
 

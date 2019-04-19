@@ -57,6 +57,9 @@
 		BF794D41226856E6000B19F3 /* Differentiator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF794D40226856E6000B19F3 /* Differentiator.framework */; };
 		BF794D482268750C000B19F3 /* TasksListController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF4A2F79225BB6FE0001B4CE /* TasksListController.storyboard */; };
 		BF794D51226880FB000B19F3 /* TaskServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF794D50226880FB000B19F3 /* TaskServices.swift */; };
+		BF794D532269C4FB000B19F3 /* TaskEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF794D522269C4FB000B19F3 /* TaskEditController.swift */; };
+		BF794D552269C505000B19F3 /* TaskEditReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF794D542269C505000B19F3 /* TaskEditReactor.swift */; };
+		BF794D572269C51C000B19F3 /* TaskEditController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF794D562269C51C000B19F3 /* TaskEditController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +141,9 @@
 		BF794D3D22672474000B19F3 /* CoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTableViewCell.swift; sourceTree = "<group>"; };
 		BF794D40226856E6000B19F3 /* Differentiator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Differentiator.framework; path = Carthage/Build/iOS/Differentiator.framework; sourceTree = "<group>"; };
 		BF794D50226880FB000B19F3 /* TaskServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskServices.swift; sourceTree = "<group>"; };
+		BF794D522269C4FB000B19F3 /* TaskEditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEditController.swift; sourceTree = "<group>"; };
+		BF794D542269C505000B19F3 /* TaskEditReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEditReactor.swift; sourceTree = "<group>"; };
+		BF794D562269C51C000B19F3 /* TaskEditController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TaskEditController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,10 +324,10 @@
 		BF4A2F5C225B7C200001B4CE /* onBoarding */ = {
 			isa = PBXGroup;
 			children = (
-				BF4A2F5D225B7C200001B4CE /* OnboardingIntroViewController.storyboard */,
-				BF4A2F5E225B7C200001B4CE /* OnBoardingIntroViewController.swift */,
-				BF4A2F5F225B7C200001B4CE /* OnBoardingIntroViewReactor.swift */,
-				BF4A2F6E225BB2B10001B4CE /* OnBoardingFlow.swift */,
+				BF794D5D2269D08A000B19F3 /* Controllers */,
+				BF794D5E2269D095000B19F3 /* Flows */,
+				BF794D602269D0A3000B19F3 /* Reactors */,
+				BF794D5F2269D09C000B19F3 /* Storyboards */,
 			);
 			path = onBoarding;
 			sourceTree = "<group>";
@@ -329,11 +335,11 @@
 		BF4A2F77225BB65E0001B4CE /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
-				BF794D4F226880ED000B19F3 /* Services */,
 				BF794D432268722B000B19F3 /* Controllers */,
 				BF794D4522687245000B19F3 /* Flows */,
 				BF794D462268724D000B19F3 /* Models */,
 				BF794D4422687238000B19F3 /* Reactors */,
+				BF794D4F226880ED000B19F3 /* Services */,
 				BF794D4722687254000B19F3 /* Storyboards */,
 			);
 			path = Tasks;
@@ -342,10 +348,10 @@
 		BF4A2F78225BB6690001B4CE /* secondController */ = {
 			isa = PBXGroup;
 			children = (
-				BF425487221EBB9700395AE6 /* SecondViewController.swift */,
-				BF4A2F7B225BB89C0001B4CE /* SecondViewController.storyboard */,
-				BF4A2F7F225BB9360001B4CE /* SecondViewReactor.swift */,
-				BF4A2F83225BBA4D0001B4CE /* SecondViewFlow.swift */,
+				BF794D582269D028000B19F3 /* Controllers */,
+				BF794D592269D030000B19F3 /* Flows */,
+				BF794D5B2269D042000B19F3 /* Reactors */,
+				BF794D5A2269D03C000B19F3 /* Storyboards */,
 			);
 			path = secondController;
 			sourceTree = "<group>";
@@ -390,6 +396,7 @@
 			isa = PBXGroup;
 			children = (
 				BF425485221EBB9700395AE6 /* TasksListController.swift */,
+				BF794D522269C4FB000B19F3 /* TaskEditController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -398,6 +405,7 @@
 			isa = PBXGroup;
 			children = (
 				BF4A2F7D225BB9270001B4CE /* TasksListReactor.swift */,
+				BF794D542269C505000B19F3 /* TaskEditReactor.swift */,
 			);
 			path = Reactors;
 			sourceTree = "<group>";
@@ -422,6 +430,7 @@
 			isa = PBXGroup;
 			children = (
 				BF4A2F79225BB6FE0001B4CE /* TasksListController.storyboard */,
+				BF794D562269C51C000B19F3 /* TaskEditController.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -432,6 +441,70 @@
 				BF794D50226880FB000B19F3 /* TaskServices.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		BF794D582269D028000B19F3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BF425487221EBB9700395AE6 /* SecondViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		BF794D592269D030000B19F3 /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				BF4A2F83225BBA4D0001B4CE /* SecondViewFlow.swift */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		BF794D5A2269D03C000B19F3 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				BF4A2F7B225BB89C0001B4CE /* SecondViewController.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		BF794D5B2269D042000B19F3 /* Reactors */ = {
+			isa = PBXGroup;
+			children = (
+				BF4A2F7F225BB9360001B4CE /* SecondViewReactor.swift */,
+			);
+			path = Reactors;
+			sourceTree = "<group>";
+		};
+		BF794D5D2269D08A000B19F3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BF4A2F5E225B7C200001B4CE /* OnBoardingIntroViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		BF794D5E2269D095000B19F3 /* Flows */ = {
+			isa = PBXGroup;
+			children = (
+				BF4A2F6E225BB2B10001B4CE /* OnBoardingFlow.swift */,
+			);
+			path = Flows;
+			sourceTree = "<group>";
+		};
+		BF794D5F2269D09C000B19F3 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				BF4A2F5D225B7C200001B4CE /* OnboardingIntroViewController.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		BF794D602269D0A3000B19F3 /* Reactors */ = {
+			isa = PBXGroup;
+			children = (
+				BF4A2F5F225B7C200001B4CE /* OnBoardingIntroViewReactor.swift */,
+			);
+			path = Reactors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -551,6 +624,7 @@
 				BF4A2FA9225CA6DB0001B4CE /* Readme.md in Resources */,
 				BF425490221EBB9800395AE6 /* LaunchScreen.storyboard in Resources */,
 				BF4A2F7C225BB89C0001B4CE /* SecondViewController.storyboard in Resources */,
+				BF794D572269C51C000B19F3 /* TaskEditController.storyboard in Resources */,
 				BF0CD6B622563CC200844F9A /* Localizable.strings in Resources */,
 				BF4A2F9E225CA6DB0001B4CE /* CHANGELOG.md in Resources */,
 				BF42548D221EBB9800395AE6 /* Assets.xcassets in Resources */,
@@ -662,11 +736,13 @@
 				BF0CD6AB22563C9800844F9A /* Strings.swift in Sources */,
 				BF4A2F87225C8F160001B4CE /* UILocalizations.swift in Sources */,
 				BF4A2F71225BB2CD0001B4CE /* CoreFlow.swift in Sources */,
+				BF794D532269C4FB000B19F3 /* TaskEditController.swift in Sources */,
 				BF794D51226880FB000B19F3 /* TaskServices.swift in Sources */,
 				BF4A2FD42265F4020001B4CE /* UserDefaults.swift in Sources */,
 				BF4A2F6F225BB2B10001B4CE /* OnBoardingFlow.swift in Sources */,
 				BF4A2F45225B751F0001B4CE /* AppFlow.swift in Sources */,
 				BF4A2FAE2260F0040001B4CE /* Logger.swift in Sources */,
+				BF794D552269C505000B19F3 /* TaskEditReactor.swift in Sources */,
 				BF4A2F74225BB4B90001B4CE /* CoreSteps.swift in Sources */,
 				BF4A2F82225BBA3F0001B4CE /* TasksFlow.swift in Sources */,
 				BF4A2F84225BBA4D0001B4CE /* SecondViewFlow.swift in Sources */,
