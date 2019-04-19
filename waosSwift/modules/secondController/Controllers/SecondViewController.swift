@@ -1,6 +1,14 @@
+/**
+ * Dependencies
+ */
+
 import UIKit
 import Reusable
 import ReactorKit
+
+/**
+ * Controller
+ */
 
 class SecondViewController: CoreViewController, StoryboardView, StoryboardBased {
 
@@ -15,8 +23,21 @@ class SecondViewController: CoreViewController, StoryboardView, StoryboardBased 
     }
 }
 
+/**
+ * Extensions
+ */
+
 private extension SecondViewController {
+
+    // MARK: views (View -> View)
+
     func bindView(_ reactor: SecondViewReactor) {}
+
+    // MARK: actions (View -> Reactor)
+
     func bindAction(_ reactor: SecondViewReactor) {}
+
+    // MARK: states (Reactor -> View)
+
     func bindState(_ reactor: SecondViewReactor) {}
 }
