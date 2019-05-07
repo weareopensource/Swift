@@ -24,3 +24,5 @@ struct Config {
         return result
     }()
 }
+
+var config = Config()

@@ -71,7 +71,6 @@
 		BFDE2600227B053D008CBD30 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE25FF227B053D008CBD30 /* UIViewController+Rx.swift */; };
 		BFDE2602227B17D4008CBD30 /* AppServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE2601227B17D4008CBD30 /* AppServicesProvider.swift */; };
 		BFDE2604227B185E008CBD30 /* CoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE2603227B185E008CBD30 /* CoreService.swift */; };
-		BFE4BB45226CAFB400739735 /* SyncState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4BB44226CAFB400739735 /* SyncState.swift */; };
 		BFE4BB47226CC7BD00739735 /* TaskReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4BB46226CC7BD00739735 /* TaskReactor.swift */; };
 /* End PBXBuildFile section */
 
@@ -168,7 +167,6 @@
 		BFDE25FF227B053D008CBD30 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		BFDE2601227B17D4008CBD30 /* AppServicesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServicesProvider.swift; sourceTree = "<group>"; };
 		BFDE2603227B185E008CBD30 /* CoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreService.swift; sourceTree = "<group>"; };
-		BFE4BB44226CAFB400739735 /* SyncState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncState.swift; sourceTree = "<group>"; };
 		BFE4BB46226CC7BD00739735 /* TaskReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskReactor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -324,7 +322,6 @@
 				BF4A2FAD2260F0040001B4CE /* Logger.swift */,
 				BF4A2F4C225B79A80001B4CE /* Preferences.swift */,
 				BF4A2FCF2265D6330001B4CE /* ServicesProvider.swift */,
-				BFE4BB44226CAFB400739735 /* SyncState.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -777,7 +774,6 @@
 				BF0CD6AB22563C9800844F9A /* Strings.swift in Sources */,
 				BF8C6723227C3E1E0012B5A8 /* TaskCellReactor.swift in Sources */,
 				BF4A2F87225C8F160001B4CE /* UILocalizations.swift in Sources */,
-				BFE4BB45226CAFB400739735 /* SyncState.swift in Sources */,
 				BF8C6727227C43E80012B5A8 /* Array+SectionModel.swift in Sources */,
 				BF4A2F71225BB2CD0001B4CE /* CoreFlow.swift in Sources */,
 				BF794D532269C4FB000B19F3 /* TaskController.swift in Sources */,
