@@ -8,7 +8,7 @@ import ReactorKit
  * Reactor
  */
 
-final class SecondViewReactor: Reactor {
+final class SecondReactor: Reactor {
 
     // MARK: Constants
 
@@ -22,11 +22,19 @@ final class SecondViewReactor: Reactor {
 
     // the current view state
     struct State {
+
+        init() {
+        }
     }
 
     // MARK: Properties
 
     let initialState = State()
+
+    // MARK: Initialization
+
+    init() {
+    }
 
     // MARK: Action -> Mutation (mutate() receives an Action and generates an Observable<Mutation>)
 

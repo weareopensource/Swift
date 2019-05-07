@@ -3,10 +3,13 @@
  */
 
 import ReactorKit
+import Differentiator
 
 /**
  * Reactor
  */
+
+typealias Sections = SectionModel<Void, TaskCellReactor>
 
 final class TasksListReactor: Reactor {
 
@@ -14,52 +17,72 @@ final class TasksListReactor: Reactor {
 
     // user actions
     enum Action {
+        case refresh([Task])
         case get
-        case create
+        case delete(IndexPath)
     }
 
     // state changes
     enum Mutation {
-        case createTask
-        case getTasks([Task])
-        case setLoading(Bool)
+        case set([Sections])
     }
 
     // the current view state
     struct State {
-        var isLoading: Bool
-        var tasks: [Task]
+        var tasks: [Sections]
 
         init() {
-            self.isLoading = false
-            self.tasks = []
+            self.tasks = [Sections(model: Void(), items: [])]
         }
     }
 
     // MARK: Properties
 
-    let taskService = TaskService()
-    let initialState = State()
+    let provider: AppServicesProviderType
+    let initialState: State
+
+    // MARK: Initialization
+
+    init(provider: AppServicesProviderType) {
+        self.provider = provider
+        self.initialState = State()
+    }
+
+    // MARK: Transform -> Merges two observables into a single observabe : 1. Mutation observable from Reactor 2. Mutation observable from global state
+
+    func transform(action: Observable<Action>) -> Observable<Action> {
+        let refresh = self.provider.taskService.tasks
+            .map { Action.refresh($0 ?? [   ]) }
+        return Observable.of(action, refresh).merge()
+    }
 
     // MARK: Action -> Mutation (mutate() receives an Action and generates an Observable<Mutation>)
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
+        // refresh
+        case let .refresh(tasks):
+            print("Action -> Mutation refresh")
+            let items = tasks.map(TaskCellReactor.init)
+            let section = Sections(model: Void(), items: items)
+            return .just(.set([section]))
         // get
         case .get:
-            return Observable.concat([
-                Observable.just(Mutation.setLoading(true)),
-                self.taskService.get()
-                    .map { Mutation.getTasks($0) },
-                Observable.just(Mutation.setLoading(false))
-                ])
-        // create
-        case .create:
-            return Observable.concat([
-                Observable.just(Mutation.setLoading(true)),
-                Observable.just(Mutation.createTask).delay(0.1, scheduler: MainScheduler.instance),
-                Observable.just(Mutation.setLoading(false))
-                ])
+            print("Action -> Mutation get")
+            return self.provider.taskService
+                .get()
+                .map { tasks in
+                    let items = tasks.map(TaskCellReactor.init)
+                    let section = Sections(model: Void(), items: items)
+                    return .set([section])
+                }
+        // delete
+        case let .delete(i):
+            print("Action -> Mutation delete")
+            let task = self.currentState.tasks[i].currentState
+            return self.provider.taskService
+                .delete(task: task)
+                .flatMap { _ in Observable.empty() }
         }
     }
 
@@ -68,19 +91,27 @@ final class TasksListReactor: Reactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
-        // get
-        case let .getTasks(tasks):
-            var newState = state
-            newState.tasks = tasks
-            return newState
-        // create
-        case .createTask:
-            print("create Task")
-        // loading
-        case let .setLoading(isLoading):
-            state.isLoading = isLoading
+        // set
+        case let .set(tasks):
+            print("Mutation -> State set")
+            state.tasks = tasks
+            return state
         }
-        return state
     }
 
+    // reactor init
+
+    func viewReactor(_ taskCellReactor: TaskCellReactor) -> TaskReactor {
+        let task = taskCellReactor.currentState
+        return TaskReactor(provider: self.provider, mode: .view(task))
+    }
+
+    func addReactor() -> TaskReactor {
+        return TaskReactor(provider: self.provider, mode: .add)
+    }
+
+    func editReactor(_ taskCellReactor: TaskCellReactor) -> TaskReactor {
+        let task = taskCellReactor.currentState
+        return TaskReactor(provider: self.provider, mode: .edit(task))
+    }
 }

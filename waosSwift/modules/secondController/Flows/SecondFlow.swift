@@ -9,7 +9,7 @@ import UIKit
  * Flow
  */
 
-final class SecondViewFlow: Flow {
+final class SecondFlow: Flow {
     var root: Presentable {
         return self.rootViewController
     }
@@ -31,18 +31,18 @@ final class SecondViewFlow: Flow {
 
         switch step {
 
-        case .secondViewIsRequired:
-            return navigateToSecondViewScreen()
+        case .secondIsRequired:
+            return navigateToSecondScreen()
         default:
             return FlowContributors.none
         }
     }
 
-    private func navigateToSecondViewScreen() -> FlowContributors {
-        let viewController = SecondViewController.instantiate()
+    private func navigateToSecondScreen() -> FlowContributors {
+        let reactor = SecondReactor()
+        let viewController = SecondController(reactor: reactor)
         viewController.title = L10n.secondTitle
-
         self.rootViewController.pushViewController(viewController, animated: true)
-        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: OneStepper(withSingleStep: SampleStep.secondViewIsRequired)))
+        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: OneStepper(withSingleStep: SampleStep.secondIsRequired)))
     }
 }

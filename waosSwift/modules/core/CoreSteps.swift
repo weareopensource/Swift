@@ -7,8 +7,8 @@ enum SampleStep: Step {
 
     case dashboardIsRequired
 
-    case tasksListIsRequired
+    case tasksIsRequired
 
-    case secondViewIsRequired
+    case secondIsRequired
 
 }

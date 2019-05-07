@@ -1,10 +1,8 @@
 import UIKit
 
-import RxSwift
+class CoreCellController: UITableViewCell {
 
-class CoreTableViewCell: UITableViewCell {
-
-    var disposeBag: DisposeBag = DisposeBag()
+    // MARK: Initializing
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -18,5 +16,9 @@ class CoreTableViewCell: UITableViewCell {
     func initialize() {
         // Override point
     }
+
+    // MARK: Rx
+
+    var disposeBag: DisposeBag = DisposeBag()
 
 }

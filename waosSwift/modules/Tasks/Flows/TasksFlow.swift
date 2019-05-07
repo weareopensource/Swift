@@ -9,7 +9,7 @@ import UIKit
  * Flow
  */
 
-final class TasksViewFlow: Flow {
+final class TasksFlow: Flow {
     var root: Presentable {
         return self.rootViewController
     }
@@ -29,17 +29,19 @@ final class TasksViewFlow: Flow {
         guard let step = step as? SampleStep else { return FlowContributors.none }
 
         switch step {
-        case .tasksListIsRequired:
-            return navigateToTasksViewScreen()
+        case .tasksIsRequired:
+            return navigateToTasksScreen()
         default:
             return FlowContributors.none
         }
     }
 
-    private func navigateToTasksViewScreen() -> FlowContributors {
-        let viewController = TasksListController.instantiate()
-        viewController.title = L10n.firstTitle
+    private func navigateToTasksScreen() -> FlowContributors {
+        let provider = AppServicesProvider()
+        let reactor = TasksListReactor(provider: provider)
+        let viewController = TasksListController(reactor: reactor)
+        viewController.title = L10n.taskTitle
         self.rootViewController.pushViewController(viewController, animated: true)
-        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: OneStepper(withSingleStep: SampleStep.tasksListIsRequired)))
+        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: OneStepper(withSingleStep: SampleStep.tasksIsRequired)))
     }
 }
