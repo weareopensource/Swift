@@ -1,5 +1,13 @@
+/**
+ * Dependencies
+ */
+
 import Foundation
 import UIKit
+
+/**
+ * Flow
+ */
 
 final class OnboardingFlow: Flow {
     var root: Presentable {
@@ -36,11 +44,10 @@ final class OnboardingFlow: Flow {
     }
 
     private func navigationToOnboardingIntroScreen() -> FlowContributors {
-        let onboardingIntroViewController = OnboardingIntroViewController.instantiate()
-
-        onboardingIntroViewController.title = L10n.onBoardingTitle
-        self.rootViewController.pushViewController(onboardingIntroViewController, animated: false)
-        return .one(flowContributor: .contribute(withNextPresentable: onboardingIntroViewController,
-                                                 withNextStepper: onboardingIntroViewController))
+        let reactor = OnboardingReactor()
+        let viewController = OnboardingController(reactor: reactor)
+        viewController.title = L10n.onBoardingTitle
+        self.rootViewController.pushViewController(viewController, animated: false)
+        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: viewController))
     }
 }

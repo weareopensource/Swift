@@ -13,7 +13,7 @@ before_install:
   - rvm use $RVM_RUBY_VERSION #slather
 install: bundle install --without=documentation
 before_script:
-  - carthage update --no-build
+  - carthage update --no-build --new-resolver
   - (cd Carthage/Checkouts/ReactorKit && swift package generate-xcodeproj)
   - carthage build --platform iOS --no-use-binaries --cache-builds
 after_success:

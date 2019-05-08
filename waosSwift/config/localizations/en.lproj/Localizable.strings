@@ -8,7 +8,7 @@
 "onBoarding_validation"= "I'm in !";
 
 // first
-"first_title"= "title 1";
+"task_title"= "Tasks";
 
 // second
-"second_title"= "title 2";
+"second_title"= "Example";

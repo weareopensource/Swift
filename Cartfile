@@ -1,6 +1,9 @@
-github "ReactiveX/RxSwift"
-github "RxSwiftCommunity/RxFlow"
-github "ReactorKit/ReactorKit"
-github "CocoaLumberjack/CocoaLumberjack"
-github "AliSoftware/Reusable"
-github "SwiftyJSON/SwiftyJSON"
+github "ReactiveX/RxSwift" == 4.5.0
+github "RxSwiftCommunity/RxOptional" ~> 3.0.0
+github "RxSwiftCommunity/RxFlow" == 2.0.0
+github "ReactorKit/ReactorKit" ~> 1.2.1
+github "CocoaLumberjack/CocoaLumberjack" ~> 3.5.3
+github "AliSoftware/Reusable" ~> 4.0.1
+github "SwiftyJSON/SwiftyJSON" ~> 5.0.0
+github "RxSwiftCommunity/RxDataSources" ~> 3.0.0
+github "SnapKit/SnapKit" ~> 5.0.0
