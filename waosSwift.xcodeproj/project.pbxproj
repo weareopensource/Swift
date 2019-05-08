@@ -209,6 +209,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF058D6B2282BB4800E2A077 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BF4A2F75225BB6190001B4CE /* CoreController.swift */,
+				BF794D3D22672474000B19F3 /* CoreCellController.swift */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		BF058D6C2282BB5300E2A077 /* flows */ = {
+			isa = PBXGroup;
+			children = (
+				BF4A2F70225BB2CD0001B4CE /* CoreFlow.swift */,
+				BF4A2F73225BB4B90001B4CE /* CoreSteps.swift */,
+			);
+			path = flows;
+			sourceTree = "<group>";
+		};
+		BF058D6D2282BB6000E2A077 /* services */ = {
+			isa = PBXGroup;
+			children = (
+				BFDE2603227B185E008CBD30 /* CoreService.swift */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
 		BF0CD6A822563C7700844F9A /* config */ = {
 			isa = PBXGroup;
 			children = (
@@ -332,7 +358,7 @@
 				BF4A2F88225C9AFF0001B4CE /* app */,
 				BF4A2F4F225B7C200001B4CE /* core */,
 				BF4A2F5C225B7C200001B4CE /* onBoarding */,
-				BF4A2F77225BB65E0001B4CE /* Tasks */,
+				BF4A2F77225BB65E0001B4CE /* tasks */,
 				BF4A2F78225BB6690001B4CE /* secondController */,
 			);
 			path = modules;
@@ -341,11 +367,9 @@
 		BF4A2F4F225B7C200001B4CE /* core */ = {
 			isa = PBXGroup;
 			children = (
-				BF4A2F73225BB4B90001B4CE /* CoreSteps.swift */,
-				BF4A2F70225BB2CD0001B4CE /* CoreFlow.swift */,
-				BF4A2F75225BB6190001B4CE /* CoreController.swift */,
-				BF794D3D22672474000B19F3 /* CoreCellController.swift */,
-				BFDE2603227B185E008CBD30 /* CoreService.swift */,
+				BF058D6B2282BB4800E2A077 /* controllers */,
+				BF058D6C2282BB5300E2A077 /* flows */,
+				BF058D6D2282BB6000E2A077 /* services */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -353,31 +377,31 @@
 		BF4A2F5C225B7C200001B4CE /* onBoarding */ = {
 			isa = PBXGroup;
 			children = (
-				BF794D5D2269D08A000B19F3 /* Controllers */,
-				BF794D5E2269D095000B19F3 /* Flows */,
-				BF794D602269D0A3000B19F3 /* Reactors */,
+				BF794D5D2269D08A000B19F3 /* controllers */,
+				BF794D5E2269D095000B19F3 /* flows */,
+				BF794D602269D0A3000B19F3 /* reactors */,
 			);
 			path = onBoarding;
 			sourceTree = "<group>";
 		};
-		BF4A2F77225BB65E0001B4CE /* Tasks */ = {
+		BF4A2F77225BB65E0001B4CE /* tasks */ = {
 			isa = PBXGroup;
 			children = (
-				BF794D432268722B000B19F3 /* Controllers */,
-				BF794D4522687245000B19F3 /* Flows */,
-				BF794D462268724D000B19F3 /* Models */,
-				BF794D4422687238000B19F3 /* Reactors */,
-				BF794D4F226880ED000B19F3 /* Services */,
+				BF794D432268722B000B19F3 /* controllers */,
+				BF794D4522687245000B19F3 /* flows */,
+				BF794D462268724D000B19F3 /* models */,
+				BF794D4422687238000B19F3 /* reactors */,
+				BF794D4F226880ED000B19F3 /* services */,
 			);
-			path = Tasks;
+			path = tasks;
 			sourceTree = "<group>";
 		};
 		BF4A2F78225BB6690001B4CE /* secondController */ = {
 			isa = PBXGroup;
 			children = (
-				BF794D582269D028000B19F3 /* Controllers */,
-				BF794D592269D030000B19F3 /* Flows */,
-				BF794D5B2269D042000B19F3 /* Reactors */,
+				BF794D582269D028000B19F3 /* controllers */,
+				BF794D592269D030000B19F3 /* flows */,
+				BF794D5B2269D042000B19F3 /* reactors */,
 			);
 			path = secondController;
 			sourceTree = "<group>";
@@ -423,96 +447,96 @@
 			path = default;
 			sourceTree = "<group>";
 		};
-		BF794D432268722B000B19F3 /* Controllers */ = {
+		BF794D432268722B000B19F3 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
 				BF425485221EBB9700395AE6 /* TasksListController.swift */,
 				BF8C6724227C3E310012B5A8 /* TaskCellController.swift */,
 				BF794D522269C4FB000B19F3 /* TaskController.swift */,
 			);
-			path = Controllers;
+			path = controllers;
 			sourceTree = "<group>";
 		};
-		BF794D4422687238000B19F3 /* Reactors */ = {
+		BF794D4422687238000B19F3 /* reactors */ = {
 			isa = PBXGroup;
 			children = (
 				BF4A2F7D225BB9270001B4CE /* TasksListReactor.swift */,
 				BF8C6722227C3E1E0012B5A8 /* TaskCellReactor.swift */,
 				BFE4BB46226CC7BD00739735 /* TaskReactor.swift */,
 			);
-			path = Reactors;
+			path = reactors;
 			sourceTree = "<group>";
 		};
-		BF794D4522687245000B19F3 /* Flows */ = {
+		BF794D4522687245000B19F3 /* flows */ = {
 			isa = PBXGroup;
 			children = (
 				BF4A2F81225BBA3F0001B4CE /* TasksFlow.swift */,
 			);
-			path = Flows;
+			path = flows;
 			sourceTree = "<group>";
 		};
-		BF794D462268724D000B19F3 /* Models */ = {
+		BF794D462268724D000B19F3 /* models */ = {
 			isa = PBXGroup;
 			children = (
 				BF794D3922671CD8000B19F3 /* TasksModel.swift */,
 			);
-			path = Models;
+			path = models;
 			sourceTree = "<group>";
 		};
-		BF794D4F226880ED000B19F3 /* Services */ = {
+		BF794D4F226880ED000B19F3 /* services */ = {
 			isa = PBXGroup;
 			children = (
 				BF794D50226880FB000B19F3 /* TaskService.swift */,
 			);
-			path = Services;
+			path = services;
 			sourceTree = "<group>";
 		};
-		BF794D582269D028000B19F3 /* Controllers */ = {
+		BF794D582269D028000B19F3 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
 				BF425487221EBB9700395AE6 /* SecondController.swift */,
 			);
-			path = Controllers;
+			path = controllers;
 			sourceTree = "<group>";
 		};
-		BF794D592269D030000B19F3 /* Flows */ = {
+		BF794D592269D030000B19F3 /* flows */ = {
 			isa = PBXGroup;
 			children = (
 				BF4A2F83225BBA4D0001B4CE /* SecondFlow.swift */,
 			);
-			path = Flows;
+			path = flows;
 			sourceTree = "<group>";
 		};
-		BF794D5B2269D042000B19F3 /* Reactors */ = {
+		BF794D5B2269D042000B19F3 /* reactors */ = {
 			isa = PBXGroup;
 			children = (
 				BF4A2F7F225BB9360001B4CE /* SecondReactor.swift */,
 			);
-			path = Reactors;
+			path = reactors;
 			sourceTree = "<group>";
 		};
-		BF794D5D2269D08A000B19F3 /* Controllers */ = {
+		BF794D5D2269D08A000B19F3 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
 				BF4A2F5E225B7C200001B4CE /* OnBoardingController.swift */,
 			);
-			path = Controllers;
+			path = controllers;
 			sourceTree = "<group>";
 		};
-		BF794D5E2269D095000B19F3 /* Flows */ = {
+		BF794D5E2269D095000B19F3 /* flows */ = {
 			isa = PBXGroup;
 			children = (
 				BF4A2F6E225BB2B10001B4CE /* OnBoardingFlow.swift */,
 			);
-			path = Flows;
+			path = flows;
 			sourceTree = "<group>";
 		};
-		BF794D602269D0A3000B19F3 /* Reactors */ = {
+		BF794D602269D0A3000B19F3 /* reactors */ = {
 			isa = PBXGroup;
 			children = (
 				BF4A2F5F225B7C200001B4CE /* OnBoardingReactor.swift */,
 			);
-			path = Reactors;
+			path = reactors;
 			sourceTree = "<group>";
 		};
 		BF8C6728228016070012B5A8 /* ReusableKit */ = {
