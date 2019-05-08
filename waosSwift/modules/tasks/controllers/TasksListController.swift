@@ -27,7 +27,7 @@ final class TasksListController: CoreController, View {
         $0.allowsSelectionDuringEditing = true
         $0.rowHeight = 75
     }
-    let addButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
+    let barButtonAdd = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
 
     // MARK: Properties
 
@@ -42,7 +42,7 @@ final class TasksListController: CoreController, View {
 
     init(reactor: TasksListReactor) {
         super.init()
-        self.navigationItem.rightBarButtonItem = self.addButtonItem
+        self.navigationItem.rightBarButtonItem = self.barButtonAdd
         self.reactor = reactor
     }
 
@@ -87,13 +87,13 @@ private extension TasksListController {
             .subscribe(onNext: { [weak self] reactor in
                 guard let `self` = self else { return }
                 let viewController = TaskController(reactor: reactor)
-                viewController.titleInput.text = reactor.initialState.task.title
+                viewController.inputTitle.text = reactor.initialState.task.title
                 let navigationController = UINavigationController(rootViewController: viewController)
                 self.present(navigationController, animated: true, completion: nil)
             })
             .disposed(by: self.disposeBag)
         // add
-        self.addButtonItem.rx.tap
+        self.barButtonAdd.rx.tap
             .map(reactor.addReactor)
             .subscribe(onNext: { [weak self] reactor in
                 guard let `self` = self else { return }

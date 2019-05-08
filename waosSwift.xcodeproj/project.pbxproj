@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF058D772282BCAC00E2A077 /* authSigninController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF058D762282BCAC00E2A077 /* authSigninController.swift */; };
+		BF058D792282BCB600E2A077 /* authFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF058D782282BCB600E2A077 /* authFlow.swift */; };
+		BF058D7B2282BCC500E2A077 /* authSigninReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF058D7A2282BCC500E2A077 /* authSigninReactor.swift */; };
+		BF058D7E2282BCDD00E2A077 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF058D7D2282BCDD00E2A077 /* AuthService.swift */; };
 		BF0CD6AB22563C9800844F9A /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0CD6AA22563C9800844F9A /* Strings.swift */; };
 		BF0CD6B622563CC200844F9A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF0CD6B822563CC200844F9A /* Localizable.strings */; };
 		BF425484221EBB9700395AE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF425483221EBB9700395AE6 /* AppDelegate.swift */; };
@@ -92,6 +96,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF058D762282BCAC00E2A077 /* authSigninController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = authSigninController.swift; sourceTree = "<group>"; };
+		BF058D782282BCB600E2A077 /* authFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = authFlow.swift; sourceTree = "<group>"; };
+		BF058D7A2282BCC500E2A077 /* authSigninReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = authSigninReactor.swift; sourceTree = "<group>"; };
+		BF058D7D2282BCDD00E2A077 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		BF0CD6A322563B3900844F9A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		BF0CD6AA22563C9800844F9A /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		BF0CD6B722563CC200844F9A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -235,6 +243,49 @@
 			path = services;
 			sourceTree = "<group>";
 		};
+		BF058D712282BC5300E2A077 /* auth */ = {
+			isa = PBXGroup;
+			children = (
+				BF058D722282BC6B00E2A077 /* controllers */,
+				BF058D732282BC7300E2A077 /* flow */,
+				BF058D742282BC8100E2A077 /* reactors */,
+				BF058D752282BC8E00E2A077 /* services */,
+			);
+			path = auth;
+			sourceTree = "<group>";
+		};
+		BF058D722282BC6B00E2A077 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BF058D762282BCAC00E2A077 /* authSigninController.swift */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		BF058D732282BC7300E2A077 /* flow */ = {
+			isa = PBXGroup;
+			children = (
+				BF058D782282BCB600E2A077 /* authFlow.swift */,
+			);
+			path = flow;
+			sourceTree = "<group>";
+		};
+		BF058D742282BC8100E2A077 /* reactors */ = {
+			isa = PBXGroup;
+			children = (
+				BF058D7A2282BCC500E2A077 /* authSigninReactor.swift */,
+			);
+			path = reactors;
+			sourceTree = "<group>";
+		};
+		BF058D752282BC8E00E2A077 /* services */ = {
+			isa = PBXGroup;
+			children = (
+				BF058D7D2282BCDD00E2A077 /* AuthService.swift */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
 		BF0CD6A822563C7700844F9A /* config */ = {
 			isa = PBXGroup;
 			children = (
@@ -358,6 +409,7 @@
 				BF4A2F88225C9AFF0001B4CE /* app */,
 				BF4A2F4F225B7C200001B4CE /* core */,
 				BF4A2F5C225B7C200001B4CE /* onBoarding */,
+				BF058D712282BC5300E2A077 /* auth */,
 				BF4A2F77225BB65E0001B4CE /* tasks */,
 				BF4A2F78225BB6690001B4CE /* secondController */,
 			);
@@ -775,11 +827,13 @@
 			files = (
 				BFDE25FE227B052D008CBD30 /* NSViewController+Rx.swift in Sources */,
 				BF4A2F7E225BB9270001B4CE /* TasksListReactor.swift in Sources */,
+				BF058D7B2282BCC500E2A077 /* authSigninReactor.swift in Sources */,
 				BF4A2F6B225B7C200001B4CE /* OnBoardingReactor.swift in Sources */,
 				BF4A2F4D225B79A80001B4CE /* Preferences.swift in Sources */,
 				BF4A2FC0226479D20001B4CE /* Configuration.swift in Sources */,
 				BF794D3E22672474000B19F3 /* CoreCellController.swift in Sources */,
 				BF8C6721227C2CF00012B5A8 /* Array.swift in Sources */,
+				BF058D792282BCB600E2A077 /* authFlow.swift in Sources */,
 				BFDE2604227B185E008CBD30 /* CoreService.swift in Sources */,
 				BF425488221EBB9700395AE6 /* SecondController.swift in Sources */,
 				BF4A2F6A225B7C200001B4CE /* OnBoardingController.swift in Sources */,
@@ -798,11 +852,13 @@
 				BF0CD6AB22563C9800844F9A /* Strings.swift in Sources */,
 				BF8C6723227C3E1E0012B5A8 /* TaskCellReactor.swift in Sources */,
 				BF4A2F87225C8F160001B4CE /* UILocalizations.swift in Sources */,
+				BF058D7E2282BCDD00E2A077 /* AuthService.swift in Sources */,
 				BF8C6727227C43E80012B5A8 /* Array+SectionModel.swift in Sources */,
 				BF4A2F71225BB2CD0001B4CE /* CoreFlow.swift in Sources */,
 				BF794D532269C4FB000B19F3 /* TaskController.swift in Sources */,
 				BF8C672A2280176B0012B5A8 /* ReusableKit.swift in Sources */,
 				BF794D51226880FB000B19F3 /* TaskService.swift in Sources */,
+				BF058D772282BCAC00E2A077 /* authSigninController.swift in Sources */,
 				BF4A2FD42265F4020001B4CE /* UserDefaults.swift in Sources */,
 				BF8F6EDB2273453100B9447A /* Then.swift in Sources */,
 				BF4A2F6F225BB2B10001B4CE /* OnBoardingFlow.swift in Sources */,

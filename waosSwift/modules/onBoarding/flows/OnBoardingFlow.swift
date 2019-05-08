@@ -14,12 +14,7 @@ final class OnboardingFlow: Flow {
         return self.rootViewController
     }
 
-    private lazy var rootViewController: UINavigationController = {
-        let viewController = UINavigationController()
-        viewController.navigationBar.topItem?.title = L10n.onBoardingTitle
-        return viewController
-    }()
-
+    private let rootViewController = UINavigationController()
     private let services: ServicesProvider
 
     init(withServices services: ServicesProvider) {
@@ -31,13 +26,12 @@ final class OnboardingFlow: Flow {
     }
 
     func navigate(to step: Step) -> FlowContributors {
-        guard let step = step as? SampleStep else { return .none }
-
+        guard let step = step as? Steps else { return .none }
         switch step {
         case .introIsRequired:
             return navigationToOnboardingIntroScreen()
         case .introIsComplete:
-            return .end(forwardToParentFlowWithStep: SampleStep.onboardingIsComplete)
+            return .end(forwardToParentFlowWithStep: Steps.onboardingIsComplete)
         default:
             return .none
         }

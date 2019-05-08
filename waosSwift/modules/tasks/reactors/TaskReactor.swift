@@ -83,7 +83,7 @@ final class TaskReactor: Reactor {
                     .create(title: self.currentState.task.title)
                     .map { _ in .dismiss }
             case .view:
-                return Observable.just(Mutation.dismiss)
+                return Observable.just(.dismiss)
             case .edit:
                 return self.provider.taskService
                     .save(task: self.currentState.task)

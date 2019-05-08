@@ -14,10 +14,10 @@ final class OnboardingController: CoreController, View, Stepper {
 
     // MARK: UI
 
-    let introLabel = UILabel().then {
+    let labelIntro = UILabel().then {
         $0.numberOfLines = 4
     }
-    let completeButton = UIButton().then {
+    let buttonComplete = UIButton().then {
         $0.setTitle(L10n.onBoardingValidation, for: .normal)
         $0.layer.cornerRadius = 5
         $0.backgroundColor = UIColor.gray
@@ -62,9 +62,9 @@ final class OnboardingController: CoreController, View, Stepper {
         self.scrollView.contentSize = CGSize(width: view.frame.width * CGFloat(3), height: view.frame.height)
 
         self.view.addSubview(self.scrollView)
-        self.view.addSubview(self.completeButton)
+        self.view.addSubview(self.buttonComplete)
         self.view.addSubview(self.pageControl)
-        self.view.addSubview(self.introLabel)
+        self.view.addSubview(self.labelIntro)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -85,11 +85,11 @@ final class OnboardingController: CoreController, View, Stepper {
             make.right.equalTo(-50)
 
         }
-        introLabel.snp.makeConstraints { (make) -> Void in
+        labelIntro.snp.makeConstraints { (make) -> Void in
             make.width.height.equalTo(250)
             make.center.equalTo(self.view)
         }
-        completeButton.snp.makeConstraints { (make) in
+        buttonComplete.snp.makeConstraints { (make) in
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-25)
             make.height.equalTo(50)
             make.left.equalTo(50)
@@ -134,7 +134,7 @@ private extension OnboardingController {
     // MARK: actions (View -> Reactor)
 
     func bindAction(_ reactor: OnboardingReactor) {
-        completeButton.rx.tap
+        buttonComplete.rx.tap
             .map { _ in Reactor.Action.complete }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -156,7 +156,7 @@ private extension OnboardingController {
 
         reactor.state.asObservable().map { $0.content }
             .distinctUntilChanged()
-            .bind(to: self.introLabel.rx.text)
+            .bind(to: self.labelIntro.rx.text)
             .disposed(by: self.disposeBag)
     }
 }

@@ -29,7 +29,7 @@ final class OnboardingReactor: Reactor, ServicesProviderType {
 
     // the current view state
     struct State {
-        var step: Step = SampleStep.introIsRequired
+        var step: Step = Steps.introIsRequired
         var content: String = contents[0]
     }
 
@@ -40,23 +40,23 @@ final class OnboardingReactor: Reactor, ServicesProviderType {
 
     // MARK: Action -> Mutation (mutate() receives an Action and generates an Observable<Mutation>)
 
-    func mutate(action: OnboardingReactor.Action) -> Observable<OnboardingReactor.Mutation> {
+    func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .complete:
             preferencesService.onBoarded = true
-            return Observable.just(Mutation.goToDashboard)
+            return .just(.goToDashboard)
         case let .update(page):
-            return Observable.just(Mutation.setContent(page)).delay(0.1, scheduler: MainScheduler.instance)
+            return .just(.setContent(page))
         }
     }
 
     // MARK: Mutation -> State (reduce() generates a new State from a previous State and a Mutation)
 
-    func reduce(state: OnboardingReactor.State, mutation: OnboardingReactor.Mutation) -> OnboardingReactor.State {
+    func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
         case .goToDashboard:
-            state.step = SampleStep.introIsComplete
+            state.step = Steps.introIsComplete
             return state
         case let .setContent(page):
             state.content = contents[page]

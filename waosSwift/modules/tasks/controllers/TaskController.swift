@@ -17,22 +17,21 @@ final class TaskController: CoreController, View {
 
     // MARK: UI
 
-    // edit
-    let titleInput = UITextField().then {
+    let inputTitle = UITextField().then {
         $0.autocorrectionType = .no
         $0.borderStyle = .roundedRect
         $0.placeholder = "Do something..."
     }
-    let cancelButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: nil)
-    let doneButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: nil)
+    let barButtonCancel = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: nil)
+    let barButtonDone = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: nil)
 
     // MARK: Initializing
 
     init(reactor: TaskReactor) {
         self.mode = reactor.currentState.mode
         super.init()
-        self.navigationItem.leftBarButtonItem = self.cancelButtonItem
-        self.navigationItem.rightBarButtonItem = self.doneButtonItem
+        self.navigationItem.leftBarButtonItem = self.barButtonCancel
+        self.navigationItem.rightBarButtonItem = self.barButtonDone
         self.reactor = reactor
     }
 
@@ -45,16 +44,16 @@ final class TaskController: CoreController, View {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        self.view.addSubview(self.titleInput)
+        self.view.addSubview(self.inputTitle)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.titleInput.becomeFirstResponder()
+        self.inputTitle.becomeFirstResponder()
     }
 
     override func setupConstraints() {
-        titleInput.snp.makeConstraints { make in
+        inputTitle.snp.makeConstraints { make in
             make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(50)
             make.height.equalTo(50)
             make.left.equalTo(50)
@@ -81,7 +80,7 @@ private extension TaskController {
 
     func bindView(_ reactor: TaskReactor) {
         // cancel
-        self.cancelButtonItem.rx.tap
+        self.barButtonCancel.rx.tap
             .subscribe(onNext: { [weak self] _ in
                 guard let `self` = self else { return }
                 self.dismiss(animated: true, completion: nil)
@@ -92,12 +91,12 @@ private extension TaskController {
     // MARK: actions (View -> Reactor)
 
     func bindAction(_ reactor: TaskReactor) {
-        self.doneButtonItem.rx.tap
+        self.barButtonDone.rx.tap
             .map { Reactor.Action.done }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
 
-        self.titleInput.rx.text
+        self.inputTitle.rx.text
             .filterNil()
             .map(Reactor.Action.updateTitle)
             .bind(to: reactor.action)
@@ -111,7 +110,7 @@ private extension TaskController {
         reactor.state.asObservable()
             .map { $0.task.title }
             .distinctUntilChanged()
-            .bind(to: self.titleInput.rx.text)
+            .bind(to: self.inputTitle.rx.text)
             .disposed(by: self.disposeBag)
         // dissmiss
         reactor.state.asObservable()

@@ -26,8 +26,7 @@ final class TasksFlow: Flow {
     }
 
     func navigate(to step: Step) -> FlowContributors {
-        guard let step = step as? SampleStep else { return FlowContributors.none }
-
+        guard let step = step as? Steps else { return FlowContributors.none }
         switch step {
         case .tasksIsRequired:
             return navigateToTasksScreen()
@@ -42,6 +41,6 @@ final class TasksFlow: Flow {
         let viewController = TasksListController(reactor: reactor)
         viewController.title = L10n.taskTitle
         self.rootViewController.pushViewController(viewController, animated: true)
-        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: OneStepper(withSingleStep: SampleStep.tasksIsRequired)))
+        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: OneStepper(withSingleStep: Steps.tasksIsRequired)))
     }
 }

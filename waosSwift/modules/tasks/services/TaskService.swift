@@ -4,10 +4,6 @@
 
 import ReactorKit
 
-//enum TaskEvent {
-//    case refresh([Task])
-//}
-
 /**
  * Service
  */

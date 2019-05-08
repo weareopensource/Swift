@@ -18,7 +18,7 @@ final class CoreFlow: Flow {
     }
 
     func navigate(to step: Step) -> FlowContributors {
-        guard let step = step as? SampleStep else { return FlowContributors.none }
+        guard let step = step as? Steps else { return FlowContributors.none }
 
         switch step {
         case .dashboardIsRequired:
@@ -45,8 +45,8 @@ final class CoreFlow: Flow {
         }
 
         return .multiple(flowContributors: [.contribute(withNextPresentable: tasksFlow,
-                                                        withNextStepper: OneStepper(withSingleStep: SampleStep.tasksIsRequired)),
+                                                        withNextStepper: OneStepper(withSingleStep: Steps.tasksIsRequired)),
                                             .contribute(withNextPresentable: secondFlow,
-                                                        withNextStepper: OneStepper(withSingleStep: SampleStep.secondIsRequired))])
+                                                        withNextStepper: OneStepper(withSingleStep: Steps.secondIsRequired))])
     }
 }
