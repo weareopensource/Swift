@@ -284,7 +284,11 @@
 				BF4A2F88225C9AFF0001B4CE /* app */,
 				BF4A2F4F225B7C200001B4CE /* core */,
 				BF4A2F5C225B7C200001B4CE /* onBoarding */,
+<<<<<<< Updated upstream
 				BF4A2F77225BB65E0001B4CE /* firstController */,
+=======
+				BF4A2F77225BB65E0001B4CE /* tasks */,
+>>>>>>> Stashed changes
 				BF4A2F78225BB6690001B4CE /* secondController */,
 			);
 			path = modules;
@@ -311,7 +315,11 @@
 			path = onBoarding;
 			sourceTree = "<group>";
 		};
+<<<<<<< Updated upstream
 		BF4A2F77225BB65E0001B4CE /* firstController */ = {
+=======
+		BF4A2F77225BB65E0001B4CE /* tasks */ = {
+>>>>>>> Stashed changes
 			isa = PBXGroup;
 			children = (
 				BF425485221EBB9700395AE6 /* FirstViewController.swift */,
@@ -319,7 +327,11 @@
 				BF4A2F7D225BB9270001B4CE /* FirstViewReactor.swift */,
 				BF4A2F81225BBA3F0001B4CE /* FirstViewFlow.swift */,
 			);
+<<<<<<< Updated upstream
 			path = firstController;
+=======
+			path = tasks;
+>>>>>>> Stashed changes
 			sourceTree = "<group>";
 		};
 		BF4A2F78225BB6690001B4CE /* secondController */ = {
