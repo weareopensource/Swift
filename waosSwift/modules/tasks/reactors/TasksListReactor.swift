@@ -48,7 +48,7 @@ final class TasksListReactor: Reactor {
         self.initialState = State()
     }
 
-    // MARK: Transform -> Merges two observables into a single observabe : 1. Mutation observable from Reactor 2. Mutation observable from global state
+    // MARK: Transform -> Merges two observables into a single observabe : 1. Action observable from Reactor 2. Action observable from global state
 
     func transform(action: Observable<Action>) -> Observable<Action> {
         let refresh = self.provider.taskService.tasks

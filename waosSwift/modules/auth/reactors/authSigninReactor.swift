@@ -2,38 +2,42 @@
  * Dependencies
  */
 
-import Foundation
 import ReactorKit
-
-let contents: [String] = [L10n.onBoardingIntroduction, "toto", "titi"]
 
 /**
  * Reactor
  */
 
-final class OnboardingReactor: Reactor {
+final class AuthSigninReactor: Reactor {
 
     // MARK: Constants
 
     // user actions
     enum Action {
-        case complete
-        case update(Int)
+        case updateLogin(String)
+        case updatePassword(String)
+        case signIn
+        case signUp
     }
 
     // state changes
     enum Mutation {
-        case setContent(Int)
+        case updateLogin(String)
+        case updatePassword(String)
+        case setUser
+        case goSignUp
         case dismiss
     }
 
     // the current view state
     struct State {
-        var content: String
+        var login: String
+        var password: String
         var isDismissed: Bool
 
         init() {
-            self.content = contents[0]
+            self.login = ""
+            self.password = ""
             self.isDismissed = false
         }
     }
@@ -54,11 +58,17 @@ final class OnboardingReactor: Reactor {
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        case .complete:
-            self.provider.preferencesService.onBoarded = true
-            return .just(.dismiss)
-        case let .update(page):
-            return .just(.setContent(page))
+        case let .updateLogin(login):
+            return .just(.updateLogin(login))
+        case let .updatePassword(password):
+            return .just(.updatePassword(password))
+        case .signIn:
+            return .concat([
+                .just(.setUser),
+                .just(.dismiss)
+            ])
+        case .signUp:
+            return .just(.goSignUp)
         }
     }
 
@@ -67,12 +77,22 @@ final class OnboardingReactor: Reactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
-        case let .setContent(page):
-            state.content = contents[page]
+        case let .updateLogin(login):
+            state.login = login
+            return state
+        case let .updatePassword(password):
+            state.password = password
+            return state
+        case .setUser:
+            print("signIn")
+            return state
+        case .goSignUp:
+            print("signUp")
             return state
         case .dismiss:
             state.isDismissed = true
             return state
         }
     }
+
 }

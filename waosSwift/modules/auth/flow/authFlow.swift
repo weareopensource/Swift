@@ -9,7 +9,7 @@ import UIKit
  * Flow
  */
 
-final class TasksFlow: Flow {
+final class AuthFlow: Flow {
     var root: Presentable {
         return self.rootViewController
     }
@@ -28,19 +28,22 @@ final class TasksFlow: Flow {
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step as? Steps else { return .none }
         switch step {
-        case .tasksIsRequired:
-            return navigateToTasksScreen()
+        case .authIsRequired:
+            return navigateToAuthScreen()
+        case .authIsComplete:
+            return .end(forwardToParentFlowWithStep: Steps.authIsComplete)
         default:
             return .none
         }
     }
 
-    private func navigateToTasksScreen() -> FlowContributors {
+    private func navigateToAuthScreen() -> FlowContributors {
         let provider = AppServicesProvider()
-        let reactor = TasksListReactor(provider: provider)
-        let viewController = TasksListController(reactor: reactor)
-        viewController.title = L10n.taskTitle
-        self.rootViewController.pushViewController(viewController, animated: true)
-        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: OneStepper(withSingleStep: Steps.tasksIsRequired)))
+        let reactor = AuthSigninReactor(provider: provider)
+        let viewController = AuthSignInController(reactor: reactor)
+        viewController.title = "Auth"
+        self.rootViewController.pushViewController(viewController, animated: false)
+        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: viewController))
+
     }
 }

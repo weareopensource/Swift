@@ -3,18 +3,17 @@
  */
 
 import UIKit
-import Reusable
 import ReactorKit
 
 /**
- * Crontroller
+ * Controller
  */
 
 final class OnboardingController: CoreController, View, Stepper {
 
     // MARK: UI
 
-    let introLabel = UILabel().then {
+    let labelIntro = UILabel().then {
         $0.numberOfLines = 4
     }
     let completeButton = UIButton().then {
@@ -64,7 +63,7 @@ final class OnboardingController: CoreController, View, Stepper {
         self.view.addSubview(self.scrollView)
         self.view.addSubview(self.completeButton)
         self.view.addSubview(self.pageControl)
-        self.view.addSubview(self.introLabel)
+        self.view.addSubview(self.labelIntro)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -85,7 +84,7 @@ final class OnboardingController: CoreController, View, Stepper {
             make.right.equalTo(-50)
 
         }
-        introLabel.snp.makeConstraints { (make) -> Void in
+        labelIntro.snp.makeConstraints { (make) -> Void in
             make.width.height.equalTo(250)
             make.center.equalTo(self.view)
         }
@@ -149,14 +148,20 @@ private extension OnboardingController {
     // MARK: states (Reactor -> View)
 
     func bindState(_ reactor: OnboardingReactor) {
+        // dissmiss
         reactor.state
-            .map { $0.step }
-            .bind(to: self.steps)
-            .disposed(by: disposeBag)
-
-        reactor.state.asObservable().map { $0.content }
+            .map { $0.isDismissed }
             .distinctUntilChanged()
-            .bind(to: self.introLabel.rx.text)
+            .filter { $0 }
+            .subscribe(onNext: { [weak self] _ in
+                self?.steps.accept(Steps.onboardingIsComplete)
+            })
+            .disposed(by: self.disposeBag)
+        // content
+        reactor.state
+            .map { $0.content }
+            .distinctUntilChanged()
+            .bind(to: self.labelIntro.rx.text)
             .disposed(by: self.disposeBag)
     }
 }

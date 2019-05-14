@@ -15,7 +15,7 @@ final class TaskCellController: CoreCellController, View {
 
     // MARK: UI
 
-    let titleLabel = UILabel().then {
+    let labelTitle = UILabel().then {
         $0.textColor = .black
         $0.numberOfLines = 2
     }
@@ -23,13 +23,13 @@ final class TaskCellController: CoreCellController, View {
     // MARK: Initializing
 
     override func initialize() {
-        self.contentView.addSubview(self.titleLabel)
+        self.contentView.addSubview(self.labelTitle)
     }
 
     // MARK: Binding
 
     func bind(reactor: Reactor) {
-        self.titleLabel.text = reactor.currentState.title
+        self.labelTitle.text = reactor.currentState.title
     }
 
     // MARK: Layout
@@ -37,12 +37,12 @@ final class TaskCellController: CoreCellController, View {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        self.titleLabel.snp.makeConstraints { make in
+        self.labelTitle.snp.makeConstraints { make in
             make.left.equalTo(25)
             make.right.equalTo(25)
             make.top.equalTo(25)
             make.height.equalTo(25)
         }
-        self.titleLabel.sizeToFit()
+        self.labelTitle.sizeToFit()
     }
 }

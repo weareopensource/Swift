@@ -15,9 +15,9 @@ final class SecondFlow: Flow {
     }
 
     private let rootViewController = UINavigationController()
-    private let services: ServicesProvider
+    private let services: AppServicesProvider
 
-    init(withServices services: ServicesProvider) {
+    init(withServices services: AppServicesProvider) {
         self.services = services
     }
 
@@ -26,15 +26,12 @@ final class SecondFlow: Flow {
     }
 
     func navigate(to step: Step) -> FlowContributors {
-
-        guard let step = step as? SampleStep else { return FlowContributors.none }
-
+        guard let step = step as? Steps else { return .none }
         switch step {
-
         case .secondIsRequired:
             return navigateToSecondScreen()
         default:
-            return FlowContributors.none
+            return .none
         }
     }
 
@@ -43,6 +40,6 @@ final class SecondFlow: Flow {
         let viewController = SecondController(reactor: reactor)
         viewController.title = L10n.secondTitle
         self.rootViewController.pushViewController(viewController, animated: true)
-        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: OneStepper(withSingleStep: SampleStep.secondIsRequired)))
+        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: OneStepper(withSingleStep: Steps.secondIsRequired)))
     }
 }

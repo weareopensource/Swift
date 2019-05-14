@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF058D772282BCAC00E2A077 /* authSigninController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF058D762282BCAC00E2A077 /* authSigninController.swift */; };
+		BF058D792282BCB600E2A077 /* authFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF058D782282BCB600E2A077 /* authFlow.swift */; };
+		BF058D7B2282BCC500E2A077 /* authSigninReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF058D7A2282BCC500E2A077 /* authSigninReactor.swift */; };
+		BF058D7E2282BCDD00E2A077 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF058D7D2282BCDD00E2A077 /* AuthService.swift */; };
 		BF0CD6AB22563C9800844F9A /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0CD6AA22563C9800844F9A /* Strings.swift */; };
 		BF0CD6B622563CC200844F9A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF0CD6B822563CC200844F9A /* Localizable.strings */; };
 		BF425484221EBB9700395AE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF425483221EBB9700395AE6 /* AppDelegate.swift */; };
@@ -47,7 +51,6 @@
 		BF4A2FC42264A2350001B4CE /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4A2FC32264A2350001B4CE /* SwiftyJSON.framework */; };
 		BF4A2FCD2264A6810001B4CE /* production.json in Resources */ = {isa = PBXBuildFile; fileRef = BF4A2FC92264A4B00001B4CE /* production.json */; };
 		BF4A2FCE2264A6810001B4CE /* development.json in Resources */ = {isa = PBXBuildFile; fileRef = BF4A2FCA2264A4B00001B4CE /* development.json */; };
-		BF4A2FD02265D6330001B4CE /* ServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A2FCF2265D6330001B4CE /* ServicesProvider.swift */; };
 		BF4A2FD42265F4020001B4CE /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A2FD32265F4020001B4CE /* UserDefaults.swift */; };
 		BF4A2FD9226710F10001B4CE /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4A2FD8226710F10001B4CE /* RxDataSources.framework */; };
 		BF794D3A22671CD8000B19F3 /* TasksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF794D3922671CD8000B19F3 /* TasksModel.swift */; };
@@ -92,6 +95,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF058D762282BCAC00E2A077 /* authSigninController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = authSigninController.swift; sourceTree = "<group>"; };
+		BF058D782282BCB600E2A077 /* authFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = authFlow.swift; sourceTree = "<group>"; };
+		BF058D7A2282BCC500E2A077 /* authSigninReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = authSigninReactor.swift; sourceTree = "<group>"; };
+		BF058D7D2282BCDD00E2A077 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		BF0CD6A322563B3900844F9A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		BF0CD6AA22563C9800844F9A /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		BF0CD6B722563CC200844F9A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -143,7 +150,6 @@
 		BF4A2FC32264A2350001B4CE /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		BF4A2FC92264A4B00001B4CE /* production.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = production.json; sourceTree = "<group>"; };
 		BF4A2FCA2264A4B00001B4CE /* development.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = development.json; sourceTree = "<group>"; };
-		BF4A2FCF2265D6330001B4CE /* ServicesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesProvider.swift; sourceTree = "<group>"; };
 		BF4A2FD32265F4020001B4CE /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		BF4A2FD8226710F10001B4CE /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
 		BF794D3922671CD8000B19F3 /* TasksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksModel.swift; sourceTree = "<group>"; };
@@ -231,6 +237,49 @@
 			isa = PBXGroup;
 			children = (
 				BFDE2603227B185E008CBD30 /* CoreService.swift */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
+		BF058D712282BC5300E2A077 /* auth */ = {
+			isa = PBXGroup;
+			children = (
+				BF058D722282BC6B00E2A077 /* controllers */,
+				BF058D732282BC7300E2A077 /* flow */,
+				BF058D742282BC8100E2A077 /* reactors */,
+				BF058D752282BC8E00E2A077 /* services */,
+			);
+			path = auth;
+			sourceTree = "<group>";
+		};
+		BF058D722282BC6B00E2A077 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BF058D762282BCAC00E2A077 /* authSigninController.swift */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		BF058D732282BC7300E2A077 /* flow */ = {
+			isa = PBXGroup;
+			children = (
+				BF058D782282BCB600E2A077 /* authFlow.swift */,
+			);
+			path = flow;
+			sourceTree = "<group>";
+		};
+		BF058D742282BC8100E2A077 /* reactors */ = {
+			isa = PBXGroup;
+			children = (
+				BF058D7A2282BCC500E2A077 /* authSigninReactor.swift */,
+			);
+			path = reactors;
+			sourceTree = "<group>";
+		};
+		BF058D752282BC8E00E2A077 /* services */ = {
+			isa = PBXGroup;
+			children = (
+				BF058D7D2282BCDD00E2A077 /* AuthService.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -347,7 +396,6 @@
 			children = (
 				BF4A2FAD2260F0040001B4CE /* Logger.swift */,
 				BF4A2F4C225B79A80001B4CE /* Preferences.swift */,
-				BF4A2FCF2265D6330001B4CE /* ServicesProvider.swift */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -358,6 +406,7 @@
 				BF4A2F88225C9AFF0001B4CE /* app */,
 				BF4A2F4F225B7C200001B4CE /* core */,
 				BF4A2F5C225B7C200001B4CE /* onBoarding */,
+				BF058D712282BC5300E2A077 /* auth */,
 				BF4A2F77225BB65E0001B4CE /* tasks */,
 				BF4A2F78225BB6690001B4CE /* secondController */,
 			);
@@ -775,11 +824,13 @@
 			files = (
 				BFDE25FE227B052D008CBD30 /* NSViewController+Rx.swift in Sources */,
 				BF4A2F7E225BB9270001B4CE /* TasksListReactor.swift in Sources */,
+				BF058D7B2282BCC500E2A077 /* authSigninReactor.swift in Sources */,
 				BF4A2F6B225B7C200001B4CE /* OnBoardingReactor.swift in Sources */,
 				BF4A2F4D225B79A80001B4CE /* Preferences.swift in Sources */,
 				BF4A2FC0226479D20001B4CE /* Configuration.swift in Sources */,
 				BF794D3E22672474000B19F3 /* CoreCellController.swift in Sources */,
 				BF8C6721227C2CF00012B5A8 /* Array.swift in Sources */,
+				BF058D792282BCB600E2A077 /* authFlow.swift in Sources */,
 				BFDE2604227B185E008CBD30 /* CoreService.swift in Sources */,
 				BF425488221EBB9700395AE6 /* SecondController.swift in Sources */,
 				BF4A2F6A225B7C200001B4CE /* OnBoardingController.swift in Sources */,
@@ -791,18 +842,19 @@
 				BF4A2F76225BB6190001B4CE /* CoreController.swift in Sources */,
 				BF8C672E228017940012B5A8 /* UITableView+ReusableKit.swift in Sources */,
 				BF8C6725227C3E310012B5A8 /* TaskCellController.swift in Sources */,
-				BF4A2FD02265D6330001B4CE /* ServicesProvider.swift in Sources */,
 				BF4A2F80225BB9360001B4CE /* SecondReactor.swift in Sources */,
 				BFDE2602227B17D4008CBD30 /* AppServicesProvider.swift in Sources */,
 				BF8C6731228022140012B5A8 /* UICollectionView+RxReusableKit.swift in Sources */,
 				BF0CD6AB22563C9800844F9A /* Strings.swift in Sources */,
 				BF8C6723227C3E1E0012B5A8 /* TaskCellReactor.swift in Sources */,
 				BF4A2F87225C8F160001B4CE /* UILocalizations.swift in Sources */,
+				BF058D7E2282BCDD00E2A077 /* AuthService.swift in Sources */,
 				BF8C6727227C43E80012B5A8 /* Array+SectionModel.swift in Sources */,
 				BF4A2F71225BB2CD0001B4CE /* CoreFlow.swift in Sources */,
 				BF794D532269C4FB000B19F3 /* TaskController.swift in Sources */,
 				BF8C672A2280176B0012B5A8 /* ReusableKit.swift in Sources */,
 				BF794D51226880FB000B19F3 /* TaskService.swift in Sources */,
+				BF058D772282BCAC00E2A077 /* authSigninController.swift in Sources */,
 				BF4A2FD42265F4020001B4CE /* UserDefaults.swift in Sources */,
 				BF8F6EDB2273453100B9447A /* Then.swift in Sources */,
 				BF4A2F6F225BB2B10001B4CE /* OnBoardingFlow.swift in Sources */,

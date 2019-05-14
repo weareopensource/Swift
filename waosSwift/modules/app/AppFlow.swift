@@ -7,9 +7,9 @@ final class AppFlow: Flow {
     }
 
     private let rootWindow: UIWindow
-    private let services: ServicesProvider
+    private let services: AppServicesProvider
 
-    init(withWindow window: UIWindow, andServices services: ServicesProvider) {
+    init(withWindow window: UIWindow, andServices services: AppServicesProvider) {
         self.rootWindow = window
         self.services = services
     }
@@ -19,12 +19,14 @@ final class AppFlow: Flow {
     }
 
     func navigate(to step: Step) -> FlowContributors {
-        guard let step = step as? SampleStep else { return FlowContributors.none }
+        guard let step = step as? Steps else { return FlowContributors.none }
 
         switch step {
         case .onboardingIsRequired:
             return navigationToOnboardingScreen()
-        case .onboardingIsComplete, .dashboardIsRequired:
+        case .onboardingIsComplete, .authIsRequired:
+            return navigationToAuthScreen()
+        case .authIsComplete, .dashboardIsRequired:
             return navigationToDashboardScreen()
         default:
             return FlowContributors.none
@@ -32,44 +34,48 @@ final class AppFlow: Flow {
     }
 
     private func navigationToOnboardingScreen() -> FlowContributors {
-
         if let rootViewController = self.rootWindow.rootViewController {
             rootViewController.dismiss(animated: false)
         }
-
         let onboardingFlow = OnboardingFlow(withServices: self.services)
         Flows.whenReady(flow1: onboardingFlow) { [unowned self] (root) in
             self.rootWindow.rootViewController = root
         }
+        return .one(flowContributor: .contribute(withNextPresentable: onboardingFlow, withNextStepper: OneStepper(withSingleStep: Steps.onboardingIsRequired)))
+    }
 
-        return .one(flowContributor: .contribute(withNextPresentable: onboardingFlow, withNextStepper: OneStepper(withSingleStep: SampleStep.introIsRequired)))
+    private func navigationToAuthScreen() -> FlowContributors {
+        if let rootViewController = self.rootWindow.rootViewController {
+            rootViewController.dismiss(animated: false)
+        }
+        let authFlow = AuthFlow(withServices: self.services)
+        Flows.whenReady(flow1: authFlow) { [unowned self] (root) in
+            self.rootWindow.rootViewController = root
+        }
+        return .one(flowContributor: .contribute(withNextPresentable: authFlow, withNextStepper: OneStepper(withSingleStep: Steps.authIsRequired)))
     }
 
     private func navigationToDashboardScreen() -> FlowContributors {
         let coreFlow = CoreFlow(withServices: self.services)
-
         Flows.whenReady(flow1: coreFlow) { [unowned self] (root) in
             self.rootWindow.rootViewController = root
         }
-
-        return .one(flowContributor: .contribute(withNextPresentable: coreFlow,
-                                                 withNextStepper: OneStepper(withSingleStep: SampleStep.dashboardIsRequired)))
+        return .one(flowContributor: .contribute(withNextPresentable: coreFlow, withNextStepper: OneStepper(withSingleStep: Steps.dashboardIsRequired)))
     }
 }
 
 class AppStepper: Stepper {
 
     let steps = PublishRelay<Step>()
-    private let servicesProvider: ServicesProvider
+    private let servicesProvider: AppServicesProvider
     private let disposeBag = DisposeBag()
 
-    init(withServices services: ServicesProvider) {
+    init(withServices services: AppServicesProvider) {
         self.servicesProvider = services
     }
 
     var initialStep: Step {
-        //        return SampleStep.dashboardIsRequired
-        return SampleStep.onboardingIsRequired
+        return Steps.onboardingIsRequired
     }
 
     /// callback used to emit steps once the FlowCoordinator is ready to listen to them to contribute to the Flow
@@ -78,7 +84,7 @@ class AppStepper: Stepper {
             .preferencesService.rx
             .onBoarded
             .debug()
-            .map { $0 ? SampleStep.onboardingIsComplete : SampleStep.onboardingIsRequired }
+            .map { $0 ? Steps.onboardingIsComplete : Steps.onboardingIsRequired }
             .debug()
             .bind(to: self.steps)
             .disposed(by: self.disposeBag)
