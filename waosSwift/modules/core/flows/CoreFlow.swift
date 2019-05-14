@@ -7,9 +7,9 @@ final class CoreFlow: Flow {
     }
 
     let rootViewController = UITabBarController()
-    private let services: ServicesProvider
+    private let services: AppServicesProvider
 
-    init(withServices services: ServicesProvider) {
+    init(withServices services: AppServicesProvider) {
         self.services = services
     }
 

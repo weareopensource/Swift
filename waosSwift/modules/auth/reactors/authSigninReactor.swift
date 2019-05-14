@@ -26,18 +26,19 @@ final class AuthSigninReactor: Reactor {
         case updatePassword(String)
         case setUser
         case goSignUp
+        case dismiss
     }
 
     // the current view state
     struct State {
         var login: String
         var password: String
-        var step: Step
+        var isDismissed: Bool
 
         init() {
             self.login = ""
             self.password = ""
-            self.step = Steps.authIsRequired
+            self.isDismissed = false
         }
     }
 
@@ -62,7 +63,10 @@ final class AuthSigninReactor: Reactor {
         case let .updatePassword(password):
             return .just(.updatePassword(password))
         case .signIn:
-            return .just(.setUser)
+            return .concat([
+                .just(.setUser),
+                .just(.dismiss)
+            ])
         case .signUp:
             return .just(.goSignUp)
         }
@@ -81,10 +85,12 @@ final class AuthSigninReactor: Reactor {
             return state
         case .setUser:
             print("signIn")
-            state.step = Steps.authIsComplete
             return state
         case .goSignUp:
             print("signUp")
+            return state
+        case .dismiss:
+            state.isDismissed = true
             return state
         }
     }

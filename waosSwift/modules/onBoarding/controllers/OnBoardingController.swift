@@ -3,11 +3,10 @@
  */
 
 import UIKit
-import Reusable
 import ReactorKit
 
 /**
- * Crontroller
+ * Controller
  */
 
 final class OnboardingController: CoreController, View, Stepper {
@@ -17,7 +16,7 @@ final class OnboardingController: CoreController, View, Stepper {
     let labelIntro = UILabel().then {
         $0.numberOfLines = 4
     }
-    let buttonComplete = UIButton().then {
+    let completeButton = UIButton().then {
         $0.setTitle(L10n.onBoardingValidation, for: .normal)
         $0.layer.cornerRadius = 5
         $0.backgroundColor = UIColor.gray
@@ -62,7 +61,7 @@ final class OnboardingController: CoreController, View, Stepper {
         self.scrollView.contentSize = CGSize(width: view.frame.width * CGFloat(3), height: view.frame.height)
 
         self.view.addSubview(self.scrollView)
-        self.view.addSubview(self.buttonComplete)
+        self.view.addSubview(self.completeButton)
         self.view.addSubview(self.pageControl)
         self.view.addSubview(self.labelIntro)
     }
@@ -89,7 +88,7 @@ final class OnboardingController: CoreController, View, Stepper {
             make.width.height.equalTo(250)
             make.center.equalTo(self.view)
         }
-        buttonComplete.snp.makeConstraints { (make) in
+        completeButton.snp.makeConstraints { (make) in
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-25)
             make.height.equalTo(50)
             make.left.equalTo(50)
@@ -134,7 +133,7 @@ private extension OnboardingController {
     // MARK: actions (View -> Reactor)
 
     func bindAction(_ reactor: OnboardingReactor) {
-        buttonComplete.rx.tap
+        completeButton.rx.tap
             .map { _ in Reactor.Action.complete }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -149,12 +148,18 @@ private extension OnboardingController {
     // MARK: states (Reactor -> View)
 
     func bindState(_ reactor: OnboardingReactor) {
+        // dissmiss
         reactor.state
-            .map { $0.step }
-            .bind(to: self.steps)
-            .disposed(by: disposeBag)
-
-        reactor.state.asObservable().map { $0.content }
+            .map { $0.isDismissed }
+            .distinctUntilChanged()
+            .filter { $0 }
+            .subscribe(onNext: { [weak self] _ in
+                self?.steps.accept(Steps.onboardingIsComplete)
+            })
+            .disposed(by: self.disposeBag)
+        // content
+        reactor.state
+            .map { $0.content }
             .distinctUntilChanged()
             .bind(to: self.labelIntro.rx.text)
             .disposed(by: self.disposeBag)

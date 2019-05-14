@@ -15,9 +15,9 @@ final class TasksFlow: Flow {
     }
 
     private let rootViewController = UINavigationController()
-    private let services: ServicesProvider
+    private let services: AppServicesProvider
 
-    init(withServices services: ServicesProvider) {
+    init(withServices services: AppServicesProvider) {
         self.services = services
     }
 
@@ -26,12 +26,12 @@ final class TasksFlow: Flow {
     }
 
     func navigate(to step: Step) -> FlowContributors {
-        guard let step = step as? Steps else { return FlowContributors.none }
+        guard let step = step as? Steps else { return .none }
         switch step {
         case .tasksIsRequired:
             return navigateToTasksScreen()
         default:
-            return FlowContributors.none
+            return .none
         }
     }
 

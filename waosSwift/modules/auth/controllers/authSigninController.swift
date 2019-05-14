@@ -9,7 +9,7 @@ import ReactorKit
  * Controller
  */
 
-class AuthSignInController: CoreController, View, Stepper {
+final class AuthSignInController: CoreController, View, Stepper {
 
     // MARK: UI
 
@@ -124,5 +124,15 @@ private extension AuthSignInController {
 
     // MARK: states (Reactor -> View)
 
-    func bindState(_ reactor: AuthSigninReactor) {}
+    func bindState(_ reactor: AuthSigninReactor) {
+        // dissmiss
+        reactor.state
+            .map { $0.isDismissed }
+            .distinctUntilChanged()
+            .filter { $0 }
+            .subscribe(onNext: { [weak self] _ in
+                self?.steps.accept(Steps.authIsComplete)
+            })
+            .disposed(by: self.disposeBag)
+    }
 }

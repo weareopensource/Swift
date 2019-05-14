@@ -11,7 +11,7 @@ let contents: [String] = [L10n.onBoardingIntroduction, "toto", "titi"]
  * Reactor
  */
 
-final class OnboardingReactor: Reactor, ServicesProviderType {
+final class OnboardingReactor: Reactor {
 
     // MARK: Constants
 
@@ -23,28 +23,40 @@ final class OnboardingReactor: Reactor, ServicesProviderType {
 
     // state changes
     enum Mutation {
-        case goToDashboard
         case setContent(Int)
+        case dismiss
     }
 
     // the current view state
     struct State {
-        var step: Step = Steps.introIsRequired
-        var content: String = contents[0]
+        var content: String
+        var isDismissed: Bool
+
+        init() {
+            self.content = contents[0]
+            self.isDismissed = false
+        }
     }
 
     // MARK: Properties
 
-    let preferencesService = PreferencesService()
-    let initialState = State()
+    let provider: AppServicesProviderType
+    let initialState: State
+
+    // MARK: Initialization
+
+    init(provider: AppServicesProviderType) {
+        self.provider = provider
+        self.initialState = State()
+    }
 
     // MARK: Action -> Mutation (mutate() receives an Action and generates an Observable<Mutation>)
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .complete:
-            preferencesService.onBoarded = true
-            return .just(.goToDashboard)
+            self.provider.preferencesService.onBoarded = true
+            return .just(.dismiss)
         case let .update(page):
             return .just(.setContent(page))
         }
@@ -55,11 +67,11 @@ final class OnboardingReactor: Reactor, ServicesProviderType {
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
-        case .goToDashboard:
-            state.step = Steps.introIsComplete
-            return state
         case let .setContent(page):
             state.content = contents[page]
+            return state
+        case .dismiss:
+            state.isDismissed = true
             return state
         }
     }

@@ -107,13 +107,13 @@ private extension TaskController {
 
     func bindState(_ reactor: TaskReactor) {
         // title
-        reactor.state.asObservable()
+        reactor.state
             .map { $0.task.title }
             .distinctUntilChanged()
             .bind(to: self.inputTitle.rx.text)
             .disposed(by: self.disposeBag)
         // dissmiss
-        reactor.state.asObservable()
+        reactor.state
             .map { $0.isDismissed }
             .distinctUntilChanged()
             .filter { $0 }

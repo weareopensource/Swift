@@ -15,9 +15,9 @@ final class AuthFlow: Flow {
     }
 
     private let rootViewController = UINavigationController()
-    private let services: ServicesProvider
+    private let services: AppServicesProvider
 
-    init(withServices services: ServicesProvider) {
+    init(withServices services: AppServicesProvider) {
         self.services = services
     }
 
@@ -26,14 +26,14 @@ final class AuthFlow: Flow {
     }
 
     func navigate(to step: Step) -> FlowContributors {
-        guard let step = step as? Steps else { return FlowContributors.none }
+        guard let step = step as? Steps else { return .none }
         switch step {
         case .authIsRequired:
             return navigateToAuthScreen()
         case .authIsComplete:
             return .end(forwardToParentFlowWithStep: Steps.authIsComplete)
         default:
-            return FlowContributors.none
+            return .none
         }
     }
 
@@ -42,7 +42,8 @@ final class AuthFlow: Flow {
         let reactor = AuthSigninReactor(provider: provider)
         let viewController = AuthSignInController(reactor: reactor)
         viewController.title = "Auth"
-        self.rootViewController.pushViewController(viewController, animated: true)
-        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: OneStepper(withSingleStep: Steps.authIsRequired)))
+        self.rootViewController.pushViewController(viewController, animated: false)
+        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: viewController))
+
     }
 }

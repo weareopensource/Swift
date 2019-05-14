@@ -7,9 +7,9 @@ final class AppFlow: Flow {
     }
 
     private let rootWindow: UIWindow
-    private let services: ServicesProvider
+    private let services: AppServicesProvider
 
-    init(withWindow window: UIWindow, andServices services: ServicesProvider) {
+    init(withWindow window: UIWindow, andServices services: AppServicesProvider) {
         self.rootWindow = window
         self.services = services
     }
@@ -41,10 +41,13 @@ final class AppFlow: Flow {
         Flows.whenReady(flow1: onboardingFlow) { [unowned self] (root) in
             self.rootWindow.rootViewController = root
         }
-        return .one(flowContributor: .contribute(withNextPresentable: onboardingFlow, withNextStepper: OneStepper(withSingleStep: Steps.introIsRequired)))
+        return .one(flowContributor: .contribute(withNextPresentable: onboardingFlow, withNextStepper: OneStepper(withSingleStep: Steps.onboardingIsRequired)))
     }
 
     private func navigationToAuthScreen() -> FlowContributors {
+        if let rootViewController = self.rootWindow.rootViewController {
+            rootViewController.dismiss(animated: false)
+        }
         let authFlow = AuthFlow(withServices: self.services)
         Flows.whenReady(flow1: authFlow) { [unowned self] (root) in
             self.rootWindow.rootViewController = root
@@ -57,23 +60,21 @@ final class AppFlow: Flow {
         Flows.whenReady(flow1: coreFlow) { [unowned self] (root) in
             self.rootWindow.rootViewController = root
         }
-        return .one(flowContributor: .contribute(withNextPresentable: coreFlow,
-                                                 withNextStepper: OneStepper(withSingleStep: Steps.dashboardIsRequired)))
+        return .one(flowContributor: .contribute(withNextPresentable: coreFlow, withNextStepper: OneStepper(withSingleStep: Steps.dashboardIsRequired)))
     }
 }
 
 class AppStepper: Stepper {
 
     let steps = PublishRelay<Step>()
-    private let servicesProvider: ServicesProvider
+    private let servicesProvider: AppServicesProvider
     private let disposeBag = DisposeBag()
 
-    init(withServices services: ServicesProvider) {
+    init(withServices services: AppServicesProvider) {
         self.servicesProvider = services
     }
 
     var initialStep: Step {
-        //        return Steps.dashboardIsRequired
         return Steps.onboardingIsRequired
     }
 

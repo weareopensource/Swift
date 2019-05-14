@@ -12,7 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var appFlow: AppFlow! // represents the main navigation
 
     lazy var servicesProvider = {
-        return ServicesProvider(preferencesService: PreferencesService())
+        return AppServicesProvider()
     }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

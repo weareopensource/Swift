@@ -76,14 +76,13 @@ final class TaskReactor: Reactor {
             return .just(.updateTitle(title))
         // done
         case .done:
-            print("done \(mode) => \(self.currentState.task)")
             switch mode {
             case .add:
                 return self.provider.taskService
                     .create(title: self.currentState.task.title)
                     .map { _ in .dismiss }
             case .view:
-                return Observable.just(.dismiss)
+                return .just(.dismiss)
             case .edit:
                 return self.provider.taskService
                     .save(task: self.currentState.task)
