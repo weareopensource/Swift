@@ -21,7 +21,7 @@ class CoreController: UIViewController {
     // MARK: deinit
 
     deinit {
-        log.info("DEINIT: \(self.className)")
+        log.info("🗑 deinit -> \(self.className)")
     }
 
     // MARK: Layout Constraints

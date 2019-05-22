@@ -3,7 +3,6 @@
  */
 
 import UIKit
-import Foundation
 import Reusable
 import ReactorKit
 import RxDataSources
@@ -17,7 +16,7 @@ final class TasksListController: CoreController, View {
     // MARK: Constants
 
     struct Reusable {
-        static let taskCell = ReusableCell<TaskCellController>()
+        static let taskCell = ReusableCell<TasksCellController>()
     }
 
     // MARK: UI
@@ -28,6 +27,7 @@ final class TasksListController: CoreController, View {
         $0.rowHeight = 75
     }
     let barButtonAdd = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
+    let refreshControl = UIRefreshControl()
 
     // MARK: Properties
 
@@ -55,6 +55,7 @@ final class TasksListController: CoreController, View {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        self.tableView.refreshControl = refreshControl
         self.view.addSubview(self.tableView)
     }
 
@@ -86,7 +87,7 @@ private extension TasksListController {
             .map(reactor.editReactor)
             .subscribe(onNext: { [weak self] reactor in
                 guard let `self` = self else { return }
-                let viewController = TaskController(reactor: reactor)
+                let viewController = TasksViewController(reactor: reactor)
                 viewController.inputTitle.text = reactor.initialState.task.title
                 let navigationController = UINavigationController(rootViewController: viewController)
                 self.present(navigationController, animated: true, completion: nil)
@@ -97,7 +98,7 @@ private extension TasksListController {
             .map(reactor.addReactor)
             .subscribe(onNext: { [weak self] reactor in
                 guard let `self` = self else { return }
-                let viewController = TaskController(reactor: reactor)
+                let viewController = TasksViewController(reactor: reactor)
                 let navigationController = UINavigationController(rootViewController: viewController)
                 self.present(navigationController, animated: true, completion: nil)
             })
@@ -112,6 +113,11 @@ private extension TasksListController {
             .map { Reactor.Action.get }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
+        // refresh
+        self.refreshControl.rx.controlEvent(.valueChanged)
+            .map { Reactor.Action.get }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
         // delete
         self.tableView.rx.itemDeleted
             .map(Reactor.Action.delete)
@@ -122,11 +128,16 @@ private extension TasksListController {
     // MARK: states (Reactor -> View)
 
     func bindState(_ reactor: TasksListReactor) {
-        // data
+        // tasks
         reactor.state
             .map { $0.tasks }
             .bind(to: self.tableView.rx.items(dataSource: self.dataSource))
             .disposed(by: self.disposeBag)
+        // refreshing
+        reactor.state.map { $0.isRefreshing }
+            .distinctUntilChanged()
+            .bind(to: refreshControl.rx.isRefreshing)
+            .disposed(by: disposeBag)
     }
 }
 

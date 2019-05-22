@@ -17,11 +17,17 @@ final class AuthSignInController: CoreController, View, Stepper {
         $0.autocorrectionType = .no
         $0.borderStyle = .roundedRect
         $0.placeholder = "login..."
+        $0.autocapitalizationType = .none
+        $0.text = "user@localhost.com"
     }
     let inputPassword = UITextField().then {
         $0.autocorrectionType = .no
         $0.borderStyle = .roundedRect
         $0.placeholder = "password..."
+        $0.autocapitalizationType = .none
+        $0.returnKeyType = .done
+        $0.isSecureTextEntry = true
+        $0.text = "khC2jCyrnSScuN4sruEBUZyYEtbkzhHpubEJ2E1"
     }
     let buttonSignin = UIButton().then {
         $0.setTitle("Sign In", for: .normal)
@@ -133,6 +139,18 @@ private extension AuthSignInController {
             .subscribe(onNext: { [weak self] _ in
                 self?.steps.accept(Steps.authIsComplete)
             })
+            .disposed(by: self.disposeBag)
+        // login
+        self.inputLogin.rx.text
+            .filter { ($0?.count)! > 0 }
+            .map {Reactor.Action.updateLogin($0!)}
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        // password
+        self.inputPassword.rx.text
+            .filter {($0?.count)! > 0}
+            .map {Reactor.Action.updatePassword($0!)}
+            .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
     }
 }

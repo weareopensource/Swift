@@ -2,7 +2,6 @@
  * Dependencies
  */
 
-import Foundation
 import UIKit
 
 /**
@@ -22,7 +21,7 @@ final class OnboardingFlow: Flow {
     }
 
     deinit {
-        log.info("\(type(of: self)): \(#function)")
+        log.info("🗑 \(type(of: self))")
     }
 
     func navigate(to step: Step) -> FlowContributors {

@@ -8,7 +8,7 @@ import ReactorKit
  * Reactor
  */
 
-final class TaskCellReactor: Reactor {
+final class TasksCellReactor: Reactor {
 
     // MARK: Constants
 
@@ -17,11 +17,11 @@ final class TaskCellReactor: Reactor {
 
     // MARK: Properties
 
-    let initialState: Task
+    let initialState: Tasks
 
     // MARK: Initialization
 
-    init(task: Task) {
+    init(task: Tasks) {
         self.initialState = task
     }
 

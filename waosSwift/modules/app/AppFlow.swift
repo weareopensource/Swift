@@ -15,7 +15,7 @@ final class AppFlow: Flow {
     }
 
     deinit {
-        log.info("\(type(of: self)): \(#function)")
+        log.info("🗑 \(type(of: self))")
     }
 
     func navigate(to step: Step) -> FlowContributors {
@@ -83,9 +83,9 @@ class AppStepper: Stepper {
         self.servicesProvider
             .preferencesService.rx
             .onBoarded
-            .debug()
+            // .debug()
             .map { $0 ? Steps.onboardingIsComplete : Steps.onboardingIsRequired }
-            .debug()
+            // .debug()
             .bind(to: self.steps)
             .disposed(by: self.disposeBag)
     }

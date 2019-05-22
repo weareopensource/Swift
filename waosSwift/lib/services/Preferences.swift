@@ -1,5 +1,3 @@
-import Foundation
-
 protocol PreferencesServiceType {
     var onBoarded: Bool { get set }
 }
