@@ -453,6 +453,7 @@
 		BF4A2F48225B78010001B4CE /* services */ = {
 			isa = PBXGroup;
 			children = (
+				BF4A2FBF226479D20001B4CE /* Configuration.swift */,
 				BF4A2FAD2260F0040001B4CE /* Logger.swift */,
 				BF4A2F4C225B79A80001B4CE /* Preferences.swift */,
 				BF9A3678228EB0A900EE2AB8 /* Networking.swift */,
