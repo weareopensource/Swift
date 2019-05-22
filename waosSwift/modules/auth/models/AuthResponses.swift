@@ -12,3 +12,17 @@ extension SignInResponse: Codable {
         case tokenExpiresIn
     }
 }
+
+/**
+ * Model Me Response
+ */
+
+struct MeResponse {
+    var data: User
+}
+extension MeResponse: Codable {
+    enum MeResponseCodingKeys: String, CodingKey {
+        case data
+    }
+}
+

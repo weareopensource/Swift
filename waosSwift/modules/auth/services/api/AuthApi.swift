@@ -10,6 +10,7 @@ import Moya
 
 enum AuthApi {
     case signin(email: String, password: String)
+    case me
 }
 
 extension AuthApi: TargetType {
@@ -23,6 +24,8 @@ extension AuthApi: TargetType {
         switch self {
         case .signin :
             return "/auth/signin"
+        case .me :
+            return "/users/me"
         }
     }
 
@@ -30,12 +33,15 @@ extension AuthApi: TargetType {
         switch self {
         case .signin:
             return .post
+        case .me:
+            return .get
         }
     }
 
     var sampleData: Data {
         switch self {
         case .signin: return stubbed("signin")
+        case .me: return stubbed("me")
         }
     }
 
@@ -43,6 +49,8 @@ extension AuthApi: TargetType {
         switch self {
         case .signin(let email, let password):
             return .requestParameters(parameters: ["email": email, "password": password], encoding: JSONEncoding.default)
+        case .me:
+            return .requestPlain
         }
     }
 

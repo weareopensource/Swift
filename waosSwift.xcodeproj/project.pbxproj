@@ -55,6 +55,8 @@
 		BF78B5F32293CD680057157A /* ObservableType+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF78B5F22293CD680057157A /* ObservableType+Extras.swift */; };
 		BF78B5FA22942CBB0057157A /* CoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF78B5F922942CBB0057157A /* CoreModel.swift */; };
 		BF78B5FC22942CCD0057157A /* CoreResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF78B5FB22942CCD0057157A /* CoreResponses.swift */; };
+		BF78B60822954B3F0057157A /* me.json in Resources */ = {isa = PBXBuildFile; fileRef = BF78B60622954B3F0057157A /* me.json */; };
+		BF78B60922954B3F0057157A /* signin.json in Resources */ = {isa = PBXBuildFile; fileRef = BF78B60722954B3F0057157A /* signin.json */; };
 		BF794D3A22671CD8000B19F3 /* TasksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF794D3922671CD8000B19F3 /* TasksModel.swift */; };
 		BF794D3E22672474000B19F3 /* CoreCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF794D3D22672474000B19F3 /* CoreCellController.swift */; };
 		BF794D41226856E6000B19F3 /* Differentiator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF794D40226856E6000B19F3 /* Differentiator.framework */; };
@@ -176,6 +178,8 @@
 		BF78B5F22293CD680057157A /* ObservableType+Extras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+Extras.swift"; sourceTree = "<group>"; };
 		BF78B5F922942CBB0057157A /* CoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreModel.swift; sourceTree = "<group>"; };
 		BF78B5FB22942CCD0057157A /* CoreResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreResponses.swift; sourceTree = "<group>"; };
+		BF78B60622954B3F0057157A /* me.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = me.json; sourceTree = "<group>"; };
+		BF78B60722954B3F0057157A /* signin.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = signin.json; sourceTree = "<group>"; };
 		BF794D3922671CD8000B19F3 /* TasksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksModel.swift; sourceTree = "<group>"; };
 		BF794D3D22672474000B19F3 /* CoreCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreCellController.swift; sourceTree = "<group>"; };
 		BF794D40226856E6000B19F3 /* Differentiator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Differentiator.framework; path = Carthage/Build/iOS/Differentiator.framework; sourceTree = "<group>"; };
@@ -730,6 +734,8 @@
 		BF9A368122900F5500EE2AB8 /* stubbed */ = {
 			isa = PBXGroup;
 			children = (
+				BF78B60622954B3F0057157A /* me.json */,
+				BF78B60722954B3F0057157A /* signin.json */,
 			);
 			path = stubbed;
 			sourceTree = "<group>";
@@ -867,10 +873,12 @@
 				BF9A366A228D5CDA00EE2AB8 /* list.json in Resources */,
 				BF4A2FAB225CA6DB0001B4CE /* LICENSE.md in Resources */,
 				BF4A2FA0225CA6DB0001B4CE /* KNOWLEDGES.md in Resources */,
+				BF78B60822954B3F0057157A /* me.json in Resources */,
 				BF9A3669228D5CDA00EE2AB8 /* delete.json in Resources */,
 				BF4A2FA9225CA6DB0001B4CE /* Readme.md in Resources */,
 				BF9A366E228D5E7B00EE2AB8 /* update.json in Resources */,
 				BF9A366B228D5CDA00EE2AB8 /* create.json in Resources */,
+				BF78B60922954B3F0057157A /* signin.json in Resources */,
 				BF425490221EBB9800395AE6 /* LaunchScreen.storyboard in Resources */,
 				BF0CD6B622563CC200844F9A /* Localizable.strings in Resources */,
 				BF4A2F9E225CA6DB0001B4CE /* CHANGELOG.md in Resources */,

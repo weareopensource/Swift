@@ -1,0 +1,18 @@
+{
+    "user": {
+        "roles": [
+            "user"
+        ],
+        "_id": "5ce3eb6236bb3afbb77dcaae",
+        "username": "seeduser",
+        "provider": "local",
+        "email": "user@localhost.com",
+        "firstName": "User",
+        "lastName": "Local",
+        "displayName": "User Local",
+        "password": "$2b$10$iZbH86I1cn.U2j07QiWkoO6ZBZzymjpPOnCnbbTRqB5dQkrMmsleq",
+        "__v": 0,
+        "id": "5ce3eb6236bb3afbb77dcaae"
+    },
+    "tokenExpiresIn": 1558603098841
+}
