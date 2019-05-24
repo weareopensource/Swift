@@ -1,4 +1,3 @@
-import Foundation
 import UIKit
 
 final class CoreFlow: Flow {
@@ -14,7 +13,7 @@ final class CoreFlow: Flow {
     }
 
     deinit {
-        log.info("\(type(of: self)): \(#function)")
+        log.info("🗑 \(type(of: self))")
     }
 
     func navigate(to step: Step) -> FlowContributors {

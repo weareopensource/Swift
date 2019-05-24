@@ -1,0 +1,15 @@
+{
+    "type": "success",
+    "message": "user get",
+    "data": {
+        "id": "5ce3eb6236bb3afbb77dcaae",
+        "provider": "local",
+        "username": "seeduser",
+        "roles": [
+            "user"
+        ],
+        "email": "user@localhost.com",
+        "lastName": "Local",
+        "firstName": "User"
+    }
+}

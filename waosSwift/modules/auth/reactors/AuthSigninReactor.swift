@@ -24,9 +24,9 @@ final class AuthSigninReactor: Reactor {
     enum Mutation {
         case updateLogin(String)
         case updatePassword(String)
-        case setUser
         case goSignUp
         case dismiss
+        case error(CustomError)
     }
 
     // the current view state
@@ -58,16 +58,31 @@ final class AuthSigninReactor: Reactor {
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
+        // update login
         case let .updateLogin(login):
+            // log.verbose("♻️ Action -> Mutation : updateLogin(\(self.currentState.login))")
             return .just(.updateLogin(login))
+        // update password
         case let .updatePassword(password):
+            // log.verbose("♻️ Action -> Mutation : updatePassword(\(self.currentState.password))")
             return .just(.updatePassword(password))
+        // signin
         case .signIn:
-            return .concat([
-                .just(.setUser),
-                .just(.dismiss)
-            ])
+            log.verbose("♻️ Action -> Mutation : signIn(\(self.currentState.login), \(self.currentState.password))")
+            return self.provider.authService
+                .signIn(email: self.currentState.login, password: self.currentState.password)
+                .map { result in
+                    switch result {
+                    case let .success(response):
+                        UserDefaults.standard.set(response.tokenExpiresIn, forKey: "CookieExpire")
+                        self.provider.preferencesService.isLogged = true
+                        return .dismiss
+                    case let .error(err): return .error(err)
+                    }
+                }
+        // signup
         case .signUp:
+            log.verbose("♻️ Action -> Mutation : signUp")
             return .just(.goSignUp)
         }
     }
@@ -77,22 +92,25 @@ final class AuthSigninReactor: Reactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
+        // update login
         case let .updateLogin(login):
             state.login = login
-            return state
+        // update password
         case let .updatePassword(password):
             state.password = password
-            return state
-        case .setUser:
-            print("signIn")
-            return state
+        // go Signup
         case .goSignUp:
-            print("signUp")
-            return state
+            log.verbose("♻️ Mutation -> State : goSignUp")
+        // dissmiss
         case .dismiss:
+            log.verbose("♻️ Mutation -> State : dismiss")
             state.isDismissed = true
-            return state
+        // error
+        case let .error(error):
+            log.verbose("♻️ Mutation -> State : error")
+            print("YESSSS \(error)")
         }
+        return state
     }
 
 }

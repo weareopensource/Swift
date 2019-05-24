@@ -8,7 +8,7 @@ import UIKit
  * Flow
  */
 
-final class OnboardingFlow: Flow {
+final class AuthFlow: Flow {
     var root: Presentable {
         return self.rootViewController
     }
@@ -27,21 +27,22 @@ final class OnboardingFlow: Flow {
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step as? Steps else { return .none }
         switch step {
-        case .onboardingIsRequired:
-            return navigationToOnboardingScreen()
-        case .onboardingIsComplete:
-            return .end(forwardToParentFlowWithStep: Steps.onboardingIsComplete)
+        case .authIsRequired:
+            return navigateToAuthScreen()
+        case .authIsComplete:
+            return .end(forwardToParentFlowWithStep: Steps.authIsComplete)
         default:
             return .none
         }
     }
 
-    private func navigationToOnboardingScreen() -> FlowContributors {
+    private func navigateToAuthScreen() -> FlowContributors {
         let provider = AppServicesProvider()
-        let reactor = OnboardingReactor(provider: provider)
-        let viewController = OnboardingController(reactor: reactor)
-        viewController.title = L10n.onBoardingTitle
+        let reactor = AuthSigninReactor(provider: provider)
+        let viewController = AuthSignInController(reactor: reactor)
+        viewController.title = "Auth"
         self.rootViewController.pushViewController(viewController, animated: false)
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: viewController))
+
     }
 }

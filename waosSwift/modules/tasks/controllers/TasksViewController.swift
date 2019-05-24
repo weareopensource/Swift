@@ -9,7 +9,7 @@ import ReactorKit
  * Controller
  */
 
-final class TaskController: CoreController, View {
+final class TasksViewController: CoreController, View {
 
     // MARK: Constants
 
@@ -27,7 +27,7 @@ final class TaskController: CoreController, View {
 
     // MARK: Initializing
 
-    init(reactor: TaskReactor) {
+    init(reactor: TasksViewReactor) {
         self.mode = reactor.currentState.mode
         super.init()
         self.navigationItem.leftBarButtonItem = self.barButtonCancel
@@ -63,7 +63,7 @@ final class TaskController: CoreController, View {
 
     // MARK: Binding
 
-    func bind(reactor: TaskReactor) {
+    func bind(reactor: TasksViewReactor) {
         bindAction(reactor)
         bindState(reactor)
         bindView(reactor)
@@ -74,11 +74,11 @@ final class TaskController: CoreController, View {
  * Extensions
  */
 
-private extension TaskController {
+private extension TasksViewController {
 
     // MARK: views (View -> View)
 
-    func bindView(_ reactor: TaskReactor) {
+    func bindView(_ reactor: TasksViewReactor) {
         // cancel
         self.barButtonCancel.rx.tap
             .subscribe(onNext: { [weak self] _ in
@@ -90,7 +90,7 @@ private extension TaskController {
 
     // MARK: actions (View -> Reactor)
 
-    func bindAction(_ reactor: TaskReactor) {
+    func bindAction(_ reactor: TasksViewReactor) {
         self.barButtonDone.rx.tap
             .map { Reactor.Action.done }
             .bind(to: reactor.action)
@@ -105,14 +105,14 @@ private extension TaskController {
 
     // MARK: states (Reactor -> View)
 
-    func bindState(_ reactor: TaskReactor) {
+    func bindState(_ reactor: TasksViewReactor) {
         // title
         reactor.state
             .map { $0.task.title }
             .distinctUntilChanged()
             .bind(to: self.inputTitle.rx.text)
             .disposed(by: self.disposeBag)
-        // dissmiss
+        // dissmissed
         reactor.state
             .map { $0.isDismissed }
             .distinctUntilChanged()

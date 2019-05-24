@@ -15,7 +15,7 @@ final class AppFlow: Flow {
     }
 
     deinit {
-        log.info("\(type(of: self)): \(#function)")
+        log.info("🗑 \(type(of: self))")
     }
 
     func navigate(to step: Step) -> FlowContributors {
@@ -24,7 +24,9 @@ final class AppFlow: Flow {
         switch step {
         case .onboardingIsRequired:
             return navigationToOnboardingScreen()
-        case .onboardingIsComplete, .authIsRequired:
+        case .onboardingIsComplete, .splashIsRequired:
+            return navigationToSplashScreen()
+        case .splashIsComplete, .authIsRequired:
             return navigationToAuthScreen()
         case .authIsComplete, .dashboardIsRequired:
             return navigationToDashboardScreen()
@@ -42,6 +44,17 @@ final class AppFlow: Flow {
             self.rootWindow.rootViewController = root
         }
         return .one(flowContributor: .contribute(withNextPresentable: onboardingFlow, withNextStepper: OneStepper(withSingleStep: Steps.onboardingIsRequired)))
+    }
+
+    private func navigationToSplashScreen() -> FlowContributors {
+        if let rootViewController = self.rootWindow.rootViewController {
+            rootViewController.dismiss(animated: false)
+        }
+        let splashFlow = SplashFlow(withServices: self.services)
+        Flows.whenReady(flow1: splashFlow) { [unowned self] (root) in
+            self.rootWindow.rootViewController = root
+        }
+        return .one(flowContributor: .contribute(withNextPresentable: splashFlow, withNextStepper: OneStepper(withSingleStep: Steps.splashIsRequired)))
     }
 
     private func navigationToAuthScreen() -> FlowContributors {
@@ -83,10 +96,17 @@ class AppStepper: Stepper {
         self.servicesProvider
             .preferencesService.rx
             .onBoarded
-            .debug()
             .map { $0 ? Steps.onboardingIsComplete : Steps.onboardingIsRequired }
-            .debug()
             .bind(to: self.steps)
             .disposed(by: self.disposeBag)
+            // .debug()
+
+        self.servicesProvider
+            .preferencesService.rx
+            .isLogged
+            .map { $0 ? Steps.authIsComplete : Steps.authIsRequired }
+            .bind(to: self.steps)
+            .disposed(by: self.disposeBag)
+        // .debug()
     }
 }

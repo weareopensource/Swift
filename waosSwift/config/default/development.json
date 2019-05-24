@@ -1,2 +1,28 @@
 {
+    "api": {
+        "protocol": "http",
+        "host": "localhost",
+        "port": 3000,
+        "endPoints": {
+            "basePath": "api",
+            "auth": "auth",
+            "users": "users",
+            "tasks": "tasks"
+        }
+    },
+    "jwt": {
+        "expiresIn": 604800,
+        "renewIn": 3600
+    },
+    "log": {
+        "dateFormat": "yyyy-MM-dd HH:mm:ss",
+        "message" : {
+            "error": "‼️ ERROR",
+            "warning": "⚠️ WARNING",
+            "info": "ℹ️ INFO",
+            "debug": "💬 DEBUG",
+            "verbose": "🔬 VERBOSE",
+            "unknown": "☠️ UNKNOWN"
+        }
+    }
 }

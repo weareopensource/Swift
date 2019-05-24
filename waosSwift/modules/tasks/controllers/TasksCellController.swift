@@ -9,9 +9,9 @@ import ReactorKit
  * Controller
  */
 
-final class TaskCellController: CoreCellController, View {
+final class TasksCellController: CoreCellController, View {
 
-    typealias Reactor = TaskCellReactor
+    typealias Reactor = TasksCellReactor
 
     // MARK: UI
 

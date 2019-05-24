@@ -2,7 +2,6 @@
  * Dependencies
  */
 
-import Foundation
 import ReactorKit
 
 let contents: [String] = [L10n.onBoardingIntroduction, "toto", "titi"]
@@ -69,10 +68,9 @@ final class OnboardingReactor: Reactor {
         switch mutation {
         case let .setContent(page):
             state.content = contents[page]
-            return state
         case .dismiss:
             state.isDismissed = true
-            return state
         }
+        return state
     }
 }

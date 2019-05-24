@@ -2,14 +2,13 @@
  * Dependencies
  */
 
-import Foundation
 import UIKit
 
 /**
  * Flow
  */
 
-final class AuthFlow: Flow {
+final class SplashFlow: Flow {
     var root: Presentable {
         return self.rootViewController
     }
@@ -22,28 +21,31 @@ final class AuthFlow: Flow {
     }
 
     deinit {
-        log.info("\(type(of: self)): \(#function)")
+        log.info("🗑 \(type(of: self))")
     }
 
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step as? Steps else { return .none }
         switch step {
-        case .authIsRequired:
-            return navigateToAuthScreen()
-        case .authIsComplete:
-            return .end(forwardToParentFlowWithStep: Steps.authIsComplete)
+        case .splashIsRequired:
+            return navigateToSplashScreen()
+        case .splashIsComplete(let result):
+            if (result) {
+                return .end(forwardToParentFlowWithStep: Steps.authIsComplete)
+            } else {
+                return .end(forwardToParentFlowWithStep: Steps.splashIsComplete(false))
+            }
         default:
             return .none
         }
     }
 
-    private func navigateToAuthScreen() -> FlowContributors {
+    private func navigateToSplashScreen() -> FlowContributors {
         let provider = AppServicesProvider()
-        let reactor = AuthSigninReactor(provider: provider)
-        let viewController = AuthSignInController(reactor: reactor)
-        viewController.title = "Auth"
+        let reactor = SplashReactor(provider: provider)
+        let viewController = SplashController(reactor: reactor)
+        viewController.title = "Splash"
         self.rootViewController.pushViewController(viewController, animated: false)
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: viewController))
-
     }
 }

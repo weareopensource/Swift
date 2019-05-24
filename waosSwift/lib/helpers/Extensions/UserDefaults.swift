@@ -19,4 +19,8 @@ extension UserDefaults {
             set(newValue?.rawValue, forKey: key)
         }
     }
+
+    func contains(_ key: String) -> Bool {
+        return UserDefaults.standard.object(forKey: key) != nil
+    }
 }

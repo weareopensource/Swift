@@ -6,15 +6,15 @@ import ReactorKit
 
 enum Mode {
     case add
-    case view(Task)
-    case edit(Task)
+    case view(Tasks)
+    case edit(Tasks)
 }
 
 /**
  * Reactor
  */
 
-final class TaskReactor: Reactor {
+final class TasksViewReactor: Reactor {
 
     // MARK: Constants
 
@@ -28,15 +28,16 @@ final class TaskReactor: Reactor {
     enum Mutation {
         case updateTitle(String)
         case dismiss
+        case error(CustomError)
     }
 
     // the current view state
     struct State {
-        var task: Task
+        var task: Tasks
         var isDismissed: Bool
         var mode: Mode
 
-        init(task: Task, mode: Mode) {
+        init(task: Tasks, mode: Mode) {
             self.task = task
             self.isDismissed = false
             self.mode = mode
@@ -57,13 +58,11 @@ final class TaskReactor: Reactor {
 
         switch mode {
         case .add:
-            self.initialState = State(task: Task(id: "", title: ""), mode: mode)
+            self.initialState = State(task: Tasks(id: "", title: ""), mode: mode)
         case .view(let task):
             self.initialState = State(task: task, mode: mode)
         case .edit(let task):
-            print(task)
             self.initialState = State(task: task, mode: mode)
-            print("test 0 \(self.currentState)")
         }
     }
 
@@ -79,14 +78,24 @@ final class TaskReactor: Reactor {
             switch mode {
             case .add:
                 return self.provider.taskService
-                    .create(title: self.currentState.task.title)
-                    .map { _ in .dismiss }
+                    .create(self.currentState.task)
+                    .map { result in
+                        switch result {
+                        case .success: return .dismiss
+                        case let .error(err): return .error(err)
+                        }
+                    }
             case .view:
                 return .just(.dismiss)
             case .edit:
                 return self.provider.taskService
-                    .save(task: self.currentState.task)
-                    .map { _ in .dismiss }
+                    .save(self.currentState.task)
+                    .map { result in
+                        switch result {
+                        case .success: return .dismiss
+                        case let .error(err): return .error(err)
+                        }
+                    }
             }
         }
     }
@@ -101,6 +110,11 @@ final class TaskReactor: Reactor {
             return state
         case .dismiss:
             state.isDismissed = true
+            return state
+        // error
+        case let .error(error):
+            log.verbose("♻️ Mutation -> State : error")
+            print(error)
             return state
         }
     }

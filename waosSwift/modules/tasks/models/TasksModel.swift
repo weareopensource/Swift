@@ -1,44 +1,31 @@
 /**
- * Dependencies
+ * Model Tasks
  */
 
-import Foundation
-
-/**
- * Model
- */
-
-struct Task {
-
+struct Tasks {
     var id: String
     var title: String
     var description: String?
 
-    init(id: String, title: String, description: String? = nil) {
+    init(id: String, title: String, description: String? = "") {
         self.id = id
         self.title = title
         self.description = description
     }
+}
 
-    init?(dictionary: [String: Any]) {
-        guard let id = dictionary["id"] as? String,
-            let title = dictionary["title"] as? String
-            else { return nil }
-
-        self.id = id
-        self.title = title
-        self.description = dictionary["description"] as? String
+extension Tasks: Codable {
+    enum TasksCodingKeys: String, CodingKey {
+        case id
+        case title
+        case description
     }
 
-    func asDictionary() -> [String: Any] {
-        var dictionary: [String: Any] = [
-            "id": self.id,
-            "title": self.title
-        ]
-        if let description = self.description {
-            dictionary["description"] = description
-        }
-        return dictionary
-    }
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: TasksCodingKeys.self)
 
+        id = try container.decode(String.self, forKey: .id)
+        title = try container.decode(String.self, forKey: .title)
+        description = try container.decode(String.self, forKey: .description)
+    }
 }
