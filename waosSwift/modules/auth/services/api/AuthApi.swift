@@ -11,21 +11,32 @@ import Moya
 enum AuthApi {
     case signin(email: String, password: String)
     case me
+    case token
 }
 
 extension AuthApi: TargetType {
 
     public var baseURL: URL {
-        guard let url = URL(string: "http://localhost:3000/api") else { fatalError("baseUrl could not be configured." ) }
+        let ApiProtocol = config["api"]["protocol"].string ?? "http"
+        let ApiHost = config["api"]["host"].string ?? "localhost"
+        let ApiPort = config["api"]["port"].string ?? "3000"
+        let ApiBasePath = config["api"]["endPoints"]["basePath"].string ?? "api"
+
+        guard let url = URL(string: ApiProtocol + "://" + ApiHost + ":" + ApiPort + "/" + ApiBasePath) else { fatalError("baseUrl could not be configured." ) }
         return url
     }
 
     var path: String {
+        let ApiPathAuth = config["api"]["endPoints"]["auth"].string ?? "auth"
+        let ApiPathUsers = config["api"]["endPoints"]["users"].string ?? "users"
+
         switch self {
         case .signin :
-            return "/auth/signin"
+            return "/" + ApiPathAuth + "/signin"
+        case .token :
+            return "/" + ApiPathAuth + "/token"
         case .me :
-            return "/users/me"
+            return "/" + ApiPathUsers + "/me"
         }
     }
 
@@ -35,6 +46,8 @@ extension AuthApi: TargetType {
             return .post
         case .me:
             return .get
+        case .token:
+            return .get
         }
     }
 
@@ -42,6 +55,7 @@ extension AuthApi: TargetType {
         switch self {
         case .signin: return stubbed("signin")
         case .me: return stubbed("me")
+        case .token: return stubbed("me")
         }
     }
 
@@ -49,7 +63,7 @@ extension AuthApi: TargetType {
         switch self {
         case .signin(let email, let password):
             return .requestParameters(parameters: ["email": email, "password": password], encoding: JSONEncoding.default)
-        case .me:
+        case .me, .token:
             return .requestPlain
         }
     }

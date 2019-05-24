@@ -1,22 +1,18 @@
+/**
+ * Dependencies
+ */
+
 import CocoaLumberjackSwift
 
-extension DDLogFlag {
-    public var level: String {
-        switch self {
-        case DDLogFlag.error: return "‼️ ERROR"
-        case DDLogFlag.warning: return "⚠️ WARNING"
-        case DDLogFlag.info: return "ℹ️ INFO"
-        case DDLogFlag.debug: return "💬 DEBUG"
-        case DDLogFlag.verbose: return "🔬 VERBOSE"
-        default: return "☠️ UNKNOWN"
-        }
-    }
-}
+/**
+ * class
+ */
 
 private class LogFormatter: NSObject, DDLogFormatter {
 
     static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
+        let dateFormat = config["log"]["dateFormat"].string ?? "yyyy-MM-dd HH:mm:ss"
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return formatter
     }()
@@ -107,4 +103,21 @@ final class Logger {
             .joined(separator: " ")
     }
 
+}
+
+/**
+ * extensions
+ */
+
+extension DDLogFlag {
+    public var level: String {
+        switch self {
+        case DDLogFlag.error: return config["log"]["message"]["error"].string ?? "ERROR"
+        case DDLogFlag.warning: return config["log"]["message"]["warning"].string ?? "WARNING"
+        case DDLogFlag.info: return config["log"]["message"]["info"].string ?? "INFO"
+        case DDLogFlag.debug: return config["log"]["message"]["debug"].string ?? "DEBUG"
+        case DDLogFlag.verbose: return config["log"]["message"]["verbose"].string ?? "VERBOSE"
+        default: return config["log"]["message"]["unknown"].string ?? "UNKNOWN"
+        }
+    }
 }

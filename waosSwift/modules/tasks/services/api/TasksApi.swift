@@ -20,16 +20,23 @@ enum TasksApi {
 extension TasksApi: TargetType {
 
     public var baseURL: URL {
-        guard let url = URL(string: "http://localhost:3000/api") else { fatalError("baseUrl could not be configured." ) }
+        let ApiProtocol = config["api"]["protocol"].string ?? "http"
+        let ApiHost = config["api"]["host"].string ?? "localhost"
+        let ApiPort = config["api"]["port"].string ?? "3000"
+        let ApiBasePath = config["api"]["endPoints"]["basePath"].string ?? "api"
+
+        guard let url = URL(string: ApiProtocol + "://" + ApiHost + ":" + ApiPort + "/" + ApiBasePath) else { fatalError("baseUrl could not be configured." ) }
         return url
     }
 
     var path: String {
+        let ApiPathTask = config["api"]["endPoints"]["tasks"].string ?? "tasks"
+
         switch self {
         case .list, .create:
-            return "/tasks"
+            return "/" + ApiPathTask
         case .get(let task), .update(let task), .delete(let task):
-            return "/tasks/\(task.id)"
+            return "/" + ApiPathTask + "/\(task.id)"
         }
     }
 

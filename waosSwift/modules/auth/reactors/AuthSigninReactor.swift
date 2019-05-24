@@ -24,7 +24,6 @@ final class AuthSigninReactor: Reactor {
     enum Mutation {
         case updateLogin(String)
         case updatePassword(String)
-        case setUser
         case goSignUp
         case dismiss
         case error(CustomError)
@@ -72,14 +71,13 @@ final class AuthSigninReactor: Reactor {
             log.verbose("♻️ Action -> Mutation : signIn(\(self.currentState.login), \(self.currentState.password))")
             return self.provider.authService
                 .signIn(email: self.currentState.login, password: self.currentState.password)
-                .asObservable()
-                .flatMap { result -> Observable<Mutation> in
+                .map { result in
                     switch result {
-                    case let .success(test):
-                        print("toto \(test)")
-                        return .concat([.just(.setUser), .just(.dismiss)])
-                    case let .error(err):
-                        return .just(.error(err))
+                    case let .success(response):
+                        UserDefaults.standard.set(response.tokenExpiresIn, forKey: "CookieExpire")
+                        self.provider.preferencesService.isLogged = true
+                        return .dismiss
+                    case let .error(err): return .error(err)
                     }
                 }
         // signup
@@ -100,9 +98,6 @@ final class AuthSigninReactor: Reactor {
         // update password
         case let .updatePassword(password):
             state.password = password
-        // set User after signin
-        case .setUser:
-            log.verbose("♻️ Mutation -> State : setUser")
         // go Signup
         case .goSignUp:
             log.verbose("♻️ Mutation -> State : goSignUp")

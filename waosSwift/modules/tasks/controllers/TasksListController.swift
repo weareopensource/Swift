@@ -31,12 +31,14 @@ final class TasksListController: CoreController, View {
 
     // MARK: Properties
 
+    let application = UIApplication.shared
     let dataSource = RxTableViewSectionedReloadDataSource<Sections>(
         configureCell: { _, tableView, indexPath, reactor in
             let cell = tableView.dequeue(Reusable.taskCell, for: indexPath)
             cell.reactor = reactor
             return cell
     })
+    let steps = PublishRelay<Step>()
 
     // MARK: Initializing
 
@@ -79,10 +81,10 @@ private extension TasksListController {
     // MARK: views (View -> View)
 
     func bindView(_ reactor: TasksListReactor) {
+        // tableview
         self.tableView.rx.setDelegate(self).disposed(by: self.disposeBag)
         self.dataSource.canEditRowAtIndexPath = { _, _  in true }
-
-        // add
+        // item selected
         self.tableView.rx.modelSelected(type(of: self.dataSource).Section.Item.self)
             .map(reactor.editReactor)
             .subscribe(onNext: { [weak self] reactor in
@@ -93,7 +95,7 @@ private extension TasksListController {
                 self.present(navigationController, animated: true, completion: nil)
             })
             .disposed(by: self.disposeBag)
-        // add
+        // add button
         self.barButtonAdd.rx.tap
             .map(reactor.addReactor)
             .subscribe(onNext: { [weak self] reactor in
@@ -102,6 +104,11 @@ private extension TasksListController {
                 let navigationController = UINavigationController(rootViewController: viewController)
                 self.present(navigationController, animated: true, completion: nil)
             })
+            .disposed(by: self.disposeBag)
+        // view open
+        self.application.rx.didOpenApp
+            .map { Reactor.Action.checkUserToken }
+            .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
     }
 

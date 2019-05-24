@@ -5,7 +5,7 @@
 import Moya
 
 /**
- * Helper functions
+ * functions
  */
 
 /**
@@ -44,7 +44,7 @@ enum CustomError: Swift.Error {
 }
 
 /**
- * Model Api Errors
+ * Model Network Errors
  */
 
 struct NetworkError {

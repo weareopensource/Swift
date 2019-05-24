@@ -1,4 +1,8 @@
 /**
+ * functions
+ */
+
+/**
  * @desc return stubbed json response mock
  * @param {String} filename
  * @return {Data} file

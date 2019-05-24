@@ -27,7 +27,7 @@ final class AuthSignInController: CoreController, View, Stepper {
         $0.autocapitalizationType = .none
         $0.returnKeyType = .done
         $0.isSecureTextEntry = true
-        $0.text = "khC2jCyrnSScuN4sruEBUZyYEtbkzhHpubEJ2E1"
+        $0.text = "2MW2EVdCP4F2gdmnVrTPxVkCBKCQwCavH5aF"
     }
     let buttonSignin = UIButton().then {
         $0.setTitle("Sign In", for: .normal)
@@ -112,7 +112,9 @@ private extension AuthSignInController {
 
     // MARK: views (View -> View)
 
-    func bindView(_ reactor: AuthSigninReactor) {}
+    func bindView(_ reactor: AuthSigninReactor) {
+
+    }
 
     // MARK: actions (View -> Reactor)
 

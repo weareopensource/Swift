@@ -17,16 +17,21 @@ final class TasksListReactor: Reactor {
 
     // user actions
     enum Action {
+        // Tasks
         case refresh([Tasks])
         case get
         case delete(IndexPath)
+        // User check (only in tab main controller)
+        case checkUserToken
     }
 
     // state changes
     enum Mutation {
+        // Tasks
         case set([Sections])
         case setRefreshing(Bool)
-        case succes
+        // default
+        case success
         case error(CustomError)
     }
 
@@ -94,10 +99,34 @@ final class TasksListReactor: Reactor {
                 .delete(task)
                 .map { result in
                     switch result {
-                    case .success: return .succes
+                    case .success: return .success
                     case let .error(err): return .error(err)
                     }
                 }
+        // check user token when open application
+        case .checkUserToken:
+            log.verbose("♻️ Action -> Mutation : checkUserToken")
+            let status = getTokenStatus()
+            switch status {
+            case .isOk:
+                return .just(.success)
+            case .toDefine:
+                self.provider.preferencesService.isLogged = false
+                return .just(.success)
+            case .toRenew:
+                return self.provider.authService
+                    .token()
+                    .map { result in
+                        switch result {
+                        case let .success(response):
+                            UserDefaults.standard.set(response.tokenExpiresIn, forKey: "CookieExpire")
+                            return .success
+                        case let .error(err):
+                            self.provider.preferencesService.isLogged = false
+                            return .error(err)
+                        }
+                }
+            }
         }
     }
 
@@ -118,7 +147,7 @@ final class TasksListReactor: Reactor {
             log.verbose("♻️ Mutation -> State : error")
             print("YESSSS \(error)")
         // success
-        case .succes:
+        case .success:
             log.verbose("♻️ Mutation -> State : succes")
         }
         return state

@@ -1,6 +1,14 @@
+/**
+ * Dependencies
+ */
+
 import Moya
 import RxMoya
 import UIKit
+
+/**
+ * class
+ */
 
 final class Networking<Target: TargetType>: MoyaProvider<Target> {
     init(plugins: [PluginType] = []) {

@@ -1,8 +1,10 @@
-struct Config {
-    /**
-     * @desc global var for default configuration, development / production
-     */
-    lazy var global: JSON = {
+/**
+ * class
+ */
+
+final class Config {
+
+     let global: JSON = {
         // init development config
         let pathDev = Bundle.main.path(forResource: "development", ofType: "json")!
         let jsonStringDev = try? String(contentsOfFile: pathDev, encoding: String.Encoding.utf8)
@@ -25,4 +27,4 @@ struct Config {
     }()
 }
 
-var config = Config()
+let config = Config().global

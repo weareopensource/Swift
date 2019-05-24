@@ -26,3 +26,17 @@ extension MeResponse: Codable {
     }
 }
 
+/**
+ * Model Token Response
+ */
+
+struct TokenResponse {
+    var user: User
+    var tokenExpiresIn: Int
+}
+extension TokenResponse: Codable {
+    enum TokenResponseCodingKeys: String, CodingKey {
+        case user
+        case tokenExpiresIn
+    }
+}
