@@ -8,12 +8,14 @@ import ReactorKit
  * Reactor
  */
 
-final class AuthSigninReactor: Reactor {
+final class AuthSignUpReactor: Reactor {
 
     // MARK: Constants
 
     // user actions
     enum Action {
+        case updateFirstName(String)
+        case updateLastName(String)
         case updateEmail(String)
         case updatePassword(String)
         case signIn
@@ -22,21 +24,29 @@ final class AuthSigninReactor: Reactor {
 
     // state changes
     enum Mutation {
+        case updateFirstName(String)
+        case updateLastName(String)
         case updateEmail(String)
         case updatePassword(String)
-        case goSignUp
-        case success(String)
+        case goSignIn
+        case dismiss
         case error(CustomError)
     }
 
     // the current view state
     struct State {
+        var firstName: String
+        var lastName: String
         var email: String
         var password: String
+        var isDismissed: Bool
 
         init() {
+            self.firstName = ""
+            self.lastName = ""
             self.email = ""
             self.password = ""
+            self.isDismissed = false
         }
     }
 
@@ -56,6 +66,13 @@ final class AuthSigninReactor: Reactor {
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
+        // update firstName
+        case let .updateFirstName(firstName):
+            return .just(.updateFirstName(firstName))
+            // update password
+        // update Password
+        case let .updateLastName(lastName):
+            return .just(.updateLastName(lastName))
         // update login
         case let .updateEmail(email):
             return .just(.updateEmail(email))
@@ -64,22 +81,22 @@ final class AuthSigninReactor: Reactor {
             return .just(.updatePassword(password))
         // signin
         case .signIn:
-            log.verbose("♻️ Action -> Mutation : signIn(\(self.currentState.email), \(self.currentState.password))")
+            log.verbose("♻️ Action -> Mutation : signIn")
+            return .just(.goSignIn)
+        // signup
+        case .signUp:
+            log.verbose("♻️ Action -> Mutation : signUp(\(self.currentState.firstName), \(self.currentState.lastName), \(self.currentState.email), \(self.currentState.password))")
             return self.provider.authService
-                .signIn(email: self.currentState.email, password: self.currentState.password)
+                .signUp(firstName: self.currentState.firstName, lastName: self.currentState.lastName, email: self.currentState.email, password: self.currentState.password)
                 .map { result in
                     switch result {
                     case let .success(response):
                         UserDefaults.standard.set(response.tokenExpiresIn, forKey: "CookieExpire")
                         self.provider.preferencesService.isLogged = true
-                        return .success("signIn")
+                        return .dismiss
                     case let .error(err): return .error(err)
                     }
-                }
-        // signup
-        case .signUp:
-            log.verbose("♻️ Action -> Mutation : signUp")
-            return .just(.goSignUp)
+            }
         }
     }
 
@@ -88,30 +105,31 @@ final class AuthSigninReactor: Reactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
-        // update login
+        // update firstname
+        case let .updateFirstName(firstName):
+            state.firstName = firstName
+        // update lastname
+        case let .updateLastName(lastName):
+            state.lastName = lastName
+        // update email
         case let .updateEmail(email):
             state.email = email
         // update password
         case let .updatePassword(password):
             state.password = password
         // go Signup
-        case .goSignUp:
-            log.verbose("♻️ Mutation -> State : goSignUp")
-        // success
-        case let .success(success):
-            log.verbose("♻️ Mutation -> State : succes \(success)")
+        case .goSignIn:
+            state.isDismissed = true
+        // dissmiss
+        case .dismiss:
+            log.verbose("♻️ Mutation -> State : dismiss")
+            state.isDismissed = true
         // error
         case let .error(error):
             log.verbose("♻️ Mutation -> State : error")
             print("YESSSS \(error)")
         }
         return state
-    }
-
-    // reactor init
-
-    func signUpReactor() -> AuthSignUpReactor {
-        return AuthSignUpReactor(provider: self.provider)
     }
 
 }
