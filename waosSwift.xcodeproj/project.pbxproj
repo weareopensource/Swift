@@ -56,13 +56,16 @@
 		BF78B5FA22942CBB0057157A /* CoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF78B5F922942CBB0057157A /* CoreModel.swift */; };
 		BF78B5FC22942CCD0057157A /* CoreResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF78B5FB22942CCD0057157A /* CoreResponses.swift */; };
 		BF78B60822954B3F0057157A /* me.json in Resources */ = {isa = PBXBuildFile; fileRef = BF78B60622954B3F0057157A /* me.json */; };
-		BF78B60922954B3F0057157A /* signin.json in Resources */ = {isa = PBXBuildFile; fileRef = BF78B60722954B3F0057157A /* signin.json */; };
 		BF78B6142295713B0057157A /* SplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF78B6132295713B0057157A /* SplashController.swift */; };
 		BF78B616229571460057157A /* SplashFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF78B615229571460057157A /* SplashFlow.swift */; };
 		BF78B618229571550057157A /* SplashReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF78B617229571550057157A /* SplashReactor.swift */; };
 		BF78B61A2295DBF70057157A /* RxAppState.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF78B6192295DBF70057157A /* RxAppState.framework */; };
 		BF78B61C229683A90057157A /* token.json in Resources */ = {isa = PBXBuildFile; fileRef = BF78B61B229683A90057157A /* token.json */; };
 		BF78B61E2296CE7B0057157A /* TokenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF78B61D2296CE7B0057157A /* TokenState.swift */; };
+		BF78B622229949410057157A /* AuthSignupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF78B621229949410057157A /* AuthSignupController.swift */; };
+		BF78B624229949740057157A /* AuthSignupReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF78B623229949740057157A /* AuthSignupReactor.swift */; };
+		BF78B626229964050057157A /* signUp.json in Resources */ = {isa = PBXBuildFile; fileRef = BF78B625229964050057157A /* signUp.json */; };
+		BF78B628229964290057157A /* signIn.json in Resources */ = {isa = PBXBuildFile; fileRef = BF78B627229964290057157A /* signIn.json */; };
 		BF794D3A22671CD8000B19F3 /* TasksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF794D3922671CD8000B19F3 /* TasksModel.swift */; };
 		BF794D3E22672474000B19F3 /* CoreCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF794D3D22672474000B19F3 /* CoreCellController.swift */; };
 		BF794D41226856E6000B19F3 /* Differentiator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF794D40226856E6000B19F3 /* Differentiator.framework */; };
@@ -185,13 +188,16 @@
 		BF78B5F922942CBB0057157A /* CoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreModel.swift; sourceTree = "<group>"; };
 		BF78B5FB22942CCD0057157A /* CoreResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreResponses.swift; sourceTree = "<group>"; };
 		BF78B60622954B3F0057157A /* me.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = me.json; sourceTree = "<group>"; };
-		BF78B60722954B3F0057157A /* signin.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = signin.json; sourceTree = "<group>"; };
 		BF78B6132295713B0057157A /* SplashController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashController.swift; sourceTree = "<group>"; };
 		BF78B615229571460057157A /* SplashFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashFlow.swift; sourceTree = "<group>"; };
 		BF78B617229571550057157A /* SplashReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashReactor.swift; sourceTree = "<group>"; };
 		BF78B6192295DBF70057157A /* RxAppState.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAppState.framework; path = Carthage/Build/iOS/RxAppState.framework; sourceTree = "<group>"; };
 		BF78B61B229683A90057157A /* token.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = token.json; sourceTree = "<group>"; };
 		BF78B61D2296CE7B0057157A /* TokenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenState.swift; sourceTree = "<group>"; };
+		BF78B621229949410057157A /* AuthSignupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSignupController.swift; sourceTree = "<group>"; };
+		BF78B623229949740057157A /* AuthSignupReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSignupReactor.swift; sourceTree = "<group>"; };
+		BF78B625229964050057157A /* signUp.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = signUp.json; sourceTree = "<group>"; };
+		BF78B627229964290057157A /* signIn.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = signIn.json; sourceTree = "<group>"; };
 		BF794D3922671CD8000B19F3 /* TasksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksModel.swift; sourceTree = "<group>"; };
 		BF794D3D22672474000B19F3 /* CoreCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreCellController.swift; sourceTree = "<group>"; };
 		BF794D40226856E6000B19F3 /* Differentiator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Differentiator.framework; path = Carthage/Build/iOS/Differentiator.framework; sourceTree = "<group>"; };
@@ -321,6 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				BF058D762282BCAC00E2A077 /* AuthSigninController.swift */,
+				BF78B621229949410057157A /* AuthSignupController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -337,6 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				BF058D7A2282BCC500E2A077 /* AuthSigninReactor.swift */,
+				BF78B623229949740057157A /* AuthSignupReactor.swift */,
 			);
 			path = reactors;
 			sourceTree = "<group>";
@@ -784,8 +792,9 @@
 		BF9A368122900F5500EE2AB8 /* stubbed */ = {
 			isa = PBXGroup;
 			children = (
+				BF78B625229964050057157A /* signUp.json */,
+				BF78B627229964290057157A /* signIn.json */,
 				BF78B60622954B3F0057157A /* me.json */,
-				BF78B60722954B3F0057157A /* signin.json */,
 				BF78B61B229683A90057157A /* token.json */,
 			);
 			path = stubbed;
@@ -925,12 +934,13 @@
 				BF4A2FAB225CA6DB0001B4CE /* LICENSE.md in Resources */,
 				BF4A2FA0225CA6DB0001B4CE /* KNOWLEDGES.md in Resources */,
 				BF78B60822954B3F0057157A /* me.json in Resources */,
+				BF78B628229964290057157A /* signIn.json in Resources */,
 				BF9A3669228D5CDA00EE2AB8 /* delete.json in Resources */,
 				BF4A2FA9225CA6DB0001B4CE /* Readme.md in Resources */,
+				BF78B626229964050057157A /* signUp.json in Resources */,
 				BF9A366E228D5E7B00EE2AB8 /* update.json in Resources */,
 				BF9A366B228D5CDA00EE2AB8 /* create.json in Resources */,
 				BF78B61C229683A90057157A /* token.json in Resources */,
-				BF78B60922954B3F0057157A /* signin.json in Resources */,
 				BF425490221EBB9800395AE6 /* LaunchScreen.storyboard in Resources */,
 				BF0CD6B622563CC200844F9A /* Localizable.strings in Resources */,
 				BF4A2F9E225CA6DB0001B4CE /* CHANGELOG.md in Resources */,
@@ -1053,6 +1063,7 @@
 				BF4A2F6A225B7C200001B4CE /* OnBoardingController.swift in Sources */,
 				BFE4BB47226CC7BD00739735 /* TasksViewReactor.swift in Sources */,
 				BF9A367D228EE72700EE2AB8 /* Errors.swift in Sources */,
+				BF78B624229949740057157A /* AuthSignupReactor.swift in Sources */,
 				BF8C67332280222A0012B5A8 /* UITableView+RxReusableKit.swift in Sources */,
 				BF425484221EBB9700395AE6 /* AppDelegate.swift in Sources */,
 				BFDE2600227B053D008CBD30 /* UIViewController+Rx.swift in Sources */,
@@ -1077,6 +1088,7 @@
 				BF8C672A2280176B0012B5A8 /* ReusableKit.swift in Sources */,
 				BF794D51226880FB000B19F3 /* TasksService.swift in Sources */,
 				BF78B5F32293CD680057157A /* ObservableType+Extras.swift in Sources */,
+				BF78B622229949410057157A /* AuthSignupController.swift in Sources */,
 				BF9A368322900F7200EE2AB8 /* AuthApi.swift in Sources */,
 				BF058D772282BCAC00E2A077 /* AuthSigninController.swift in Sources */,
 				BF9A368822902DE200EE2AB8 /* AuthResponses.swift in Sources */,

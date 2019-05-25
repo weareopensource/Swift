@@ -2,12 +2,12 @@
  * Model Signin Response
  */
 
-struct SignInResponse {
+struct SignResponse {
     var user: User
     var tokenExpiresIn: Int
 }
-extension SignInResponse: Codable {
-    enum SignInResponseCodingKeys: String, CodingKey {
+extension SignResponse: Codable {
+    enum SignResponseCodingKeys: String, CodingKey {
         case user
         case tokenExpiresIn
     }

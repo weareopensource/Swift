@@ -160,11 +160,6 @@ final class TasksListReactor: Reactor {
 
     // reactor init
 
-    func viewReactor(_ taskCellReactor: TasksCellReactor) -> TasksViewReactor {
-        let task = taskCellReactor.currentState
-        return TasksViewReactor(provider: self.provider, mode: .view(task))
-    }
-
     func addReactor() -> TasksViewReactor {
         return TasksViewReactor(provider: self.provider, mode: .add)
     }

@@ -3,7 +3,8 @@
  */
 
 protocol AuthServiceType {
-    func signIn(email: String, password: String) -> Observable<MyResult<SignInResponse, CustomError>>
+    func signUp(firstName: String, lastName: String, email: String, password: String) -> Observable<MyResult<SignResponse, CustomError>>
+    func signIn(email: String, password: String) -> Observable<MyResult<SignResponse, CustomError>>
     func me() -> Observable<MyResult<MeResponse, CustomError>>
     func token() -> Observable<MyResult<TokenResponse, CustomError>>
 }
@@ -16,11 +17,25 @@ final class AuthService: CoreService, AuthServiceType {
         .startWith(nil)
         .share(replay: 1)
 
-    func signIn(email: String, password: String) -> Observable<MyResult<SignInResponse, CustomError>> {
+    func signUp(firstName: String, lastName: String, email: String, password: String) -> Observable<MyResult<SignResponse, CustomError>> {
         log.verbose("🔌 service : signIn")
         return self.networking
-            .request(.signin(email: email, password: password))
-            .map(SignInResponse.self)
+            .request(.signUp(firstName: firstName, lastName: lastName, email: email, password: password))
+            .map(SignResponse.self)
+            .map { response in
+                self.userSubject.onNext(response.user)
+                return response
+            }
+            .asObservable()
+            .map(MyResult.success)
+            .catchError { err in .just(.error(getNetworkError(err)))}
+    }
+
+    func signIn(email: String, password: String) -> Observable<MyResult<SignResponse, CustomError>> {
+        log.verbose("🔌 service : signIn")
+        return self.networking
+            .request(.signIn(email: email, password: password))
+            .map(SignResponse.self)
             .map { response in
                 self.userSubject.onNext(response.user)
                 return response
