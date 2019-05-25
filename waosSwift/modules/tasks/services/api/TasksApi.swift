@@ -20,23 +20,22 @@ enum TasksApi {
 extension TasksApi: TargetType {
 
     public var baseURL: URL {
-        let ApiProtocol = config["api"]["protocol"].string ?? "http"
-        let ApiHost = config["api"]["host"].string ?? "localhost"
-        let ApiPort = config["api"]["port"].string ?? "3000"
-        let ApiBasePath = config["api"]["endPoints"]["basePath"].string ?? "api"
-
-        guard let url = URL(string: ApiProtocol + "://" + ApiHost + ":" + ApiPort + "/" + ApiBasePath) else { fatalError("baseUrl could not be configured." ) }
+        let apiProtocol = config["api"]["protocol"].string ?? "http"
+        let apiHost = config["api"]["host"].string ?? "localhost"
+        let apiPort = config["api"]["port"].string ?? "3000"
+        let apiBasePath = config["api"]["endPoints"]["basePath"].string ?? "api"
+        guard let url = URL(string: "\(apiProtocol)://\(apiHost):\(apiPort)/\(apiBasePath)") else { fatalError("baseUrl could not be configured." ) }
         return url
     }
 
     var path: String {
-        let ApiPathTask = config["api"]["endPoints"]["tasks"].string ?? "tasks"
+        let apiPathTasks = config["api"]["endPoints"]["tasks"].string ?? "tasks"
 
         switch self {
         case .list, .create:
-            return "/" + ApiPathTask
+            return "/" + apiPathTasks
         case .get(let task), .update(let task), .delete(let task):
-            return "/" + ApiPathTask + "/\(task.id)"
+            return "/" + apiPathTasks + "/" + task.id
         }
     }
 
