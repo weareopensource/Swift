@@ -27,6 +27,7 @@ final class TasksListController: CoreController, View {
         $0.rowHeight = 75
     }
     let barButtonAdd = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
+    let barButtonLogout = UIBarButtonItem(title: "Logout", style: .plain, target: nil, action: nil)
     let refreshControl = UIRefreshControl()
 
     // MARK: Properties
@@ -45,6 +46,7 @@ final class TasksListController: CoreController, View {
     init(reactor: TasksListReactor) {
         super.init()
         self.navigationItem.rightBarButtonItem = self.barButtonAdd
+        self.navigationItem.leftBarButtonItem = self.barButtonLogout
         self.reactor = reactor
     }
 
@@ -128,6 +130,11 @@ private extension TasksListController {
         // delete
         self.tableView.rx.itemDeleted
             .map(Reactor.Action.delete)
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        // logout
+        self.barButtonLogout.rx.tap
+            .map { Reactor.Action.logout }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
     }

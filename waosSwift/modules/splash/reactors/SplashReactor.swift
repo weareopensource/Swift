@@ -19,7 +19,7 @@ final class SplashReactor: Reactor {
 
     // state changes
     enum Mutation {
-        case success
+        case success(String)
         case error(CustomError)
     }
 
@@ -51,10 +51,10 @@ final class SplashReactor: Reactor {
             switch status {
             case .isOk:
                 self.provider.preferencesService.isLogged = true
-                return .just(.success)
+                return .just(.success("token ok"))
             case .toDefine:
                 self.provider.preferencesService.isLogged = false
-                return .just(.success) // No Token
+                return .just(.success("token to define"))
             case .toRenew:
                 // if token expire time is more than X ms
                 return self.provider.authService
@@ -64,7 +64,7 @@ final class SplashReactor: Reactor {
                         switch result {
                         case let .success(response):
                             UserDefaults.standard.set(response.tokenExpiresIn, forKey: "CookieExpire")
-                            return .success
+                            return .success("token renewed")
                         case let .error(err):
                             self.provider.preferencesService.isLogged = false
                             return .error(err)
@@ -80,8 +80,8 @@ final class SplashReactor: Reactor {
         var state = state
         switch mutation {
         // success
-        case .success:
-            log.verbose("♻️ Mutation -> State : succes")
+        case let .success(success):
+            log.verbose("♻️ Mutation -> State : succes \(success)")
         // error
         case let .error(error):
             log.verbose("♻️ Mutation -> State : error")
