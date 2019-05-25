@@ -22,6 +22,7 @@ final class TasksListReactor: Reactor {
         case get
         case delete(IndexPath)
         // User check (only in tab main controller)
+        case logout
         case checkUserToken
     }
 
@@ -31,7 +32,7 @@ final class TasksListReactor: Reactor {
         case set([Sections])
         case setRefreshing(Bool)
         // default
-        case success
+        case success(String)
         case error(CustomError)
     }
 
@@ -99,20 +100,24 @@ final class TasksListReactor: Reactor {
                 .delete(task)
                 .map { result in
                     switch result {
-                    case .success: return .success
+                    case .success: return .success("delete")
                     case let .error(err): return .error(err)
                     }
                 }
+        // case logout
+        case .logout:
+            self.provider.preferencesService.isLogged = false
+            return .just(.success("logout"))
         // check user token when open application
         case .checkUserToken:
             log.verbose("♻️ Action -> Mutation : checkUserToken")
             let status = getTokenStatus()
             switch status {
             case .isOk:
-                return .just(.success)
+                return .just(.success("token ok"))
             case .toDefine:
                 self.provider.preferencesService.isLogged = false
-                return .just(.success)
+                return .just(.success("token to define"))
             case .toRenew:
                 return self.provider.authService
                     .token()
@@ -120,7 +125,7 @@ final class TasksListReactor: Reactor {
                         switch result {
                         case let .success(response):
                             UserDefaults.standard.set(response.tokenExpiresIn, forKey: "CookieExpire")
-                            return .success
+                            return .success("token renewed")
                         case let .error(err):
                             self.provider.preferencesService.isLogged = false
                             return .error(err)
@@ -142,13 +147,13 @@ final class TasksListReactor: Reactor {
         // refreshing
         case let .setRefreshing(isRefreshing):
             state.isRefreshing = isRefreshing
+        // success
+        case let .success(success):
+            log.verbose("♻️ Mutation -> State : succes \(success)")
         // error
         case let .error(error):
             log.verbose("♻️ Mutation -> State : error")
             print("YESSSS \(error)")
-        // success
-        case .success:
-            log.verbose("♻️ Mutation -> State : succes")
         }
         return state
     }
