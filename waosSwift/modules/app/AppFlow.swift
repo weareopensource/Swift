@@ -24,9 +24,7 @@ final class AppFlow: Flow {
         switch step {
         case .onboardingIsRequired:
             return navigationToOnboardingScreen()
-        case .onboardingIsComplete, .splashIsRequired:
-            return navigationToSplashScreen()
-        case .splashIsComplete, .authIsRequired:
+        case .onboardingIsComplete, .authIsRequired:
             return navigationToAuthScreen()
         case .authIsComplete, .dashboardIsRequired:
             return navigationToDashboardScreen()
@@ -46,16 +44,16 @@ final class AppFlow: Flow {
         return .one(flowContributor: .contribute(withNextPresentable: onboardingFlow, withNextStepper: OneStepper(withSingleStep: Steps.onboardingIsRequired)))
     }
 
-    private func navigationToSplashScreen() -> FlowContributors {
-        if let rootViewController = self.rootWindow.rootViewController {
-            rootViewController.dismiss(animated: false)
-        }
-        let splashFlow = SplashFlow(withServices: self.services)
-        Flows.whenReady(flow1: splashFlow) { [unowned self] (root) in
-            self.rootWindow.rootViewController = root
-        }
-        return .one(flowContributor: .contribute(withNextPresentable: splashFlow, withNextStepper: OneStepper(withSingleStep: Steps.splashIsRequired)))
-    }
+//    private func navigationToSplashScreen() -> FlowContributors {
+//        if let rootViewController = self.rootWindow.rootViewController {
+//            rootViewController.dismiss(animated: false)
+//        }
+//        let splashFlow = SplashFlow(withServices: self.services)
+//        Flows.whenReady(flow1: splashFlow) { [unowned self] (root) in
+//            self.rootWindow.rootViewController = root
+//        }
+//        return .one(flowContributor: .contribute(withNextPresentable: splashFlow, withNextStepper: OneStepper(withSingleStep: Steps.splashIsRequired)))
+//    }
 
     private func navigationToAuthScreen() -> FlowContributors {
         if let rootViewController = self.rootWindow.rootViewController {
@@ -95,18 +93,18 @@ class AppStepper: Stepper {
     func readyToEmitSteps() {
         self.servicesProvider
             .preferencesService.rx
-            .onBoarded
-            .map { $0 ? Steps.onboardingIsComplete : Steps.onboardingIsRequired }
+            .status
+            .map { result in
+                if(result.onBoarded && result.isLogged) {
+                    return Steps.authIsComplete
+                } else if ( result.onBoarded && !result.isLogged) {
+                    return Steps.onboardingIsComplete
+                } else {
+                    return Steps.onboardingIsRequired
+                }
+            }
             .bind(to: self.steps)
             .disposed(by: self.disposeBag)
             // .debug()
-
-        self.servicesProvider
-            .preferencesService.rx
-            .isLogged
-            .map { $0 ? Steps.authIsComplete : Steps.authIsRequired }
-            .bind(to: self.steps)
-            .disposed(by: self.disposeBag)
-        // .debug()
     }
 }

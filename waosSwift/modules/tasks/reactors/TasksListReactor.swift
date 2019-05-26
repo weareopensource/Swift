@@ -33,7 +33,7 @@ final class TasksListReactor: Reactor {
         case setRefreshing(Bool)
         // default
         case success(String)
-        case error(CustomError)
+        case error(NetworkError)
     }
 
     // the current view state
@@ -152,8 +152,10 @@ final class TasksListReactor: Reactor {
             log.verbose("♻️ Mutation -> State : succes \(success)")
         // error
         case let .error(error):
-            log.verbose("♻️ Mutation -> State : error")
-            print("YESSSS \(error)")
+            log.verbose("♻️ Mutation -> State : error \(error)")
+            if let code = error.code, code == 401 {
+                self.provider.preferencesService.isLogged = false
+            }
         }
         return state
     }

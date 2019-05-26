@@ -28,7 +28,7 @@ final class TasksViewReactor: Reactor {
     enum Mutation {
         case updateTitle(String)
         case dismiss
-        case error(CustomError)
+        case error(NetworkError)
     }
 
     // the current view state
@@ -105,17 +105,19 @@ final class TasksViewReactor: Reactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
+        // update title
         case let .updateTitle(title):
             state.task.title = title
-            return state
+        // dissmiss
         case .dismiss:
             state.isDismissed = true
-            return state
         // error
         case let .error(error):
-            log.verbose("♻️ Mutation -> State : error")
-            print(error)
-            return state
+            log.verbose("♻️ Mutation -> State : error \(error)")
+            if let code = error.code, code == 401 {
+                self.provider.preferencesService.isLogged = false
+            }
         }
+        return state
     }
 }
