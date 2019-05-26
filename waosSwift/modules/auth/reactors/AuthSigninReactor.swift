@@ -26,7 +26,7 @@ final class AuthSigninReactor: Reactor {
         case updatePassword(String)
         case goSignUp
         case success(String)
-        case error(CustomError)
+        case error(NetworkError)
     }
 
     // the current view state
@@ -102,8 +102,10 @@ final class AuthSigninReactor: Reactor {
             log.verbose("♻️ Mutation -> State : succes \(success)")
         // error
         case let .error(error):
-            log.verbose("♻️ Mutation -> State : error")
-            print("YESSSS \(error)")
+            log.verbose("♻️ Mutation -> State : error \(error)")
+            if let code = error.code, code == 401 {
+                self.provider.preferencesService.isLogged = false
+            }
         }
         return state
     }

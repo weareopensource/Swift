@@ -5,10 +5,10 @@
 protocol TasksServiceType {
     var tasks: Observable<[Tasks]?> { get }
 
-    func list() -> Observable<MyResult<TasksResponse, CustomError>>
-    func create(_ task: Tasks) -> Observable<MyResult<TaskResponse, CustomError>>
-    func save(_ task: Tasks) -> Observable<MyResult<TaskResponse, CustomError>>
-    func delete(_ task: Tasks) -> Observable<MyResult<DeleteResponse, CustomError>>
+    func list() -> Observable<MyResult<TasksResponse, NetworkError>>
+    func create(_ task: Tasks) -> Observable<MyResult<TaskResponse, NetworkError>>
+    func save(_ task: Tasks) -> Observable<MyResult<TaskResponse, NetworkError>>
+    func delete(_ task: Tasks) -> Observable<MyResult<DeleteResponse, NetworkError>>
 }
 
 final class TasksService: CoreService, TasksServiceType {
@@ -22,7 +22,7 @@ final class TasksService: CoreService, TasksServiceType {
         .startWith(nil)
         .share(replay: 1)
 
-    func list() -> Observable<MyResult<TasksResponse, CustomError>> {
+    func list() -> Observable<MyResult<TasksResponse, NetworkError>> {
         log.verbose("🔌 service : get")
         return self.networking
             .request(.list)
@@ -36,7 +36,7 @@ final class TasksService: CoreService, TasksServiceType {
             .catchError { err in .just(.error(getNetworkError(err)))}
     }
 
-    func create(_ task: Tasks) -> Observable<MyResult<TaskResponse, CustomError>> {
+    func create(_ task: Tasks) -> Observable<MyResult<TaskResponse, NetworkError>> {
         log.verbose("🔌 service : create")
         return self.networking
             .request(.create(task))
@@ -51,7 +51,7 @@ final class TasksService: CoreService, TasksServiceType {
             .catchError { err in .just(.error(getNetworkError(err)))}
     }
 
-    func save(_ task: Tasks) -> Observable<MyResult<TaskResponse, CustomError>> {
+    func save(_ task: Tasks) -> Observable<MyResult<TaskResponse, NetworkError>> {
         log.verbose("🔌 service : save")
         return self.networking
             .request(.update(task))
@@ -68,7 +68,7 @@ final class TasksService: CoreService, TasksServiceType {
             .catchError { err in .just(.error(getNetworkError(err)))}
     }
 
-    func delete(_ task: Tasks) -> Observable<MyResult<DeleteResponse, CustomError>> {
+    func delete(_ task: Tasks) -> Observable<MyResult<DeleteResponse, NetworkError>> {
         log.verbose("🔌 service : delete")
         return self.networking
             .request(.delete(task))

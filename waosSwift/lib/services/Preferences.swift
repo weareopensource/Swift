@@ -1,10 +1,26 @@
 /**
+ * Struct
+ */
+
+struct Status {
+    var onBoarded: Bool
+    var isLogged: Bool
+
+    init(onBoarded: Bool, isLogged: Bool) {
+        self.onBoarded = onBoarded
+        self.isLogged = isLogged
+    }
+}
+
+/**
  * protocol
  */
 
 protocol PreferencesServiceType {
     var onBoarded: Bool { get set }
     var isLogged: Bool { get set }
+    // global
+    var status: Status { get }
 }
 
 /**
@@ -28,6 +44,12 @@ class PreferencesService: PreferencesServiceType {
             UserDefaults.standard[#function] = newValue
         }
     }
+    // global
+    var status: Status {
+        get {
+            return Status(onBoarded: onBoarded, isLogged: isLogged)
+        }
+    }
 }
 
 /**
@@ -47,5 +69,13 @@ extension Reactive where Base: PreferencesService {
             .rx
             .observe(Bool.self, #function)
             .map { $0 ?? false }
+    }
+    var status: Observable<Status> {
+        return  Observable.combineLatest(
+            onBoarded, isLogged,
+            resultSelector: { onBoarded, isLogged in
+                return Status(onBoarded: onBoarded, isLogged: isLogged)
+            }
+        )
     }
 }

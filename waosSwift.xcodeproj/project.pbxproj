@@ -56,9 +56,6 @@
 		BF78B5FA22942CBB0057157A /* CoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF78B5F922942CBB0057157A /* CoreModel.swift */; };
 		BF78B5FC22942CCD0057157A /* CoreResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF78B5FB22942CCD0057157A /* CoreResponses.swift */; };
 		BF78B60822954B3F0057157A /* me.json in Resources */ = {isa = PBXBuildFile; fileRef = BF78B60622954B3F0057157A /* me.json */; };
-		BF78B6142295713B0057157A /* SplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF78B6132295713B0057157A /* SplashController.swift */; };
-		BF78B616229571460057157A /* SplashFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF78B615229571460057157A /* SplashFlow.swift */; };
-		BF78B618229571550057157A /* SplashReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF78B617229571550057157A /* SplashReactor.swift */; };
 		BF78B61A2295DBF70057157A /* RxAppState.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF78B6192295DBF70057157A /* RxAppState.framework */; };
 		BF78B61C229683A90057157A /* token.json in Resources */ = {isa = PBXBuildFile; fileRef = BF78B61B229683A90057157A /* token.json */; };
 		BF78B61E2296CE7B0057157A /* TokenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF78B61D2296CE7B0057157A /* TokenState.swift */; };
@@ -188,9 +185,6 @@
 		BF78B5F922942CBB0057157A /* CoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreModel.swift; sourceTree = "<group>"; };
 		BF78B5FB22942CCD0057157A /* CoreResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreResponses.swift; sourceTree = "<group>"; };
 		BF78B60622954B3F0057157A /* me.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = me.json; sourceTree = "<group>"; };
-		BF78B6132295713B0057157A /* SplashController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashController.swift; sourceTree = "<group>"; };
-		BF78B615229571460057157A /* SplashFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashFlow.swift; sourceTree = "<group>"; };
-		BF78B617229571550057157A /* SplashReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashReactor.swift; sourceTree = "<group>"; };
 		BF78B6192295DBF70057157A /* RxAppState.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxAppState.framework; path = Carthage/Build/iOS/RxAppState.framework; sourceTree = "<group>"; };
 		BF78B61B229683A90057157A /* token.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = token.json; sourceTree = "<group>"; };
 		BF78B61D2296CE7B0057157A /* TokenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenState.swift; sourceTree = "<group>"; };
@@ -488,7 +482,6 @@
 				BF4A2F88225C9AFF0001B4CE /* app */,
 				BF4A2F4F225B7C200001B4CE /* core */,
 				BF4A2F5C225B7C200001B4CE /* onBoarding */,
-				BF78B60E22956D940057157A /* splash */,
 				BF058D712282BC5300E2A077 /* auth */,
 				BF4A2F77225BB65E0001B4CE /* tasks */,
 				BF4A2F78225BB6690001B4CE /* secondController */,
@@ -609,40 +602,6 @@
 				BF8C6728228016070012B5A8 /* ReusableKit */,
 			);
 			path = Libs;
-			sourceTree = "<group>";
-		};
-		BF78B60E22956D940057157A /* splash */ = {
-			isa = PBXGroup;
-			children = (
-				BF78B60F22956EEE0057157A /* controllers */,
-				BF78B61022956EF30057157A /* flow */,
-				BF78B612229571100057157A /* reactors */,
-			);
-			path = splash;
-			sourceTree = "<group>";
-		};
-		BF78B60F22956EEE0057157A /* controllers */ = {
-			isa = PBXGroup;
-			children = (
-				BF78B6132295713B0057157A /* SplashController.swift */,
-			);
-			path = controllers;
-			sourceTree = "<group>";
-		};
-		BF78B61022956EF30057157A /* flow */ = {
-			isa = PBXGroup;
-			children = (
-				BF78B615229571460057157A /* SplashFlow.swift */,
-			);
-			path = flow;
-			sourceTree = "<group>";
-		};
-		BF78B612229571100057157A /* reactors */ = {
-			isa = PBXGroup;
-			children = (
-				BF78B617229571550057157A /* SplashReactor.swift */,
-			);
-			path = reactors;
 			sourceTree = "<group>";
 		};
 		BF794D432268722B000B19F3 /* controllers */ = {
@@ -1048,7 +1007,6 @@
 			files = (
 				BFDE25FE227B052D008CBD30 /* NSViewController+Rx.swift in Sources */,
 				BF4A2F7E225BB9270001B4CE /* TasksListReactor.swift in Sources */,
-				BF78B616229571460057157A /* SplashFlow.swift in Sources */,
 				BF058D7B2282BCC500E2A077 /* AuthSigninReactor.swift in Sources */,
 				BF9A3679228EB0A900EE2AB8 /* Networking.swift in Sources */,
 				BF4A2F6B225B7C200001B4CE /* OnBoardingReactor.swift in Sources */,
@@ -1076,7 +1034,6 @@
 				BF4A2F80225BB9360001B4CE /* SecondReactor.swift in Sources */,
 				BFDE2602227B17D4008CBD30 /* AppServicesProvider.swift in Sources */,
 				BF8C6731228022140012B5A8 /* UICollectionView+RxReusableKit.swift in Sources */,
-				BF78B6142295713B0057157A /* SplashController.swift in Sources */,
 				BF0CD6AB22563C9800844F9A /* Strings.swift in Sources */,
 				BF8C6723227C3E1E0012B5A8 /* TasksCellReactor.swift in Sources */,
 				BF4A2F87225C8F160001B4CE /* UILocalizations.swift in Sources */,
@@ -1099,7 +1056,6 @@
 				BF4A2F45225B751F0001B4CE /* AppFlow.swift in Sources */,
 				BF4A2FAE2260F0040001B4CE /* Logger.swift in Sources */,
 				BF78B61E2296CE7B0057157A /* TokenState.swift in Sources */,
-				BF78B618229571550057157A /* SplashReactor.swift in Sources */,
 				BF4A2F74225BB4B90001B4CE /* AppSteps.swift in Sources */,
 				BF9A3670228D5F2700EE2AB8 /* Stubbed.swift in Sources */,
 				BF9A3663228C3F2500EE2AB8 /* TasksApi.swift in Sources */,
