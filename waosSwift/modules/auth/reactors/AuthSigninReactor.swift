@@ -103,7 +103,7 @@ final class AuthSigninReactor: Reactor {
         // error
         case let .error(error):
             log.verbose("♻️ Mutation -> State : error \(error)")
-            if let code = error.code, code == 401 {
+            if error.code == 401 {
                 self.provider.preferencesService.isLogged = false
             }
         }
