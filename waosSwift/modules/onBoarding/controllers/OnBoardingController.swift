@@ -15,6 +15,7 @@ final class OnboardingController: CoreController, View, Stepper {
 
     let labelIntro = UILabel().then {
         $0.numberOfLines = 4
+        $0.textAlignment = .center
     }
     let completeButton = UIButton().then {
         $0.setTitle(L10n.onBoardingValidation, for: .normal)

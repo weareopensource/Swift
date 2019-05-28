@@ -40,6 +40,7 @@ final class AuthSignUpReactor: Reactor {
         var email: String
         var password: String
         var isDismissed: Bool
+        var error: DiplayError
 
         init() {
             self.firstName = ""
@@ -47,6 +48,7 @@ final class AuthSignUpReactor: Reactor {
             self.email = ""
             self.password = ""
             self.isDismissed = false
+            self.error = DiplayError(title: "", description: "")
         }
     }
 
@@ -129,6 +131,9 @@ final class AuthSignUpReactor: Reactor {
             log.verbose("♻️ Mutation -> State : error \(error)")
             if error.code == 401 {
                 self.provider.preferencesService.isLogged = false
+            } else {
+                let description = error.description ?? "Unknown error"
+                state.error = DiplayError(title: error.message, description: description.replacingOccurrences(of: ".", with: ".\n"))
             }
         }
         return state

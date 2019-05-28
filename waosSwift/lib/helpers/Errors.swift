@@ -30,7 +30,7 @@ func getNetworkError(_ error: Error, file: StaticString = #file, function: Stati
             return networkError
         }
     } else {
-        let networkError = NetworkError(code: 0, message: "unknow", type: "MoyaError")
+        let networkError = NetworkError(code: 0, message: "unknow", description: "Oops service unavailable, please try again in few minutes.", type: "NetworkError")
         log.error("🌎 Error -> \(networkError.type ?? "unknow") : \(networkError.message)", file: file, function: function, line: line)
         return networkError
     }
@@ -81,5 +81,15 @@ extension NetworkError: Decodable {
         description = try container.decode(String.self, forKey: .description)
         type = try container.decode(String.self, forKey: .type)
         error = try container.decode(String.self, forKey: .error)
+    }
+}
+
+struct DiplayError: Error {
+    let title: String
+    let description: String
+
+    init(title: String, description: String) {
+        self.title = title
+        self.description = description
     }
 }
