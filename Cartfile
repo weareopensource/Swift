@@ -10,3 +10,4 @@ github "SnapKit/SnapKit" ~> 5.0.0
 github "Moya/Moya" ~> 13.0
 github "pixeldock/RxAppState"
 github "kishikawakatsumi/KeychainAccess"
+github "devxoul/Toaster"
