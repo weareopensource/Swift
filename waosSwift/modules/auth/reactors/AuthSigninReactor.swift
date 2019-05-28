@@ -33,10 +33,12 @@ final class AuthSigninReactor: Reactor {
     struct State {
         var email: String
         var password: String
+        var error: DiplayError
 
         init() {
             self.email = ""
             self.password = ""
+            self.error = DiplayError(title: "", description: "")
         }
     }
 
@@ -104,7 +106,10 @@ final class AuthSigninReactor: Reactor {
         case let .error(error):
             log.verbose("♻️ Mutation -> State : error \(error)")
             if error.code == 401 {
-                self.provider.preferencesService.isLogged = false
+                state.error = DiplayError(title: "Unauthorized", description: "Oups, wrong email or password.")
+            } else {
+                let description = error.description ?? "Unknown error"
+                state.error = DiplayError(title: error.message, description: description.replacingOccurrences(of: ".", with: ".\n"))
             }
         }
         return state

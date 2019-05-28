@@ -52,6 +52,11 @@ final class AuthSignUpController: CoreController, View, Stepper {
         $0.backgroundColor = UIColor.gray
         $0.tintColor = UIColor.gray
     }
+    let labelErrors = UILabel().then {
+        $0.numberOfLines = 5
+        $0.textAlignment = .center
+        $0.textColor = UIColor.red
+    }
 
     // MARK: Properties
 
@@ -79,6 +84,7 @@ final class AuthSignUpController: CoreController, View, Stepper {
         self.view.addSubview(self.inputPassword)
         self.view.addSubview(self.buttonSignin)
         self.view.addSubview(self.buttonSignup)
+        self.view.addSubview(self.labelErrors)
     }
 
     override func setupConstraints() {
@@ -118,6 +124,12 @@ final class AuthSignUpController: CoreController, View, Stepper {
             make.centerY.equalTo(self.view).offset(75)
             make.centerX.equalTo(self.view).offset(-80)
         }
+        labelErrors.snp.makeConstraints {  (make) -> Void in
+            make.left.equalTo(25)
+            make.right.equalTo(-25)
+            make.centerX.equalTo(self.view)
+            make.centerY.equalTo(self.view).offset(175)
+        }
     }
 
     // MARK: Binding
@@ -143,28 +155,15 @@ private extension AuthSignUpController {
     // MARK: actions (View -> Reactor)
 
     func bindAction(_ reactor: AuthSignUpReactor) {
+        // button signin
         buttonSignin.rx.tap
             .map { _ in Reactor.Action.signIn }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
-
+        // button signup
         buttonSignup.rx.tap
             .map { _ in Reactor.Action.signUp }
             .bind(to: reactor.action)
-            .disposed(by: self.disposeBag)
-    }
-
-    // MARK: states (Reactor -> View)
-
-    func bindState(_ reactor: AuthSignUpReactor) {
-        // dissmissed
-        reactor.state
-            .map { $0.isDismissed }
-            .distinctUntilChanged()
-            .filter { $0 }
-            .subscribe(onNext: { [weak self] _ in
-                self?.dismiss(animated: true, completion: nil)
-            })
             .disposed(by: self.disposeBag)
         // firstname
         self.inputFirstName.rx.text
@@ -189,6 +188,26 @@ private extension AuthSignUpController {
             .filter {($0?.count)! > 0}
             .map {Reactor.Action.updatePassword($0!)}
             .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+    }
+
+    // MARK: states (Reactor -> View)
+
+    func bindState(_ reactor: AuthSignUpReactor) {
+        // dissmissed
+        reactor.state
+            .map { $0.isDismissed }
+            .distinctUntilChanged()
+            .filter { $0 }
+            .subscribe(onNext: { [weak self] _ in
+                self?.dismiss(animated: true, completion: nil)
+            })
+            .disposed(by: self.disposeBag)
+        // errors
+        reactor.state
+            .map { $0.error.description }
+            .distinctUntilChanged()
+            .bind(to: self.labelErrors.rx.text)
             .disposed(by: self.disposeBag)
     }
 }
