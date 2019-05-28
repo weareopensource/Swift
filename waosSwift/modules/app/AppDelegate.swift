@@ -1,6 +1,7 @@
 import UIKit
 import ReactorKit
 import RxSwift
+import Toaster
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -30,6 +31,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         coordinator.coordinate(flow: self.appFlow, with: AppStepper(withServices: self.servicesProvider))
 
+        ToastView.appearance().backgroundColor = UIColor.orange.withAlphaComponent(0.75)
+        ToastView.appearance().textColor = UIColor.white
+        ToastView.appearance().font = UIFont.init(name: "Arial", size: 16)
+        ToastView.appearance().textInsets = UIEdgeInsets(top: 16.0, left: 16.0, bottom: 0, right: 16.0)
+        ToastView.appearance().cornerRadius = 5
+        ToastView.appearance().bottomOffsetPortrait = 100
+
         return true
     }
+
 }

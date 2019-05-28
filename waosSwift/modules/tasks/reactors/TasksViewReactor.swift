@@ -3,6 +3,7 @@
  */
 
 import ReactorKit
+import Toaster
 
 enum Mode {
     case add
@@ -116,6 +117,8 @@ final class TasksViewReactor: Reactor {
             log.verbose("♻️ Mutation -> State : error \(error)")
             if error.code == 401 {
                 self.provider.preferencesService.isLogged = false
+            } else {
+                Toast(text: (error.description ?? "Unknown error").replacingOccurrences(of: ".", with: ".\n"), delay: 0, duration: Delay.long).show()
             }
         }
         return state

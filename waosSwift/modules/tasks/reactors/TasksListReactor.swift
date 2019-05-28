@@ -4,6 +4,7 @@
 
 import ReactorKit
 import Differentiator
+import Toaster
 
 /**
  * Reactor
@@ -38,6 +39,7 @@ final class TasksListReactor: Reactor {
 
     // the current view state
     struct State {
+        // Tasks
         var isRefreshing: Bool
         var tasks: [Sections]
 
@@ -155,6 +157,8 @@ final class TasksListReactor: Reactor {
             log.verbose("♻️ Mutation -> State : error \(error)")
             if error.code == 401 {
                 self.provider.preferencesService.isLogged = false
+            } else {
+                Toast(text: (error.description ?? "Unknown error").replacingOccurrences(of: ".", with: ".\n"), delay: 0, duration: Delay.long).show()
             }
         }
         return state

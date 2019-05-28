@@ -63,6 +63,7 @@
 		BF78B624229949740057157A /* AuthSignupReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF78B623229949740057157A /* AuthSignupReactor.swift */; };
 		BF78B626229964050057157A /* signUp.json in Resources */ = {isa = PBXBuildFile; fileRef = BF78B625229964050057157A /* signUp.json */; };
 		BF78B628229964290057157A /* signIn.json in Resources */ = {isa = PBXBuildFile; fileRef = BF78B627229964290057157A /* signIn.json */; };
+		BF78B62A229D3F090057157A /* Toaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF78B629229D3F090057157A /* Toaster.framework */; };
 		BF794D3A22671CD8000B19F3 /* TasksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF794D3922671CD8000B19F3 /* TasksModel.swift */; };
 		BF794D3E22672474000B19F3 /* CoreCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF794D3D22672474000B19F3 /* CoreCellController.swift */; };
 		BF794D41226856E6000B19F3 /* Differentiator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF794D40226856E6000B19F3 /* Differentiator.framework */; };
@@ -192,6 +193,7 @@
 		BF78B623229949740057157A /* AuthSignupReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSignupReactor.swift; sourceTree = "<group>"; };
 		BF78B625229964050057157A /* signUp.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = signUp.json; sourceTree = "<group>"; };
 		BF78B627229964290057157A /* signIn.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = signIn.json; sourceTree = "<group>"; };
+		BF78B629229D3F090057157A /* Toaster.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Toaster.framework; path = Carthage/Build/iOS/Toaster.framework; sourceTree = "<group>"; };
 		BF794D3922671CD8000B19F3 /* TasksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksModel.swift; sourceTree = "<group>"; };
 		BF794D3D22672474000B19F3 /* CoreCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreCellController.swift; sourceTree = "<group>"; };
 		BF794D40226856E6000B19F3 /* Differentiator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Differentiator.framework; path = Carthage/Build/iOS/Differentiator.framework; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF78B62A229D3F090057157A /* Toaster.framework in Frameworks */,
 				BF9A3642228C33A900EE2AB8 /* ReactorKitRuntime.framework in Frameworks */,
 				BF9A3643228C33A900EE2AB8 /* ReactorKit.framework in Frameworks */,
 				BF794D41226856E6000B19F3 /* Differentiator.framework in Frameworks */,
@@ -429,6 +432,7 @@
 		BF4A2F30225B4F7F0001B4CE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BF78B629229D3F090057157A /* Toaster.framework */,
 				BF78B6192295DBF70057157A /* RxAppState.framework */,
 				BF9A36892291BF8C00EE2AB8 /* KeychainAccess.framework */,
 				BF9A365F228C3D2400EE2AB8 /* ReactiveMoya.framework */,
@@ -952,6 +956,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Moya.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxAppState.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Toaster.framework",
 			);
 			name = Carthage;
 			outputFileListPaths = (
