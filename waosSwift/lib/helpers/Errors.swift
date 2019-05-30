@@ -13,24 +13,24 @@ import Moya
  * @param {Error} error
  * @return {CustomError}
  */
-func getNetworkError(_ error: Error, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) -> NetworkError! {
+func getError(_ error: Error, file: StaticString = #file, function: StaticString = #function, line: UInt = #line) -> CustomError! {
     if let response = (error as? MoyaError)?.response {
-        if let networkError = try? response.map(NetworkError.self) {
+        if let networkError = try? response.map(CustomError.self) {
             return networkError
-        } else if response.statusCode != 200, let jsonObject = try? response.map(NetworkError.self) {
-            let networkError = NetworkError(code: jsonObject.code, message: jsonObject.message, description: jsonObject.description, type: "MoyaError", error: jsonObject.error)
+        } else if response.statusCode != 200, let jsonObject = try? response.map(CustomError.self) {
+            let networkError = CustomError(code: jsonObject.code, message: jsonObject.message, description: jsonObject.description, type: "MoyaError", error: jsonObject.error)
             return networkError
         } else if response.statusCode != 200, let stringObject = try? response.mapString() {
             var result = JSON(parseJSON: stringObject)
-            let networkError = NetworkError(code: response.statusCode, message: result["message"].string ?? "Undefined", description: result["description"].string ?? "Undefined", type: "MoyaError", error: result["error"].string ?? "Undefined")
+            let networkError = CustomError(code: response.statusCode, message: result["message"].string ?? "Undefined", description: result["description"].string ?? "Undefined", type: "MoyaError", error: result["error"].string ?? "Undefined")
             return networkError
         } else {
-            let networkError = NetworkError(code: response.statusCode, message: "unknow", description: error.localizedDescription, type: "MoyaError")
+            let networkError = CustomError(code: response.statusCode, message: "unknow", description: error.localizedDescription, type: "MoyaError")
             log.warning("🌎 Error -> \(networkError.type ?? "unknow") : \(networkError.message)", file: file, function: function, line: line)
             return networkError
         }
     } else {
-        let networkError = NetworkError(code: 0, message: "unknow", description: "Oops service unavailable, please try again in few minutes.", type: "NetworkError")
+        let networkError = CustomError(code: 0, message: "unknow", description: "Oops service unavailable, please try again in few minutes.", type: "CustomError")
         log.error("🌎 Error -> \(networkError.type ?? "unknow") : \(networkError.message)", file: file, function: function, line: line)
         return networkError
     }
@@ -41,21 +41,21 @@ func getNetworkError(_ error: Error, file: StaticString = #file, function: Stati
  */
 
 //enum CustomError: Error {
-//    case networkError(NetworkError)
+//    case networkError(CustomError)
 //}
 
 /**
  * Model Network Errors
  */
 
-struct NetworkError: Error {
-    let code: Int
+struct CustomError: Error {
+    let code: Int?
     let message: String
     let description: String?
     let type: String?
     let error: String?
 
-    init(code: Int, message: String, description: String? = "", type: String? = "", error: String? = "") {
+    init(code: Int? = 0, message: String, description: String? = "", type: String? = "", error: String? = "") {
         self.code = code
         self.message = message
         self.description = description
@@ -64,8 +64,8 @@ struct NetworkError: Error {
     }
 }
 
-extension NetworkError: Decodable {
-    enum NetworkErrorCodingKeys: String, CodingKey {
+extension CustomError: Decodable {
+    enum CustomErrorCodingKeys: String, CodingKey {
         case code
         case message
         case description
@@ -74,7 +74,7 @@ extension NetworkError: Decodable {
     }
 
     init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: NetworkErrorCodingKeys.self)
+        let container = try decoder.container(keyedBy: CustomErrorCodingKeys.self)
 
         code = try container.decode(Int.self, forKey: .code)
         message = try container.decode(String.self, forKey: .message)

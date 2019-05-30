@@ -34,7 +34,7 @@ final class TasksListReactor: Reactor {
         case setRefreshing(Bool)
         // default
         case success(String)
-        case error(NetworkError)
+        case error(CustomError)
     }
 
     // the current view state
