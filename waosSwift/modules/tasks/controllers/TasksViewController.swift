@@ -98,6 +98,7 @@ private extension TasksViewController {
 
         self.inputTitle.rx.text
             .filterNil()
+            .skip(1)
             .map(Reactor.Action.updateTitle)
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
