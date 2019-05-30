@@ -3,6 +3,7 @@
  */
 
 import ReactorKit
+import Validator
 
 /**
  * Reactor
@@ -26,7 +27,7 @@ final class AuthSigninReactor: Reactor {
         case updatePassword(String)
         case goSignUp
         case success(String)
-        case error(NetworkError)
+        case error(CustomError)
     }
 
     // the current view state
@@ -60,7 +61,11 @@ final class AuthSigninReactor: Reactor {
         switch action {
         // update login
         case let .updateEmail(email):
-            return .just(.updateEmail(email))
+            let rule = ValidationRulePattern(pattern: EmailValidationPattern.standard, error: CustomError(message: "Mail", description: "Wrong email format", type: "ValidationError"))
+            switch email.validate(rule: rule) {
+                case .valid: return .just(.updateEmail(email))
+                case let .invalid(err): return .just(.error(err[0] as! CustomError))
+            }
         // update password
         case let .updatePassword(password):
             return .just(.updatePassword(password))
@@ -108,6 +113,7 @@ final class AuthSigninReactor: Reactor {
             if error.code == 401 {
                 state.error = DiplayError(title: "Unauthorized", description: "Oups, wrong email or password.")
             } else {
+                print("toto")
                 let description = error.description ?? "Unknown error"
                 state.error = DiplayError(title: error.message, description: description.replacingOccurrences(of: ".", with: ".\n"))
             }

@@ -5,10 +5,10 @@
 protocol TasksServiceType {
     var tasks: Observable<[Tasks]?> { get }
 
-    func list() -> Observable<MyResult<TasksResponse, NetworkError>>
-    func create(_ task: Tasks) -> Observable<MyResult<TaskResponse, NetworkError>>
-    func save(_ task: Tasks) -> Observable<MyResult<TaskResponse, NetworkError>>
-    func delete(_ task: Tasks) -> Observable<MyResult<DeleteResponse, NetworkError>>
+    func list() -> Observable<MyResult<TasksResponse, CustomError>>
+    func create(_ task: Tasks) -> Observable<MyResult<TaskResponse, CustomError>>
+    func save(_ task: Tasks) -> Observable<MyResult<TaskResponse, CustomError>>
+    func delete(_ task: Tasks) -> Observable<MyResult<DeleteResponse, CustomError>>
 }
 
 final class TasksService: CoreService, TasksServiceType {
@@ -22,7 +22,7 @@ final class TasksService: CoreService, TasksServiceType {
         .startWith(nil)
         .share(replay: 1)
 
-    func list() -> Observable<MyResult<TasksResponse, NetworkError>> {
+    func list() -> Observable<MyResult<TasksResponse, CustomError>> {
         log.verbose("🔌 service : get")
         return self.networking
             .request(.list)
@@ -33,10 +33,10 @@ final class TasksService: CoreService, TasksServiceType {
             }
             .asObservable()
             .map(MyResult.success)
-            .catchError { err in .just(.error(getNetworkError(err)))}
+            .catchError { err in .just(.error(getError(err)))}
     }
 
-    func create(_ task: Tasks) -> Observable<MyResult<TaskResponse, NetworkError>> {
+    func create(_ task: Tasks) -> Observable<MyResult<TaskResponse, CustomError>> {
         log.verbose("🔌 service : create")
         return self.networking
             .request(.create(task))
@@ -48,10 +48,10 @@ final class TasksService: CoreService, TasksServiceType {
             }
             .asObservable()
             .map(MyResult.success)
-            .catchError { err in .just(.error(getNetworkError(err)))}
+            .catchError { err in .just(.error(getError(err)))}
     }
 
-    func save(_ task: Tasks) -> Observable<MyResult<TaskResponse, NetworkError>> {
+    func save(_ task: Tasks) -> Observable<MyResult<TaskResponse, CustomError>> {
         log.verbose("🔌 service : save")
         return self.networking
             .request(.update(task))
@@ -65,10 +65,10 @@ final class TasksService: CoreService, TasksServiceType {
             }
             .asObservable()
             .map(MyResult.success)
-            .catchError { err in .just(.error(getNetworkError(err)))}
+            .catchError { err in .just(.error(getError(err)))}
     }
 
-    func delete(_ task: Tasks) -> Observable<MyResult<DeleteResponse, NetworkError>> {
+    func delete(_ task: Tasks) -> Observable<MyResult<DeleteResponse, CustomError>> {
         log.verbose("🔌 service : delete")
         return self.networking
             .request(.delete(task))
@@ -82,6 +82,6 @@ final class TasksService: CoreService, TasksServiceType {
             }
             .asObservable()
             .map(MyResult.success)
-            .catchError { err in .just(.error(getNetworkError(err)))}
+            .catchError { err in .just(.error(getError(err)))}
     }
 }

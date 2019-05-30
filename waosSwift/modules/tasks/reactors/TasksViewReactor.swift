@@ -29,7 +29,7 @@ final class TasksViewReactor: Reactor {
     enum Mutation {
         case updateTitle(String)
         case dismiss
-        case error(NetworkError)
+        case error(CustomError)
     }
 
     // the current view state

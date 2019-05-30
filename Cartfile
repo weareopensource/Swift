@@ -11,3 +11,4 @@ github "Moya/Moya" ~> 13.0
 github "pixeldock/RxAppState"
 github "kishikawakatsumi/KeychainAccess"
 github "devxoul/Toaster"
+github "adamwaite/Validator"

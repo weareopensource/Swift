@@ -30,7 +30,7 @@ final class AuthSignUpReactor: Reactor {
         case updatePassword(String)
         case goSignIn
         case dismiss
-        case error(NetworkError)
+        case error(CustomError)
     }
 
     // the current view state

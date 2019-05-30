@@ -14,6 +14,7 @@
 		BF0CD6AB22563C9800844F9A /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0CD6AA22563C9800844F9A /* Strings.swift */; };
 		BF0CD6B622563CC200844F9A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF0CD6B822563CC200844F9A /* Localizable.strings */; };
 		BF2AE774228C2DDC003C5B85 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF2AE773228C2DDB003C5B85 /* Alamofire.framework */; };
+		BF313C71229E64C200ADECF2 /* Validator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF313C70229E64C200ADECF2 /* Validator.framework */; };
 		BF425484221EBB9700395AE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF425483221EBB9700395AE6 /* AppDelegate.swift */; };
 		BF425486221EBB9700395AE6 /* TasksListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF425485221EBB9700395AE6 /* TasksListController.swift */; };
 		BF425488221EBB9700395AE6 /* SecondController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF425487221EBB9700395AE6 /* SecondController.swift */; };
@@ -135,6 +136,7 @@
 		BF0CD6B922563CC300844F9A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BF2AE771228C1969003C5B85 /* Moya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Moya.framework; path = Carthage/Build/iOS/Moya.framework; sourceTree = "<group>"; };
 		BF2AE773228C2DDB003C5B85 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		BF313C70229E64C200ADECF2 /* Validator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Validator.framework; path = Carthage/Build/iOS/Validator.framework; sourceTree = "<group>"; };
 		BF425480221EBB9700395AE6 /* waosSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = waosSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF425483221EBB9700395AE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF425485221EBB9700395AE6 /* TasksListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListController.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				BF9A365B228C39E200EE2AB8 /* RxMoya.framework in Frameworks */,
 				BF9A368A2291BF8C00EE2AB8 /* KeychainAccess.framework in Frameworks */,
 				BF78B61A2295DBF70057157A /* RxAppState.framework in Frameworks */,
+				BF313C71229E64C200ADECF2 /* Validator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,6 +435,7 @@
 		BF4A2F30225B4F7F0001B4CE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BF313C70229E64C200ADECF2 /* Validator.framework */,
 				BF78B629229D3F090057157A /* Toaster.framework */,
 				BF78B6192295DBF70057157A /* RxAppState.framework */,
 				BF9A36892291BF8C00EE2AB8 /* KeychainAccess.framework */,
@@ -957,6 +961,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxAppState.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Toaster.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Validator.framework",
 			);
 			name = Carthage;
 			outputFileListPaths = (
