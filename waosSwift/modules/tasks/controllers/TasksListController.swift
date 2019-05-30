@@ -93,7 +93,6 @@ private extension TasksListController {
             .subscribe(onNext: { [weak self] reactor in
                 guard let `self` = self else { return }
                 let viewController = TasksViewController(reactor: reactor)
-                viewController.inputTitle.text = reactor.initialState.task.title
                 let navigationController = UINavigationController(rootViewController: viewController)
                 self.present(navigationController, animated: true, completion: nil)
             })
