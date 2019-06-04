@@ -79,7 +79,7 @@ final class AuthSignInController: CoreController, View, Stepper {
             make.width.equalTo(300)
             make.height.equalTo(50)
             make.centerX.equalTo(self.view)
-            make.centerY.equalTo(self.view).offset(-75)
+            make.centerY.equalTo(self.view).offset(-60)
         }
         inputPassword.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(300)
@@ -91,19 +91,19 @@ final class AuthSignInController: CoreController, View, Stepper {
             make.width.equalTo(140)
             make.height.equalTo(50)
             make.centerX.equalTo(self.view).offset(-80)
-            make.centerY.equalTo(self.view).offset(75)
+            make.centerY.equalTo(self.view).offset(60)
         }
         buttonSignin.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(140)
             make.height.equalTo(50)
             make.centerX.equalTo(self.view).offset(80)
-            make.centerY.equalTo(self.view).offset(75)
+            make.centerY.equalTo(self.view).offset(60)
         }
         labelErrors.snp.makeConstraints {  (make) -> Void in
             make.left.equalTo(25)
             make.right.equalTo(-25)
             make.centerX.equalTo(self.view)
-            make.centerY.equalTo(self.view).offset(175)
+            make.centerY.equalTo(self.view).offset(160)
         }
     }
 
@@ -147,6 +147,11 @@ private extension AuthSignInController {
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         // email
+        self.inputEmail.rx.controlEvent(.editingDidEnd)
+            .asObservable()
+            .map {Reactor.Action.validateEmail}
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
         self.inputEmail.rx.text
             .filter { ($0?.count)! > 0 }
             .map {Reactor.Action.updateEmail($0!)}
@@ -165,7 +170,7 @@ private extension AuthSignInController {
     func bindState(_ reactor: AuthSigninReactor) {
         // errors
         reactor.state
-            .map { $0.error.description }
+            .map { $0.error?.description }
             .distinctUntilChanged()
             .bind(to: self.labelErrors.rx.text)
             .disposed(by: self.disposeBag)
