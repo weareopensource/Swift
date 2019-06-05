@@ -16,20 +16,17 @@ final class AuthSignUpController: CoreController, View, Stepper {
         $0.autocorrectionType = .no
         $0.borderStyle = .roundedRect
         $0.placeholder = "firstname..."
-        $0.text = "Steve"
     }
     let inputLastName = UITextField().then {
         $0.autocorrectionType = .no
         $0.borderStyle = .roundedRect
         $0.placeholder = "lastname..."
-        $0.text = "Jobs"
     }
     let inputEmail = UITextField().then {
         $0.autocorrectionType = .no
         $0.borderStyle = .roundedRect
         $0.placeholder = "email..."
         $0.autocapitalizationType = .none
-        $0.text = "user@localhost.com"
     }
     let inputPassword = UITextField().then {
         $0.autocorrectionType = .no
@@ -38,7 +35,6 @@ final class AuthSignUpController: CoreController, View, Stepper {
         $0.autocapitalizationType = .none
         $0.returnKeyType = .done
         $0.isSecureTextEntry = true
-        $0.text = "Toto@2019&"
     }
     let buttonSignin = UIButton().then {
         $0.setTitle("Sign In", for: .normal)
@@ -91,19 +87,19 @@ final class AuthSignUpController: CoreController, View, Stepper {
         inputFirstName.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(300)
             make.height.equalTo(50)
-            make.centerY.equalTo(self.view).offset(-225)
+            make.centerY.equalTo(self.view).offset(-180)
             make.centerX.equalTo(self.view)
         }
         inputLastName.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(300)
             make.height.equalTo(50)
-            make.centerY.equalTo(self.view).offset(-150)
+            make.centerY.equalTo(self.view).offset(-120)
             make.centerX.equalTo(self.view)
         }
         inputEmail.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(300)
             make.height.equalTo(50)
-            make.centerY.equalTo(self.view).offset(-75)
+            make.centerY.equalTo(self.view).offset(-60)
             make.centerX.equalTo(self.view)
         }
         inputPassword.snp.makeConstraints { (make) -> Void in
@@ -115,20 +111,20 @@ final class AuthSignUpController: CoreController, View, Stepper {
         buttonSignup.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(140)
             make.height.equalTo(50)
-            make.centerY.equalTo(self.view).offset(75)
             make.centerX.equalTo(self.view).offset(80)
+            make.centerY.equalTo(self.view).offset(60)
         }
         buttonSignin.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(140)
             make.height.equalTo(50)
-            make.centerY.equalTo(self.view).offset(75)
             make.centerX.equalTo(self.view).offset(-80)
+            make.centerY.equalTo(self.view).offset(60)
         }
         labelErrors.snp.makeConstraints {  (make) -> Void in
             make.left.equalTo(25)
             make.right.equalTo(-25)
             make.centerX.equalTo(self.view)
-            make.centerY.equalTo(self.view).offset(175)
+            make.centerY.equalTo(self.view).offset(160)
         }
     }
 
@@ -171,16 +167,28 @@ private extension AuthSignUpController {
             .map {Reactor.Action.updateFirstName($0!)}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
+        self.inputFirstName.rx.controlEvent(.editingDidEnd).asObservable()
+            .map {Reactor.Action.validateFirstName}
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
         // lastname
         self.inputLastName.rx.text
             .filter { ($0?.count)! > 0 }
             .map {Reactor.Action.updateLastName($0!)}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
+        self.inputLastName.rx.controlEvent(.editingDidEnd).asObservable()
+            .map {Reactor.Action.validateLastName}
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
         // email
         self.inputEmail.rx.text
             .filter { ($0?.count)! > 0 }
             .map {Reactor.Action.updateEmail($0!)}
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        self.inputEmail.rx.controlEvent(.editingDidEnd).asObservable()
+            .map {Reactor.Action.validateEmail}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         // password
@@ -205,7 +213,7 @@ private extension AuthSignUpController {
             .disposed(by: self.disposeBag)
         // errors
         reactor.state
-            .map { $0.error.description }
+            .map { $0.error?.description }
             .distinctUntilChanged()
             .bind(to: self.labelErrors.rx.text)
             .disposed(by: self.disposeBag)

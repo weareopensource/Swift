@@ -3,7 +3,6 @@
  */
 
 import ReactorKit
-import Validator
 
 /**
  * Reactor
@@ -16,6 +15,7 @@ final class AuthSigninReactor: Reactor {
     // user actions
     enum Action {
         case updateEmail(String)
+        case validateEmail
         case updatePassword(String)
         case signIn
         case signUp
@@ -34,12 +34,11 @@ final class AuthSigninReactor: Reactor {
     struct State {
         var email: String
         var password: String
-        var error: DiplayError
+        var error: DiplayError?
 
         init() {
             self.email = ""
             self.password = ""
-            self.error = DiplayError(title: "", description: "")
         }
     }
 
@@ -59,14 +58,17 @@ final class AuthSigninReactor: Reactor {
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        // update login
+        // email
         case let .updateEmail(email):
-            let rule = ValidationRulePattern(pattern: EmailValidationPattern.standard, error: CustomError(message: "Mail", description: "Wrong email format", type: "ValidationError"))
-            switch email.validate(rule: rule) {
-                case .valid: return .just(.updateEmail(email))
+            return .just(.updateEmail(email))
+        case .validateEmail:
+            let rule = ValidationRulePattern(pattern: EmailValidationPattern.standard,
+                                             error: CustomError(message: "Mail", description: "Wrong email format", type: "ValidationError"))
+            switch currentState.email.validate(rule: rule) {
+                case .valid: return .just(.success("mail"))
                 case let .invalid(err): return .just(.error(err[0] as! CustomError))
             }
-        // update password
+        // password 
         case let .updatePassword(password):
             return .just(.updatePassword(password))
         // signin
@@ -107,13 +109,13 @@ final class AuthSigninReactor: Reactor {
         // success
         case let .success(success):
             log.verbose("♻️ Mutation -> State : succes \(success)")
+            state.error = nil
         // error
         case let .error(error):
             log.verbose("♻️ Mutation -> State : error \(error)")
             if error.code == 401 {
                 state.error = DiplayError(title: "Unauthorized", description: "Oups, wrong email or password.")
             } else {
-                print("toto")
                 let description = error.description ?? "Unknown error"
                 state.error = DiplayError(title: error.message, description: description.replacingOccurrences(of: ".", with: ".\n"))
             }

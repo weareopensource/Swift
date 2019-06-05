@@ -5,3 +5,4 @@
 @import SwiftyJSON;
 @import SnapKit;
 @import RxAppState;
+@import Validator;
