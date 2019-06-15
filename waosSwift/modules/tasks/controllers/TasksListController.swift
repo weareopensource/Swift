@@ -88,7 +88,7 @@ private extension TasksListController {
         self.tableView.rx.setDelegate(self).disposed(by: self.disposeBag)
         self.dataSource.canEditRowAtIndexPath = { _, _  in true }
         // item selected
-        self.tableView.rx.modelSelected(type(of: self.dataSource).Section.Item.self)
+        self.tableView.rx.modelSelected(Sections.Item.self)
             .map(reactor.editReactor)
             .subscribe(onNext: { [weak self] reactor in
                 guard let `self` = self else { return }
