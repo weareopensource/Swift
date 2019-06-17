@@ -8,21 +8,22 @@
 
 ## Presentation
 
-This project is a stack Swift that can be ran as a standalone backend. Or in a fullstack with another of our repo of your choice (ex: [Node](https://github.com/weareopensource/Node)). 
+This project is a stack Swift that can be ran as a standalone backend. Or in a fullstack with another of our repo of your choice (ex: [Node](https://github.com/weareopensource/Node), [Angular](https://github.com/weareopensource/Angular)). 
 
-You can have more informations about us in our [global repo](https://github.com/weareopensource/weareopensource.github.io): 
+You can have more informations about us in our [global repo](https://github.com/weareopensource/weareopensource.github.io) and here :  
 
 * our mindset and what we would like to create in our [introduction](https://weareopensource.me/introduction/) (in construction)
-* how to create a fullstack from our repo in our [wiki](https://github.com/weareopensource/weareopensource.github.io/wiki) (in construciton).
+* how to create a fullstack from our repo in our [global wiki](https://github.com/weareopensource/weareopensource.github.io/wiki) (in construciton).
 * our global roadmap and propose ideas about stacks in our [board](https://github.com/weareopensource/weareopensource.github.io/projects/1)
 * how to contribute and help us [here](https://github.com/weareopensource/weareopensource.github.io/blob/master/CONTRIBUTE.md)
 
-Our stack Swift is actually in development. 
+Our stack Swift is actually in Beta. 
 
 # Swift / RxSwift / ReSwift
 
-* [Swift wiki](https://github.com/weareopensource/Swift/blob/master/WIKI.md) (in construciton).
-* [Swift knowledges](https://github.com/weareopensource/Swift/blob/master/KNOWLEDGES.md) (in construciton).
+* [Swift wiki](https://github.com/weareopensource/Swift/blob/master/WIKI.md) - wip
+* [Swift knowledges](https://github.com/weareopensource/Swift/blob/master/KNOWLEDGES.md) - wip
+* [**Demo**, connected to node api](https://node.weareopensource.me) (email: *test@waos.me*, password: *TestWaos@2019*)
 
 ## Technology Overview
 
