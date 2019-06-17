@@ -18,7 +18,6 @@ final class AuthSignInController: CoreController, View, Stepper {
         $0.borderStyle = .roundedRect
         $0.placeholder = "email..."
         $0.autocapitalizationType = .none
-        $0.text = "seeduser@localhost.com"
     }
     let inputPassword = UITextField().then {
         $0.autocorrectionType = .no
@@ -27,7 +26,6 @@ final class AuthSignInController: CoreController, View, Stepper {
         $0.autocapitalizationType = .none
         $0.returnKeyType = .done
         $0.isSecureTextEntry = true
-        $0.text = "AfaVYTVbPBQCNcUZXUCthUntBru7PgTNfg"
     }
     let buttonSignin = UIButton().then {
         $0.setTitle("Sign In", for: .normal)
