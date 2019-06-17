@@ -20,12 +20,10 @@ enum TasksApi {
 extension TasksApi: TargetType {
 
     public var baseURL: URL {
-        let apiProtocol = config["api"]["protocol"].string ?? "http"
-        let apiHost = config["api"]["host"].string ?? "localhost"
-        let apiPort = config["api"]["port"].string ?? "3000"
-        let apiBasePath = config["api"]["endPoints"]["basePath"].string ?? "api"
-        guard let url = URL(string: "\(apiProtocol)://\(apiHost):\(apiPort)/\(apiBasePath)") else { fatalError("baseUrl could not be configured." ) }
-        return url
+        return getUrl(_protocol: config["api"]["protocol"].string ?? "http",
+                      _host: config["api"]["host"].string ?? "localhost",
+                      _port: config["api"]["port"].string ?? "3000",
+                      _path: config["api"]["endPoints"]["basePath"].string ?? "api")
     }
 
     var path: String {
