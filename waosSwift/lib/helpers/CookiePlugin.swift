@@ -3,6 +3,7 @@
  */
 
 import Moya
+import Result
 
 /**
  * structs
@@ -43,7 +44,6 @@ struct CookieStorager {
         guard let cookie = httpReq.allHeaderFields["Set-Cookie"] else {
             return false
         }
-        print("CookiePlugin save \(cookie)")
         UserDefaults.standard.set(cookie, forKey: "Cookie")
         UserDefaults.standard.synchronize()
         return true
