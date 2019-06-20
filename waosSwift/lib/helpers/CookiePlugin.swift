@@ -4,6 +4,9 @@
 
 import Moya
 import Result
+import KeychainAccess
+
+let keychain = Keychain(service: config["service"].string ?? "localhost").synchronizable(true)
 
 /**
  * structs
@@ -33,19 +36,24 @@ struct CookiePlugin: PluginType {
 
 struct CookieStorager {
     static var cookie: Any? {
-        if let cookieStr = UserDefaults.standard.value(forKey: "Cookie") {
-            return cookieStr
-        } else {
+        do {
+            return try keychain.get("Cookie")
+        } catch let error {
+            print(error)
             return nil
         }
     }
 
     static func save(httpReq: HTTPURLResponse) -> Bool {
-        guard let cookie = httpReq.allHeaderFields["Set-Cookie"] else {
+        guard let cookie = httpReq.allHeaderFields["Set-Cookie"] as? String else {
             return false
         }
-        UserDefaults.standard.set(cookie, forKey: "Cookie")
-        UserDefaults.standard.synchronize()
-        return true
+        do {
+            try keychain.set(cookie, key: "cookie")
+            return true
+        } catch let error {
+            print(error)
+            return false
+        }
     }
 }
