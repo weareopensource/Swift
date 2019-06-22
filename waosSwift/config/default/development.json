@@ -1,4 +1,5 @@
 {
+    "service": "me.weareopensource.node",
     "api": {
         "protocol": "http",
         "host": "localhost",
