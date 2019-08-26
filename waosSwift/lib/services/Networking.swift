@@ -11,15 +11,15 @@ import UIKit
  */
 
 final class Networking<Target: TargetType>: MoyaProvider<Target> {
-    init(plugins: [PluginType] = []) {
-        let configuration = URLSessionConfiguration.default
-        configuration.httpAdditionalHeaders = Manager.defaultHTTPHeaders
-        configuration.timeoutIntervalForRequest = 10
-
-        let manager = Manager(configuration: configuration)
-        manager.startRequestsImmediately = false
-        super.init(manager: manager, plugins: plugins)
-    }
+//    init(plugins: [PluginType] = []) {
+//        let configuration = URLSessionConfiguration.default
+//        configuration.httpAdditionalHeaders = Manager.defaultHTTPHeaders
+//        configuration.timeoutIntervalForRequest = 10
+//
+//        let manager = Manager(configuration: configuration)
+//        manager.startRequestsImmediately = false
+//        super.init(manager: manager, plugins: plugins)
+//    }
 
     func request(
         _ target: Target,
