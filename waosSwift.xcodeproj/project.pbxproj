@@ -42,7 +42,6 @@
 		BF4A2F84225BBA4D0001B4CE /* SecondFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A2F83225BBA4D0001B4CE /* SecondFlow.swift */; };
 		BF4A2F87225C8F160001B4CE /* UILocalizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A2F86225C8F160001B4CE /* UILocalizations.swift */; };
 		BF4A2F9E225CA6DB0001B4CE /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = BF4A2F8D225CA6DB0001B4CE /* CHANGELOG.md */; };
-		BF4A2FA0225CA6DB0001B4CE /* KNOWLEDGES.md in Resources */ = {isa = PBXBuildFile; fileRef = BF4A2F8F225CA6DB0001B4CE /* KNOWLEDGES.md */; };
 		BF4A2FA9225CA6DB0001B4CE /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = BF4A2F9A225CA6DB0001B4CE /* Readme.md */; };
 		BF4A2FAB225CA6DB0001B4CE /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = BF4A2F9C225CA6DB0001B4CE /* LICENSE.md */; };
 		BF4A2FAE2260F0040001B4CE /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A2FAD2260F0040001B4CE /* Logger.swift */; };
@@ -175,7 +174,6 @@
 		BF4A2F83225BBA4D0001B4CE /* SecondFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondFlow.swift; sourceTree = "<group>"; };
 		BF4A2F86225C8F160001B4CE /* UILocalizations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILocalizations.swift; sourceTree = "<group>"; };
 		BF4A2F8D225CA6DB0001B4CE /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = SOURCE_ROOT; };
-		BF4A2F8F225CA6DB0001B4CE /* KNOWLEDGES.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = KNOWLEDGES.md; sourceTree = SOURCE_ROOT; };
 		BF4A2F9A225CA6DB0001B4CE /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = SOURCE_ROOT; };
 		BF4A2F9C225CA6DB0001B4CE /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = SOURCE_ROOT; };
 		BF4A2FAD2260F0040001B4CE /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -412,7 +410,6 @@
 				BF425491221EBB9800395AE6 /* Info.plist */,
 				BF4A2F9A225CA6DB0001B4CE /* Readme.md */,
 				BF4A2F8D225CA6DB0001B4CE /* CHANGELOG.md */,
-				BF4A2F8F225CA6DB0001B4CE /* KNOWLEDGES.md */,
 				BF4A2F9C225CA6DB0001B4CE /* LICENSE.md */,
 			);
 			path = waosSwift;
@@ -905,7 +902,6 @@
 				BF4A2FCE2264A6810001B4CE /* development.json in Resources */,
 				BF9A366A228D5CDA00EE2AB8 /* list.json in Resources */,
 				BF4A2FAB225CA6DB0001B4CE /* LICENSE.md in Resources */,
-				BF4A2FA0225CA6DB0001B4CE /* KNOWLEDGES.md in Resources */,
 				BF78B60822954B3F0057157A /* me.json in Resources */,
 				BF78B628229964290057157A /* signIn.json in Resources */,
 				BF9A3669228D5CDA00EE2AB8 /* delete.json in Resources */,
