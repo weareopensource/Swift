@@ -8,7 +8,7 @@
 
 ## Presentation
 
-This project is a stack Swift that can be ran as a standalone backend. Or in a fullstack with another of our repo of your choice (ex: [Node](https://github.com/weareopensource/Node), [Angular](https://github.com/weareopensource/Angular)). 
+This project is a stack Swift that can be ran as a standalone backend. Or in a fullstack with another of our repo of your choice (ex: [Node](https://github.com/weareopensource/Node), [Vue](https://github.com/weareopensource/Vue)). 
 
 You can have more informations about us in our [global repo](https://github.com/weareopensource/weareopensource.github.io) and here :  
 
