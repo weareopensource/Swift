@@ -28,15 +28,15 @@ Our stack Swift is actually in Beta.
 | Subject | Informations
 | ------- | --------
 | **in development** | 
-| Architecture | vertical modules architecture with a core to assemble all the modulese
+| Architecture | Layered Architecture : everything is separated in layers, and the upper layers are abstractions of the lower ones, that's why every layer should only reference the immediate lower layer (vertical modules architecture)
+| Security | JWT Stateless - have a look on [Node](https://github.com/weareopensource/Node) stack for more informations
 | CI  | [Travis CI](https://travis-ci.org/weareopensource/Node) <br> [fastlane](https://github.com/fastlane/fastlane) & [Slather](https://github.com/SlatherOrg/slather)
 | Developer  | [Coveralls](https://coveralls.io/github/weareopensource/Swift) - [Code Climate](https://codeclimate.com/github/weareopensource/Swift) <br> [standard-version](https://github.com/conventional-changelog/standard-version) - [commitlint](https://github.com/conventional-changelog/commitlint) - [commitizen](https://github.com/commitizen/cz-cli) - [waos-conventional-changelog](https://github.com/WeAreOpenSourceProjects/) <br>  [SwiftLint](https://github.com/realm/SwiftLint) - [SwiftGen](https://github.com/SwiftGen/SwiftGen)
 | Dependencies | [Carthage](https://github.com/Carthage/Carthage)
-| in development  | ....
 | **Being released** | 
-| in development  | ....
+| wip  | ....
 | **In reflexion** | 
-| in development  | ....
+| wip  | ....
 
 ## Features Overview
 
