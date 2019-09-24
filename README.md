@@ -20,7 +20,7 @@ Our stack Swift is actually in Beta.
 # Swift / RxSwift / ReSwift
 
 * [Swift wiki](https://github.com/weareopensource/Swift/blob/master/WIKI.md) - wip
-* [Swift knowledges](https://github.com/weareopensource/Swift/blob/master/KNOWLEDGES.md) - wip
+* [Knowledges Swift](https://github.com/weareopensource/weareopensource.github.io/wiki/Knowledges-Swift)
 * [**Demo**, connected to node api](https://node.weareopensource.me) (email: *test@waos.me*, password: *TestWaos@2019*)
 
 ## Technology Overview
