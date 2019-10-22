@@ -18,6 +18,7 @@ final class AuthSignInController: CoreController, View, Stepper {
         $0.borderStyle = .roundedRect
         $0.placeholder = "email..."
         $0.autocapitalizationType = .none
+        $0.textContentType = .username
     }
     let inputPassword = UITextField().then {
         $0.autocorrectionType = .no
@@ -26,6 +27,7 @@ final class AuthSignInController: CoreController, View, Stepper {
         $0.autocapitalizationType = .none
         $0.returnKeyType = .done
         $0.isSecureTextEntry = true
+        $0.textContentType = .password
     }
     let buttonSignin = UIButton().then {
         $0.setTitle("Sign In", for: .normal)
@@ -65,6 +67,7 @@ final class AuthSignInController: CoreController, View, Stepper {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        self.view.registerAutomaticKeyboardConstraints() // active layout with snapkit
         self.view.addSubview(self.inputEmail)
         self.view.addSubview(self.inputPassword)
         self.view.addSubview(self.buttonSignin)
@@ -77,31 +80,46 @@ final class AuthSignInController: CoreController, View, Stepper {
             make.width.equalTo(300)
             make.height.equalTo(50)
             make.centerX.equalTo(self.view)
-            make.centerY.equalTo(self.view).offset(-60)
+            make.centerY.equalTo(self.view).offset(-60).keyboard(false, in: self.view)
+        }
+        inputEmail.snp.prepareConstraints { (make) -> Void in
+            make.centerY.equalTo(self.view).offset(-160).keyboard(true, in: self.view)
         }
         inputPassword.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(300)
             make.height.equalTo(50)
             make.centerX.equalTo(self.view)
-            make.centerY.equalTo(self.view)
+            make.centerY.equalTo(self.view).keyboard(false, in: self.view)
+        }
+        inputPassword.snp.prepareConstraints { (make) -> Void in
+            make.centerY.equalTo(self.view).offset(-100).keyboard(true, in: self.view)
         }
         buttonSignup.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(140)
             make.height.equalTo(50)
             make.centerX.equalTo(self.view).offset(-80)
-            make.centerY.equalTo(self.view).offset(60)
+            make.centerY.equalTo(self.view).offset(60).keyboard(false, in: self.view)
+        }
+        buttonSignup.snp.prepareConstraints { (make) -> Void in
+            make.centerY.equalTo(self.view).offset(-40).keyboard(true, in: self.view)
         }
         buttonSignin.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(140)
             make.height.equalTo(50)
             make.centerX.equalTo(self.view).offset(80)
-            make.centerY.equalTo(self.view).offset(60)
+            make.centerY.equalTo(self.view).offset(60).keyboard(false, in: self.view)
+        }
+        buttonSignin.snp.prepareConstraints { (make) -> Void in
+            make.centerY.equalTo(self.view).offset(-40).keyboard(true, in: self.view)
         }
         labelErrors.snp.makeConstraints {  (make) -> Void in
             make.left.equalTo(25)
             make.right.equalTo(-25)
             make.centerX.equalTo(self.view)
-            make.centerY.equalTo(self.view).offset(160)
+            make.centerY.equalTo(self.view).offset(120).keyboard(false, in: self.view)
+        }
+        labelErrors.snp.prepareConstraints {  (make) -> Void in
+            make.centerY.equalTo(self.view).offset(20).keyboard(true, in: self.view)
         }
     }
 

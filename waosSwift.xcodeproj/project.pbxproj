@@ -71,6 +71,7 @@
 		BF794D41226856E6000B19F3 /* Differentiator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF794D40226856E6000B19F3 /* Differentiator.framework */; };
 		BF794D51226880FB000B19F3 /* TasksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF794D50226880FB000B19F3 /* TasksService.swift */; };
 		BF794D532269C4FB000B19F3 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF794D522269C4FB000B19F3 /* TasksViewController.swift */; };
+		BF8BD5F7235F30660083B912 /* KeyboardConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8BD5F6235F30660083B912 /* KeyboardConstraints.swift */; };
 		BF8C6723227C3E1E0012B5A8 /* TasksCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8C6722227C3E1E0012B5A8 /* TasksCellReactor.swift */; };
 		BF8C6725227C3E310012B5A8 /* TasksCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8C6724227C3E310012B5A8 /* TasksCellController.swift */; };
 		BF8C6727227C43E80012B5A8 /* Array+SectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8C6726227C43E80012B5A8 /* Array+SectionModel.swift */; };
@@ -107,6 +108,8 @@
 		BFDE2602227B17D4008CBD30 /* AppServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE2601227B17D4008CBD30 /* AppServicesProvider.swift */; };
 		BFDE2604227B185E008CBD30 /* CoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE2603227B185E008CBD30 /* CoreService.swift */; };
 		BFE4BB47226CC7BD00739735 /* TasksViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4BB46226CC7BD00739735 /* TasksViewReactor.swift */; };
+		BFE912A22341CDA40074FAAB /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = BFE912A02341CDA40074FAAB /* Cartfile */; };
+		BFE912A32341CDA40074FAAB /* Cartfile.resolved in Resources */ = {isa = PBXBuildFile; fileRef = BFE912A12341CDA40074FAAB /* Cartfile.resolved */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -203,6 +206,7 @@
 		BF794D40226856E6000B19F3 /* Differentiator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Differentiator.framework; path = Carthage/Build/iOS/Differentiator.framework; sourceTree = "<group>"; };
 		BF794D50226880FB000B19F3 /* TasksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksService.swift; sourceTree = "<group>"; };
 		BF794D522269C4FB000B19F3 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
+		BF8BD5F6235F30660083B912 /* KeyboardConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardConstraints.swift; sourceTree = "<group>"; };
 		BF8C6722227C3E1E0012B5A8 /* TasksCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCellReactor.swift; sourceTree = "<group>"; };
 		BF8C6724227C3E310012B5A8 /* TasksCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCellController.swift; sourceTree = "<group>"; };
 		BF8C6726227C43E80012B5A8 /* Array+SectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+SectionModel.swift"; sourceTree = "<group>"; };
@@ -240,6 +244,8 @@
 		BFDE2601227B17D4008CBD30 /* AppServicesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServicesProvider.swift; sourceTree = "<group>"; };
 		BFDE2603227B185E008CBD30 /* CoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreService.swift; sourceTree = "<group>"; };
 		BFE4BB46226CC7BD00739735 /* TasksViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewReactor.swift; sourceTree = "<group>"; };
+		BFE912A02341CDA40074FAAB /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		BFE912A12341CDA40074FAAB /* Cartfile.resolved */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.resolved; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -382,6 +388,8 @@
 		BF425477221EBB9700395AE6 = {
 			isa = PBXGroup;
 			children = (
+				BFE912A02341CDA40074FAAB /* Cartfile */,
+				BFE912A12341CDA40074FAAB /* Cartfile.resolved */,
 				BF425482221EBB9700395AE6 /* waosSwift */,
 				BF425499221EBB9800395AE6 /* waosSwiftTests */,
 				BF4254A4221EBB9800395AE6 /* waosSwiftUITests */,
@@ -602,6 +610,7 @@
 			children = (
 				BF8C6726227C43E80012B5A8 /* Array+SectionModel.swift */,
 				BF4A2FD32265F4020001B4CE /* UserDefaults.swift */,
+				BF8BD5F6235F30660083B912 /* KeyboardConstraints.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -897,6 +906,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFE912A32341CDA40074FAAB /* Cartfile.resolved in Resources */,
+				BFE912A22341CDA40074FAAB /* Cartfile in Resources */,
 				BF9A366C228D5CDA00EE2AB8 /* get.json in Resources */,
 				BF4A2FCD2264A6810001B4CE /* production.json in Resources */,
 				BF4A2FCE2264A6810001B4CE /* development.json in Resources */,
@@ -1059,6 +1070,7 @@
 				BF8C672A2280176B0012B5A8 /* ReusableKit.swift in Sources */,
 				BF794D51226880FB000B19F3 /* TasksService.swift in Sources */,
 				BF78B5F32293CD680057157A /* ObservableType+Extras.swift in Sources */,
+				BF8BD5F7235F30660083B912 /* KeyboardConstraints.swift in Sources */,
 				BF78B622229949410057157A /* AuthSignupController.swift in Sources */,
 				BF9A368322900F7200EE2AB8 /* AuthApi.swift in Sources */,
 				BF058D772282BCAC00E2A077 /* AuthSigninController.swift in Sources */,
@@ -1258,6 +1270,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5TTXU376YU;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1280,6 +1293,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5TTXU376YU;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1443,6 +1457,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5TTXU376YU;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
