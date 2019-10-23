@@ -85,7 +85,6 @@
 		BF8F6EDB2273453100B9447A /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8F6EDA2273453100B9447A /* Then.swift */; };
 		BF9A3642228C33A900EE2AB8 /* ReactorKitRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9A3640228C33A900EE2AB8 /* ReactorKitRuntime.framework */; };
 		BF9A3643228C33A900EE2AB8 /* ReactorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9A3641228C33A900EE2AB8 /* ReactorKit.framework */; };
-		BF9A3645228C33D300EE2AB8 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9A3644228C33D300EE2AB8 /* Result.framework */; };
 		BF9A365B228C39E200EE2AB8 /* RxMoya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9A365A228C39E200EE2AB8 /* RxMoya.framework */; };
 		BF9A3663228C3F2500EE2AB8 /* TasksApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9A3662228C3F2500EE2AB8 /* TasksApi.swift */; };
 		BF9A3669228D5CDA00EE2AB8 /* delete.json in Resources */ = {isa = PBXBuildFile; fileRef = BF9A3665228D5CDA00EE2AB8 /* delete.json */; };
@@ -220,7 +219,6 @@
 		BF8F6EDA2273453100B9447A /* Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
 		BF9A3640228C33A900EE2AB8 /* ReactorKitRuntime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactorKitRuntime.framework; path = Carthage/Build/iOS/ReactorKitRuntime.framework; sourceTree = "<group>"; };
 		BF9A3641228C33A900EE2AB8 /* ReactorKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactorKit.framework; path = Carthage/Build/iOS/ReactorKit.framework; sourceTree = "<group>"; };
-		BF9A3644228C33D300EE2AB8 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		BF9A365A228C39E200EE2AB8 /* RxMoya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxMoya.framework; path = Carthage/Build/iOS/RxMoya.framework; sourceTree = "<group>"; };
 		BF9A365F228C3D2400EE2AB8 /* ReactiveMoya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveMoya.framework; path = Carthage/Build/iOS/ReactiveMoya.framework; sourceTree = "<group>"; };
 		BF9A3662228C3F2500EE2AB8 /* TasksApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksApi.swift; sourceTree = "<group>"; };
@@ -267,7 +265,6 @@
 				BF4A2FD9226710F10001B4CE /* RxDataSources.framework in Frameworks */,
 				BF8F6ED92273442100B9447A /* SnapKit.framework in Frameworks */,
 				BF2AE774228C2DDC003C5B85 /* Alamofire.framework in Frameworks */,
-				BF9A3645228C33D300EE2AB8 /* Result.framework in Frameworks */,
 				BF9A365B228C39E200EE2AB8 /* RxMoya.framework in Frameworks */,
 				BF9A368A2291BF8C00EE2AB8 /* KeychainAccess.framework in Frameworks */,
 				BF78B61A2295DBF70057157A /* RxAppState.framework in Frameworks */,
@@ -451,7 +448,6 @@
 				BF9A36892291BF8C00EE2AB8 /* KeychainAccess.framework */,
 				BF9A365F228C3D2400EE2AB8 /* ReactiveMoya.framework */,
 				BF9A365A228C39E200EE2AB8 /* RxMoya.framework */,
-				BF9A3644228C33D300EE2AB8 /* Result.framework */,
 				BF9A3641228C33A900EE2AB8 /* ReactorKit.framework */,
 				BF9A3640228C33A900EE2AB8 /* ReactorKitRuntime.framework */,
 				BF2AE773228C2DDB003C5B85 /* Alamofire.framework */,
@@ -967,7 +963,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxOptional.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxMoya.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Moya.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",

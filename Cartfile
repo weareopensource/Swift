@@ -9,6 +9,6 @@ github "RxSwiftCommunity/RxDataSources" ~> 4.0.0
 github "SnapKit/SnapKit" ~> 5.0.0
 github "Moya/Moya" ~> 14.0.0-alpha.1
 github "pixeldock/RxAppState" ~> 1.5.1
-github "adamwaite/Validator" == 3.1.1 
+github "adamwaite/Validator" ~> 3.2.1 
 github "kishikawakatsumi/KeychainAccess"
 github "devxoul/Toaster"

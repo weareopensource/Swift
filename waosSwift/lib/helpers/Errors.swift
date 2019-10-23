@@ -3,6 +3,7 @@
  */
 
 import Moya
+import Validator
 
 extension String {
     var isAlphanumeric: Bool {
@@ -27,7 +28,7 @@ func getError(_ error: Error, file: StaticString = #file, function: StaticString
             let networkError = CustomError(code: jsonObject.code, message: jsonObject.message, description: jsonObject.description, type: "MoyaError", error: jsonObject.error)
             return networkError
         } else if response.statusCode != 200, let stringObject = try? response.mapString() {
-            var result = JSON(parseJSON: stringObject)
+            let result = JSON(parseJSON: stringObject)
             let networkError = CustomError(code: response.statusCode, message: result["message"].string ?? "Undefined", description: result["description"].string ?? "Undefined", type: "MoyaError", error: result["error"].string ?? "Undefined")
             return networkError
         } else {
@@ -54,7 +55,7 @@ func getError(_ error: Error, file: StaticString = #file, function: StaticString
  * Model Network Errors
  */
 
-struct CustomError: Error {
+struct CustomError: Error, ValidationError {
     let code: Int?
     let message: String
     let description: String?

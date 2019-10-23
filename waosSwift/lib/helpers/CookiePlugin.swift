@@ -3,7 +3,6 @@
  */
 
 import Moya
-import Result
 import KeychainAccess
 
 let keychain = Keychain(service: config["service"].string ?? "localhost").synchronizable(true)
