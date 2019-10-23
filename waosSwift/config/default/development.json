@@ -25,5 +25,22 @@
             "verbose": "🔬 VERBOSE",
             "unknown": "☠️ UNKNOWN"
         }
+    },
+    "theme": {
+        "colorTabBar": "false",
+        "themes": {
+            "waos" :{
+                "primary": "waosPrimary",
+                "secondary": "waosSecondary",
+                "background": "waosBackground",
+                "surface": "waosSurface",
+                "error": "waosError",
+                "onPrimary": "waosOnPrimary",
+                "onSecondary": "waosOnSecondary",
+                "onBackground": "waosOnBackground",
+                "onSurface": "waosOnSurface",
+                "onError": "waosOnError"
+            }
+        }
     }
 }

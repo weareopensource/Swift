@@ -17,9 +17,8 @@ final class TasksViewController: CoreController, View {
 
     // MARK: UI
 
-    let inputTitle = UITextField().then {
+    let inputTitle = CoreUITextField().then {
         $0.autocorrectionType = .no
-        $0.borderStyle = .roundedRect
         $0.placeholder = "Do something..."
     }
     let barButtonCancel = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: nil)
@@ -43,7 +42,6 @@ final class TasksViewController: CoreController, View {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
         self.view.addSubview(self.inputTitle)
     }
 

@@ -30,6 +30,17 @@ class CoreController: UIViewController {
 
     override func viewDidLoad() {
         self.view.setNeedsUpdateConstraints()
+        // navigation
+        self.navigationController?.navigationBar.barTintColor = UIColor(named: config["theme"]["themes"]["waos"]["primary"].string ?? "")
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor(named: config["theme"]["themes"]["waos"]["onPrimary"].string ?? "")!]
+        self.navigationController?.navigationBar.tintColor = UIColor(named: config["theme"]["themes"]["waos"]["onPrimary"].string ?? "")
+        // tabar
+        if NSString(string: config["theme"]["colorTabBar"].string ?? "").boolValue == true {
+            self.tabBarController?.tabBar.barTintColor = UIColor(named: config["theme"]["themes"]["waos"]["primary"].string ?? "")
+            self.tabBarController?.tabBar.tintColor = UIColor(named: config["theme"]["themes"]["waos"]["onPrimary"].string ?? "")
+        }
+        // view
+        self.view.backgroundColor = UIColor(named: config["theme"]["themes"]["waos"]["background"].string ?? "")
     }
 
     override func updateViewConstraints() {

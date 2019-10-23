@@ -13,7 +13,7 @@ class SecondController: CoreController, View {
 
     // MARK: UI
 
-    let label = UILabel().then {
+    let label = CoreUILabel().then {
         $0.text = L10n.secondTitle
         $0.textAlignment = .center
     }
@@ -33,7 +33,6 @@ class SecondController: CoreController, View {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
         self.view.addSubview(self.label)
     }
 
