@@ -18,6 +18,10 @@
 		BF2AE774228C2DDC003C5B85 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF2AE773228C2DDB003C5B85 /* Alamofire.framework */; };
 		BF313C71229E64C200ADECF2 /* Validator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF313C70229E64C200ADECF2 /* Validator.framework */; };
 		BF31714322AA6E7C005F2732 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4A2F35225B4F7F0001B4CE /* RxSwift.framework */; };
+		BF3B775523608F4400ECD30A /* CoreUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B775423608F4400ECD30A /* CoreUIButton.swift */; };
+		BF3B77572360985700ECD30A /* CoreUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B77562360985700ECD30A /* CoreUILabel.swift */; };
+		BF3B775A2360C01F00ECD30A /* CoreUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B77592360C01F00ECD30A /* CoreUITextField.swift */; };
+		BF3B775C2360C35D00ECD30A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B775B2360C35D00ECD30A /* UIColor.swift */; };
 		BF425484221EBB9700395AE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF425483221EBB9700395AE6 /* AppDelegate.swift */; };
 		BF425486221EBB9700395AE6 /* TasksListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF425485221EBB9700395AE6 /* TasksListController.swift */; };
 		BF425488221EBB9700395AE6 /* SecondController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF425487221EBB9700395AE6 /* SecondController.swift */; };
@@ -142,6 +146,10 @@
 		BF2AE771228C1969003C5B85 /* Moya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Moya.framework; path = Carthage/Build/iOS/Moya.framework; sourceTree = "<group>"; };
 		BF2AE773228C2DDB003C5B85 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		BF313C70229E64C200ADECF2 /* Validator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Validator.framework; path = Carthage/Build/iOS/Validator.framework; sourceTree = "<group>"; };
+		BF3B775423608F4400ECD30A /* CoreUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreUIButton.swift; sourceTree = "<group>"; };
+		BF3B77562360985700ECD30A /* CoreUILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreUILabel.swift; sourceTree = "<group>"; };
+		BF3B77592360C01F00ECD30A /* CoreUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreUITextField.swift; sourceTree = "<group>"; };
+		BF3B775B2360C35D00ECD30A /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		BF425480221EBB9700395AE6 /* waosSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = waosSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF425483221EBB9700395AE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF425485221EBB9700395AE6 /* TasksListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListController.swift; sourceTree = "<group>"; };
@@ -382,6 +390,16 @@
 			path = localizations;
 			sourceTree = "<group>";
 		};
+		BF3B77582360A42A00ECD30A /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				BF3B775423608F4400ECD30A /* CoreUIButton.swift */,
+				BF3B77562360985700ECD30A /* CoreUILabel.swift */,
+				BF3B77592360C01F00ECD30A /* CoreUITextField.swift */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
 		BF425477221EBB9700395AE6 = {
 			isa = PBXGroup;
 			children = (
@@ -505,6 +523,7 @@
 		BF4A2F4F225B7C200001B4CE /* core */ = {
 			isa = PBXGroup;
 			children = (
+				BF3B77582360A42A00ECD30A /* ui */,
 				BF058D6B2282BB4800E2A077 /* controllers */,
 				BF058D6C2282BB5300E2A077 /* flows */,
 				BF78B5F622942C890057157A /* models */,
@@ -607,6 +626,7 @@
 				BF8C6726227C43E80012B5A8 /* Array+SectionModel.swift */,
 				BF4A2FD32265F4020001B4CE /* UserDefaults.swift */,
 				BF8BD5F6235F30660083B912 /* KeyboardConstraints.swift */,
+				BF3B775B2360C35D00ECD30A /* UIColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1032,6 +1052,7 @@
 				BF4A2FC0226479D20001B4CE /* Configuration.swift in Sources */,
 				BF9A3676228E9BD500EE2AB8 /* MyResult.swift in Sources */,
 				BF9A368622901D7000EE2AB8 /* UserModel.swift in Sources */,
+				BF3B775C2360C35D00ECD30A /* UIColor.swift in Sources */,
 				BF794D3E22672474000B19F3 /* CoreCellController.swift in Sources */,
 				BF058D792282BCB600E2A077 /* AuthFlow.swift in Sources */,
 				BFDE2604227B185E008CBD30 /* CoreService.swift in Sources */,
@@ -1055,12 +1076,14 @@
 				BF8C6731228022140012B5A8 /* UICollectionView+RxReusableKit.swift in Sources */,
 				BF0CD6AB22563C9800844F9A /* Strings.swift in Sources */,
 				BF8C6723227C3E1E0012B5A8 /* TasksCellReactor.swift in Sources */,
+				BF3B775A2360C01F00ECD30A /* CoreUITextField.swift in Sources */,
 				BF4A2F87225C8F160001B4CE /* UILocalizations.swift in Sources */,
 				BF058D7E2282BCDD00E2A077 /* AuthService.swift in Sources */,
 				BF9A3674228DFDAE00EE2AB8 /* TasksResponses.swift in Sources */,
 				BF8C6727227C43E80012B5A8 /* Array+SectionModel.swift in Sources */,
 				BF71BD9322A12A2E002CF9DE /* Validations.swift in Sources */,
 				BF4A2F71225BB2CD0001B4CE /* CoreFlow.swift in Sources */,
+				BF3B77572360985700ECD30A /* CoreUILabel.swift in Sources */,
 				BF794D532269C4FB000B19F3 /* TasksViewController.swift in Sources */,
 				BF8C672A2280176B0012B5A8 /* ReusableKit.swift in Sources */,
 				BF794D51226880FB000B19F3 /* TasksService.swift in Sources */,
@@ -1083,6 +1106,7 @@
 				BF4A2F82225BBA3F0001B4CE /* TasksFlow.swift in Sources */,
 				BF4A2F84225BBA4D0001B4CE /* SecondFlow.swift in Sources */,
 				BF8C672C2280177E0012B5A8 /* UICollectionView+ReusableKit.swift in Sources */,
+				BF3B775523608F4400ECD30A /* CoreUIButton.swift in Sources */,
 				BF425486221EBB9700395AE6 /* TasksListController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

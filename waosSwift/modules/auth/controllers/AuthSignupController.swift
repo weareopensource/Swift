@@ -12,45 +12,35 @@ import ReactorKit
 final class AuthSignUpController: CoreController, View, Stepper {
 
     // MARK: UI
-    let inputFirstName = UITextField().then {
+    let inputFirstName = CoreUITextField().then {
         $0.autocorrectionType = .no
-        $0.borderStyle = .roundedRect
         $0.placeholder = "firstname..."
     }
-    let inputLastName = UITextField().then {
+    let inputLastName = CoreUITextField().then {
         $0.autocorrectionType = .no
-        $0.borderStyle = .roundedRect
         $0.placeholder = "lastname..."
     }
-    let inputEmail = UITextField().then {
+    let inputEmail = CoreUITextField().then {
         $0.autocorrectionType = .no
-        $0.borderStyle = .roundedRect
         $0.placeholder = "email..."
         $0.autocapitalizationType = .none
         $0.textContentType = .username
     }
-    let inputPassword = UITextField().then {
+    let inputPassword = CoreUITextField().then {
         $0.autocorrectionType = .no
-        $0.borderStyle = .roundedRect
         $0.placeholder = "password..."
         $0.autocapitalizationType = .none
         $0.returnKeyType = .done
         $0.isSecureTextEntry = true
         $0.textContentType = .password
     }
-    let buttonSignin = UIButton().then {
+    let buttonSignin = CoreUIButton().then {
         $0.setTitle("Sign In", for: .normal)
-        $0.layer.cornerRadius = 5
-        $0.backgroundColor = UIColor.lightGray
-        $0.tintColor = UIColor.lightGray
     }
-    let buttonSignup = UIButton().then {
+    let buttonSignup = CoreUIButton().then {
         $0.setTitle("Sign Up", for: .normal)
-        $0.layer.cornerRadius = 5
-        $0.backgroundColor = UIColor.gray
-        $0.tintColor = UIColor.gray
     }
-    let labelErrors = UILabel().then {
+    let labelErrors = CoreUILabel().then {
         $0.numberOfLines = 5
         $0.textAlignment = .center
         $0.textColor = UIColor.red
@@ -75,7 +65,6 @@ final class AuthSignUpController: CoreController, View, Stepper {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
         self.view.registerAutomaticKeyboardConstraints() // active layout with snapkit
         self.view.addSubview(self.inputFirstName)
         self.view.addSubview(self.inputLastName)

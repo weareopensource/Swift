@@ -15,8 +15,7 @@ final class TasksCellController: CoreCellController, View {
 
     // MARK: UI
 
-    let labelTitle = UILabel().then {
-        $0.textColor = .black
+    let labelTitle = CoreUILabel().then {
         $0.numberOfLines = 2
     }
 

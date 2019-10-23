@@ -59,7 +59,6 @@ final class TasksListController: CoreController, View {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
         self.tableView.refreshControl = refreshControl
         self.view.addSubview(self.tableView)
     }

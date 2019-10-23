@@ -13,14 +13,12 @@ final class OnboardingController: CoreController, View, Stepper {
 
     // MARK: UI
 
-    let labelIntro = UILabel().then {
+    let labelIntro = CoreUILabel().then {
         $0.numberOfLines = 4
         $0.textAlignment = .center
     }
-    let completeButton = UIButton().then {
+    let completeButton = CoreUIButton().then {
         $0.setTitle(L10n.onBoardingValidation, for: .normal)
-        $0.layer.cornerRadius = 5
-        $0.backgroundColor = UIColor.gray
     }
     let scrollView = UIScrollView().then {
         $0.isPagingEnabled = true
@@ -58,7 +56,6 @@ final class OnboardingController: CoreController, View, Stepper {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = .white
         self.scrollView.contentSize = CGSize(width: view.frame.width * CGFloat(3), height: view.frame.height)
 
         self.view.addSubview(self.scrollView)
