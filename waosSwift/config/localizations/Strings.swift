@@ -11,9 +11,21 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name
 internal enum L10n {
+  /// firstname
+  internal static let authFirstname = L10n.tr("Localizable", "auth_firstname")
+  /// lastname
+  internal static let authLastname = L10n.tr("Localizable", "auth_lastname")
+  /// email
+  internal static let authMail = L10n.tr("Localizable", "auth_mail")
+  /// password
+  internal static let authPassword = L10n.tr("Localizable", "auth_password")
+  /// Sign In
+  internal static let authSignInTitle = L10n.tr("Localizable", "authSignIn_title")
+  /// Sign Up
+  internal static let authSignUpTitle = L10n.tr("Localizable", "authSignUp_title")
   /// this is the first page of the application, it will only be affixed once after installation. We call it onBoarding.
   internal static let onBoardingIntroduction = L10n.tr("Localizable", "onBoarding_introduction")
-  /// onBoarding
+  /// Welcome !
   internal static let onBoardingTitle = L10n.tr("Localizable", "onBoarding_title")
   /// I'm in !
   internal static let onBoardingValidation = L10n.tr("Localizable", "onBoarding_validation")
