@@ -32,8 +32,8 @@ final class CoreFlow: Flow {
         let secondFlow = SecondFlow(withServices: self.services)
 
         Flows.whenReady(flow1: tasksFlow, flow2: secondFlow) { [unowned self] (root1: UINavigationController, root2: UINavigationController) in
-            let tabBarItem1 = UITabBarItem(title: L10n.taskTitle, image: nil, selectedImage: nil)
-            let tabBarItem2 = UITabBarItem(title: L10n.secondTitle, image: nil, selectedImage: nil)
+            let tabBarItem1 = UITabBarItem(title: L10n.taskTitle, image: UIImage.fontAwesomeIcon(code: "fa-tasks", style: .solid, textColor: .blue, size: CGSize(width: 30, height: 30)), selectedImage: nil)
+            let tabBarItem2 = UITabBarItem(title: L10n.taskTitle, image: UIImage.fontAwesomeIcon(code: "fa-sun", style: .solid, textColor: .blue, size: CGSize(width: 30, height: 30)), selectedImage: nil)
 
             root1.tabBarItem = tabBarItem1
             root1.title = L10n.taskTitle

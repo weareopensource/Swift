@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF05418F2361EF98008628CF /* FontAwesome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF05418E2361EF98008628CF /* FontAwesome.framework */; };
+		BF0541902361EF98008628CF /* FontAwesome.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF05418E2361EF98008628CF /* FontAwesome.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BF058D772282BCAC00E2A077 /* AuthSigninController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF058D762282BCAC00E2A077 /* AuthSigninController.swift */; };
 		BF058D792282BCB600E2A077 /* AuthFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF058D782282BCB600E2A077 /* AuthFlow.swift */; };
 		BF058D7B2282BCC500E2A077 /* AuthSigninReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF058D7A2282BCC500E2A077 /* AuthSigninReactor.swift */; };
@@ -132,7 +134,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		BF0541912361EF98008628CF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BF0541902361EF98008628CF /* FontAwesome.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		BF05418D2361964F008628CF /* waosSwift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = waosSwift.entitlements; sourceTree = "<group>"; };
+		BF05418E2361EF98008628CF /* FontAwesome.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FontAwesome.framework; path = Carthage/Build/iOS/FontAwesome.framework; sourceTree = "<group>"; };
 		BF058D762282BCAC00E2A077 /* AuthSigninController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSigninController.swift; sourceTree = "<group>"; };
 		BF058D782282BCB600E2A077 /* AuthFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlow.swift; sourceTree = "<group>"; };
 		BF058D7A2282BCC500E2A077 /* AuthSigninReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSigninReactor.swift; sourceTree = "<group>"; };
@@ -261,6 +279,7 @@
 			files = (
 				BF78B62A229D3F090057157A /* Toaster.framework in Frameworks */,
 				BF9A3642228C33A900EE2AB8 /* ReactorKitRuntime.framework in Frameworks */,
+				BF05418F2361EF98008628CF /* FontAwesome.framework in Frameworks */,
 				BF9A3643228C33A900EE2AB8 /* ReactorKit.framework in Frameworks */,
 				BF794D41226856E6000B19F3 /* Differentiator.framework in Frameworks */,
 				BF4A2F37225B4F7F0001B4CE /* RxFlow.framework in Frameworks */,
@@ -426,6 +445,7 @@
 		BF425482221EBB9700395AE6 /* waosSwift */ = {
 			isa = PBXGroup;
 			children = (
+				BF05418D2361964F008628CF /* waosSwift.entitlements */,
 				BF0CD6A822563C7700844F9A /* config */,
 				BF4A2F47225B77FB0001B4CE /* lib */,
 				BF4A2F4E225B7C200001B4CE /* modules */,
@@ -459,6 +479,7 @@
 		BF4A2F30225B4F7F0001B4CE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BF05418E2361EF98008628CF /* FontAwesome.framework */,
 				BF19509322B4EC2C00C593E5 /* RxRelay.framework */,
 				BF313C70229E64C200ADECF2 /* Validator.framework */,
 				BF78B629229D3F090057157A /* Toaster.framework */,
@@ -827,6 +848,7 @@
 				BF8E75CD221EBCA30057F710 /* SwiftLint */,
 				BF85C200225639BC00C8DDB8 /* SwiftGen */,
 				BF4A2F19225B4A310001B4CE /* Carthage */,
+				BF0541912361EF98008628CF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -990,6 +1012,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Toaster.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Validator.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FontAwesome.framework",
 			);
 			name = Carthage;
 			outputFileListPaths = (
@@ -1288,6 +1311,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = waosSwift/waosSwift.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5TTXU376YU;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1311,6 +1335,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = waosSwift/waosSwift.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5TTXU376YU;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1475,6 +1500,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = waosSwift/waosSwift.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5TTXU376YU;
 				FRAMEWORK_SEARCH_PATHS = (

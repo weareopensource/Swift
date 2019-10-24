@@ -6,3 +6,4 @@
 @import SnapKit;
 @import RxAppState;
 @import Validator;
+@import FontAwesome;

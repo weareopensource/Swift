@@ -12,3 +12,4 @@ github "pixeldock/RxAppState" ~> 1.5.1
 github "adamwaite/Validator" ~> 3.2.1 
 github "kishikawakatsumi/KeychainAccess"
 github "devxoul/Toaster"
+github "thii/FontAwesome.swift"
