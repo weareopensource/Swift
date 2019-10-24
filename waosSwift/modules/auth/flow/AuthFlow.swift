@@ -40,7 +40,7 @@ final class AuthFlow: Flow {
         let provider = AppServicesProvider()
         let reactor = AuthSigninReactor(provider: provider)
         let viewController = AuthSignInController(reactor: reactor)
-        viewController.title = "Auth"
+        viewController.title = L10n.authSignInTitle
         self.rootViewController.pushViewController(viewController, animated: false)
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: viewController))
 

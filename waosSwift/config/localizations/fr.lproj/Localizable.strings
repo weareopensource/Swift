@@ -3,9 +3,17 @@
  */
 
 // onBoarding
-"onBoarding_title"= "onBoarding";
+"onBoarding_title"= "Bienvenue !";
 "onBoarding_introduction"= "ceci est la première page de l'application, elle ne sera affihcée qu'une fois après l'installation. Nous appelons cela onBoarding.";
 "onBoarding_validation"= "J'en suis !";
+
+// auth
+"authSignIn_title"= "Inscription";
+"authSignUp_title"= "Connexion";
+"auth_mail"= "email";
+"auth_password"= "password";
+"auth_firstname"= "firstname";
+"auth_lastname"= "lastname";
 
 // first
 "task_title"= "Tasks";

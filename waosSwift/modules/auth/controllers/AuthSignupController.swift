@@ -14,31 +14,31 @@ final class AuthSignUpController: CoreController, View, Stepper {
     // MARK: UI
     let inputFirstName = CoreUITextField().then {
         $0.autocorrectionType = .no
-        $0.placeholder = "firstname..."
+        $0.placeholder = L10n.authFirstname + "..."
     }
     let inputLastName = CoreUITextField().then {
         $0.autocorrectionType = .no
-        $0.placeholder = "lastname..."
+        $0.placeholder = L10n.authLastname + "..."
     }
     let inputEmail = CoreUITextField().then {
         $0.autocorrectionType = .no
-        $0.placeholder = "email..."
+        $0.placeholder = L10n.authMail + "..."
         $0.autocapitalizationType = .none
         $0.textContentType = .username
     }
     let inputPassword = CoreUITextField().then {
         $0.autocorrectionType = .no
-        $0.placeholder = "password..."
+        $0.placeholder = L10n.authPassword + "..."
         $0.autocapitalizationType = .none
         $0.returnKeyType = .done
         $0.isSecureTextEntry = true
         $0.textContentType = .password
     }
     let buttonSignin = CoreUIButton().then {
-        $0.setTitle("Sign In", for: .normal)
+        $0.setTitle(L10n.authSignInTitle, for: .normal)
     }
     let buttonSignup = CoreUIButton().then {
-        $0.setTitle("Sign Up", for: .normal)
+        $0.setTitle(L10n.authSignUpTitle, for: .normal)
     }
     let labelErrors = CoreUILabel().then {
         $0.numberOfLines = 5
