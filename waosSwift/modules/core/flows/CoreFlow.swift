@@ -30,19 +30,24 @@ final class CoreFlow: Flow {
     private func navigateToDashboard() -> FlowContributors {
         let tasksFlow = TasksFlow(withServices: self.services)
         let secondFlow = SecondFlow(withServices: self.services)
+        let profilFlow = ProfilFlow(withServices: self.services)
 
-        Flows.whenReady(flow1: tasksFlow, flow2: secondFlow) { [unowned self] (root1: UINavigationController, root2: UINavigationController) in
+        Flows.whenReady(flow1: tasksFlow, flow2: secondFlow, flow3: profilFlow) { [unowned self] (root1: UINavigationController, root2: UINavigationController, root3: UINavigationController) in
 
             root1.tabBarItem = UITabBarItem(title: L10n.get("Localizable", config["router"][0]["name"].string ?? ""), image: UIImage.fontAwesomeIcon(code: "fa-" + (config["router"][0]["meta"]["icon"].string ?? ""), style: .solid, textColor: .blue, size: CGSize(width: config["router"][0]["meta"]["width"].int ?? 0, height: config["router"][0]["meta"]["height"].int ?? 0)), selectedImage: nil)
 
             root2.tabBarItem = UITabBarItem(title: L10n.get("Localizable", config["router"][1]["name"].string ?? ""), image: UIImage.fontAwesomeIcon(code: "fa-" + (config["router"][1]["meta"]["icon"].string ?? ""), style: .solid, textColor: .blue, size: CGSize(width: config["router"][1]["meta"]["width"].int ?? 0, height: config["router"][1]["meta"]["height"].int ?? 0)), selectedImage: nil)
 
-            self.rootViewController.setViewControllers([root1, root2], animated: false)
+            root3.tabBarItem = UITabBarItem(title: L10n.get("Localizable", config["router"][2]["name"].string ?? ""), image: UIImage.fontAwesomeIcon(code: "fa-" + (config["router"][2]["meta"]["icon"].string ?? ""), style: .solid, textColor: .blue, size: CGSize(width: config["router"][2]["meta"]["width"].int ?? 0, height: config["router"][2]["meta"]["height"].int ?? 0)), selectedImage: nil)
+
+            self.rootViewController.setViewControllers([root1, root2, root3], animated: false)
         }
 
         return .multiple(flowContributors: [.contribute(withNextPresentable: tasksFlow,
                                                         withNextStepper: OneStepper(withSingleStep: Steps.tasksIsRequired)),
                                             .contribute(withNextPresentable: secondFlow,
-                                                        withNextStepper: OneStepper(withSingleStep: Steps.secondIsRequired))])
+                                                        withNextStepper: OneStepper(withSingleStep: Steps.secondIsRequired)),
+                                            .contribute(withNextPresentable: profilFlow,
+                                                        withNextStepper: OneStepper(withSingleStep: Steps.profilIsRequired))])
     }
 }

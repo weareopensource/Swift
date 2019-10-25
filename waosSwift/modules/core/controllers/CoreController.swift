@@ -35,9 +35,15 @@ class CoreController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor(named: config["theme"]["themes"]["waos"]["onPrimary"].string ?? "")!]
         self.navigationController?.navigationBar.tintColor = UIColor(named: config["theme"]["themes"]["waos"]["onPrimary"].string ?? "")
         // tabar
-        if NSString(string: config["theme"]["colorTabBar"].string ?? "").boolValue == true {
+        if NSString(string: config["theme"]["tabBar"]["color"].string ?? "").boolValue == true {
             self.tabBarController?.tabBar.barTintColor = UIColor(named: config["theme"]["themes"]["waos"]["primary"].string ?? "")
             self.tabBarController?.tabBar.tintColor = UIColor(named: config["theme"]["themes"]["waos"]["onPrimary"].string ?? "")
+        }
+        if NSString(string: config["theme"]["tabBar"]["title"].string ?? "").boolValue != true {
+            self.tabBarController?.tabBar.items?.forEach {
+               $0.title = ""
+               $0.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
+            }
         }
         // view
         self.view.backgroundColor = UIColor(named: config["theme"]["themes"]["waos"]["background"].string ?? "")

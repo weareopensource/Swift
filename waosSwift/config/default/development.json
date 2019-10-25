@@ -31,20 +31,30 @@
             "name": "task_title",
             "meta": {
                 "icon": "tasks",
-                "width": 30,
-                "height": 30
+                "width": 35,
+                "height": 35
             }
         }, {
             "name": "second_title",
             "meta": {
                 "icon": "sun",
-                "width": 30,
-                "height": 30
+                "width": 35,
+                "height": 35
+            }
+        }, {
+            "name": "profil_title",
+            "meta": {
+                "icon": "user",
+                "width": 35,
+                "height": 35
             }
         }
     ],
     "theme": {
-        "colorTabBar": "false",
+        "tabBar": {
+            "color": "false",
+            "title": "false",
+        },
         "themes": {
             "waos" :{
                 "primary": "waosPrimary",

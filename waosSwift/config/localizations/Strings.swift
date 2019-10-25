@@ -29,6 +29,8 @@ internal enum L10n {
   internal static let onBoardingTitle = L10n.tr("Localizable", "onBoarding_title")
   /// I'm in !
   internal static let onBoardingValidation = L10n.tr("Localizable", "onBoarding_validation")
+  /// Profil
+  internal static let profilTitle = L10n.tr("Localizable", "profil_title")
   /// Example
   internal static let secondTitle = L10n.tr("Localizable", "second_title")
   /// Tasks
