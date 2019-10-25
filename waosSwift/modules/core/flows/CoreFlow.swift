@@ -32,13 +32,10 @@ final class CoreFlow: Flow {
         let secondFlow = SecondFlow(withServices: self.services)
 
         Flows.whenReady(flow1: tasksFlow, flow2: secondFlow) { [unowned self] (root1: UINavigationController, root2: UINavigationController) in
-            let tabBarItem1 = UITabBarItem(title: L10n.taskTitle, image: UIImage.fontAwesomeIcon(code: "fa-tasks", style: .solid, textColor: .blue, size: CGSize(width: 30, height: 30)), selectedImage: nil)
-            let tabBarItem2 = UITabBarItem(title: L10n.taskTitle, image: UIImage.fontAwesomeIcon(code: "fa-sun", style: .solid, textColor: .blue, size: CGSize(width: 30, height: 30)), selectedImage: nil)
 
-            root1.tabBarItem = tabBarItem1
-            root1.title = L10n.taskTitle
-            root2.tabBarItem = tabBarItem2
-            root2.title = L10n.secondTitle
+            root1.tabBarItem = UITabBarItem(title: L10n.get("Localizable", config["router"][0]["name"].string ?? ""), image: UIImage.fontAwesomeIcon(code: "fa-" + (config["router"][0]["meta"]["icon"].string ?? ""), style: .solid, textColor: .blue, size: CGSize(width: config["router"][0]["meta"]["width"].int ?? 0, height: config["router"][0]["meta"]["height"].int ?? 0)), selectedImage: nil)
+
+            root2.tabBarItem = UITabBarItem(title: L10n.get("Localizable", config["router"][1]["name"].string ?? ""), image: UIImage.fontAwesomeIcon(code: "fa-" + (config["router"][1]["meta"]["icon"].string ?? ""), style: .solid, textColor: .blue, size: CGSize(width: config["router"][1]["meta"]["width"].int ?? 0, height: config["router"][1]["meta"]["height"].int ?? 0)), selectedImage: nil)
 
             self.rootViewController.setViewControllers([root1, root2], animated: false)
         }

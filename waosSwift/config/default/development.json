@@ -26,6 +26,23 @@
             "unknown": "☠️ UNKNOWN"
         }
     },
+    "router": [
+        {
+            "name": "task_title",
+            "meta": {
+                "icon": "tasks",
+                "width": 30,
+                "height": 30
+            }
+        }, {
+            "name": "second_title",
+            "meta": {
+                "icon": "sun",
+                "width": 30,
+                "height": 30
+            }
+        }
+    ],
     "theme": {
         "colorTabBar": "false",
         "themes": {
