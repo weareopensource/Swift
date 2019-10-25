@@ -10,4 +10,6 @@ enum Steps: Step {
     case tasksIsRequired
 
     case secondIsRequired
+
+    case profilIsRequired
 }
