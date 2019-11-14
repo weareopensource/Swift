@@ -14,6 +14,7 @@ final class AuthSignUpReactor: Reactor {
 
     // user actions
     enum Action {
+        // inputs
         case updateFirstName(String)
         case validateFirstName
         case updateLastName(String)
@@ -21,18 +22,22 @@ final class AuthSignUpReactor: Reactor {
         case updateEmail(String)
         case validateEmail
         case updatePassword(String)
+        // others
         case signIn
         case signUp
     }
 
     // state changes
     enum Mutation {
+        // inputs
         case updateFirstName(String)
         case updateLastName(String)
         case updateEmail(String)
         case updatePassword(String)
+        // others
         case goSignIn
         case dismiss
+        // default
         case success(String)
         case error(CustomError)
     }
@@ -101,7 +106,7 @@ final class AuthSignUpReactor: Reactor {
             return .just(.goSignIn)
         // signup
         case .signUp:
-            log.verbose("♻️ Action -> Mutation : signUp(\(self.currentState.user.firstName), \(self.currentState.user.lastName), \(self.currentState.user.email), \(self.currentState.password))")
+            log.verbose("♻️ Action -> Mutation : signUp(\(self.currentState.user.firstName), \(self.currentState.user.lastName), \(self.currentState.user.email))")
             return self.provider.authService
                 .signUp(firstName: self.currentState.user.firstName, lastName: self.currentState.user.lastName, email: self.currentState.user.email, password: self.currentState.password)
                 .map { result in
@@ -135,6 +140,7 @@ final class AuthSignUpReactor: Reactor {
             state.password = password
         // go Signup
         case .goSignIn:
+            log.verbose("♻️ Mutation -> State : goSignIn")
             state.isDismissed = true
         // dissmiss
         case .dismiss:
@@ -149,8 +155,7 @@ final class AuthSignUpReactor: Reactor {
             if error.code == 401 {
                 self.provider.preferencesService.isLogged = false
             } else {
-                let description = error.description ?? "Unknown error"
-                state.error = DiplayError(title: error.message, description: description.replacingOccurrences(of: ".", with: ".\n"))
+                state.error = DiplayError(title: error.message, description: (error.description ?? "Unknown error"))
             }
         }
         return state

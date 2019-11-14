@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF00138B237427670044C01A /* Eureka.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00138A237427660044C01A /* Eureka.swift */; };
 		BF05418F2361EF98008628CF /* FontAwesome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF05418E2361EF98008628CF /* FontAwesome.framework */; };
 		BF0541902361EF98008628CF /* FontAwesome.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BF05418E2361EF98008628CF /* FontAwesome.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BF058D772282BCAC00E2A077 /* AuthSigninController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF058D762282BCAC00E2A077 /* AuthSigninController.swift */; };
 		BF058D792282BCB600E2A077 /* AuthFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF058D782282BCB600E2A077 /* AuthFlow.swift */; };
 		BF058D7B2282BCC500E2A077 /* AuthSigninReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF058D7A2282BCC500E2A077 /* AuthSigninReactor.swift */; };
 		BF058D7E2282BCDD00E2A077 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF058D7D2282BCDD00E2A077 /* AuthService.swift */; };
+		BF0BB9FB236B495F00454BDD /* Eureka+Valid+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0BB9FA236B495F00454BDD /* Eureka+Valid+Rx.swift */; };
 		BF0CD6AB22563C9800844F9A /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0CD6AA22563C9800844F9A /* Strings.swift */; };
 		BF0CD6B622563CC200844F9A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF0CD6B822563CC200844F9A /* Localizable.strings */; };
 		BF19509422B4EC2C00C593E5 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF19509322B4EC2C00C593E5 /* RxRelay.framework */; };
@@ -32,9 +34,9 @@
 		BF42549B221EBB9800395AE6 /* waosSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF42549A221EBB9800395AE6 /* waosSwiftTests.swift */; };
 		BF4254A6221EBB9800395AE6 /* waosSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4254A5221EBB9800395AE6 /* waosSwiftUITests.swift */; };
 		BF49EA0D2362CC2D00FF06E9 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF49EA0C2362CC2D00FF06E9 /* L10n.swift */; };
-		BF49EA132362E51B00FF06E9 /* ProfilController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF49EA122362E51B00FF06E9 /* ProfilController.swift */; };
-		BF49EA152362E53D00FF06E9 /* ProfilFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF49EA142362E53D00FF06E9 /* ProfilFlow.swift */; };
-		BF49EA172362E54800FF06E9 /* ProfilReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF49EA162362E54800FF06E9 /* ProfilReactor.swift */; };
+		BF49EA132362E51B00FF06E9 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF49EA122362E51B00FF06E9 /* UserController.swift */; };
+		BF49EA152362E53D00FF06E9 /* UserFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF49EA142362E53D00FF06E9 /* UserFlow.swift */; };
+		BF49EA172362E54800FF06E9 /* UserReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF49EA162362E54800FF06E9 /* UserReactor.swift */; };
 		BF4A2F37225B4F7F0001B4CE /* RxFlow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4A2F31225B4F7F0001B4CE /* RxFlow.framework */; };
 		BF4A2F3A225B4F7F0001B4CE /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4A2F34225B4F7F0001B4CE /* RxCocoa.framework */; };
 		BF4A2F45225B751F0001B4CE /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A2F44225B751F0001B4CE /* AppFlow.swift */; };
@@ -45,7 +47,6 @@
 		BF4A2F6F225BB2B10001B4CE /* OnBoardingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A2F6E225BB2B10001B4CE /* OnBoardingFlow.swift */; };
 		BF4A2F71225BB2CD0001B4CE /* CoreFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A2F70225BB2CD0001B4CE /* CoreFlow.swift */; };
 		BF4A2F74225BB4B90001B4CE /* AppSteps.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A2F73225BB4B90001B4CE /* AppSteps.swift */; };
-		BF4A2F76225BB6190001B4CE /* CoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A2F75225BB6190001B4CE /* CoreController.swift */; };
 		BF4A2F7E225BB9270001B4CE /* TasksListReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A2F7D225BB9270001B4CE /* TasksListReactor.swift */; };
 		BF4A2F80225BB9360001B4CE /* SecondReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A2F7F225BB9360001B4CE /* SecondReactor.swift */; };
 		BF4A2F82225BBA3F0001B4CE /* TasksFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A2F81225BBA3F0001B4CE /* TasksFlow.swift */; };
@@ -77,7 +78,6 @@
 		BF78B628229964290057157A /* signIn.json in Resources */ = {isa = PBXBuildFile; fileRef = BF78B627229964290057157A /* signIn.json */; };
 		BF78B62A229D3F090057157A /* Toaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF78B629229D3F090057157A /* Toaster.framework */; };
 		BF794D3A22671CD8000B19F3 /* TasksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF794D3922671CD8000B19F3 /* TasksModel.swift */; };
-		BF794D3E22672474000B19F3 /* CoreCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF794D3D22672474000B19F3 /* CoreCellController.swift */; };
 		BF794D41226856E6000B19F3 /* Differentiator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF794D40226856E6000B19F3 /* Differentiator.framework */; };
 		BF794D51226880FB000B19F3 /* TasksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF794D50226880FB000B19F3 /* TasksService.swift */; };
 		BF794D532269C4FB000B19F3 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF794D522269C4FB000B19F3 /* TasksViewController.swift */; };
@@ -90,6 +90,7 @@
 		BF8C672E228017940012B5A8 /* UITableView+ReusableKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8C672D228017940012B5A8 /* UITableView+ReusableKit.swift */; };
 		BF8C6731228022140012B5A8 /* UICollectionView+RxReusableKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8C6730228022140012B5A8 /* UICollectionView+RxReusableKit.swift */; };
 		BF8C67332280222A0012B5A8 /* UITableView+RxReusableKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8C67322280222A0012B5A8 /* UITableView+RxReusableKit.swift */; };
+		BF8CAC6A2369741A00B0B546 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF8CAC692369741A00B0B546 /* Eureka.framework */; };
 		BF8F6ED1227063F100B9447A /* RxOptional.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF8F6ED0227063F100B9447A /* RxOptional.framework */; };
 		BF8F6ED92273442100B9447A /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF8F6ED82273442100B9447A /* SnapKit.framework */; };
 		BF8F6EDB2273453100B9447A /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8F6EDA2273453100B9447A /* Then.swift */; };
@@ -112,6 +113,16 @@
 		BF9A368822902DE200EE2AB8 /* AuthResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9A368722902DE200EE2AB8 /* AuthResponses.swift */; };
 		BF9A368A2291BF8C00EE2AB8 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9A36892291BF8C00EE2AB8 /* KeychainAccess.framework */; };
 		BF9A368C2292D0C700EE2AB8 /* CookiePlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9A368B2292D0C700EE2AB8 /* CookiePlugin.swift */; };
+		BFA92D15237AC684006A3B8D /* UserApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D14237AC684006A3B8D /* UserApi.swift */; };
+		BFA92D17237AC709006A3B8D /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D16237AC709006A3B8D /* UserService.swift */; };
+		BFA92D1A237AED1F006A3B8D /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D19237AED1F006A3B8D /* UserViewController.swift */; };
+		BFA92D1C237AED34006A3B8D /* UserViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D1B237AED34006A3B8D /* UserViewReactor.swift */; };
+		BFA92D1E237BEEAB006A3B8D /* UserCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D1D237BEEAB006A3B8D /* UserCellReactor.swift */; };
+		BFA92D20237BEEC0006A3B8D /* UserCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D1F237BEEC0006A3B8D /* UserCellController.swift */; };
+		BFA92D2D237C050C006A3B8D /* CoreCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D2A237C050C006A3B8D /* CoreCellController.swift */; };
+		BFA92D2E237C050C006A3B8D /* CoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D2B237C050C006A3B8D /* CoreController.swift */; };
+		BFA92D2F237C050C006A3B8D /* CoreFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D2C237C050C006A3B8D /* CoreFormController.swift */; };
+		BFA92D3D237DA119006A3B8D /* CoreUITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D3C237DA119006A3B8D /* CoreUITableView.swift */; };
 		BFDE25FE227B052D008CBD30 /* NSViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE25FD227B052D008CBD30 /* NSViewController+Rx.swift */; };
 		BFDE2600227B053D008CBD30 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE25FF227B053D008CBD30 /* UIViewController+Rx.swift */; };
 		BFDE2602227B17D4008CBD30 /* AppServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE2601227B17D4008CBD30 /* AppServicesProvider.swift */; };
@@ -153,12 +164,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BF00138A237427660044C01A /* Eureka.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eureka.swift; sourceTree = "<group>"; };
 		BF05418D2361964F008628CF /* waosSwift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = waosSwift.entitlements; sourceTree = "<group>"; };
 		BF05418E2361EF98008628CF /* FontAwesome.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FontAwesome.framework; path = Carthage/Build/iOS/FontAwesome.framework; sourceTree = "<group>"; };
 		BF058D762282BCAC00E2A077 /* AuthSigninController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSigninController.swift; sourceTree = "<group>"; };
 		BF058D782282BCB600E2A077 /* AuthFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlow.swift; sourceTree = "<group>"; };
 		BF058D7A2282BCC500E2A077 /* AuthSigninReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSigninReactor.swift; sourceTree = "<group>"; };
 		BF058D7D2282BCDD00E2A077 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		BF0BB9FA236B495F00454BDD /* Eureka+Valid+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Eureka+Valid+Rx.swift"; sourceTree = "<group>"; };
 		BF0CD6A322563B3900844F9A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		BF0CD6AA22563C9800844F9A /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		BF0CD6B722563CC200844F9A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -186,9 +199,9 @@
 		BF4254A5221EBB9800395AE6 /* waosSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = waosSwiftUITests.swift; sourceTree = "<group>"; };
 		BF4254A7221EBB9800395AE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF49EA0C2362CC2D00FF06E9 /* L10n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
-		BF49EA122362E51B00FF06E9 /* ProfilController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilController.swift; sourceTree = "<group>"; };
-		BF49EA142362E53D00FF06E9 /* ProfilFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilFlow.swift; sourceTree = "<group>"; };
-		BF49EA162362E54800FF06E9 /* ProfilReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilReactor.swift; sourceTree = "<group>"; };
+		BF49EA122362E51B00FF06E9 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		BF49EA142362E53D00FF06E9 /* UserFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFlow.swift; sourceTree = "<group>"; };
+		BF49EA162362E54800FF06E9 /* UserReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReactor.swift; sourceTree = "<group>"; };
 		BF4A2F31225B4F7F0001B4CE /* RxFlow.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxFlow.framework; path = Carthage/Build/iOS/RxFlow.framework; sourceTree = "<group>"; };
 		BF4A2F32225B4F7F0001B4CE /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
 		BF4A2F34225B4F7F0001B4CE /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
@@ -203,7 +216,6 @@
 		BF4A2F6E225BB2B10001B4CE /* OnBoardingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingFlow.swift; sourceTree = "<group>"; };
 		BF4A2F70225BB2CD0001B4CE /* CoreFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreFlow.swift; sourceTree = "<group>"; };
 		BF4A2F73225BB4B90001B4CE /* AppSteps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSteps.swift; sourceTree = "<group>"; };
-		BF4A2F75225BB6190001B4CE /* CoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreController.swift; sourceTree = "<group>"; };
 		BF4A2F7D225BB9270001B4CE /* TasksListReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListReactor.swift; sourceTree = "<group>"; };
 		BF4A2F7F225BB9360001B4CE /* SecondReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondReactor.swift; sourceTree = "<group>"; };
 		BF4A2F81225BBA3F0001B4CE /* TasksFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksFlow.swift; sourceTree = "<group>"; };
@@ -235,7 +247,6 @@
 		BF78B627229964290057157A /* signIn.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = signIn.json; sourceTree = "<group>"; };
 		BF78B629229D3F090057157A /* Toaster.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Toaster.framework; path = Carthage/Build/iOS/Toaster.framework; sourceTree = "<group>"; };
 		BF794D3922671CD8000B19F3 /* TasksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksModel.swift; sourceTree = "<group>"; };
-		BF794D3D22672474000B19F3 /* CoreCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreCellController.swift; sourceTree = "<group>"; };
 		BF794D40226856E6000B19F3 /* Differentiator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Differentiator.framework; path = Carthage/Build/iOS/Differentiator.framework; sourceTree = "<group>"; };
 		BF794D50226880FB000B19F3 /* TasksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksService.swift; sourceTree = "<group>"; };
 		BF794D522269C4FB000B19F3 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
@@ -248,6 +259,7 @@
 		BF8C672D228017940012B5A8 /* UITableView+ReusableKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+ReusableKit.swift"; sourceTree = "<group>"; };
 		BF8C6730228022140012B5A8 /* UICollectionView+RxReusableKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+RxReusableKit.swift"; sourceTree = "<group>"; };
 		BF8C67322280222A0012B5A8 /* UITableView+RxReusableKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+RxReusableKit.swift"; sourceTree = "<group>"; };
+		BF8CAC692369741A00B0B546 /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = Carthage/Build/iOS/Eureka.framework; sourceTree = "<group>"; };
 		BF8F6ED0227063F100B9447A /* RxOptional.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxOptional.framework; path = Carthage/Build/iOS/RxOptional.framework; sourceTree = "<group>"; };
 		BF8F6ED82273442100B9447A /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		BF8F6EDA2273453100B9447A /* Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
@@ -271,6 +283,16 @@
 		BF9A368722902DE200EE2AB8 /* AuthResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponses.swift; sourceTree = "<group>"; };
 		BF9A36892291BF8C00EE2AB8 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		BF9A368B2292D0C700EE2AB8 /* CookiePlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookiePlugin.swift; sourceTree = "<group>"; };
+		BFA92D14237AC684006A3B8D /* UserApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserApi.swift; sourceTree = "<group>"; };
+		BFA92D16237AC709006A3B8D /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		BFA92D19237AED1F006A3B8D /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		BFA92D1B237AED34006A3B8D /* UserViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewReactor.swift; sourceTree = "<group>"; };
+		BFA92D1D237BEEAB006A3B8D /* UserCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellReactor.swift; sourceTree = "<group>"; };
+		BFA92D1F237BEEC0006A3B8D /* UserCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellController.swift; sourceTree = "<group>"; };
+		BFA92D2A237C050C006A3B8D /* CoreCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreCellController.swift; sourceTree = "<group>"; };
+		BFA92D2B237C050C006A3B8D /* CoreController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreController.swift; sourceTree = "<group>"; };
+		BFA92D2C237C050C006A3B8D /* CoreFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreFormController.swift; sourceTree = "<group>"; };
+		BFA92D3C237DA119006A3B8D /* CoreUITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreUITableView.swift; sourceTree = "<group>"; };
 		BFDE25FD227B052D008CBD30 /* NSViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSViewController+Rx.swift"; sourceTree = "<group>"; };
 		BFDE25FF227B053D008CBD30 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		BFDE2601227B17D4008CBD30 /* AppServicesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServicesProvider.swift; sourceTree = "<group>"; };
@@ -286,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF78B62A229D3F090057157A /* Toaster.framework in Frameworks */,
+				BF8CAC6A2369741A00B0B546 /* Eureka.framework in Frameworks */,
 				BF9A3642228C33A900EE2AB8 /* ReactorKitRuntime.framework in Frameworks */,
 				BF05418F2361EF98008628CF /* FontAwesome.framework in Frameworks */,
 				BF9A3643228C33A900EE2AB8 /* ReactorKit.framework in Frameworks */,
@@ -329,8 +352,9 @@
 		BF058D6B2282BB4800E2A077 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BF4A2F75225BB6190001B4CE /* CoreController.swift */,
-				BF794D3D22672474000B19F3 /* CoreCellController.swift */,
+				BFA92D2A237C050C006A3B8D /* CoreCellController.swift */,
+				BFA92D2B237C050C006A3B8D /* CoreController.swift */,
+				BFA92D2C237C050C006A3B8D /* CoreFormController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -423,6 +447,7 @@
 				BF3B775423608F4400ECD30A /* CoreUIButton.swift */,
 				BF3B77562360985700ECD30A /* CoreUILabel.swift */,
 				BF3B77592360C01F00ECD30A /* CoreUITextField.swift */,
+				BFA92D3C237DA119006A3B8D /* CoreUITableView.swift */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -453,11 +478,11 @@
 		BF425482221EBB9700395AE6 /* waosSwift */ = {
 			isa = PBXGroup;
 			children = (
+				BF42548C221EBB9800395AE6 /* Assets.xcassets */,
 				BF05418D2361964F008628CF /* waosSwift.entitlements */,
 				BF0CD6A822563C7700844F9A /* config */,
 				BF4A2F47225B77FB0001B4CE /* lib */,
 				BF4A2F4E225B7C200001B4CE /* modules */,
-				BF42548C221EBB9800395AE6 /* Assets.xcassets */,
 				BF425491221EBB9800395AE6 /* Info.plist */,
 				BF4A2F9A225CA6DB0001B4CE /* Readme.md */,
 				BF4A2F8D225CA6DB0001B4CE /* CHANGELOG.md */,
@@ -484,20 +509,24 @@
 			path = waosSwiftUITests;
 			sourceTree = "<group>";
 		};
-		BF49EA0E2362E2D100FF06E9 /* profil */ = {
+		BF49EA0E2362E2D100FF06E9 /* user */ = {
 			isa = PBXGroup;
 			children = (
 				BF49EA0F2362E4ED00FF06E9 /* controllers */,
 				BF49EA102362E4F400FF06E9 /* flows */,
+				BFA92D10237AC5F0006A3B8D /* models */,
 				BF49EA112362E4FE00FF06E9 /* reactors */,
+				BFA92D11237AC5F6006A3B8D /* services */,
 			);
-			path = profil;
+			path = user;
 			sourceTree = "<group>";
 		};
 		BF49EA0F2362E4ED00FF06E9 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BF49EA122362E51B00FF06E9 /* ProfilController.swift */,
+				BF49EA122362E51B00FF06E9 /* UserController.swift */,
+				BFA92D1F237BEEC0006A3B8D /* UserCellController.swift */,
+				BFA92D19237AED1F006A3B8D /* UserViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -505,7 +534,7 @@
 		BF49EA102362E4F400FF06E9 /* flows */ = {
 			isa = PBXGroup;
 			children = (
-				BF49EA142362E53D00FF06E9 /* ProfilFlow.swift */,
+				BF49EA142362E53D00FF06E9 /* UserFlow.swift */,
 			);
 			path = flows;
 			sourceTree = "<group>";
@@ -513,7 +542,9 @@
 		BF49EA112362E4FE00FF06E9 /* reactors */ = {
 			isa = PBXGroup;
 			children = (
-				BF49EA162362E54800FF06E9 /* ProfilReactor.swift */,
+				BF49EA162362E54800FF06E9 /* UserReactor.swift */,
+				BFA92D1D237BEEAB006A3B8D /* UserCellReactor.swift */,
+				BFA92D1B237AED34006A3B8D /* UserViewReactor.swift */,
 			);
 			path = reactors;
 			sourceTree = "<group>";
@@ -545,6 +576,7 @@
 				BF4A2F34225B4F7F0001B4CE /* RxCocoa.framework */,
 				BF4A2F31225B4F7F0001B4CE /* RxFlow.framework */,
 				BF4A2F35225B4F7F0001B4CE /* RxSwift.framework */,
+				BF8CAC692369741A00B0B546 /* Eureka.framework */,
 				BF4A2F36225B4F7F0001B4CE /* RxTest.framework */,
 			);
 			name = Frameworks;
@@ -579,7 +611,7 @@
 				BF058D712282BC5300E2A077 /* auth */,
 				BF4A2F77225BB65E0001B4CE /* tasks */,
 				BF4A2F78225BB6690001B4CE /* secondController */,
-				BF49EA0E2362E2D100FF06E9 /* profil */,
+				BF49EA0E2362E2D100FF06E9 /* user */,
 			);
 			path = modules;
 			sourceTree = "<group>";
@@ -692,6 +724,7 @@
 				BF8BD5F6235F30660083B912 /* KeyboardConstraints.swift */,
 				BF3B775B2360C35D00ECD30A /* UIColor.swift */,
 				BF49EA0C2362CC2D00FF06E9 /* L10n.swift */,
+				BF00138A237427660044C01A /* Eureka.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -854,7 +887,6 @@
 			children = (
 				BF78B625229964050057157A /* signUp.json */,
 				BF78B627229964290057157A /* signIn.json */,
-				BF78B60622954B3F0057157A /* me.json */,
 				BF78B61B229683A90057157A /* token.json */,
 			);
 			path = stubbed;
@@ -863,15 +895,49 @@
 		BF9A368422901D5400EE2AB8 /* models */ = {
 			isa = PBXGroup;
 			children = (
-				BF9A368522901D7000EE2AB8 /* UserModel.swift */,
 				BF9A368722902DE200EE2AB8 /* AuthResponses.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
 		};
+		BFA92D10237AC5F0006A3B8D /* models */ = {
+			isa = PBXGroup;
+			children = (
+				BF9A368522901D7000EE2AB8 /* UserModel.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		BFA92D11237AC5F6006A3B8D /* services */ = {
+			isa = PBXGroup;
+			children = (
+				BFA92D12237AC665006A3B8D /* api */,
+				BFA92D16237AC709006A3B8D /* UserService.swift */,
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
+		BFA92D12237AC665006A3B8D /* api */ = {
+			isa = PBXGroup;
+			children = (
+				BFA92D13237AC66B006A3B8D /* stubbed */,
+				BFA92D14237AC684006A3B8D /* UserApi.swift */,
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
+		BFA92D13237AC66B006A3B8D /* stubbed */ = {
+			isa = PBXGroup;
+			children = (
+				BF78B60622954B3F0057157A /* me.json */,
+			);
+			path = stubbed;
+			sourceTree = "<group>";
+		};
 		BFDE25FC227B0522008CBD30 /* Rx */ = {
 			isa = PBXGroup;
 			children = (
+				BF0BB9FA236B495F00454BDD /* Eureka+Valid+Rx.swift */,
 				BFDE25FD227B052D008CBD30 /* NSViewController+Rx.swift */,
 				BFDE25FF227B053D008CBD30 /* UIViewController+Rx.swift */,
 				BF78B5F22293CD680057157A /* ObservableType+Extras.swift */,
@@ -1057,6 +1123,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Validator.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/FontAwesome.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Eureka.framework",
 			);
 			name = Carthage;
 			outputFileListPaths = (
@@ -1120,25 +1187,28 @@
 				BF9A3676228E9BD500EE2AB8 /* MyResult.swift in Sources */,
 				BF9A368622901D7000EE2AB8 /* UserModel.swift in Sources */,
 				BF3B775C2360C35D00ECD30A /* UIColor.swift in Sources */,
-				BF794D3E22672474000B19F3 /* CoreCellController.swift in Sources */,
-				BF49EA152362E53D00FF06E9 /* ProfilFlow.swift in Sources */,
+				BF49EA152362E53D00FF06E9 /* UserFlow.swift in Sources */,
 				BF058D792282BCB600E2A077 /* AuthFlow.swift in Sources */,
 				BFDE2604227B185E008CBD30 /* CoreService.swift in Sources */,
+				BFA92D17237AC709006A3B8D /* UserService.swift in Sources */,
 				BF425488221EBB9700395AE6 /* SecondController.swift in Sources */,
 				BF4A2F6A225B7C200001B4CE /* OnBoardingController.swift in Sources */,
 				BFE4BB47226CC7BD00739735 /* TasksViewReactor.swift in Sources */,
 				BF9A367D228EE72700EE2AB8 /* Errors.swift in Sources */,
 				BF78B624229949740057157A /* AuthSignupReactor.swift in Sources */,
 				BF8C67332280222A0012B5A8 /* UITableView+RxReusableKit.swift in Sources */,
+				BFA92D2D237C050C006A3B8D /* CoreCellController.swift in Sources */,
 				BF425484221EBB9700395AE6 /* AppDelegate.swift in Sources */,
+				BFA92D1E237BEEAB006A3B8D /* UserCellReactor.swift in Sources */,
 				BF49EA0D2362CC2D00FF06E9 /* L10n.swift in Sources */,
 				BF19509622B7CEEB00C593E5 /* Url.swift in Sources */,
-				BF49EA132362E51B00FF06E9 /* ProfilController.swift in Sources */,
+				BF49EA132362E51B00FF06E9 /* UserController.swift in Sources */,
 				BFDE2600227B053D008CBD30 /* UIViewController+Rx.swift in Sources */,
 				BF794D3A22671CD8000B19F3 /* TasksModel.swift in Sources */,
+				BFA92D20237BEEC0006A3B8D /* UserCellController.swift in Sources */,
+				BFA92D3D237DA119006A3B8D /* CoreUITableView.swift in Sources */,
 				BF78B5FA22942CBB0057157A /* CoreModel.swift in Sources */,
 				BF78B5FC22942CCD0057157A /* CoreResponses.swift in Sources */,
-				BF4A2F76225BB6190001B4CE /* CoreController.swift in Sources */,
 				BF8C672E228017940012B5A8 /* UITableView+ReusableKit.swift in Sources */,
 				BF8C6725227C3E310012B5A8 /* TasksCellController.swift in Sources */,
 				BF4A2F80225BB9360001B4CE /* SecondReactor.swift in Sources */,
@@ -1147,6 +1217,7 @@
 				BF0CD6AB22563C9800844F9A /* Strings.swift in Sources */,
 				BF8C6723227C3E1E0012B5A8 /* TasksCellReactor.swift in Sources */,
 				BF3B775A2360C01F00ECD30A /* CoreUITextField.swift in Sources */,
+				BFA92D2E237C050C006A3B8D /* CoreController.swift in Sources */,
 				BF4A2F87225C8F160001B4CE /* UILocalizations.swift in Sources */,
 				BF058D7E2282BCDD00E2A077 /* AuthService.swift in Sources */,
 				BF9A3674228DFDAE00EE2AB8 /* TasksResponses.swift in Sources */,
@@ -1155,16 +1226,19 @@
 				BF4A2F71225BB2CD0001B4CE /* CoreFlow.swift in Sources */,
 				BF3B77572360985700ECD30A /* CoreUILabel.swift in Sources */,
 				BF794D532269C4FB000B19F3 /* TasksViewController.swift in Sources */,
+				BFA92D1A237AED1F006A3B8D /* UserViewController.swift in Sources */,
 				BF8C672A2280176B0012B5A8 /* ReusableKit.swift in Sources */,
 				BF794D51226880FB000B19F3 /* TasksService.swift in Sources */,
 				BF78B5F32293CD680057157A /* ObservableType+Extras.swift in Sources */,
 				BF8BD5F7235F30660083B912 /* KeyboardConstraints.swift in Sources */,
 				BF78B622229949410057157A /* AuthSignupController.swift in Sources */,
 				BF9A368322900F7200EE2AB8 /* AuthApi.swift in Sources */,
+				BFA92D15237AC684006A3B8D /* UserApi.swift in Sources */,
 				BF058D772282BCAC00E2A077 /* AuthSigninController.swift in Sources */,
-				BF49EA172362E54800FF06E9 /* ProfilReactor.swift in Sources */,
+				BF49EA172362E54800FF06E9 /* UserReactor.swift in Sources */,
 				BF9A368822902DE200EE2AB8 /* AuthResponses.swift in Sources */,
 				BF4A2FD42265F4020001B4CE /* UserDefaults.swift in Sources */,
+				BFA92D1C237AED34006A3B8D /* UserViewReactor.swift in Sources */,
 				BF9A368C2292D0C700EE2AB8 /* CookiePlugin.swift in Sources */,
 				BF8F6EDB2273453100B9447A /* Then.swift in Sources */,
 				BF4A2F6F225BB2B10001B4CE /* OnBoardingFlow.swift in Sources */,
@@ -1175,8 +1249,11 @@
 				BF9A3670228D5F2700EE2AB8 /* Stubbed.swift in Sources */,
 				BF9A3663228C3F2500EE2AB8 /* TasksApi.swift in Sources */,
 				BF4A2F82225BBA3F0001B4CE /* TasksFlow.swift in Sources */,
+				BF0BB9FB236B495F00454BDD /* Eureka+Valid+Rx.swift in Sources */,
 				BF4A2F84225BBA4D0001B4CE /* SecondFlow.swift in Sources */,
 				BF8C672C2280177E0012B5A8 /* UICollectionView+ReusableKit.swift in Sources */,
+				BFA92D2F237C050C006A3B8D /* CoreFormController.swift in Sources */,
+				BF00138B237427670044C01A /* Eureka.swift in Sources */,
 				BF3B775523608F4400ECD30A /* CoreUIButton.swift in Sources */,
 				BF425486221EBB9700395AE6 /* TasksListController.swift in Sources */,
 			);
@@ -1367,6 +1444,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = waosSwift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1374,7 +1452,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.waosSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = waosSwift/config/BridgingHeader.h;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = development;
@@ -1391,6 +1469,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = waosSwift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1398,7 +1477,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.waosSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = waosSwift/config/BridgingHeader.h;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1556,6 +1635,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = waosSwift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1563,7 +1643,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.waosSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = waosSwift/config/BridgingHeader.h;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = production;

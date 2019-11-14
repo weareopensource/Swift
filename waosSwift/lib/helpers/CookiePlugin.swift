@@ -5,7 +5,7 @@
 import Moya
 import KeychainAccess
 
-let keychain = Keychain(service: config["service"].string ?? "localhost").synchronizable(true)
+let keychain = Keychain(service: config["app"]["service"].string ?? "localhost").synchronizable(true)
 
 /**
  * structs
@@ -48,7 +48,7 @@ struct CookieStorager {
             return false
         }
         do {
-            try keychain.set(cookie, key: "cookie")
+            try keychain.set(cookie, key: "Cookie")
             return true
         } catch let error {
             print(error)

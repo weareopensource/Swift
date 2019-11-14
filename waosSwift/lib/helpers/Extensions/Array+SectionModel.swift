@@ -1,4 +1,12 @@
+/**
+* Dependencies
+*/
+
 import RxDataSources
+
+/**
+* Extension
+*/
 
 extension Array where Element: SectionModelType {
 

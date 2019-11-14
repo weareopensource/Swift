@@ -18,6 +18,7 @@ final class AuthSignInController: CoreController, View, Stepper {
         $0.placeholder = L10n.authMail + "..."
         $0.autocapitalizationType = .none
         $0.textContentType = .username
+        //$0.text = "test@waos.me"
     }
     let inputPassword = CoreUITextField().then {
         $0.autocorrectionType = .no
@@ -26,6 +27,7 @@ final class AuthSignInController: CoreController, View, Stepper {
         $0.returnKeyType = .done
         $0.isSecureTextEntry = true
         $0.textContentType = .password
+        //$0.text = "TestWaos@2019"
     }
     let buttonSignin = CoreUIButton().then {
         $0.setTitle(L10n.authSignInTitle, for: .normal)
@@ -176,11 +178,13 @@ private extension AuthSignInController {
     // MARK: states (Reactor -> View)
 
     func bindState(_ reactor: AuthSigninReactor) {
-        // errors
+        // error
         reactor.state
             .map { $0.error?.description }
-            .distinctUntilChanged()
-            .bind(to: self.labelErrors.rx.text)
+            .filterNil()
+            .subscribe(onNext: { result in
+                Toast(text: result, delay: 0, duration: Delay.long).show()
+            })
             .disposed(by: self.disposeBag)
     }
 }

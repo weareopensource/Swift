@@ -17,12 +17,14 @@ final class TasksCellController: CoreCellController, View {
 
     let labelTitle = CoreUILabel().then {
         $0.numberOfLines = 2
+        $0.textColor = UIColor(named: config["theme"]["themes"]["waos"]["onSurface"].string ?? "")
     }
 
     // MARK: Initializing
 
     override func initialize() {
         self.contentView.addSubview(self.labelTitle)
+        self.contentView.backgroundColor = UIColor(named: config["theme"]["themes"]["waos"]["surface"].string ?? "")
     }
 
     // MARK: Binding
@@ -38,9 +40,7 @@ final class TasksCellController: CoreCellController, View {
 
         self.labelTitle.snp.makeConstraints { make in
             make.left.equalTo(25)
-            make.right.equalTo(25)
-            make.top.equalTo(25)
-            make.height.equalTo(25)
+            make.centerY.equalToSuperview()
         }
         self.labelTitle.sizeToFit()
     }

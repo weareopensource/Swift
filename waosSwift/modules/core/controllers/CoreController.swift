@@ -24,13 +24,10 @@ class CoreController: UIViewController {
         log.info("🗑 deinit -> \(self.className)")
     }
 
-    // MARK: Layout Constraints
-
-    private(set) var didSetupConstraints = false
+    // MARK: viewDidLoad
 
     override func viewDidLoad() {
         self.view.setNeedsUpdateConstraints()
-        // navigation
         self.navigationController?.navigationBar.barTintColor = UIColor(named: config["theme"]["themes"]["waos"]["primary"].string ?? "")
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor(named: config["theme"]["themes"]["waos"]["onPrimary"].string ?? "")!]
         self.navigationController?.navigationBar.tintColor = UIColor(named: config["theme"]["themes"]["waos"]["onPrimary"].string ?? "")
@@ -48,6 +45,10 @@ class CoreController: UIViewController {
         // view
         self.view.backgroundColor = UIColor(named: config["theme"]["themes"]["waos"]["background"].string ?? "")
     }
+
+    // MARK: Layout Constraints
+
+    private(set) var didSetupConstraints = false
 
     override func updateViewConstraints() {
         if !self.didSetupConstraints {

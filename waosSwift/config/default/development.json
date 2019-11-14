@@ -1,5 +1,8 @@
 {
-    "service": "me.weareopensource.node",
+    "app": {
+        "service": "me.weareopensource.node",
+        "contact": "brisorgueilp@gmail.com"
+    },
     "api": {
         "protocol": "http",
         "host": "localhost",
@@ -51,9 +54,21 @@
         }
     ],
     "theme": {
+        "tableView": {
+            "rowHeight": 60,
+            "sectionFooterHeight": 25,
+            "sectionFooterHeight": 0
+        },
         "tabBar": {
             "color": "false",
-            "title": "false",
+            "title": "false"
+        },
+        "toast": {
+            "background": "waosError",
+            "alpha": 0.80,
+            "text": "waosOnError",
+            "margin": 20,
+            "bottom": true
         },
         "themes": {
             "waos" :{

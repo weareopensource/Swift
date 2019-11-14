@@ -30,7 +30,7 @@ final class CoreFlow: Flow {
     private func navigateToDashboard() -> FlowContributors {
         let tasksFlow = TasksFlow(withServices: self.services)
         let secondFlow = SecondFlow(withServices: self.services)
-        let profilFlow = ProfilFlow(withServices: self.services)
+        let profilFlow = UserFlow(withServices: self.services)
 
         Flows.whenReady(flow1: tasksFlow, flow2: secondFlow, flow3: profilFlow) { [unowned self] (root1: UINavigationController, root2: UINavigationController, root3: UINavigationController) in
 
@@ -48,6 +48,6 @@ final class CoreFlow: Flow {
                                             .contribute(withNextPresentable: secondFlow,
                                                         withNextStepper: OneStepper(withSingleStep: Steps.secondIsRequired)),
                                             .contribute(withNextPresentable: profilFlow,
-                                                        withNextStepper: OneStepper(withSingleStep: Steps.profilIsRequired))])
+                                                        withNextStepper: OneStepper(withSingleStep: Steps.userIsRequired))])
     }
 }

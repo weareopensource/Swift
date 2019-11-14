@@ -11,7 +11,6 @@ import Moya
 enum AuthApi {
     case signUp(firstName: String, lastName: String, email: String, password: String)
     case signIn(email: String, password: String)
-    case me
     case token
 }
 
@@ -26,7 +25,6 @@ extension AuthApi: TargetType {
 
     var path: String {
         let apiPathAuth = config["api"]["endPoints"]["auth"].string ?? "auth"
-        let apiPathUsers = config["api"]["endPoints"]["users"].string ?? "users"
 
         switch self {
         case .signUp :
@@ -35,8 +33,6 @@ extension AuthApi: TargetType {
             return "/" + apiPathAuth + "/signin"
         case .token :
             return "/" + apiPathAuth + "/token"
-        case .me :
-            return "/" + apiPathUsers + "/me"
         }
     }
 
@@ -44,7 +40,7 @@ extension AuthApi: TargetType {
         switch self {
         case .signUp, .signIn:
             return .post
-        case .me, .token:
+        case .token:
             return .get
         }
     }
@@ -53,7 +49,6 @@ extension AuthApi: TargetType {
         switch self {
         case .signUp: return stubbed("signup")
         case .signIn: return stubbed("signin")
-        case .me: return stubbed("me")
         case .token: return stubbed("me")
         }
     }
@@ -64,7 +59,7 @@ extension AuthApi: TargetType {
             return .requestParameters(parameters: ["firstName": firstName, "lastName": lastName, "email": email, "password": password], encoding: JSONEncoding.default)
         case .signIn(let email, let password):
             return .requestParameters(parameters: ["email": email, "password": password], encoding: JSONEncoding.default)
-        case .me, .token:
+        case .token:
             return .requestPlain
         }
     }

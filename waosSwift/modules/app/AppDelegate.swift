@@ -1,7 +1,5 @@
 import UIKit
 import ReactorKit
-import RxSwift
-import Toaster
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -31,12 +29,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         coordinator.coordinate(flow: self.appFlow, with: AppStepper(withServices: self.servicesProvider))
 
-        ToastView.appearance().backgroundColor = UIColor.orange.withAlphaComponent(0.75)
-        ToastView.appearance().textColor = UIColor.white
+        // toast configuration
+        ToastView.appearance().backgroundColor = UIColor(named: config["theme"]["toast"]["background"].string ?? "")?.withAlphaComponent(CGFloat(config["theme"]["toast"]["alpha"].float ?? 1))
+        ToastView.appearance().textColor = UIColor(named: config["theme"]["toast"]["text"].string ?? "")
         ToastView.appearance().font = UIFont.init(name: "Arial", size: 16)
-        ToastView.appearance().textInsets = UIEdgeInsets(top: 16.0, left: 16.0, bottom: 0, right: 16.0)
+        ToastView.appearance().textInsets = UIEdgeInsets(top: (CGFloat(config["theme"]["toast"]["margin"].float ?? 10)), left: (CGFloat(config["theme"]["toast"]["margin"].float ?? 10)), bottom: (CGFloat(config["theme"]["toast"]["margin"].float ?? 10)), right: (CGFloat(config["theme"]["toast"]["margin"].float ?? 10)))
         ToastView.appearance().cornerRadius = 5
-        ToastView.appearance().bottomOffsetPortrait = 100
+        if NSString(string: config["theme"]["toast"]["bottom"].string ?? "").boolValue == true {
+            ToastView.appearance().bottomOffsetPortrait = 100
+            ToastView.appearance().bottomOffsetLandscape = 100
+        } else {
+            let marginTop: CGFloat = 165
+            ToastView.appearance().bottomOffsetPortrait = max(UIScreen.main.bounds.width, UIScreen.main.bounds.height) - marginTop
+            ToastView.appearance().bottomOffsetLandscape = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height) - marginTop
+        }
 
         return true
     }

@@ -10,10 +10,10 @@
 // auth
 "authSignIn_title"= "Inscription";
 "authSignUp_title"= "Connexion";
-"auth_mail"= "email";
-"auth_password"= "password";
-"auth_firstname"= "firstname";
-"auth_lastname"= "lastname";
+"auth_mail"= "Email";
+"auth_password"= "Mot de passe";
+"auth_firstname"= "Prénom";
+"auth_lastname"= "Nom";
 
 // first
 "task_title"= "Tasks";
@@ -21,6 +21,28 @@
 // second
 "second_title"= "Example";
 
-// profil
-"profil_title"= "Profil";
+// user
+"user_title"= "Profil";
 
+"user_edit"= "Editer";
+"user_edit_section"= "Compte";
+"user_edit_mail"= "Email";
+"user_edit_firstname"= "Prénom";
+"user_edit_lastname"= "Nom";
+
+"user_section_app"= "Waos";
+"user_about"= "À propos";
+"user_help"= "Aide";
+"user_terms_of_service"= "Conditions d'utilisation";
+"user_privacy_policy"= "Politique de confidentialité";
+
+"user_section_contact"= "Waos";
+"user_report"= "Remonter un bug";
+"user_contact"= "Nous contacter";
+"user_data"= "Demander ma donnée";
+
+"user_section_actions"= "Actions";
+"user_logout"= "Se déconnecter";
+"user_delete"= "Supprimer le compte";
+
+"user_error_mail"= "Vous devez configurer mail sur votre téléphone pour cela.";
