@@ -40,7 +40,7 @@ platform :ios do
 		code_coverage: true,
 		output_types: "html, junit",
     devices: [
-      "iPhone X (12.2)",
+      "iPhone X (12.0)",
     ],
 	})
 
