@@ -23,7 +23,7 @@ class UserController: CoreFormController, View {
     }
     let labelEmail = CoreUILabel().then {
         $0.textAlignment = .center
-        $0.textColor = $0.textColor.lighter(by: 50)
+        $0.textColor = .gray
     }
 
     // buttons profil
