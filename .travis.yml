@@ -2,7 +2,7 @@ language: swift
 osx_image: xcode11.2
 xcode_workspace: waosSwift.xcworkspace
 xcode_scheme: waosSwift
-xcode_destination: platform=iOS Simulator,OS=12.0,name=iPhone X
+xcode_destination: platform=iOS Simulator,OS=13.2,name=iPhone 11
 cache:
   bundler: true
   directories:
