@@ -6,7 +6,7 @@ xcode_destination: platform=iOS Simulator,OS=12.0,name=iPhone X
 cache:
   bundler: true
   directories:
-  - Carthage
+    - Carthage
 before_install:
   - brew install carthage || true
   - brew outdated carthage || brew upgrade carthage
