@@ -11,5 +11,5 @@ enum Steps: Step {
 
     case secondIsRequired
 
-    case profilIsRequired
+    case userIsRequired
 }

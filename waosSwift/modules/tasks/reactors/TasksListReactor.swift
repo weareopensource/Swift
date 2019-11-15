@@ -4,7 +4,6 @@
 
 import ReactorKit
 import Differentiator
-import Toaster
 
 /**
  * Reactor
@@ -18,18 +17,17 @@ final class TasksListReactor: Reactor {
 
     // user actions
     enum Action {
-        // Tasks
+        // task
         case refresh([Tasks])
         case get
         case delete(IndexPath)
-        // User check (only in tab main controller)
-        case logout
-        case checkUserToken
+        // user
+        case checkUserToken // (only in tab main controller)
     }
 
     // state changes
     enum Mutation {
-        // Tasks
+        // task
         case set([Sections])
         case setRefreshing(Bool)
         // default
@@ -40,8 +38,9 @@ final class TasksListReactor: Reactor {
     // the current view state
     struct State {
         // Tasks
-        var isRefreshing: Bool
         var tasks: [Sections]
+        var isRefreshing: Bool
+        var error: DiplayError?
 
         init() {
             self.tasks = [Sections(model: Void(), items: [])]
@@ -65,7 +64,7 @@ final class TasksListReactor: Reactor {
 
     func transform(action: Observable<Action>) -> Observable<Action> {
         let refresh = self.provider.taskService.tasks
-            .map { Action.refresh($0 ?? [   ]) }
+            .map { Action.refresh($0 ?? []) }
         return Observable.of(action, refresh).merge()
     }
 
@@ -88,10 +87,10 @@ final class TasksListReactor: Reactor {
                     .list()
                     .map { result in
                         switch result {
-                        case let .success(test): return .set([Sections(model: Void(), items: test.data.map(TasksCellReactor.init))])
+                        case let .success(result): return .set([Sections(model: Void(), items: result.data.map(TasksCellReactor.init))])
                         case let .error(err): return .error(err)
                         }
-                    },
+                },
                 .just(.setRefreshing(false))
             ])
         // delete
@@ -105,11 +104,7 @@ final class TasksListReactor: Reactor {
                     case .success: return .success("delete")
                     case let .error(err): return .error(err)
                     }
-                }
-        // case logout
-        case .logout:
-            self.provider.preferencesService.isLogged = false
-            return .just(.success("logout"))
+            }
         // check user token when open application
         case .checkUserToken:
             log.verbose("♻️ Action -> Mutation : checkUserToken")
@@ -142,13 +137,14 @@ final class TasksListReactor: Reactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
+        // refreshing
+        case let .setRefreshing(isRefreshing):
+            log.verbose("♻️ Mutation -> State : setRefreshing")
+            state.isRefreshing = isRefreshing
         // set
         case let .set(tasks):
             log.verbose("♻️ Mutation -> State : set")
             state.tasks = tasks
-        // refreshing
-        case let .setRefreshing(isRefreshing):
-            state.isRefreshing = isRefreshing
         // success
         case let .success(success):
             log.verbose("♻️ Mutation -> State : succes \(success)")
@@ -158,7 +154,7 @@ final class TasksListReactor: Reactor {
             if error.code == 401 {
                 self.provider.preferencesService.isLogged = false
             } else {
-                Toast(text: (error.description ?? "Unknown error").replacingOccurrences(of: ".", with: ".\n"), delay: 0, duration: Delay.long).show()
+                state.error = DiplayError(title: error.message, description: (error.description ?? "Unknown error"))
             }
         }
         return state

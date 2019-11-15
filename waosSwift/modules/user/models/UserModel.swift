@@ -1,4 +1,17 @@
 /**
+ * Model Me Response
+ */
+
+struct UserResponse {
+    var data: User
+}
+extension UserResponse: Codable {
+    enum MeResponseCodingKeys: String, CodingKey {
+        case data
+    }
+}
+
+/**
  * Model User
  */
 
@@ -33,8 +46,8 @@ extension User: Validatable {
         let err = CustomError(message: "\(validator)", description: validator.rawValue, type: "ValidationError")
         // rules
         let ruleEmail = ValidationRulePattern(pattern: EmailValidationPattern.standard, error: err)
-        let ruleMinLength = ValidationRuleLength(min: 5, error: err)
-        let ruleMaxLength = ValidationRuleLength(max: 5, error: err)
+        let ruleMinLength = ValidationRuleLength(min: 1, error: err)
+        let ruleMaxLength = ValidationRuleLength(max: 30, error: err)
         let alphaNum = ValidationRulePattern(pattern: AlphaNumValidationPattern(), error: err)
 
         var names = ValidationRuleSet<String>()

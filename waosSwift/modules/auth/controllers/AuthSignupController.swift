@@ -224,11 +224,13 @@ private extension AuthSignUpController {
                 self?.dismiss(animated: true, completion: nil)
             })
             .disposed(by: self.disposeBag)
-        // errors
+        // error
         reactor.state
             .map { $0.error?.description }
-            .distinctUntilChanged()
-            .bind(to: self.labelErrors.rx.text)
+            .filterNil()
+            .subscribe(onNext: { result in
+                Toast(text: result, delay: 0, duration: Delay.long).show()
+            })
             .disposed(by: self.disposeBag)
     }
 }

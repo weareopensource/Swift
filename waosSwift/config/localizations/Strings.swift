@@ -11,13 +11,13 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name
 internal enum L10n {
-  /// firstname
+  /// Firstname
   internal static let authFirstname = L10n.tr("Localizable", "auth_firstname")
-  /// lastname
+  /// Lastname
   internal static let authLastname = L10n.tr("Localizable", "auth_lastname")
-  /// email
+  /// Email
   internal static let authMail = L10n.tr("Localizable", "auth_mail")
-  /// password
+  /// Password
   internal static let authPassword = L10n.tr("Localizable", "auth_password")
   /// Sign In
   internal static let authSignInTitle = L10n.tr("Localizable", "authSignIn_title")
@@ -29,12 +29,48 @@ internal enum L10n {
   internal static let onBoardingTitle = L10n.tr("Localizable", "onBoarding_title")
   /// I'm in !
   internal static let onBoardingValidation = L10n.tr("Localizable", "onBoarding_validation")
-  /// Profil
-  internal static let profilTitle = L10n.tr("Localizable", "profil_title")
   /// Example
   internal static let secondTitle = L10n.tr("Localizable", "second_title")
   /// Tasks
   internal static let taskTitle = L10n.tr("Localizable", "task_title")
+  /// About
+  internal static let userAbout = L10n.tr("Localizable", "user_about")
+  /// Contact us
+  internal static let userContact = L10n.tr("Localizable", "user_contact")
+  /// Request my data
+  internal static let userData = L10n.tr("Localizable", "user_data")
+  /// Delete account
+  internal static let userDelete = L10n.tr("Localizable", "user_delete")
+  /// Edit
+  internal static let userEdit = L10n.tr("Localizable", "user_edit")
+  /// Firstname
+  internal static let userEditFirstname = L10n.tr("Localizable", "user_edit_firstname")
+  /// Lastname
+  internal static let userEditLastname = L10n.tr("Localizable", "user_edit_lastname")
+  /// Email
+  internal static let userEditMail = L10n.tr("Localizable", "user_edit_mail")
+  /// Account
+  internal static let userEditSection = L10n.tr("Localizable", "user_edit_section")
+  /// You must configure mail on your phone for this.
+  internal static let userErrorMail = L10n.tr("Localizable", "user_error_mail")
+  /// Help
+  internal static let userHelp = L10n.tr("Localizable", "user_help")
+  /// Logout
+  internal static let userLogout = L10n.tr("Localizable", "user_logout")
+  /// Privacy policy
+  internal static let userPrivacyPolicy = L10n.tr("Localizable", "user_privacy_policy")
+  /// Report a bug
+  internal static let userReport = L10n.tr("Localizable", "user_report")
+  /// Actions
+  internal static let userSectionActions = L10n.tr("Localizable", "user_section_actions")
+  /// Waos
+  internal static let userSectionApp = L10n.tr("Localizable", "user_section_app")
+  /// Waos
+  internal static let userSectionContact = L10n.tr("Localizable", "user_section_contact")
+  /// Terms of service
+  internal static let userTermsOfService = L10n.tr("Localizable", "user_terms_of_service")
+  /// Profile
+  internal static let userTitle = L10n.tr("Localizable", "user_title")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name

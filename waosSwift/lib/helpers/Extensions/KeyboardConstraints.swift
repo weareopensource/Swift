@@ -18,6 +18,8 @@ extension ConstraintMakerEditable {
         case .compact:
             if shown { view.shownCompactConstraints.append(constraint) } else { view.hiddenCompactConstraints.append(constraint) }
         case .unspecified: break
+        @unknown default:
+            break
         }
         return self
     }
@@ -61,6 +63,8 @@ extension UIView {
             hiddenCompactConstraints.forEach { $0.deactivate() }
             shownCompactConstraints.forEach { $0.activate() }
         case .unspecified: break
+        @unknown default:
+            break
         }
 
         UIView.animate(withDuration: duration, delay: 0,
@@ -81,6 +85,8 @@ extension UIView {
             shownCompactConstraints.forEach { $0.deactivate() }
             hiddenCompactConstraints.forEach { $0.activate() }
         case .unspecified: break
+        @unknown default:
+            break
         }
 
         UIView.animate(withDuration: duration, delay: 0,

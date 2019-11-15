@@ -13,7 +13,7 @@ final class TasksViewController: CoreController, View {
 
     // MARK: Constants
 
-    let mode: Mode
+    let mode: TasksViewMode
 
     // MARK: UI
 
@@ -29,8 +29,6 @@ final class TasksViewController: CoreController, View {
     init(reactor: TasksViewReactor) {
         self.mode = reactor.currentState.mode
         super.init()
-        self.navigationItem.leftBarButtonItem = self.barButtonCancel
-        self.navigationItem.rightBarButtonItem = self.barButtonDone
         self.reactor = reactor
     }
 
@@ -42,6 +40,8 @@ final class TasksViewController: CoreController, View {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.leftBarButtonItem = self.barButtonCancel
+        self.navigationItem.rightBarButtonItem = self.barButtonDone
         self.view.addSubview(self.inputTitle)
     }
 
@@ -118,6 +118,14 @@ private extension TasksViewController {
             .filter { $0 }
             .subscribe(onNext: { [weak self] _ in
                 self?.dismiss(animated: true, completion: nil)
+            })
+            .disposed(by: self.disposeBag)
+        // error
+        reactor.state
+            .map { $0.error?.description }
+            .filterNil()
+            .subscribe(onNext: { result in
+                Toast(text: result, delay: 0, duration: Delay.long).show()
             })
             .disposed(by: self.disposeBag)
     }

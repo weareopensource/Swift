@@ -8,7 +8,7 @@ import UIKit
  * Flow
  */
 
-final class ProfilFlow: Flow {
+final class UserFlow: Flow {
     var root: Presentable {
         return self.rootViewController
     }
@@ -27,18 +27,19 @@ final class ProfilFlow: Flow {
     func navigate(to step: Step) -> FlowContributors {
         guard let step = step as? Steps else { return .none }
         switch step {
-        case .profilIsRequired:
-            return navigateToProfilScreen()
+        case .userIsRequired:
+            return navigateToUserScreen()
         default:
             return .none
         }
     }
 
-    private func navigateToProfilScreen() -> FlowContributors {
-        let reactor = ProfilReactor()
-        let viewController = ProfilController(reactor: reactor)
-        viewController.title = L10n.profilTitle
+    private func navigateToUserScreen() -> FlowContributors {
+        let provider = AppServicesProvider()
+        let reactor = UserReactor(provider: provider)
+        let viewController = UserController(reactor: reactor)
+        viewController.title = L10n.userTitle
         self.rootViewController.pushViewController(viewController, animated: true)
-        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: OneStepper(withSingleStep: Steps.profilIsRequired)))
+        return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: OneStepper(withSingleStep: Steps.userIsRequired)))
     }
 }

@@ -7,3 +7,4 @@
 @import RxAppState;
 @import Validator;
 @import FontAwesome;
+@import Toaster;

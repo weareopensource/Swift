@@ -14,18 +14,23 @@ final class AuthSigninReactor: Reactor {
 
     // user actions
     enum Action {
+        // inputs
         case updateEmail(String)
         case validateEmail
         case updatePassword(String)
+        // others
         case signIn
         case signUp
     }
 
     // state changes
     enum Mutation {
+        // inputs
         case updateEmail(String)
         case updatePassword(String)
+        // others
         case goSignUp
+        // default
         case success(String)
         case error(CustomError)
     }
@@ -62,8 +67,7 @@ final class AuthSigninReactor: Reactor {
         case let .updateEmail(email):
             return .just(.updateEmail(email))
         case .validateEmail:
-            let rule = ValidationRulePattern(pattern: EmailValidationPattern.standard,
-                                             error: CustomError(message: "Mail", description: "Wrong email format", type: "ValidationError"))
+            let rule = ValidationRulePattern(pattern: EmailValidationPattern.standard, error: CustomError(message: "Mail", description: "Wrong email format", type: "ValidationError"))
             switch currentState.email.validate(rule: rule) {
                 case .valid: return .just(.success("mail"))
                 case let .invalid(err): return .just(.error(err[0] as! CustomError))
@@ -73,7 +77,7 @@ final class AuthSigninReactor: Reactor {
             return .just(.updatePassword(password))
         // signin
         case .signIn:
-            log.verbose("♻️ Action -> Mutation : signIn(\(self.currentState.email), \(self.currentState.password))")
+            log.verbose("♻️ Action -> Mutation : signIn(\(self.currentState.email))")
             return self.provider.authService
                 .signIn(email: self.currentState.email, password: self.currentState.password)
                 .map { result in
@@ -116,8 +120,7 @@ final class AuthSigninReactor: Reactor {
             if error.code == 401 {
                 state.error = DiplayError(title: "Unauthorized", description: "Oups, wrong email or password.")
             } else {
-                let description = error.description ?? "Unknown error"
-                state.error = DiplayError(title: error.message, description: description.replacingOccurrences(of: ".", with: ".\n"))
+                state.error = DiplayError(title: error.message, description: (error.description ?? "Unknown error"))
             }
         }
         return state

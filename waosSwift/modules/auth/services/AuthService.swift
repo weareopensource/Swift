@@ -5,16 +5,17 @@
 protocol AuthServiceType {
     func signUp(firstName: String, lastName: String, email: String, password: String) -> Observable<MyResult<SignResponse, CustomError>>
     func signIn(email: String, password: String) -> Observable<MyResult<SignResponse, CustomError>>
-    func me() -> Observable<MyResult<MeResponse, CustomError>>
     func token() -> Observable<MyResult<TokenResponse, CustomError>>
+
+    var user: Observable<User?> { get }
 }
 
 final class AuthService: CoreService, AuthServiceType {
+
     fileprivate let networking = Networking<AuthApi>(plugins: [CookiePlugin()])
 
     fileprivate let userSubject = ReplaySubject<User?>.create(bufferSize: 1)
-    lazy var currentUser: Observable<User?> = self.userSubject.asObservable()
-        .startWith(nil)
+    lazy var user: Observable<User?> = self.userSubject.asObservable()
         .share(replay: 1)
 
     func signUp(firstName: String, lastName: String, email: String, password: String) -> Observable<MyResult<SignResponse, CustomError>> {
@@ -23,7 +24,7 @@ final class AuthService: CoreService, AuthServiceType {
             .request(.signUp(firstName: firstName, lastName: lastName, email: email, password: password))
             .map(SignResponse.self)
             .map { response in
-                self.userSubject.onNext(response.user)
+                self.userSubject.on(.next(response.user))
                 return response
             }
             .asObservable()
@@ -37,21 +38,7 @@ final class AuthService: CoreService, AuthServiceType {
             .request(.signIn(email: email, password: password))
             .map(SignResponse.self)
             .map { response in
-                self.userSubject.onNext(response.user)
-                return response
-            }
-            .asObservable()
-            .map(MyResult.success)
-            .catchError { err in .just(.error(getError(err)))}
-    }
-
-    func me() -> Observable<MyResult<MeResponse, CustomError>> {
-        log.verbose("🔌 service : me")
-        return self.networking
-            .request(.me)
-            .map(MeResponse.self)
-            .map { response in
-                self.userSubject.onNext(response.data)
+                self.userSubject.on(.next(response.user))
                 return response
             }
             .asObservable()
@@ -65,7 +52,7 @@ final class AuthService: CoreService, AuthServiceType {
             .request(.token)
             .map(TokenResponse.self)
             .map { response in
-                self.userSubject.onNext(response.user)
+                self.userSubject.on(.next(response.user))
                 return response
             }
             .asObservable()

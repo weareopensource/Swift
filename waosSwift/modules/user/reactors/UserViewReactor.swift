@@ -4,24 +4,24 @@
 
 import ReactorKit
 
-enum TasksViewMode {
-    case add
-    case view(Tasks)
-    case edit(Tasks)
+enum UserViewMode {
+    case edit(User)
 }
 
 /**
  * Reactor
  */
 
-final class TasksViewReactor: Reactor {
+final class UserViewReactor: Reactor {
 
     // MARK: Constants
 
     // user actions
     enum Action {
         // inputs
-        case updateTitle(String)
+        case updateFirstName(String)
+        case updateLastName(String)
+        case updateEmail(String)
         // default
         case done
     }
@@ -29,7 +29,9 @@ final class TasksViewReactor: Reactor {
     // state changes
     enum Mutation {
         // inputs
-        case updateTitle(String)
+        case updateFirstName(String)
+        case updateLastName(String)
+        case updateEmail(String)
         // default
         case dismiss
         case error(CustomError)
@@ -37,13 +39,13 @@ final class TasksViewReactor: Reactor {
 
     // the current view state
     struct State {
-        var task: Tasks
-        var mode: TasksViewMode
+        var user: User
+        var mode: UserViewMode
         var isDismissed: Bool
         var error: DiplayError?
 
-        init(task: Tasks, mode: TasksViewMode) {
-            self.task = task
+        init(user: User, mode: UserViewMode) {
+            self.user = user
             self.mode = mode
             self.isDismissed = false
         }
@@ -52,22 +54,18 @@ final class TasksViewReactor: Reactor {
     // MARK: Properties
 
     let provider: AppServicesProviderType
-    let mode: TasksViewMode
+    let mode: UserViewMode
     let initialState: State
 
     // MARK: Initialization
 
-    init(provider: AppServicesProviderType, mode: TasksViewMode) {
+    init(provider: AppServicesProviderType, mode: UserViewMode) {
         self.provider = provider
         self.mode = mode
 
         switch mode {
-        case .add:
-            self.initialState = State(task: Tasks(id: "", title: ""), mode: mode)
-        case .view(let task):
-            self.initialState = State(task: task, mode: mode)
-        case .edit(let task):
-            self.initialState = State(task: task, mode: mode)
+        case .edit(let user):
+            self.initialState = State(user: user, mode: mode)
         }
     }
 
@@ -75,32 +73,28 @@ final class TasksViewReactor: Reactor {
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        // updateTitle
-        case let .updateTitle(title):
-            return .just(.updateTitle(title))
+        // firstName
+        case let .updateFirstName(firstName):
+            return .just(.updateFirstName(firstName))
+            // update password
+        // lastname
+        case let .updateLastName(lastName):
+            return .just(.updateLastName(lastName))
+        // email
+        case let .updateEmail(email):
+            return .just(.updateEmail(email))
         // done
         case .done:
             switch mode {
-            case .add:
-                return self.provider.taskService
-                    .create(self.currentState.task)
-                    .map { result in
-                        switch result {
-                        case .success: return .dismiss
-                        case let .error(err): return .error(err)
-                        }
-                    }
-            case .view:
-                return .just(.dismiss)
             case .edit:
-                return self.provider.taskService
-                    .update(self.currentState.task)
+                return self.provider.userService
+                    .update(self.currentState.user)
                     .map { result in
                         switch result {
                         case .success: return .dismiss
                         case let .error(err): return .error(err)
                         }
-                    }
+                }
             }
         }
     }
@@ -110,9 +104,15 @@ final class TasksViewReactor: Reactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
-        // update title
-        case let .updateTitle(title):
-            state.task.title = title
+        // update firstname
+        case let .updateFirstName(firstName):
+            state.user.firstName = firstName
+        // update lastname
+        case let .updateLastName(lastName):
+            state.user.lastName = lastName
+        // update email
+        case let .updateEmail(email):
+            state.user.email = email
         // dissmiss
         case .dismiss:
             log.verbose("♻️ Mutation -> State : dismiss")
@@ -128,4 +128,5 @@ final class TasksViewReactor: Reactor {
         }
         return state
     }
+
 }

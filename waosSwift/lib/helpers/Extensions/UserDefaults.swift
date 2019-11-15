@@ -1,4 +1,9 @@
+/**
+* Extension
+*/
+
 extension UserDefaults {
+
     subscript<T>(key: String) -> T? {
         get {
             return value(forKey: key) as? T
@@ -23,4 +28,5 @@ extension UserDefaults {
     func contains(_ key: String) -> Bool {
         return UserDefaults.standard.object(forKey: key) != nil
     }
+
 }

@@ -7,7 +7,7 @@ protocol TasksServiceType {
 
     func list() -> Observable<MyResult<TasksResponse, CustomError>>
     func create(_ task: Tasks) -> Observable<MyResult<TaskResponse, CustomError>>
-    func save(_ task: Tasks) -> Observable<MyResult<TaskResponse, CustomError>>
+    func update(_ task: Tasks) -> Observable<MyResult<TaskResponse, CustomError>>
     func delete(_ task: Tasks) -> Observable<MyResult<DeleteResponse, CustomError>>
 }
 
@@ -51,8 +51,8 @@ final class TasksService: CoreService, TasksServiceType {
             .catchError { err in .just(.error(getError(err)))}
     }
 
-    func save(_ task: Tasks) -> Observable<MyResult<TaskResponse, CustomError>> {
-        log.verbose("🔌 service : save")
+    func update(_ task: Tasks) -> Observable<MyResult<TaskResponse, CustomError>> {
+        log.verbose("🔌 service : update")
         return self.networking
             .request(.update(task))
             .map(TaskResponse.self)

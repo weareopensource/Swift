@@ -6,7 +6,6 @@ import UIKit
 import Reusable
 import ReactorKit
 import RxDataSources
-import Toaster
 
 /**
  * Controller
@@ -22,13 +21,11 @@ final class TasksListController: CoreController, View {
 
     // MARK: UI
 
-    let tableView = UITableView().then {
+    let tableView = CorUITableView().then {
         $0.register(Reusable.taskCell)
         $0.allowsSelectionDuringEditing = true
-        $0.rowHeight = 75
     }
     let barButtonAdd = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
-    let barButtonLogout = UIBarButtonItem(title: "Logout", style: .plain, target: nil, action: nil)
     let refreshControl = UIRefreshControl()
 
     // MARK: Properties
@@ -40,14 +37,12 @@ final class TasksListController: CoreController, View {
             cell.reactor = reactor
             return cell
     })
-    let steps = PublishRelay<Step>()
+    //let steps = PublishRelay<Step>()
 
     // MARK: Initializing
 
     init(reactor: TasksListReactor) {
         super.init()
-        self.navigationItem.rightBarButtonItem = self.barButtonAdd
-        self.navigationItem.leftBarButtonItem = self.barButtonLogout
         self.reactor = reactor
     }
 
@@ -59,6 +54,7 @@ final class TasksListController: CoreController, View {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.rightBarButtonItem = self.barButtonAdd
         self.tableView.refreshControl = refreshControl
         self.view.addSubview(self.tableView)
     }
@@ -88,20 +84,16 @@ private extension TasksListController {
         self.dataSource.canEditRowAtIndexPath = { _, _  in true }
         // item selected
         self.tableView.rx.modelSelected(Sections.Item.self)
-            .map(reactor.editReactor)
-            .subscribe(onNext: { [weak self] reactor in
-                guard let `self` = self else { return }
-                let viewController = TasksViewController(reactor: reactor)
+            .subscribe(onNext: { result in
+                let viewController = TasksViewController(reactor: reactor.editReactor(result))
                 let navigationController = UINavigationController(rootViewController: viewController)
                 self.present(navigationController, animated: true, completion: nil)
             })
             .disposed(by: self.disposeBag)
         // add button
         self.barButtonAdd.rx.tap
-            .map(reactor.addReactor)
-            .subscribe(onNext: { [weak self] reactor in
-                guard let `self` = self else { return }
-                let viewController = TasksViewController(reactor: reactor)
+            .subscribe(onNext: { _ in
+                let viewController = TasksViewController(reactor: reactor.addReactor())
                 let navigationController = UINavigationController(rootViewController: viewController)
                 self.present(navigationController, animated: true, completion: nil)
             })
@@ -131,11 +123,6 @@ private extension TasksListController {
             .map(Reactor.Action.delete)
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
-        // logout
-        self.barButtonLogout.rx.tap
-            .map { Reactor.Action.logout }
-            .bind(to: reactor.action)
-            .disposed(by: self.disposeBag)
     }
 
     // MARK: states (Reactor -> View)
@@ -147,10 +134,19 @@ private extension TasksListController {
             .bind(to: self.tableView.rx.items(dataSource: self.dataSource))
             .disposed(by: self.disposeBag)
         // refreshing
-        reactor.state.map { $0.isRefreshing }
+        reactor.state
+            .map { $0.isRefreshing }
             .distinctUntilChanged()
             .bind(to: refreshControl.rx.isRefreshing)
             .disposed(by: disposeBag)
+        // error
+        reactor.state
+            .map { $0.error?.description }
+            .filterNil()
+            .subscribe(onNext: { result in
+                Toast(text: result, delay: 0, duration: Delay.long).show()
+            })
+            .disposed(by: self.disposeBag)
     }
 }
 
