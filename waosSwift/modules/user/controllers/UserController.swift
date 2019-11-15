@@ -238,10 +238,15 @@ private extension UserController {
         // to update button content in eureka -> self.buttonProfil.updateCell()
         // labels
         reactor.state
-            .map { $0.user }
-            .distinctUntilChanged({ (old, new) -> Bool in
-                return old.firstName == new.firstName || old.lastName == new.lastName
+            .map { $0.user.firstName }
+            .distinctUntilChanged()
+            .subscribe(onNext: { _ in
+                self.labelName.text = "\(reactor.currentState.user.firstName) \(reactor.currentState.user.lastName)"
             })
+            .disposed(by: self.disposeBag)
+        reactor.state
+            .map { $0.user.lastName }
+            .distinctUntilChanged()
             .subscribe(onNext: { _ in
                 self.labelName.text = "\(reactor.currentState.user.firstName) \(reactor.currentState.user.lastName)"
             })
