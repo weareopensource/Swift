@@ -8,8 +8,8 @@ cache:
   directories:
   - Carthage
 before_install:
-  - brew update
-  - brew outdated carthage || brew upgrade carthage || true
+  - brew install carthage || true
+  - brew outdated carthage || brew upgrade carthage
   - rvm use $RVM_RUBY_VERSION #slather
 install: bundle install --without=documentation
 before_script:
