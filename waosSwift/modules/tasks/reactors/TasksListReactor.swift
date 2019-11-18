@@ -63,7 +63,7 @@ final class TasksListReactor: Reactor {
     // MARK: Transform -> Merges two observables into a single observabe : 1. Action observable from Reactor 2. Action observable from global state
 
     func transform(action: Observable<Action>) -> Observable<Action> {
-        let refresh = self.provider.taskService.tasks
+        let refresh = self.provider.tasksService.tasks
             .map { Action.refresh($0 ?? []) }
         return Observable.of(action, refresh).merge()
     }
@@ -83,7 +83,7 @@ final class TasksListReactor: Reactor {
             log.verbose("♻️ Action -> Mutation : get")
             return Observable.concat([
                 .just(.setRefreshing(true)),
-                self.provider.taskService
+                self.provider.tasksService
                     .list()
                     .map { result in
                         switch result {
@@ -97,7 +97,7 @@ final class TasksListReactor: Reactor {
         case let .delete(i):
             log.verbose("♻️ Action -> Mutation : delete")
             let task = self.currentState.tasks[i].currentState
-            return self.provider.taskService
+            return self.provider.tasksService
                 .delete(task)
                 .map { result in
                     switch result {
