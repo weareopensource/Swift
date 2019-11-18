@@ -15,10 +15,10 @@
 "auth_firstname"= "Prénom";
 "auth_lastname"= "Nom";
 
-// first
-"task_title"= "Tasks";
+// task
+"tasks_title"= "Tasks";
 
-// second
+// example
 "second_title"= "Example";
 
 // user

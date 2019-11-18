@@ -82,7 +82,7 @@ final class TasksViewReactor: Reactor {
         case .done:
             switch mode {
             case .add:
-                return self.provider.taskService
+                return self.provider.tasksService
                     .create(self.currentState.task)
                     .map { result in
                         switch result {
@@ -93,7 +93,7 @@ final class TasksViewReactor: Reactor {
             case .view:
                 return .just(.dismiss)
             case .edit:
-                return self.provider.taskService
+                return self.provider.tasksService
                     .update(self.currentState.task)
                     .map { result in
                         switch result {
