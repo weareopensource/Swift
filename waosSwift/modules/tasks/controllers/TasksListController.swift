@@ -31,7 +31,7 @@ final class TasksListController: CoreController, View {
     // MARK: Properties
 
     let application = UIApplication.shared
-    let dataSource = RxTableViewSectionedReloadDataSource<Sections>(
+    let dataSource = RxTableViewSectionedReloadDataSource<TasksSections>(
         configureCell: { _, tableView, indexPath, reactor in
             let cell = tableView.dequeue(Reusable.taskCell, for: indexPath)
             cell.reactor = reactor
@@ -83,7 +83,7 @@ private extension TasksListController {
         self.tableView.rx.setDelegate(self).disposed(by: self.disposeBag)
         self.dataSource.canEditRowAtIndexPath = { _, _  in true }
         // item selected
-        self.tableView.rx.modelSelected(Sections.Item.self)
+        self.tableView.rx.modelSelected(TasksSections.Item.self)
             .subscribe(onNext: { result in
                 let viewController = TasksViewController(reactor: reactor.editReactor(result))
                 let navigationController = UINavigationController(rootViewController: viewController)

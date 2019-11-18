@@ -9,7 +9,7 @@ import Differentiator
  * Reactor
  */
 
-typealias Sections = SectionModel<Void, TasksCellReactor>
+typealias TasksSections = SectionModel<Void, TasksCellReactor>
 
 final class TasksListReactor: Reactor {
 
@@ -28,7 +28,7 @@ final class TasksListReactor: Reactor {
     // state changes
     enum Mutation {
         // task
-        case set([Sections])
+        case set([TasksSections])
         case setRefreshing(Bool)
         // default
         case success(String)
@@ -38,12 +38,12 @@ final class TasksListReactor: Reactor {
     // the current view state
     struct State {
         // Tasks
-        var tasks: [Sections]
+        var tasks: [TasksSections]
         var isRefreshing: Bool
         var error: DiplayError?
 
         init() {
-            self.tasks = [Sections(model: Void(), items: [])]
+            self.tasks = [TasksSections(model: Void(), items: [])]
             self.isRefreshing = false
         }
     }
@@ -76,7 +76,7 @@ final class TasksListReactor: Reactor {
         case let .refresh(tasks):
             log.verbose("♻️ Action -> Mutation : refresh")
             let items = tasks.map(TasksCellReactor.init)
-            let section = Sections(model: Void(), items: items)
+            let section = TasksSections(model: Void(), items: items)
             return .just(.set([section]))
         // get
         case .get:
@@ -87,7 +87,7 @@ final class TasksListReactor: Reactor {
                     .list()
                     .map { result in
                         switch result {
-                        case let .success(result): return .set([Sections(model: Void(), items: result.data.map(TasksCellReactor.init))])
+                        case let .success(result): return .set([TasksSections(model: Void(), items: result.data.map(TasksCellReactor.init))])
                         case let .error(err): return .error(err)
                         }
                 },
