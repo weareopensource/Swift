@@ -32,7 +32,7 @@ internal enum L10n {
   /// Example
   internal static let secondTitle = L10n.tr("Localizable", "second_title")
   /// Tasks
-  internal static let taskTitle = L10n.tr("Localizable", "task_title")
+  internal static let tasksTitle = L10n.tr("Localizable", "tasks_title")
   /// About
   internal static let userAbout = L10n.tr("Localizable", "user_about")
   /// Contact us

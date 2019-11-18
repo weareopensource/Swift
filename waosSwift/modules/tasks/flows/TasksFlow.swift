@@ -38,7 +38,7 @@ final class TasksFlow: Flow {
         let provider = AppServicesProvider()
         let reactor = TasksListReactor(provider: provider)
         let viewController = TasksListController(reactor: reactor)
-        viewController.title = L10n.taskTitle
+        viewController.title = L10n.tasksTitle
         self.rootViewController.pushViewController(viewController, animated: true)
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: OneStepper(withSingleStep: Steps.tasksIsRequired)))
     }
