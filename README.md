@@ -71,7 +71,7 @@ It's straightforward (you can use yarn if you want)
 ```bash
 $ git clone https://github.com/weareopensource/swift.git && cd Swift
 $ carthage update --platform iOS
-$ open waosSwift.xcodeproj
+$ open swift.xcodeproj
 ```
 
 if you have some toruble with ReactorKit :

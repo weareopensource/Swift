@@ -31,8 +31,8 @@
 		BF425488221EBB9700395AE6 /* SecondController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF425487221EBB9700395AE6 /* SecondController.swift */; };
 		BF42548D221EBB9800395AE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF42548C221EBB9800395AE6 /* Assets.xcassets */; };
 		BF425490221EBB9800395AE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF42548E221EBB9800395AE6 /* LaunchScreen.storyboard */; };
-		BF42549B221EBB9800395AE6 /* waosSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF42549A221EBB9800395AE6 /* waosSwiftTests.swift */; };
-		BF4254A6221EBB9800395AE6 /* waosSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4254A5221EBB9800395AE6 /* waosSwiftUITests.swift */; };
+		BF42549B221EBB9800395AE6 /* swiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF42549A221EBB9800395AE6 /* swiftTests.swift */; };
+		BF4254A6221EBB9800395AE6 /* swiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4254A5221EBB9800395AE6 /* swiftUITests.swift */; };
 		BF49EA0D2362CC2D00FF06E9 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF49EA0C2362CC2D00FF06E9 /* L10n.swift */; };
 		BF49EA132362E51B00FF06E9 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF49EA122362E51B00FF06E9 /* UserController.swift */; };
 		BF49EA152362E53D00FF06E9 /* UserFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF49EA142362E53D00FF06E9 /* UserFlow.swift */; };
@@ -138,14 +138,14 @@
 			containerPortal = BF425478221EBB9700395AE6 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = BF42547F221EBB9700395AE6;
-			remoteInfo = waosSwift;
+			remoteInfo = swift;
 		};
 		BF4254A2221EBB9800395AE6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BF425478221EBB9700395AE6 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = BF42547F221EBB9700395AE6;
-			remoteInfo = waosSwift;
+			remoteInfo = swift;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -165,7 +165,7 @@
 
 /* Begin PBXFileReference section */
 		BF00138A237427660044C01A /* Eureka.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eureka.swift; sourceTree = "<group>"; };
-		BF05418D2361964F008628CF /* waosSwift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = waosSwift.entitlements; sourceTree = "<group>"; };
+		BF05418D2361964F008628CF /* swift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = swift.entitlements; sourceTree = "<group>"; };
 		BF05418E2361EF98008628CF /* FontAwesome.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FontAwesome.framework; path = Carthage/Build/iOS/FontAwesome.framework; sourceTree = "<group>"; };
 		BF058D762282BCAC00E2A077 /* AuthSigninController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSigninController.swift; sourceTree = "<group>"; };
 		BF058D782282BCB600E2A077 /* AuthFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlow.swift; sourceTree = "<group>"; };
@@ -185,18 +185,18 @@
 		BF3B77562360985700ECD30A /* CoreUILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreUILabel.swift; sourceTree = "<group>"; };
 		BF3B77592360C01F00ECD30A /* CoreUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreUITextField.swift; sourceTree = "<group>"; };
 		BF3B775B2360C35D00ECD30A /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		BF425480221EBB9700395AE6 /* waosSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = waosSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF425480221EBB9700395AE6 /* swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF425483221EBB9700395AE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF425485221EBB9700395AE6 /* TasksListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListController.swift; sourceTree = "<group>"; };
 		BF425487221EBB9700395AE6 /* SecondController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondController.swift; sourceTree = "<group>"; };
 		BF42548C221EBB9800395AE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF42548F221EBB9800395AE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF425491221EBB9800395AE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BF425496221EBB9800395AE6 /* waosSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = waosSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BF42549A221EBB9800395AE6 /* waosSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = waosSwiftTests.swift; sourceTree = "<group>"; };
+		BF425496221EBB9800395AE6 /* swiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = swiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF42549A221EBB9800395AE6 /* swiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftTests.swift; sourceTree = "<group>"; };
 		BF42549C221EBB9800395AE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BF4254A1221EBB9800395AE6 /* waosSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = waosSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BF4254A5221EBB9800395AE6 /* waosSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = waosSwiftUITests.swift; sourceTree = "<group>"; };
+		BF4254A1221EBB9800395AE6 /* swiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = swiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF4254A5221EBB9800395AE6 /* swiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swiftUITests.swift; sourceTree = "<group>"; };
 		BF4254A7221EBB9800395AE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF49EA0C2362CC2D00FF06E9 /* L10n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
 		BF49EA122362E51B00FF06E9 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
@@ -457,9 +457,9 @@
 			children = (
 				BFE912A02341CDA40074FAAB /* Cartfile */,
 				BFE912A12341CDA40074FAAB /* Cartfile.resolved */,
-				BF425482221EBB9700395AE6 /* waosSwift */,
-				BF425499221EBB9800395AE6 /* waosSwiftTests */,
-				BF4254A4221EBB9800395AE6 /* waosSwiftUITests */,
+				BF425482221EBB9700395AE6 /* swift */,
+				BF425499221EBB9800395AE6 /* swiftTests */,
+				BF4254A4221EBB9800395AE6 /* swiftUITests */,
 				BF425481221EBB9700395AE6 /* Products */,
 				BF4A2F30225B4F7F0001B4CE /* Frameworks */,
 			);
@@ -468,18 +468,18 @@
 		BF425481221EBB9700395AE6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BF425480221EBB9700395AE6 /* waosSwift.app */,
-				BF425496221EBB9800395AE6 /* waosSwiftTests.xctest */,
-				BF4254A1221EBB9800395AE6 /* waosSwiftUITests.xctest */,
+				BF425480221EBB9700395AE6 /* swift.app */,
+				BF425496221EBB9800395AE6 /* swiftTests.xctest */,
+				BF4254A1221EBB9800395AE6 /* swiftUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BF425482221EBB9700395AE6 /* waosSwift */ = {
+		BF425482221EBB9700395AE6 /* swift */ = {
 			isa = PBXGroup;
 			children = (
 				BF42548C221EBB9800395AE6 /* Assets.xcassets */,
-				BF05418D2361964F008628CF /* waosSwift.entitlements */,
+				BF05418D2361964F008628CF /* swift.entitlements */,
 				BF0CD6A822563C7700844F9A /* config */,
 				BF4A2F47225B77FB0001B4CE /* lib */,
 				BF4A2F4E225B7C200001B4CE /* modules */,
@@ -488,25 +488,25 @@
 				BF4A2F8D225CA6DB0001B4CE /* CHANGELOG.md */,
 				BF4A2F9C225CA6DB0001B4CE /* LICENSE.md */,
 			);
-			path = waosSwift;
+			path = swift;
 			sourceTree = "<group>";
 		};
-		BF425499221EBB9800395AE6 /* waosSwiftTests */ = {
+		BF425499221EBB9800395AE6 /* swiftTests */ = {
 			isa = PBXGroup;
 			children = (
-				BF42549A221EBB9800395AE6 /* waosSwiftTests.swift */,
+				BF42549A221EBB9800395AE6 /* swiftTests.swift */,
 				BF42549C221EBB9800395AE6 /* Info.plist */,
 			);
-			path = waosSwiftTests;
+			path = swiftTests;
 			sourceTree = "<group>";
 		};
-		BF4254A4221EBB9800395AE6 /* waosSwiftUITests */ = {
+		BF4254A4221EBB9800395AE6 /* swiftUITests */ = {
 			isa = PBXGroup;
 			children = (
-				BF4254A5221EBB9800395AE6 /* waosSwiftUITests.swift */,
+				BF4254A5221EBB9800395AE6 /* swiftUITests.swift */,
 				BF4254A7221EBB9800395AE6 /* Info.plist */,
 			);
-			path = waosSwiftUITests;
+			path = swiftUITests;
 			sourceTree = "<group>";
 		};
 		BF49EA0E2362E2D100FF06E9 /* user */ = {
@@ -948,9 +948,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BF42547F221EBB9700395AE6 /* waosSwift */ = {
+		BF42547F221EBB9700395AE6 /* swift */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BF4254AA221EBB9800395AE6 /* Build configuration list for PBXNativeTarget "waosSwift" */;
+			buildConfigurationList = BF4254AA221EBB9800395AE6 /* Build configuration list for PBXNativeTarget "swift" */;
 			buildPhases = (
 				BF42547C221EBB9700395AE6 /* Sources */,
 				BF42547D221EBB9700395AE6 /* Frameworks */,
@@ -964,14 +964,14 @@
 			);
 			dependencies = (
 			);
-			name = waosSwift;
-			productName = waosSwift;
-			productReference = BF425480221EBB9700395AE6 /* waosSwift.app */;
+			name = swift;
+			productName = swift;
+			productReference = BF425480221EBB9700395AE6 /* swift.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BF425495221EBB9800395AE6 /* waosSwiftTests */ = {
+		BF425495221EBB9800395AE6 /* swiftTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BF4254AD221EBB9800395AE6 /* Build configuration list for PBXNativeTarget "waosSwiftTests" */;
+			buildConfigurationList = BF4254AD221EBB9800395AE6 /* Build configuration list for PBXNativeTarget "swiftTests" */;
 			buildPhases = (
 				BF425492221EBB9800395AE6 /* Sources */,
 				BF425493221EBB9800395AE6 /* Frameworks */,
@@ -982,14 +982,14 @@
 			dependencies = (
 				BF425498221EBB9800395AE6 /* PBXTargetDependency */,
 			);
-			name = waosSwiftTests;
-			productName = waosSwiftTests;
-			productReference = BF425496221EBB9800395AE6 /* waosSwiftTests.xctest */;
+			name = swiftTests;
+			productName = swiftTests;
+			productReference = BF425496221EBB9800395AE6 /* swiftTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		BF4254A0221EBB9800395AE6 /* waosSwiftUITests */ = {
+		BF4254A0221EBB9800395AE6 /* swiftUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BF4254B0221EBB9800395AE6 /* Build configuration list for PBXNativeTarget "waosSwiftUITests" */;
+			buildConfigurationList = BF4254B0221EBB9800395AE6 /* Build configuration list for PBXNativeTarget "swiftUITests" */;
 			buildPhases = (
 				BF42549D221EBB9800395AE6 /* Sources */,
 				BF42549E221EBB9800395AE6 /* Frameworks */,
@@ -1000,9 +1000,9 @@
 			dependencies = (
 				BF4254A3221EBB9800395AE6 /* PBXTargetDependency */,
 			);
-			name = waosSwiftUITests;
-			productName = waosSwiftUITests;
-			productReference = BF4254A1221EBB9800395AE6 /* waosSwiftUITests.xctest */;
+			name = swiftUITests;
+			productName = swiftUITests;
+			productReference = BF4254A1221EBB9800395AE6 /* swiftUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -1030,7 +1030,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BF42547B221EBB9700395AE6 /* Build configuration list for PBXProject "waosSwift" */;
+			buildConfigurationList = BF42547B221EBB9700395AE6 /* Build configuration list for PBXProject "swift" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -1044,9 +1044,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BF42547F221EBB9700395AE6 /* waosSwift */,
-				BF425495221EBB9800395AE6 /* waosSwiftTests */,
-				BF4254A0221EBB9800395AE6 /* waosSwiftUITests */,
+				BF42547F221EBB9700395AE6 /* swift */,
+				BF425495221EBB9800395AE6 /* swiftTests */,
+				BF4254A0221EBB9800395AE6 /* swiftUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -1265,7 +1265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF42549B221EBB9800395AE6 /* waosSwiftTests.swift in Sources */,
+				BF42549B221EBB9800395AE6 /* swiftTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1273,7 +1273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF4254A6221EBB9800395AE6 /* waosSwiftUITests.swift in Sources */,
+				BF4254A6221EBB9800395AE6 /* swiftUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1282,12 +1282,12 @@
 /* Begin PBXTargetDependency section */
 		BF425498221EBB9800395AE6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BF42547F221EBB9700395AE6 /* waosSwift */;
+			target = BF42547F221EBB9700395AE6 /* swift */;
 			targetProxy = BF425497221EBB9800395AE6 /* PBXContainerItemProxy */;
 		};
 		BF4254A3221EBB9800395AE6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BF42547F221EBB9700395AE6 /* waosSwift */;
+			target = BF42547F221EBB9700395AE6 /* swift */;
 			targetProxy = BF4254A2221EBB9800395AE6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1438,22 +1438,22 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = waosSwift/waosSwift.entitlements;
+				CODE_SIGN_ENTITLEMENTS = swift/swift.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5TTXU376YU;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = waosSwift/Info.plist;
+				INFOPLIST_FILE = swift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.waosSwift;
+				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.swift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = waosSwift/config/BridgingHeader.h;
+				SWIFT_OBJC_BRIDGING_HEADER = swift/config/BridgingHeader.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1463,22 +1463,22 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = waosSwift/waosSwift.entitlements;
+				CODE_SIGN_ENTITLEMENTS = swift/swift.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5TTXU376YU;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = waosSwift/Info.plist;
+				INFOPLIST_FILE = swift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.waosSwift;
+				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.swift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = waosSwift/config/BridgingHeader.h;
+				SWIFT_OBJC_BRIDGING_HEADER = swift/config/BridgingHeader.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1490,17 +1490,17 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = waosSwiftTests/Info.plist;
+				INFOPLIST_FILE = swiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.waosSwiftTests;
+				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.swiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/waosSwift.app/waosSwift";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/swift.app/swift";
 			};
 			name = development;
 		};
@@ -1510,17 +1510,17 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = waosSwiftTests/Info.plist;
+				INFOPLIST_FILE = swiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.waosSwiftTests;
+				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.swiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/waosSwift.app/waosSwift";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/swift.app/swift";
 			};
 			name = Release;
 		};
@@ -1529,17 +1529,17 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = waosSwiftUITests/Info.plist;
+				INFOPLIST_FILE = swiftUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.waosSwiftUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.swiftUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = waosSwift;
+				TEST_TARGET_NAME = swift;
 			};
 			name = development;
 		};
@@ -1548,17 +1548,17 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = waosSwiftUITests/Info.plist;
+				INFOPLIST_FILE = swiftUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.waosSwiftUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.swiftUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = waosSwift;
+				TEST_TARGET_NAME = swift;
 			};
 			name = Release;
 		};
@@ -1629,22 +1629,22 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = waosSwift/waosSwift.entitlements;
+				CODE_SIGN_ENTITLEMENTS = swift/swift.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5TTXU376YU;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = waosSwift/Info.plist;
+				INFOPLIST_FILE = swift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.waosSwift;
+				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.swift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = waosSwift/config/BridgingHeader.h;
+				SWIFT_OBJC_BRIDGING_HEADER = swift/config/BridgingHeader.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1656,17 +1656,17 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = waosSwiftTests/Info.plist;
+				INFOPLIST_FILE = swiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.waosSwiftTests;
+				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.swiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/waosSwift.app/waosSwift";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/swift.app/swift";
 			};
 			name = production;
 		};
@@ -1675,24 +1675,24 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = waosSwiftUITests/Info.plist;
+				INFOPLIST_FILE = swiftUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.waosSwiftUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.swiftUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = waosSwift;
+				TEST_TARGET_NAME = swift;
 			};
 			name = production;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BF42547B221EBB9700395AE6 /* Build configuration list for PBXProject "waosSwift" */ = {
+		BF42547B221EBB9700395AE6 /* Build configuration list for PBXProject "swift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BF4254A8221EBB9800395AE6 /* development */,
@@ -1702,7 +1702,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BF4254AA221EBB9800395AE6 /* Build configuration list for PBXNativeTarget "waosSwift" */ = {
+		BF4254AA221EBB9800395AE6 /* Build configuration list for PBXNativeTarget "swift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BF4254AB221EBB9800395AE6 /* development */,
@@ -1712,7 +1712,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BF4254AD221EBB9800395AE6 /* Build configuration list for PBXNativeTarget "waosSwiftTests" */ = {
+		BF4254AD221EBB9800395AE6 /* Build configuration list for PBXNativeTarget "swiftTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BF4254AE221EBB9800395AE6 /* development */,
@@ -1722,7 +1722,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BF4254B0221EBB9800395AE6 /* Build configuration list for PBXNativeTarget "waosSwiftUITests" */ = {
+		BF4254B0221EBB9800395AE6 /* Build configuration list for PBXNativeTarget "swiftUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BF4254B1221EBB9800395AE6 /* development */,
