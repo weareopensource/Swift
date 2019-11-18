@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BF42547F221EBB9700395AE6"
-               BuildableName = "swift.app"
-               BlueprintName = "swift"
-               ReferencedContainer = "container:swift.xcodeproj">
+               BuildableName = "waosSwift.app"
+               BlueprintName = "waosSwift"
+               ReferencedContainer = "container:waosSwift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,9 +32,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BF42547F221EBB9700395AE6"
-            BuildableName = "swift.app"
-            BlueprintName = "swift"
-            ReferencedContainer = "container:swift.xcodeproj">
+            BuildableName = "waosSwift.app"
+            BlueprintName = "waosSwift"
+            ReferencedContainer = "container:waosSwift.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BF425495221EBB9800395AE6"
-               BuildableName = "swiftTests.xctest"
-               BlueprintName = "swiftTests"
-               ReferencedContainer = "container:swift.xcodeproj">
+               BuildableName = "waosSwiftTests.xctest"
+               BlueprintName = "waosSwiftTests"
+               ReferencedContainer = "container:waosSwift.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -53,9 +53,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BF4254A0221EBB9800395AE6"
-               BuildableName = "swiftUITests.xctest"
-               BlueprintName = "swiftUITests"
-               ReferencedContainer = "container:swift.xcodeproj">
+               BuildableName = "waosSwiftUITests.xctest"
+               BlueprintName = "waosSwiftUITests"
+               ReferencedContainer = "container:waosSwift.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BF42547F221EBB9700395AE6"
-            BuildableName = "swift.app"
-            BlueprintName = "swift"
-            ReferencedContainer = "container:swift.xcodeproj">
+            BuildableName = "waosSwift.app"
+            BlueprintName = "waosSwift"
+            ReferencedContainer = "container:waosSwift.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -92,9 +92,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BF42547F221EBB9700395AE6"
-            BuildableName = "swift.app"
-            BlueprintName = "swift"
-            ReferencedContainer = "container:swift.xcodeproj">
+            BuildableName = "waosSwift.app"
+            BlueprintName = "waosSwift"
+            ReferencedContainer = "container:waosSwift.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

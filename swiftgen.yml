@@ -1,5 +1,5 @@
 strings:
-  inputs: ./swift/config/localizations/en.lproj/Localizable.strings
+  inputs: ./waosSwift/config/localizations/en.lproj/Localizable.strings
   outputs:
     templateName: structured-swift4
-    output: ./swift/config/localizations/Strings.swift
+    output: ./waosSwift/config/localizations/Strings.swift

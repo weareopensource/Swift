@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "container:/Users/pierrebrisorgueil/Documents/Dev/github/rype/Swift/swift.xcodeproj">
+      location = "container:waosSwift.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Cartfile">

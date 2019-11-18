@@ -1,4 +1,4 @@
 included:
- - swift
- - swiftTests
- - swiftUITests
+ - waosSwift
+ - waosSwiftTests
+ - waosSwiftUITests
