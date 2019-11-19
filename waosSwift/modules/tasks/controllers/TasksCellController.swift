@@ -17,7 +17,6 @@ final class TasksCellController: CoreTableViewCellController, View {
 
     let labelTitle = CoreUILabel().then {
         $0.numberOfLines = 2
-        $0.textColor = UIColor(named: config["theme"]["themes"]["waos"]["onSurface"].string ?? "")
     }
 
     // MARK: Initializing
