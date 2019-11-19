@@ -119,10 +119,11 @@
 		BFA92D1C237AED34006A3B8D /* UserViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D1B237AED34006A3B8D /* UserViewReactor.swift */; };
 		BFA92D1E237BEEAB006A3B8D /* UserCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D1D237BEEAB006A3B8D /* UserCellReactor.swift */; };
 		BFA92D20237BEEC0006A3B8D /* UserCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D1F237BEEC0006A3B8D /* UserCellController.swift */; };
-		BFA92D2D237C050C006A3B8D /* CoreCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D2A237C050C006A3B8D /* CoreCellController.swift */; };
+		BFA92D2D237C050C006A3B8D /* CoreTableViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D2A237C050C006A3B8D /* CoreTableViewCellController.swift */; };
 		BFA92D2E237C050C006A3B8D /* CoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D2B237C050C006A3B8D /* CoreController.swift */; };
 		BFA92D2F237C050C006A3B8D /* CoreFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D2C237C050C006A3B8D /* CoreFormController.swift */; };
 		BFA92D3D237DA119006A3B8D /* CoreUITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D3C237DA119006A3B8D /* CoreUITableView.swift */; };
+		BFC81B002383CF6500D00D3C /* CoreCollectionViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC81AFF2383CF6500D00D3C /* CoreCollectionViewCellController.swift */; };
 		BFDE25FE227B052D008CBD30 /* NSViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE25FD227B052D008CBD30 /* NSViewController+Rx.swift */; };
 		BFDE2600227B053D008CBD30 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE25FF227B053D008CBD30 /* UIViewController+Rx.swift */; };
 		BFDE2602227B17D4008CBD30 /* AppServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE2601227B17D4008CBD30 /* AppServicesProvider.swift */; };
@@ -289,10 +290,11 @@
 		BFA92D1B237AED34006A3B8D /* UserViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewReactor.swift; sourceTree = "<group>"; };
 		BFA92D1D237BEEAB006A3B8D /* UserCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellReactor.swift; sourceTree = "<group>"; };
 		BFA92D1F237BEEC0006A3B8D /* UserCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellController.swift; sourceTree = "<group>"; };
-		BFA92D2A237C050C006A3B8D /* CoreCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreCellController.swift; sourceTree = "<group>"; };
+		BFA92D2A237C050C006A3B8D /* CoreTableViewCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreTableViewCellController.swift; sourceTree = "<group>"; };
 		BFA92D2B237C050C006A3B8D /* CoreController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreController.swift; sourceTree = "<group>"; };
 		BFA92D2C237C050C006A3B8D /* CoreFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreFormController.swift; sourceTree = "<group>"; };
 		BFA92D3C237DA119006A3B8D /* CoreUITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreUITableView.swift; sourceTree = "<group>"; };
+		BFC81AFF2383CF6500D00D3C /* CoreCollectionViewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreCollectionViewCellController.swift; sourceTree = "<group>"; };
 		BFDE25FD227B052D008CBD30 /* NSViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSViewController+Rx.swift"; sourceTree = "<group>"; };
 		BFDE25FF227B053D008CBD30 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		BFDE2601227B17D4008CBD30 /* AppServicesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServicesProvider.swift; sourceTree = "<group>"; };
@@ -352,7 +354,8 @@
 		BF058D6B2282BB4800E2A077 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BFA92D2A237C050C006A3B8D /* CoreCellController.swift */,
+				BFC81AFF2383CF6500D00D3C /* CoreCollectionViewCellController.swift */,
+				BFA92D2A237C050C006A3B8D /* CoreTableViewCellController.swift */,
 				BFA92D2B237C050C006A3B8D /* CoreController.swift */,
 				BFA92D2C237C050C006A3B8D /* CoreFormController.swift */,
 			);
@@ -1199,7 +1202,7 @@
 				BF9A367D228EE72700EE2AB8 /* Errors.swift in Sources */,
 				BF78B624229949740057157A /* AuthSignupReactor.swift in Sources */,
 				BF8C67332280222A0012B5A8 /* UITableView+RxReusableKit.swift in Sources */,
-				BFA92D2D237C050C006A3B8D /* CoreCellController.swift in Sources */,
+				BFA92D2D237C050C006A3B8D /* CoreTableViewCellController.swift in Sources */,
 				BF425484221EBB9700395AE6 /* AppDelegate.swift in Sources */,
 				BFA92D1E237BEEAB006A3B8D /* UserCellReactor.swift in Sources */,
 				BF49EA0D2362CC2D00FF06E9 /* L10n.swift in Sources */,
@@ -1232,6 +1235,7 @@
 				BF8C672A2280176B0012B5A8 /* ReusableKit.swift in Sources */,
 				BF794D51226880FB000B19F3 /* TasksService.swift in Sources */,
 				BF78B5F32293CD680057157A /* ObservableType+Extras.swift in Sources */,
+				BFC81B002383CF6500D00D3C /* CoreCollectionViewCellController.swift in Sources */,
 				BF8BD5F7235F30660083B912 /* KeyboardConstraints.swift in Sources */,
 				BF78B622229949410057157A /* AuthSignupController.swift in Sources */,
 				BF9A368322900F7200EE2AB8 /* AuthApi.swift in Sources */,

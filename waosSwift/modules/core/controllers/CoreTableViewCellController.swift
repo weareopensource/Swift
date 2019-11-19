@@ -1,6 +1,6 @@
 import UIKit
 
-class CoreCellController: UITableViewCell {
+class CoreTableViewCellController: UITableViewCell {
 
     // MARK: Initializing
 
