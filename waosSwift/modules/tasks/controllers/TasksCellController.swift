@@ -9,7 +9,7 @@ import ReactorKit
  * Controller
  */
 
-final class TasksCellController: CoreCellController, View {
+final class TasksCellController: CoreTableViewCellController, View {
 
     typealias Reactor = TasksCellReactor
 
