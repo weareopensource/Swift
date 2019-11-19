@@ -125,6 +125,8 @@
 		BFA92D2F237C050C006A3B8D /* CoreFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D2C237C050C006A3B8D /* CoreFormController.swift */; };
 		BFA92D3D237DA119006A3B8D /* CoreUITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D3C237DA119006A3B8D /* CoreUITableView.swift */; };
 		BFC81B002383CF6500D00D3C /* CoreCollectionViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC81AFF2383CF6500D00D3C /* CoreCollectionViewCellController.swift */; };
+		BFD9CB21238435B20034837F /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD9CB20238435B20034837F /* UIImage.swift */; };
+		BFD9CB23238435CB0034837F /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD9CB22238435CB0034837F /* UILabel.swift */; };
 		BFDE25FE227B052D008CBD30 /* NSViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE25FD227B052D008CBD30 /* NSViewController+Rx.swift */; };
 		BFDE2600227B053D008CBD30 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE25FF227B053D008CBD30 /* UIViewController+Rx.swift */; };
 		BFDE2602227B17D4008CBD30 /* AppServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE2601227B17D4008CBD30 /* AppServicesProvider.swift */; };
@@ -297,6 +299,8 @@
 		BFA92D2C237C050C006A3B8D /* CoreFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreFormController.swift; sourceTree = "<group>"; };
 		BFA92D3C237DA119006A3B8D /* CoreUITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreUITableView.swift; sourceTree = "<group>"; };
 		BFC81AFF2383CF6500D00D3C /* CoreCollectionViewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreCollectionViewCellController.swift; sourceTree = "<group>"; };
+		BFD9CB20238435B20034837F /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		BFD9CB22238435CB0034837F /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		BFDE25FD227B052D008CBD30 /* NSViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSViewController+Rx.swift"; sourceTree = "<group>"; };
 		BFDE25FF227B053D008CBD30 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		BFDE2601227B17D4008CBD30 /* AppServicesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServicesProvider.swift; sourceTree = "<group>"; };
@@ -671,7 +675,6 @@
 				BF78B60222952EEE0057157A /* Extensions */,
 				BF78B60322952F5E0057157A /* Libs */,
 				BFDE25FC227B0522008CBD30 /* Rx */,
-				BF78B5FD229529DA0057157A /* UI */,
 				BF9A366F228D5F2700EE2AB8 /* Stubbed.swift */,
 				BF9A3675228E9BD500EE2AB8 /* MyResult.swift */,
 				BF9A367C228EE72700EE2AB8 /* Errors.swift */,
@@ -679,6 +682,7 @@
 				BF78B61D2296CE7B0057157A /* TokenState.swift */,
 				BF71BD9222A12A2E002CF9DE /* Validations.swift */,
 				BF19509522B7CEEB00C593E5 /* Url.swift */,
+				BF7F894C2383F0BB00F98D98 /* UITricks.swift */,
 			);
 			path = helpers;
 			sourceTree = "<group>";
@@ -713,24 +717,18 @@
 			path = models;
 			sourceTree = "<group>";
 		};
-		BF78B5FD229529DA0057157A /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				BF4A2F86225C8F160001B4CE /* UILocalizations.swift */,
-				BF7F894C2383F0BB00F98D98 /* UITricks.swift */,
-			);
-			path = UI;
-			sourceTree = "<group>";
-		};
 		BF78B60222952EEE0057157A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				BF8C6726227C43E80012B5A8 /* Array+SectionModel.swift */,
-				BF4A2FD32265F4020001B4CE /* UserDefaults.swift */,
-				BF8BD5F6235F30660083B912 /* KeyboardConstraints.swift */,
-				BF3B775B2360C35D00ECD30A /* UIColor.swift */,
-				BF49EA0C2362CC2D00FF06E9 /* L10n.swift */,
 				BF00138A237427660044C01A /* Eureka.swift */,
+				BF8BD5F6235F30660083B912 /* KeyboardConstraints.swift */,
+				BF49EA0C2362CC2D00FF06E9 /* L10n.swift */,
+				BF3B775B2360C35D00ECD30A /* UIColor.swift */,
+				BFD9CB20238435B20034837F /* UIImage.swift */,
+				BFD9CB22238435CB0034837F /* UILabel.swift */,
+				BF4A2F86225C8F160001B4CE /* UILocalizations.swift */,
+				BF4A2FD32265F4020001B4CE /* UserDefaults.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1252,11 +1250,13 @@
 				BF9A368C2292D0C700EE2AB8 /* CookiePlugin.swift in Sources */,
 				BF8F6EDB2273453100B9447A /* Then.swift in Sources */,
 				BF4A2F6F225BB2B10001B4CE /* OnBoardingFlow.swift in Sources */,
+				BFD9CB21238435B20034837F /* UIImage.swift in Sources */,
 				BF4A2F45225B751F0001B4CE /* AppFlow.swift in Sources */,
 				BF4A2FAE2260F0040001B4CE /* Logger.swift in Sources */,
 				BF78B61E2296CE7B0057157A /* TokenState.swift in Sources */,
 				BF4A2F74225BB4B90001B4CE /* AppSteps.swift in Sources */,
 				BF9A3670228D5F2700EE2AB8 /* Stubbed.swift in Sources */,
+				BFD9CB23238435CB0034837F /* UILabel.swift in Sources */,
 				BF9A3663228C3F2500EE2AB8 /* TasksApi.swift in Sources */,
 				BF4A2F82225BBA3F0001B4CE /* TasksFlow.swift in Sources */,
 				BF0BB9FB236B495F00454BDD /* Eureka+Valid+Rx.swift in Sources */,
