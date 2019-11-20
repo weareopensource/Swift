@@ -32,15 +32,13 @@ final class CoreFlow: Flow {
         let secondFlow = SecondFlow(withServices: self.services)
         let profilFlow = UserFlow(withServices: self.services)
 
-        Flows.whenReady(flow1: tasksFlow, flow2: secondFlow, flow3: profilFlow) { [unowned self] (root1: UINavigationController, root2: UINavigationController, root3: UINavigationController) in
+        Flows.whenReady(flows: [tasksFlow, secondFlow, profilFlow]) { [unowned self] (root: [UINavigationController]) in
 
-            root1.tabBarItem = UITabBarItem(title: L10n.get("Localizable", config["router"][0]["name"].string ?? ""), image: UIImage.fontAwesomeIcon(code: "fa-" + (config["router"][0]["meta"]["icon"].string ?? ""), style: .solid, textColor: .blue, size: CGSize(width: config["router"][0]["meta"]["width"].int ?? 0, height: config["router"][0]["meta"]["height"].int ?? 0)), selectedImage: nil)
+            for (index, route) in root.enumerated() {
+                route.tabBarItem = UITabBarItem(title: L10n.get("Localizable", config["router"][index]["name"].string ?? ""), image: UIImage.fontAwesomeIcon(code: "fa-" + (config["router"][index]["meta"]["icon"].string ?? ""), style: .solid, textColor: .blue, size: CGSize(width: config["router"][index]["meta"]["width"].int ?? 0, height: config["router"][index]["meta"]["height"].int ?? 0)), selectedImage: nil)
+            }
 
-            root2.tabBarItem = UITabBarItem(title: L10n.get("Localizable", config["router"][1]["name"].string ?? ""), image: UIImage.fontAwesomeIcon(code: "fa-" + (config["router"][1]["meta"]["icon"].string ?? ""), style: .solid, textColor: .blue, size: CGSize(width: config["router"][1]["meta"]["width"].int ?? 0, height: config["router"][1]["meta"]["height"].int ?? 0)), selectedImage: nil)
-
-            root3.tabBarItem = UITabBarItem(title: L10n.get("Localizable", config["router"][2]["name"].string ?? ""), image: UIImage.fontAwesomeIcon(code: "fa-" + (config["router"][2]["meta"]["icon"].string ?? ""), style: .solid, textColor: .blue, size: CGSize(width: config["router"][2]["meta"]["width"].int ?? 0, height: config["router"][2]["meta"]["height"].int ?? 0)), selectedImage: nil)
-
-            self.rootViewController.setViewControllers([root1, root2, root3], animated: false)
+            self.rootViewController.setViewControllers(root, animated: false)
         }
 
         return .multiple(flowContributors: [.contribute(withNextPresentable: tasksFlow,
