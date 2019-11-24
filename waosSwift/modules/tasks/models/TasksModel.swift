@@ -26,6 +26,6 @@ extension Tasks: Codable {
 
         id = try container.decode(String.self, forKey: .id)
         title = try container.decode(String.self, forKey: .title)
-        description = try container.decode(String.self, forKey: .description)
+        description? = try container.decode(String.self, forKey: .description)
     }
 }
