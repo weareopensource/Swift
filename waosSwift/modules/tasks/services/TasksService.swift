@@ -15,7 +15,7 @@ final class TasksService: CoreService, TasksServiceType {
     fileprivate let networking = Networking<TasksApi>(plugins: [CookiePlugin()])
 
     // temporary array
-    var defaultTasks: [Tasks] = [Tasks(id: "String", title: "String")]
+    var defaultTasks: [Tasks] = [Tasks()]
 
     fileprivate let tasksSubject = ReplaySubject<[Tasks]?>.create(bufferSize: 1)
     lazy var tasks: Observable<[Tasks]?> = self.tasksSubject.asObservable()

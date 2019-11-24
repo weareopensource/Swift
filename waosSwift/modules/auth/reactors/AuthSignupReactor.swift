@@ -50,7 +50,7 @@ final class AuthSignUpReactor: Reactor {
         var error: DiplayError?
 
         init() {
-            self.user = User(id: nil, firstName: "", lastName: "", email: "", roles: nil)
+            self.user = User()
             self.password = ""
             self.isDismissed = false
         }
