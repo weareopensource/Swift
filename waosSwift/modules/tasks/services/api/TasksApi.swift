@@ -68,7 +68,8 @@ extension TasksApi: TargetType {
             return .requestPlain
 
         case .create(let task), .update(let task):
-            return .requestParameters(parameters: ["title": task.title, "description": task.description ?? ""], encoding: JSONEncoding.default)
+            return .requestJSONEncodable(task)
+            // return .requestParameters(parameters: ["title": task.title, "description": task.description ?? ""], encoding: JSONEncoding.default)
         }
     }
 
