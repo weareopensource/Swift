@@ -36,7 +36,7 @@ final class UserReactor: Reactor {
         var error: DiplayError?
 
         init() {
-            self.user = User(id: nil, firstName: "", lastName: "", email: "", roles: nil)
+            self.user = User()
             self.isRefreshing = false
         }
     }
@@ -57,7 +57,7 @@ final class UserReactor: Reactor {
 
     func transform(action: Observable<Action>) -> Observable<Action> {
         let refresh = self.provider.userService.user
-            .map { Action.refresh($0 ?? User(id: nil, firstName: "", lastName: "", email: "", roles: nil)) }
+            .map { Action.refresh($0 ?? User()) }
         return Observable.of(action, refresh).merge()
     }
 

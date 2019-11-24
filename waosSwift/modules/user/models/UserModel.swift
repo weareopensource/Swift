@@ -20,7 +20,15 @@ struct User {
     var firstName: String
     var lastName: String
     var email: String
-    var roles: [String]?
+    var roles: [String]
+
+    init(id: String = "", firstName: String = "", lastName: String = "", email: String = "", roles: [String] = [] ) {
+        self.id = id
+        self.firstName = firstName
+        self.lastName = lastName
+        self.email = email
+        self.roles = roles
+    }
 }
 
 extension User: Codable {

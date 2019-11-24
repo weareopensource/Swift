@@ -63,7 +63,7 @@ final class TasksViewReactor: Reactor {
 
         switch mode {
         case .add:
-            self.initialState = State(task: Tasks(id: "", title: ""), mode: mode)
+            self.initialState = State(task: Tasks(), mode: mode)
         case .view(let task):
             self.initialState = State(task: task, mode: mode)
         case .edit(let task):
