@@ -26,12 +26,6 @@ final class TasksCellController: CoreTableViewCellController, View {
         self.contentView.backgroundColor = UIColor(named: config["theme"]["themes"]["waos"]["surface"].string ?? "")
     }
 
-    // MARK: Binding
-
-    func bind(reactor: Reactor) {
-        self.labelTitle.text = reactor.currentState.title
-    }
-
     // MARK: Layout
 
     override func layoutSubviews() {
@@ -42,5 +36,11 @@ final class TasksCellController: CoreTableViewCellController, View {
             make.centerY.equalToSuperview()
         }
         self.labelTitle.sizeToFit()
+    }
+    
+    // MARK: Binding
+
+    func bind(reactor: Reactor) {
+        self.labelTitle.text = reactor.currentState.title
     }
 }
