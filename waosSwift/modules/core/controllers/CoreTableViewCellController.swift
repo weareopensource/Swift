@@ -7,6 +7,7 @@ class CoreTableViewCellController: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.initialize()
+        self.updateConstraintsIfNeeded()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -20,5 +21,21 @@ class CoreTableViewCellController: UITableViewCell {
     // MARK: Rx
 
     var disposeBag: DisposeBag = DisposeBag()
+
+    // MARK: Layout Constraints
+
+    private(set) var didSetupConstraints = false
+
+    override func updateConstraints() {
+        if !self.didSetupConstraints {
+            self.setupConstraints()
+            self.didSetupConstraints = true
+        }
+        super.updateConstraints()
+    }
+
+    func setupConstraints() {
+        // Override point
+    }
 
 }
