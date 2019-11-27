@@ -7,6 +7,7 @@ class CoreCollectionViewCellController: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.initialize()
+        self.updateConstraintsIfNeeded()
     }
 
     required convenience init?(coder aDecoder: NSCoder) {
@@ -21,4 +22,19 @@ class CoreCollectionViewCellController: UICollectionViewCell {
 
     var disposeBag: DisposeBag = DisposeBag()
 
+    // MARK: Layout Constraints
+
+    private(set) var didSetupConstraints = false
+
+    override func updateConstraints() {
+        if !self.didSetupConstraints {
+            self.setupConstraints()
+            self.didSetupConstraints = true
+        }
+        super.updateConstraints()
+    }
+
+    func setupConstraints() {
+        // Override point
+    }
 }

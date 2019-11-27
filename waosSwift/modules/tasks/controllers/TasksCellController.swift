@@ -27,17 +27,13 @@ final class TasksCellController: CoreTableViewCellController, View {
     }
 
     // MARK: Layout
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
+    override func setupConstraints() {
         self.labelTitle.snp.makeConstraints { make in
             make.left.equalTo(25)
             make.centerY.equalToSuperview()
         }
-        self.labelTitle.sizeToFit()
     }
-    
+
     // MARK: Binding
 
     func bind(reactor: Reactor) {
