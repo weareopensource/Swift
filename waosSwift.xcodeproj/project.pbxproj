@@ -121,7 +121,7 @@
 		BFA92D1E237BEEAB006A3B8D /* UserCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D1D237BEEAB006A3B8D /* UserCellReactor.swift */; };
 		BFA92D20237BEEC0006A3B8D /* UserCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D1F237BEEC0006A3B8D /* UserCellController.swift */; };
 		BFA92D2D237C050C006A3B8D /* CoreTableViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D2A237C050C006A3B8D /* CoreTableViewCellController.swift */; };
-		BFA92D2E237C050C006A3B8D /* CoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D2B237C050C006A3B8D /* CoreController.swift */; };
+		BFA92D2E237C050C006A3B8D /* setupConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D2B237C050C006A3B8D /* setupConstraints.swift */; };
 		BFA92D2F237C050C006A3B8D /* CoreFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D2C237C050C006A3B8D /* CoreFormController.swift */; };
 		BFA92D3D237DA119006A3B8D /* CoreUITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D3C237DA119006A3B8D /* CoreUITableView.swift */; };
 		BFC81B002383CF6500D00D3C /* CoreCollectionViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC81AFF2383CF6500D00D3C /* CoreCollectionViewCellController.swift */; };
@@ -295,7 +295,7 @@
 		BFA92D1D237BEEAB006A3B8D /* UserCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellReactor.swift; sourceTree = "<group>"; };
 		BFA92D1F237BEEC0006A3B8D /* UserCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellController.swift; sourceTree = "<group>"; };
 		BFA92D2A237C050C006A3B8D /* CoreTableViewCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreTableViewCellController.swift; sourceTree = "<group>"; };
-		BFA92D2B237C050C006A3B8D /* CoreController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreController.swift; sourceTree = "<group>"; };
+		BFA92D2B237C050C006A3B8D /* setupConstraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = setupConstraints.swift; sourceTree = "<group>"; };
 		BFA92D2C237C050C006A3B8D /* CoreFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreFormController.swift; sourceTree = "<group>"; };
 		BFA92D3C237DA119006A3B8D /* CoreUITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreUITableView.swift; sourceTree = "<group>"; };
 		BFC81AFF2383CF6500D00D3C /* CoreCollectionViewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreCollectionViewCellController.swift; sourceTree = "<group>"; };
@@ -362,7 +362,7 @@
 			children = (
 				BFC81AFF2383CF6500D00D3C /* CoreCollectionViewCellController.swift */,
 				BFA92D2A237C050C006A3B8D /* CoreTableViewCellController.swift */,
-				BFA92D2B237C050C006A3B8D /* CoreController.swift */,
+				BFA92D2B237C050C006A3B8D /* setupConstraints.swift */,
 				BFA92D2C237C050C006A3B8D /* CoreFormController.swift */,
 			);
 			path = controllers;
@@ -1224,7 +1224,7 @@
 				BF0CD6AB22563C9800844F9A /* Strings.swift in Sources */,
 				BF8C6723227C3E1E0012B5A8 /* TasksCellReactor.swift in Sources */,
 				BF3B775A2360C01F00ECD30A /* CoreUITextField.swift in Sources */,
-				BFA92D2E237C050C006A3B8D /* CoreController.swift in Sources */,
+				BFA92D2E237C050C006A3B8D /* setupConstraints.swift in Sources */,
 				BF4A2F87225C8F160001B4CE /* UILocalizations.swift in Sources */,
 				BF058D7E2282BCDD00E2A077 /* AuthService.swift in Sources */,
 				BF9A3674228DFDAE00EE2AB8 /* TasksResponses.swift in Sources */,
