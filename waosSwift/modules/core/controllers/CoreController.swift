@@ -31,6 +31,7 @@ class CoreController: UIViewController {
         self.navigationController?.navigationBar.barTintColor = UIColor(named: config["theme"]["themes"]["waos"]["primary"].string ?? "")
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor(named: config["theme"]["themes"]["waos"]["onPrimary"].string ?? "")!]
         self.navigationController?.navigationBar.tintColor = UIColor(named: config["theme"]["themes"]["waos"]["onPrimary"].string ?? "")
+        self.navigationController?.navigationBar.shadowImage = UIImage()
         // tabar
         if NSString(string: config["theme"]["tabBar"]["color"].string ?? "").boolValue == true {
             self.tabBarController?.tabBar.barTintColor = UIColor(named: config["theme"]["themes"]["waos"]["primary"].string ?? "")
