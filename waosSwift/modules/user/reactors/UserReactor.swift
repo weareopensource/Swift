@@ -122,6 +122,6 @@ final class UserReactor: Reactor {
     // reactor init
 
     func editReactor(_ user: User) -> UserViewReactor {
-        return UserViewReactor(provider: self.provider, mode: .edit(user))
+        return UserViewReactor(provider: self.provider, user: user)
     }
 }

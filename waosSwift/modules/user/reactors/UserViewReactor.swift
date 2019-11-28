@@ -4,10 +4,6 @@
 
 import ReactorKit
 
-enum UserViewMode {
-    case edit(User)
-}
-
 /**
  * Reactor
  */
@@ -40,13 +36,11 @@ final class UserViewReactor: Reactor {
     // the current view state
     struct State {
         var user: User
-        var mode: UserViewMode
         var isDismissed: Bool
         var error: DiplayError?
 
-        init(user: User, mode: UserViewMode) {
+        init(user: User) {
             self.user = user
-            self.mode = mode
             self.isDismissed = false
         }
     }
@@ -54,19 +48,13 @@ final class UserViewReactor: Reactor {
     // MARK: Properties
 
     let provider: AppServicesProviderType
-    let mode: UserViewMode
     let initialState: State
 
     // MARK: Initialization
 
-    init(provider: AppServicesProviderType, mode: UserViewMode) {
+    init(provider: AppServicesProviderType, user: User) {
         self.provider = provider
-        self.mode = mode
-
-        switch mode {
-        case .edit(let user):
-            self.initialState = State(user: user, mode: mode)
-        }
+        self.initialState = State(user: user)
     }
 
     // MARK: Action -> Mutation (mutate() receives an Action and generates an Observable<Mutation>)
@@ -85,16 +73,13 @@ final class UserViewReactor: Reactor {
             return .just(.updateEmail(email))
         // done
         case .done:
-            switch mode {
-            case .edit:
-                return self.provider.userService
-                    .update(self.currentState.user)
-                    .map { result in
-                        switch result {
-                        case .success: return .dismiss
-                        case let .error(err): return .error(err)
-                        }
-                }
+            return self.provider.userService
+                .update(self.currentState.user)
+                .map { result in
+                    switch result {
+                    case .success: return .dismiss
+                    case let .error(err): return .error(err)
+                    }
             }
         }
     }

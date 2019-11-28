@@ -14,10 +14,6 @@ import MessageUI
 
 class UserViewController: CoreFormController, View {
 
-    // MARK: Constants
-
-    let mode: UserViewMode
-
     // MARK: UI
 
     let barButtonCancel = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: nil)
@@ -41,7 +37,6 @@ class UserViewController: CoreFormController, View {
     // MARK: Initializing
 
     init(reactor: UserViewReactor) {
-        self.mode = reactor.currentState.mode
         super.init()
         self.reactor = reactor
     }
