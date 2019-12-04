@@ -28,7 +28,7 @@ final class TasksListReactor: Reactor {
     // state changes
     enum Mutation {
         // task
-        case set([TasksSections])
+        case set([Tasks])
         case setRefreshing(Bool)
         // default
         case success(String)
@@ -38,12 +38,14 @@ final class TasksListReactor: Reactor {
     // the current view state
     struct State {
         // Tasks
-        var tasks: [TasksSections]
+        var tasks: [Tasks]
+        var sections: [TasksSections]
         var isRefreshing: Bool
         var error: DiplayError?
 
         init() {
-            self.tasks = [TasksSections(model: Void(), items: [])]
+            self.tasks = []
+            self.sections = [TasksSections(model: Void(), items: [])]
             self.isRefreshing = false
         }
     }
@@ -75,9 +77,7 @@ final class TasksListReactor: Reactor {
         // refresh
         case let .refresh(tasks):
             log.verbose("♻️ Action -> Mutation : refresh")
-            let items = tasks.map(TasksCellReactor.init)
-            let section = TasksSections(model: Void(), items: items)
-            return .just(.set([section]))
+            return .just(.set(tasks))
         // get
         case .get:
             log.verbose("♻️ Action -> Mutation : get")
@@ -87,7 +87,7 @@ final class TasksListReactor: Reactor {
                     .list()
                     .map { result in
                         switch result {
-                        case let .success(result): return .set([TasksSections(model: Void(), items: result.data.map(TasksCellReactor.init))])
+                        case let .success(result): return .set(result.data)
                         case let .error(err): return .error(err)
                         }
                 },
@@ -96,7 +96,7 @@ final class TasksListReactor: Reactor {
         // delete
         case let .delete(i):
             log.verbose("♻️ Action -> Mutation : delete")
-            let task = self.currentState.tasks[i].currentState
+            let task = self.currentState.sections[i].currentState
             return self.provider.tasksService
                 .delete(task)
                 .map { result in
@@ -144,7 +144,16 @@ final class TasksListReactor: Reactor {
         // set
         case let .set(tasks):
             log.verbose("♻️ Mutation -> State : set")
-            state.tasks = tasks
+            let difference = tasks.difference(from: state.tasks)
+            state.tasks = state.tasks.applying(difference) ?? []
+            for change in difference {
+                switch change {
+                case let .remove(index, _, _):
+                    state.sections.remove(at: IndexPath(item: index, section: 0))
+                case let .insert(index, element, _):
+                    state.sections.insert(TasksCellReactor(task: element), at: IndexPath(item: index, section: 0))
+                }
+            }
         // success
         case let .success(success):
             log.verbose("♻️ Mutation -> State : succes \(success)")

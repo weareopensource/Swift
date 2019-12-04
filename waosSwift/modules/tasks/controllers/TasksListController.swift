@@ -130,7 +130,7 @@ private extension TasksListController {
     func bindState(_ reactor: TasksListReactor) {
         // tasks
         reactor.state
-            .map { $0.tasks }
+            .map { $0.sections }
             .bind(to: self.tableView.rx.items(dataSource: self.dataSource))
             .disposed(by: self.disposeBag)
         // refreshing
