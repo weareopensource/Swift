@@ -14,7 +14,7 @@ struct Tasks {
     }
 }
 
-extension Tasks: Codable {
+extension Tasks: Hashable, Codable {
     enum TasksCodingKeys: String, CodingKey {
         case id
         case title
