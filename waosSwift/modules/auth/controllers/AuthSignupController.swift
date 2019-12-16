@@ -171,6 +171,7 @@ private extension AuthSignUpController {
             .disposed(by: self.disposeBag)
         // button signup
         buttonSignup.rx.tap
+            .throttle(.seconds(3), latest: false, scheduler: MainScheduler.instance)
             .map { _ in Reactor.Action.signUp }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -227,6 +228,7 @@ private extension AuthSignUpController {
         // error
         reactor.state
             .map { $0.error?.description }
+            .throttle(.seconds(5), scheduler: MainScheduler.instance)
             .filterNil()
             .subscribe(onNext: { result in
                 Toast(text: result, delay: 0, duration: Delay.long).show()

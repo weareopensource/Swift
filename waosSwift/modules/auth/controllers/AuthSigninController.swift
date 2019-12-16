@@ -153,6 +153,7 @@ private extension AuthSignInController {
     func bindAction(_ reactor: AuthSigninReactor) {
         // button signin
         buttonSignin.rx.tap
+            .throttle(.seconds(3), latest: false, scheduler: MainScheduler.instance)
             .map { _ in Reactor.Action.signIn }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)

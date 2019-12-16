@@ -227,6 +227,7 @@ private extension UserController {
             .disposed(by: self.disposeBag)
         // buttons
         self.buttonLogout.rx.tap
+            .throttle(.seconds(3), latest: false, scheduler: MainScheduler.instance)
             .map { _ in Reactor.Action.logout }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -267,6 +268,7 @@ private extension UserController {
         // error
         reactor.state
             .map { $0.error?.description }
+            .throttle(.seconds(5), scheduler: MainScheduler.instance)
             .filterNil()
             .subscribe(onNext: { result in
                 Toast(text: result, delay: 0, duration: Delay.long).show()
