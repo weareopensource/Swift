@@ -61,7 +61,8 @@
         },
         "tabBar": {
             "color": "false",
-            "title": "false"
+            "title": "false",
+            "tintColor" : "true"
         },
         "toast": {
             "background": "waosError",
