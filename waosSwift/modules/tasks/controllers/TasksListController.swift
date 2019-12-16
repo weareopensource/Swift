@@ -142,6 +142,7 @@ private extension TasksListController {
         // error
         reactor.state
             .map { $0.error?.description }
+            .throttle(.seconds(5), scheduler: MainScheduler.instance)
             .filterNil()
             .subscribe(onNext: { result in
                 Toast(text: result, delay: 0, duration: Delay.long).show()

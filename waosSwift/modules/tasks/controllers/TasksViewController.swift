@@ -90,6 +90,7 @@ private extension TasksViewController {
 
     func bindAction(_ reactor: TasksViewReactor) {
         self.barButtonDone.rx.tap
+            .throttle(.seconds(3), latest: false, scheduler: MainScheduler.instance)
             .map { Reactor.Action.done }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -123,6 +124,7 @@ private extension TasksViewController {
         // error
         reactor.state
             .map { $0.error?.description }
+            .throttle(.seconds(5), scheduler: MainScheduler.instance)
             .filterNil()
             .subscribe(onNext: { result in
                 Toast(text: result, delay: 0, duration: Delay.long).show()
