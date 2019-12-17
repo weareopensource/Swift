@@ -26,7 +26,7 @@ final class TasksListController: CoreController, View {
         $0.allowsSelectionDuringEditing = true
     }
     let barButtonAdd = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
-    let refreshControl = UIRefreshControl()
+    let refreshControl = CoreUIRefreshControl()
 
     // MARK: Properties
 
