@@ -17,7 +17,7 @@
     }
 
     func shared() {
-        self.tintColor = UIColor(named: config["theme"]["themes"]["waos"]["primary"].string ?? "")
+        self.tintColor = UIColor(named: config["theme"]["themes"]["waos"]["primary"].string ?? "")?.lighter(by: 10)
     }
 
 }
