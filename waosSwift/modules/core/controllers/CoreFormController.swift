@@ -39,6 +39,9 @@ class CoreFormController: FormViewController {
             self.tabBarController?.tabBar.barTintColor = UIColor(named: config["theme"]["themes"]["waos"]["primary"].string ?? "")
             self.tabBarController?.tabBar.tintColor = UIColor(named: config["theme"]["themes"]["waos"]["onPrimary"].string ?? "")
         }
+        if NSString(string: config["theme"]["tabBar"]["tintColor"].string ?? "").boolValue == true {
+            self.tabBarController?.tabBar.tintColor = UIColor(named: config["theme"]["themes"]["waos"]["primary"].string ?? "")
+        }
         if NSString(string: config["theme"]["tabBar"]["title"].string ?? "").boolValue != true {
             self.tabBarController?.tabBar.items?.forEach {
                 $0.title = ""
