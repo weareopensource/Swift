@@ -134,6 +134,7 @@
 		BFE4BB47226CC7BD00739735 /* TasksViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4BB46226CC7BD00739735 /* TasksViewReactor.swift */; };
 		BFE912A22341CDA40074FAAB /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = BFE912A02341CDA40074FAAB /* Cartfile */; };
 		BFE912A32341CDA40074FAAB /* Cartfile.resolved in Resources */ = {isa = PBXBuildFile; fileRef = BFE912A12341CDA40074FAAB /* Cartfile.resolved */; };
+		BFF663B523A8A9CE00BB66CC /* CoreUiRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF663B423A8A9CE00BB66CC /* CoreUiRefreshControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -308,6 +309,7 @@
 		BFE4BB46226CC7BD00739735 /* TasksViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewReactor.swift; sourceTree = "<group>"; };
 		BFE912A02341CDA40074FAAB /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		BFE912A12341CDA40074FAAB /* Cartfile.resolved */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.resolved; sourceTree = "<group>"; };
+		BFF663B423A8A9CE00BB66CC /* CoreUiRefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreUiRefreshControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -457,6 +459,7 @@
 				BF3B77562360985700ECD30A /* CoreUILabel.swift */,
 				BF3B77592360C01F00ECD30A /* CoreUITextField.swift */,
 				BFA92D3C237DA119006A3B8D /* CoreUITableView.swift */,
+				BFF663B423A8A9CE00BB66CC /* CoreUiRefreshControl.swift */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -1219,6 +1222,7 @@
 				BF8C672E228017940012B5A8 /* UITableView+ReusableKit.swift in Sources */,
 				BF8C6725227C3E310012B5A8 /* TasksCellController.swift in Sources */,
 				BF4A2F80225BB9360001B4CE /* SecondReactor.swift in Sources */,
+				BFF663B523A8A9CE00BB66CC /* CoreUiRefreshControl.swift in Sources */,
 				BFDE2602227B17D4008CBD30 /* AppServicesProvider.swift in Sources */,
 				BF8C6731228022140012B5A8 /* UICollectionView+RxReusableKit.swift in Sources */,
 				BF0CD6AB22563C9800844F9A /* Strings.swift in Sources */,

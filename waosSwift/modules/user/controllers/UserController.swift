@@ -16,7 +16,7 @@ class UserController: CoreFormController, View {
 
     // MARK: UI
 
-    let refreshControl = UIRefreshControl()
+    let refreshControl = CoreUIRefreshControl()
 
     let labelName = CoreUILabel().then {
         $0.textAlignment = .center
