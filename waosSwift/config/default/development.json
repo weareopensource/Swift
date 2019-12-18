@@ -54,6 +54,9 @@
         }
     ],
     "theme": {
+        "global": {
+            "radius": 5,
+        },
         "tableView": {
             "rowHeight": 60,
             "sectionFooterHeight": 25,

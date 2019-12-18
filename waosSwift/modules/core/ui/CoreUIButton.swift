@@ -40,7 +40,7 @@
     }
 
     func shared() {
-        self.layer.cornerRadius = 5
+        self.layer.cornerRadius = CGFloat(config["theme"]["global"]["radius"].int ?? 0)
         self.backgroundColor = UIColor(named: config["theme"]["themes"]["waos"]["surface"].string ?? "")
         self.setTitleColor(UIColor(named: config["theme"]["themes"]["waos"]["onSurface"].string ?? ""), for: .normal)
 
