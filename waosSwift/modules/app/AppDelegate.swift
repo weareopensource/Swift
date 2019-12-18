@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ToastView.appearance().textColor = UIColor(named: config["theme"]["toast"]["text"].string ?? "")
         ToastView.appearance().font = UIFont.init(name: "Arial", size: 16)
         ToastView.appearance().textInsets = UIEdgeInsets(top: (CGFloat(config["theme"]["toast"]["margin"].float ?? 10)), left: (CGFloat(config["theme"]["toast"]["margin"].float ?? 10)), bottom: (CGFloat(config["theme"]["toast"]["margin"].float ?? 10)), right: (CGFloat(config["theme"]["toast"]["margin"].float ?? 10)))
-        ToastView.appearance().cornerRadius = 5
+        ToastView.appearance().cornerRadius = CGFloat(config["theme"]["global"]["radius"].int ?? 0)
         if NSString(string: config["theme"]["toast"]["bottom"].string ?? "").boolValue == true {
             ToastView.appearance().bottomOffsetPortrait = 100
             ToastView.appearance().bottomOffsetLandscape = 100
