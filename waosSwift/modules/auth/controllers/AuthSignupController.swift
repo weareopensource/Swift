@@ -175,13 +175,20 @@ private extension AuthSignUpController {
             .map { _ in Reactor.Action.signUp }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
+        // form
+        Observable.combineLatest([self.inputLastName, self.inputFirstName, self.inputEmail, self.inputPassword].map { $0.rx.text.orEmpty })
+            .map { $0.map { $0.isEmpty } }
+            .map {Reactor.Action.updateIsFilled(!$0.contains(true))}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
         // firstname
         self.inputFirstName.rx.text
             .filter { ($0?.count)! > 0 }
             .map {Reactor.Action.updateFirstName($0!)}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
-        self.inputFirstName.rx.controlEvent(.editingDidEnd).asObservable()
+        self.inputFirstName.rx.controlEvent(.editingChanged).asObservable()
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
             .map {Reactor.Action.validateFirstName}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -191,7 +198,8 @@ private extension AuthSignUpController {
             .map {Reactor.Action.updateLastName($0!)}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
-        self.inputLastName.rx.controlEvent(.editingDidEnd).asObservable()
+        self.inputLastName.rx.controlEvent(.editingChanged).asObservable()
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
             .map {Reactor.Action.validateLastName}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -201,7 +209,8 @@ private extension AuthSignUpController {
             .map {Reactor.Action.updateEmail($0!)}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
-        self.inputEmail.rx.controlEvent(.editingDidEnd).asObservable()
+        self.inputEmail.rx.controlEvent(.editingChanged).asObservable()
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
             .map {Reactor.Action.validateEmail}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -209,6 +218,11 @@ private extension AuthSignUpController {
         self.inputPassword.rx.text
             .filter {($0?.count)! > 0}
             .map {Reactor.Action.updatePassword($0!)}
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        self.inputPassword.rx.controlEvent(.editingChanged).asObservable()
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .map {Reactor.Action.validatePassword}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
     }
@@ -225,14 +239,58 @@ private extension AuthSignUpController {
                 self?.dismiss(animated: true, completion: nil)
             })
             .disposed(by: self.disposeBag)
-        // error
+        // errors
         reactor.state
-            .map { $0.error?.description }
-            .throttle(.seconds(5), scheduler: MainScheduler.instance)
-            .filterNil()
-            .subscribe(onNext: { result in
-                Toast(text: result, delay: 0, duration: Delay.long).show()
+            .map { $0.errors.count }
+            .distinctUntilChanged()
+            .subscribe(onNext: { count in
+                if(count > 0) {
+                    let message: [String] = reactor.currentState.errors.map { "\($0.description)." }
+                    ToastCenter.default.cancelAll()
+                    Toast(text: message.joined(separator: "\n"), delay: 0, duration: Delay.long).show()
+                } else {
+                    ToastCenter.default.cancelAll()
+                }
+
             })
             .disposed(by: self.disposeBag)
+        reactor.state
+            .map { $0.errors.count }
+            .distinctUntilChanged()
+            .subscribe(onNext: { _ in
+                if reactor.currentState.errors.firstIndex(where: { $0.title == "\(User.Validators.firstname)" }) != nil {
+                    self.inputFirstName.layer.borderWidth = 1.0
+                } else {
+                    self.inputFirstName.layer.borderWidth = 0
+                }
+                if reactor.currentState.errors.firstIndex(where: { $0.title ==  "\(User.Validators.lastname)" }) != nil {
+                    self.inputLastName.layer.borderWidth = 1.0
+                } else {
+                    self.inputLastName.layer.borderWidth = 0
+                }
+                if reactor.currentState.errors.firstIndex(where: { $0.title ==  "\(User.Validators.email)" }) != nil {
+                    self.inputEmail.layer.borderWidth = 1.0
+                } else {
+                    self.inputEmail.layer.borderWidth = 0
+                }
+                if reactor.currentState.errors.firstIndex(where: { $0.title ==  "\(User.Validators.password)" }) != nil {
+                    self.inputPassword.layer.borderWidth = 1.0
+                } else {
+                    self.inputPassword.layer.borderWidth = 0
+                }
+            })
+            .disposed(by: self.disposeBag)
+        Observable.combineLatest(
+            reactor.state
+                .map { $0.errors.count > 0 }
+                .distinctUntilChanged(),
+            reactor.state
+                .map { !$0.isFilled }
+                .distinctUntilChanged()
+        )
+        .map { [$0.0, $0.1] }
+        .map { !$0.contains(true) }
+        .bind(to: self.buttonSignup.rx.isEnabled)
+        .disposed(by: disposeBag)
     }
 }

@@ -22,6 +22,8 @@ final class AuthSignUpReactor: Reactor {
         case updateEmail(String)
         case validateEmail
         case updatePassword(String)
+        case validatePassword
+        case updateIsFilled(Bool)
         // others
         case signIn
         case signUp
@@ -34,6 +36,7 @@ final class AuthSignUpReactor: Reactor {
         case updateLastName(String)
         case updateEmail(String)
         case updatePassword(String)
+        case updateIsFilled(Bool)
         // others
         case goSignIn
         case dismiss
@@ -45,14 +48,15 @@ final class AuthSignUpReactor: Reactor {
     // the current view state
     struct State {
         var user: User
-        var password: String
         var isDismissed: Bool
-        var error: DiplayError?
+        var isFilled: Bool
+        var errors: [DiplayError]
 
         init() {
             self.user = User()
-            self.password = ""
             self.isDismissed = false
+            self.isFilled = false
+            self.errors = []
         }
     }
 
@@ -77,7 +81,7 @@ final class AuthSignUpReactor: Reactor {
             return .just(.updateFirstName(firstName))
         case .validateFirstName:
             switch currentState.user.validate(.firstname) {
-            case .valid: return .just(.success("firstname"))
+            case .valid: return .just(.success("\(User.Validators.firstname)"))
             case let .invalid(err): return .just(.error(err[0] as! CustomError))
             }
             // update password
@@ -86,7 +90,7 @@ final class AuthSignUpReactor: Reactor {
             return .just(.updateLastName(lastName))
         case .validateLastName:
             switch currentState.user.validate(.lastname) {
-            case .valid: return .just(.success("lastname"))
+            case .valid: return .just(.success("\(User.Validators.lastname)"))
             case let .invalid(err): return .just(.error(err[0] as! CustomError))
             }
         // email
@@ -94,12 +98,20 @@ final class AuthSignUpReactor: Reactor {
             return .just(.updateEmail(email))
         case .validateEmail:
             switch currentState.user.validate(.email) {
-            case .valid: return .just(.success("mail"))
+            case .valid: return .just(.success("\(User.Validators.email)"))
             case let .invalid(err): return .just(.error(err[0] as! CustomError))
             }
         // password
         case let .updatePassword(password):
             return .just(.updatePassword(password))
+        case .validatePassword:
+            switch currentState.user.validate(.password) {
+            case .valid: return .just(.success("\(User.Validators.password)"))
+            case let .invalid(err): return .just(.error(err[0] as! CustomError))
+            }
+        // form
+        case let .updateIsFilled(isFilled):
+            return .just(.updateIsFilled(isFilled))
         // signin
         case .signIn:
             log.verbose("♻️ Action -> Mutation : signIn")
@@ -108,7 +120,7 @@ final class AuthSignUpReactor: Reactor {
         case .signUp:
             log.verbose("♻️ Action -> Mutation : signUp(\(self.currentState.user.firstName), \(self.currentState.user.lastName), \(self.currentState.user.email))")
             return self.provider.authService
-                .signUp(firstName: self.currentState.user.firstName, lastName: self.currentState.user.lastName, email: self.currentState.user.email, password: self.currentState.password)
+                .signUp(firstName: self.currentState.user.firstName, lastName: self.currentState.user.lastName, email: self.currentState.user.email, password: self.currentState.user.password ?? "")
                 .map { result in
                     switch result {
                     case let .success(response):
@@ -137,7 +149,10 @@ final class AuthSignUpReactor: Reactor {
             state.user.email = email
         // update password
         case let .updatePassword(password):
-            state.password = password
+            state.user.password = password
+        // form
+        case let .updateIsFilled(isFilled):
+            state.isFilled = isFilled
         // go Signup
         case .goSignIn:
             log.verbose("♻️ Mutation -> State : goSignIn")
@@ -148,14 +163,21 @@ final class AuthSignUpReactor: Reactor {
             state.isDismissed = true
         case let .success(success):
             log.verbose("♻️ Mutation -> State : succes \(success)")
-            state.error = nil
+            if let index = state.errors.firstIndex(where: { $0.title == success }) {
+                state.errors.remove(at: index)
+            }
+            if let index = state.errors.firstIndex(where: { $0.title == "Schema validation error" }) {
+                state.errors.remove(at: index)  // purge server error after edit form
+            }
         // error
         case let .error(error):
             log.verbose("♻️ Mutation -> State : error \(error)")
             if error.code == 401 {
                 self.provider.preferencesService.isLogged = false
             } else {
-                state.error = DiplayError(title: error.message, description: (error.description ?? "Unknown error"))
+                if state.errors.firstIndex(where: { $0.title == error.message }) == nil {
+                    state.errors.insert(DiplayError(title: error.message, description: (error.description ?? "Unknown error")), at: 0)
+                }
             }
         }
         return state
