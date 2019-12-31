@@ -23,6 +23,8 @@
         self.leftView = paddingView
         self.leftViewMode = .always
         self.layer.cornerRadius = CGFloat(config["theme"]["global"]["radius"].int ?? 0)
+        // prepare for error
+        self.layer.borderColor = UIColor(named: config["theme"]["themes"]["waos"]["error"].string ?? "")?.withAlphaComponent(0.75).cgColor
     }
 
 }

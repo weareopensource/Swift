@@ -18,6 +18,7 @@ final class AuthSigninReactor: Reactor {
         case updateEmail(String)
         case validateEmail
         case updatePassword(String)
+        case updateIsFilled(Bool)
         // others
         case signIn
         case signUp
@@ -28,6 +29,7 @@ final class AuthSigninReactor: Reactor {
         // inputs
         case updateEmail(String)
         case updatePassword(String)
+        case updateIsFilled(Bool)
         // others
         case goSignUp
         // default
@@ -37,13 +39,14 @@ final class AuthSigninReactor: Reactor {
 
     // the current view state
     struct State {
-        var email: String
-        var password: String
-        var error: DiplayError?
+        var user: User
+        var isFilled: Bool
+        var errors: [DiplayError]
 
         init() {
-            self.email = ""
-            self.password = ""
+            self.user = User()
+            self.isFilled = false
+            self.errors = []
         }
     }
 
@@ -67,19 +70,21 @@ final class AuthSigninReactor: Reactor {
         case let .updateEmail(email):
             return .just(.updateEmail(email))
         case .validateEmail:
-            let rule = ValidationRulePattern(pattern: EmailValidationPattern.standard, error: CustomError(message: "Mail", description: "Wrong email format", type: "ValidationError"))
-            switch currentState.email.validate(rule: rule) {
-                case .valid: return .just(.success("mail"))
-                case let .invalid(err): return .just(.error(err[0] as! CustomError))
+            switch currentState.user.validate(.email) {
+            case .valid: return .just(.success("\(User.Validators.email)"))
+            case let .invalid(err): return .just(.error(err[0] as! CustomError))
             }
         // password 
         case let .updatePassword(password):
-            return .just(.updatePassword(password))
+            return .concat(.just(.updatePassword(password)), .just(.success("password")))
+        // form
+        case let .updateIsFilled(isFilled):
+            return .just(.updateIsFilled(isFilled))
         // signin
         case .signIn:
-            log.verbose("♻️ Action -> Mutation : signIn(\(self.currentState.email))")
+            log.verbose("♻️ Action -> Mutation : signIn(\(self.currentState.user.email))")
             return self.provider.authService
-                .signIn(email: self.currentState.email, password: self.currentState.password)
+                .signIn(email: self.currentState.user.email, password: self.currentState.user.password ?? "")
                 .map { result in
                     switch result {
                     case let .success(response):
@@ -88,7 +93,7 @@ final class AuthSigninReactor: Reactor {
                         return .success("signIn")
                     case let .error(err): return .error(err)
                     }
-                }
+            }
         // signup
         case .signUp:
             log.verbose("♻️ Action -> Mutation : signUp")
@@ -103,24 +108,38 @@ final class AuthSigninReactor: Reactor {
         switch mutation {
         // update login
         case let .updateEmail(email):
-            state.email = email
+            state.user.email = email
         // update password
         case let .updatePassword(password):
-            state.password = password
+            state.user.password = password
+        // form
+        case let .updateIsFilled(isFilled):
+            state.isFilled = isFilled
         // go Signup
         case .goSignUp:
             log.verbose("♻️ Mutation -> State : goSignUp")
         // success
         case let .success(success):
             log.verbose("♻️ Mutation -> State : succes \(success)")
-            state.error = nil
+            if let index = state.errors.firstIndex(where: { $0.title == success }) {
+                state.errors.remove(at: index)
+            }
+            if let index = state.errors.firstIndex(where: { $0.title == "Schema validation error" }) {
+                state.errors.remove(at: index)  // purge server error after edit form
+            }
+            if let index = state.errors.firstIndex(where: { $0.title == "jwt" }) {
+                state.errors.remove(at: index)  // purge jwt errors
+            }
         // error
         case let .error(error):
             log.verbose("♻️ Mutation -> State : error \(error)")
             if error.code == 401 {
-                state.error = DiplayError(title: "Unauthorized", description: "Oups, wrong email or password.")
+                self.provider.preferencesService.isLogged = false
+                state.errors.insert(DiplayError(title: "jwt", description: "Wrong Password or Email."), at: 0)
             } else {
-                state.error = DiplayError(title: error.message, description: (error.description ?? "Unknown error"))
+                if state.errors.firstIndex(where: { $0.title == error.message }) == nil {
+                    state.errors.insert(DiplayError(title: error.message, description: (error.description ?? "Unknown error")), at: 0)
+                }
             }
         }
         return state

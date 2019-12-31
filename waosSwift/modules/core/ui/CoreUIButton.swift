@@ -26,6 +26,12 @@
         }
     }
 
+    open override var isEnabled: Bool {
+        didSet {
+            alpha = isEnabled ? 1.0 : 0.4
+        }
+    }
+
     func highlightBtn() {
         if traitCollection.userInterfaceStyle == .light {
             self.backgroundColor = UIColor(named: config["theme"]["themes"]["waos"]["surface"].string ?? "")!.darker(by: 5)

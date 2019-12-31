@@ -157,15 +157,21 @@ private extension AuthSignInController {
             .map { _ in Reactor.Action.signIn }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
-        // email
-        self.inputEmail.rx.controlEvent(.editingDidEnd)
-            .asObservable()
-            .map {Reactor.Action.validateEmail}
+        // form
+        Observable.combineLatest([self.inputEmail, self.inputPassword].map { $0.rx.text.orEmpty })
+            .map { $0.map { $0.isEmpty } }
+            .map {Reactor.Action.updateIsFilled(!$0.contains(true))}
             .bind(to: reactor.action)
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
+        // email
         self.inputEmail.rx.text
             .filter { ($0?.count)! > 0 }
             .map {Reactor.Action.updateEmail($0!)}
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        self.inputEmail.rx.controlEvent(.editingChanged).asObservable()
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .map {Reactor.Action.validateEmail}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         // password
@@ -181,11 +187,41 @@ private extension AuthSignInController {
     func bindState(_ reactor: AuthSigninReactor) {
         // error
         reactor.state
-            .map { $0.error?.description }
-            .filterNil()
-            .subscribe(onNext: { result in
-                Toast(text: result, delay: 0, duration: Delay.long).show()
+            .map { $0.errors.count }
+            .distinctUntilChanged()
+            .subscribe(onNext: { count in
+                if(count > 0) {
+                    let message: [String] = reactor.currentState.errors.map { "\($0.description)." }
+                    ToastCenter.default.cancelAll()
+                    Toast(text: message.joined(separator: "\n"), delay: 0, duration: Delay.long).show()
+                } else {
+                    ToastCenter.default.cancelAll()
+                }
+
             })
             .disposed(by: self.disposeBag)
+        reactor.state
+            .map { $0.errors.count }
+            .distinctUntilChanged()
+            .subscribe(onNext: { _ in
+                if reactor.currentState.errors.firstIndex(where: { $0.title ==  "\(User.Validators.email)" }) != nil {
+                    self.inputEmail.layer.borderWidth = 1.0
+                } else {
+                    self.inputEmail.layer.borderWidth = 0
+                }
+            })
+            .disposed(by: self.disposeBag)
+        Observable.combineLatest(
+            reactor.state
+                .map { $0.errors.count > 0 }
+                .distinctUntilChanged(),
+            reactor.state
+                .map { !$0.isFilled }
+                .distinctUntilChanged()
+        )
+        .map { [$0.0, $0.1] }
+        .map { !$0.contains(true) }
+        .bind(to: self.buttonSignin.rx.isEnabled)
+        .disposed(by: disposeBag)
     }
 }

@@ -21,13 +21,15 @@ struct User {
     var lastName: String
     var email: String
     var roles: [String]
+    var password: String?
 
-    init(id: String = "", firstName: String = "", lastName: String = "", email: String = "", roles: [String] = [] ) {
+    init(id: String = "", firstName: String = "", lastName: String = "", email: String = "", roles: [String] = [], password: String? = "") {
         self.id = id
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
         self.roles = roles
+        self.password = password
     }
 }
 
@@ -38,6 +40,7 @@ extension User: Codable {
         case lastName
         case email
         case roles
+        case password
     }
 }
 
@@ -47,21 +50,24 @@ extension User: Validatable {
         case firstname = "Wrong firstname format"
         case lastname = "Wrong lastname format"
         case email = "Wrong email format"
+        case password = "Wrong password format (8 char, 1 number, 1 special)"
     }
 
     func validate(_ validator: Validators) -> ValidationResult {
         // default error
         let err = CustomError(message: "\(validator)", description: validator.rawValue, type: "ValidationError")
         // rules
-        let ruleEmail = ValidationRulePattern(pattern: EmailValidationPattern.standard, error: err)
-        let ruleMinLength = ValidationRuleLength(min: 1, error: err)
-        let ruleMaxLength = ValidationRuleLength(max: 30, error: err)
-        let alphaNum = ValidationRulePattern(pattern: AlphaNumValidationPattern(), error: err)
+        let emails = ValidationRulePattern(pattern: EmailValidationPattern.standard, error: err)
 
         var names = ValidationRuleSet<String>()
-        names.add(rule: alphaNum)
-        names.add(rule: ruleMinLength)
-        names.add(rule: ruleMaxLength)
+        names.add(rule: ValidationRulePattern(pattern: AlphaNumValidationPattern(), error: err))
+        names.add(rule: ValidationRuleLength(min: 1, error: err))
+        names.add(rule: ValidationRuleLength(max: 30, error: err))
+
+        var passwords = ValidationRuleSet<String>()
+        passwords.add(rule: ValidationRulePattern(pattern: PasswordValidationPattern(), error: err))
+        passwords.add(rule: ValidationRuleLength(min: 8, error: err))
+        passwords.add(rule: ValidationRuleLength(max: 128, error: err))
 
         // validator
         switch validator {
@@ -70,7 +76,9 @@ extension User: Validatable {
         case .lastname:
             return lastName.validate(rules: names)
         case .email:
-            return email.validate(rule: ruleEmail)
+            return email.validate(rule: emails)
+        case .password:
+            return password?.validate(rules: passwords) ?? ValidationResult.valid
         }
     }
 }
