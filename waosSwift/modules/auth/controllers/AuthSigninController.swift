@@ -15,6 +15,7 @@ final class AuthSignInController: CoreController, View, Stepper {
 
     let inputEmail = CoreUITextField().then {
         $0.autocorrectionType = .no
+        $0.setFontAwesomeIcon("fa-envelope")
         $0.placeholder = L10n.authMail + "..."
         $0.autocapitalizationType = .none
         $0.textContentType = .username
@@ -22,6 +23,7 @@ final class AuthSignInController: CoreController, View, Stepper {
     }
     let inputPassword = CoreUITextField().then {
         $0.autocorrectionType = .no
+        $0.setFontAwesomeIcon("fa-key")
         $0.placeholder = L10n.authPassword + "..."
         $0.autocapitalizationType = .none
         $0.returnKeyType = .done
@@ -178,6 +180,11 @@ private extension AuthSignInController {
         self.inputPassword.rx.text
             .filter {($0?.count)! > 0}
             .map {Reactor.Action.updatePassword($0!)}
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        self.inputPassword.rx.controlEvent(.editingChanged).asObservable()
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .map {Reactor.Action.validatePassword}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
     }
