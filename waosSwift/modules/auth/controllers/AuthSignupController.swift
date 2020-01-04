@@ -14,20 +14,24 @@ final class AuthSignUpController: CoreController, View, Stepper {
     // MARK: UI
     let inputFirstName = CoreUITextField().then {
         $0.autocorrectionType = .no
+        $0.setFontAwesomeIcon("fa-user")
         $0.placeholder = L10n.authFirstname + "..."
     }
     let inputLastName = CoreUITextField().then {
         $0.autocorrectionType = .no
+        $0.setFontAwesomeIcon("fa-user")
         $0.placeholder = L10n.authLastname + "..."
     }
     let inputEmail = CoreUITextField().then {
         $0.autocorrectionType = .no
+        $0.setFontAwesomeIcon("fa-envelope")
         $0.placeholder = L10n.authMail + "..."
         $0.autocapitalizationType = .none
         $0.textContentType = .username
     }
     let inputPassword = CoreUITextField().then {
         $0.autocorrectionType = .no
+        $0.setFontAwesomeIcon("fa-key")
         $0.placeholder = L10n.authPassword + "..."
         $0.autocapitalizationType = .none
         $0.returnKeyType = .done

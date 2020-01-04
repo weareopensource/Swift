@@ -18,6 +18,7 @@ final class AuthSigninReactor: Reactor {
         case updateEmail(String)
         case validateEmail
         case updatePassword(String)
+        case validatePassword
         case updateIsFilled(Bool)
         // others
         case signIn
@@ -76,7 +77,9 @@ final class AuthSigninReactor: Reactor {
             }
         // password 
         case let .updatePassword(password):
-            return .concat(.just(.updatePassword(password)), .just(.success("password")))
+            return .just(.updatePassword(password))
+        case .validatePassword:
+            return .just(.success("password"))
         // form
         case let .updateIsFilled(isFilled):
             return .just(.updateIsFilled(isFilled))
