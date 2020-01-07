@@ -66,7 +66,9 @@ final class TasksListReactor: Reactor {
 
     func transform(action: Observable<Action>) -> Observable<Action> {
         let refresh = self.provider.tasksService.tasks
-            .map { Action.refresh($0 ?? []) }
+            .filterNil()
+            .distinctUntilChanged()
+            .map { Action.refresh($0) }
         return Observable.of(action, refresh).merge()
     }
 
