@@ -33,7 +33,7 @@ struct User {
     }
 }
 
-extension User: Codable {
+extension User: Hashable, Codable {
     enum UserCodingKeys: String, CodingKey {
         case id
         case firstName

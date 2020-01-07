@@ -57,7 +57,9 @@ final class UserReactor: Reactor {
 
     func transform(action: Observable<Action>) -> Observable<Action> {
         let refresh = self.provider.userService.user
-            .map { Action.refresh($0 ?? User()) }
+            .filterNil()
+            .distinctUntilChanged()
+            .map { Action.refresh($0) }
         return Observable.of(action, refresh).merge()
     }
 
