@@ -33,7 +33,7 @@ extension TasksApi: TargetType {
         case .list, .create:
             return "/" + apiPathTasks
         case .get(let task), .update(let task), .delete(let task):
-            return "/" + apiPathTasks + "/" + task.id
+            return "/" + apiPathTasks + "/" + (task.id ?? "")
         }
     }
 
