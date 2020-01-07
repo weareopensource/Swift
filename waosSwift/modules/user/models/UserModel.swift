@@ -23,8 +23,7 @@ struct User {
     var roles: [String]
     var password: String?
 
-    init(id: String = "", firstName: String = "", lastName: String = "", email: String = "", roles: [String] = [], password: String? = "") {
-        self.id = id
+    init(firstName: String = "", lastName: String = "", email: String = "", roles: [String] = [], password: String? = "") {
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
@@ -41,6 +40,17 @@ extension User: Hashable, Codable {
         case email
         case roles
         case password
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: UserCodingKeys.self)
+
+        id = try container.decodeIfPresent(String.self, forKey: .id)
+        firstName = try container.decode(String.self, forKey: .firstName)
+        lastName = try container.decode(String.self, forKey: .lastName)
+        email = try container.decode(String.self, forKey: .email)
+        roles = try container.decode([String].self, forKey: .roles)
+        password = try container.decodeIfPresent(String.self, forKey: .password)
     }
 }
 
