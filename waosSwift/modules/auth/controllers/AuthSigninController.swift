@@ -172,7 +172,7 @@ private extension AuthSignInController {
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         self.inputEmail.rx.controlEvent(.editingChanged).asObservable()
-            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .debounce(.seconds(2), scheduler: MainScheduler.instance)
             .map {Reactor.Action.validateEmail}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -183,7 +183,7 @@ private extension AuthSignInController {
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         self.inputPassword.rx.controlEvent(.editingChanged).asObservable()
-            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .debounce(.seconds(2), scheduler: MainScheduler.instance)
             .map {Reactor.Action.validatePassword}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)

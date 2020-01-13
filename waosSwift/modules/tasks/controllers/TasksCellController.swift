@@ -29,7 +29,7 @@ final class TasksCellController: CoreTableViewCellController, View {
     // MARK: Layout
     override func setupConstraints() {
         self.labelTitle.snp.makeConstraints { make in
-            make.left.equalTo(25)
+//            make.left.equalTo(25)
             make.centerY.equalToSuperview()
         }
     }
