@@ -192,7 +192,7 @@ private extension AuthSignUpController {
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         self.inputFirstName.rx.controlEvent(.editingChanged).asObservable()
-            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .debounce(.seconds(2), scheduler: MainScheduler.instance)
             .map {Reactor.Action.validateFirstName}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -203,7 +203,7 @@ private extension AuthSignUpController {
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         self.inputLastName.rx.controlEvent(.editingChanged).asObservable()
-            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .debounce(.seconds(2), scheduler: MainScheduler.instance)
             .map {Reactor.Action.validateLastName}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -214,7 +214,7 @@ private extension AuthSignUpController {
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         self.inputEmail.rx.controlEvent(.editingChanged).asObservable()
-            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .debounce(.seconds(2), scheduler: MainScheduler.instance)
             .map {Reactor.Action.validateEmail}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -225,7 +225,7 @@ private extension AuthSignUpController {
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         self.inputPassword.rx.controlEvent(.editingChanged).asObservable()
-            .debounce(.seconds(1), scheduler: MainScheduler.instance)
+            .debounce(.seconds(2), scheduler: MainScheduler.instance)
             .map {Reactor.Action.validatePassword}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
