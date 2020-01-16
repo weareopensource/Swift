@@ -27,7 +27,7 @@
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
     "commitizen": "^4.0.3",
-    "husky": "^4.0.9",
+    "husky": "^4.0.10",
     "waos-conventional-changelog": "^1.9.1"
   },
   "config": {
