@@ -17,6 +17,7 @@ final class UserReactor: Reactor {
         case refresh(User)
         case get
         case logout
+        case delete
     }
 
     // state changes
@@ -90,6 +91,19 @@ final class UserReactor: Reactor {
         case .logout:
             self.provider.preferencesService.isLogged = false
             return .just(.success("logout"))
+        // delete
+        case .delete:
+            log.verbose("♻️ Action -> Mutation : delete")
+            return self.provider.userService
+                .delete()
+                .map { result in
+                    switch result {
+                    case .success:
+                        self.provider.preferencesService.isLogged = false
+                        return .success("delete")
+                    case let .error(err): return .error(err)
+                    }
+            }
         }
     }
 
