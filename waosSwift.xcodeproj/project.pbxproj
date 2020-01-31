@@ -64,6 +64,7 @@
 		BF4A2FCE2264A6810001B4CE /* development.json in Resources */ = {isa = PBXBuildFile; fileRef = BF4A2FCA2264A4B00001B4CE /* development.json */; };
 		BF4A2FD42265F4020001B4CE /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A2FD32265F4020001B4CE /* UserDefaults.swift */; };
 		BF4A2FD9226710F10001B4CE /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4A2FD8226710F10001B4CE /* RxDataSources.framework */; };
+		BF62ADA723E45ECC000D5225 /* UIAlertController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62ADA623E45ECC000D5225 /* UIAlertController+Rx.swift */; };
 		BF71BD9322A12A2E002CF9DE /* Validations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF71BD9222A12A2E002CF9DE /* Validations.swift */; };
 		BF78B5F32293CD680057157A /* ObservableType+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF78B5F22293CD680057157A /* ObservableType+Extras.swift */; };
 		BF78B5FA22942CBB0057157A /* CoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF78B5F922942CBB0057157A /* CoreModel.swift */; };
@@ -238,6 +239,7 @@
 		BF4A2FCA2264A4B00001B4CE /* development.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = development.json; sourceTree = "<group>"; };
 		BF4A2FD32265F4020001B4CE /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		BF4A2FD8226710F10001B4CE /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
+		BF62ADA623E45ECC000D5225 /* UIAlertController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Rx.swift"; sourceTree = "<group>"; };
 		BF71BD9222A12A2E002CF9DE /* Validations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validations.swift; sourceTree = "<group>"; };
 		BF78B5F22293CD680057157A /* ObservableType+Extras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+Extras.swift"; sourceTree = "<group>"; };
 		BF78B5F922942CBB0057157A /* CoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreModel.swift; sourceTree = "<group>"; };
@@ -948,6 +950,7 @@
 				BFDE25FD227B052D008CBD30 /* NSViewController+Rx.swift */,
 				BFDE25FF227B053D008CBD30 /* UIViewController+Rx.swift */,
 				BF78B5F22293CD680057157A /* ObservableType+Extras.swift */,
+				BF62ADA623E45ECC000D5225 /* UIAlertController+Rx.swift */,
 			);
 			path = Rx;
 			sourceTree = "<group>";
@@ -1224,6 +1227,7 @@
 				BF4A2F80225BB9360001B4CE /* SecondReactor.swift in Sources */,
 				BFF663B523A8A9CE00BB66CC /* CoreUiRefreshControl.swift in Sources */,
 				BFDE2602227B17D4008CBD30 /* AppServicesProvider.swift in Sources */,
+				BF62ADA723E45ECC000D5225 /* UIAlertController+Rx.swift in Sources */,
 				BF8C6731228022140012B5A8 /* UICollectionView+RxReusableKit.swift in Sources */,
 				BF0CD6AB22563C9800844F9A /* Strings.swift in Sources */,
 				BF8C6723227C3E1E0012B5A8 /* TasksCellReactor.swift in Sources */,
