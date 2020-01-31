@@ -10,6 +10,7 @@ import Moya
 
 enum UserApi {
     case update(firstName: String, lastName: String, email: String)
+    case delete
     case me
 }
 
@@ -26,7 +27,7 @@ extension UserApi: TargetType {
         let apiPathUser = config["api"]["endPoints"]["users"].string ?? "users"
 
         switch self {
-        case .update :
+        case .update, .delete :
             return "/" + apiPathUser
         case .me :
             return "/" + apiPathUser + "/me"
@@ -37,6 +38,8 @@ extension UserApi: TargetType {
         switch self {
         case .update:
             return .put
+        case .delete:
+            return .delete
         case .me:
             return .get
         }
@@ -45,6 +48,7 @@ extension UserApi: TargetType {
     var sampleData: Data {
         switch self {
         case .update: return stubbed("update")
+        case .delete: return stubbed("delete")
         case .me: return stubbed("me")
         }
     }
@@ -53,7 +57,7 @@ extension UserApi: TargetType {
         switch self {
         case .update(let firstName, let lastName, let email):
             return .requestParameters(parameters: ["firstName": firstName, "lastName": lastName, "email": email], encoding: JSONEncoding.default)
-        case .me:
+        case .me, .delete:
             return .requestPlain
         }
     }
