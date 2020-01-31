@@ -228,8 +228,14 @@ private extension UserController {
         // buttons
         self.buttonLogout.rx.tap
             .throttle(.seconds(3), latest: false, scheduler: MainScheduler.instance)
-            .map { _ in Reactor.Action.logout }
-            .bind(to: reactor.action)
+            .subscribe(onNext: { _ in
+                let actions: [AlertAction] = [AlertAction.action(title: L10n.modalConfirmationCancel, style: .cancel), AlertAction.action(title: L10n.modalConfirmationOk, style: .destructive)]
+                self.showAlert(title: L10n.userLogout, message: L10n.modalConfirmationMessage, style: .alert, actions: actions)
+                    .filter { $0 == 1 }
+                    .map { _ in Reactor.Action.logout }
+                    .bind(to: reactor.action)
+                    .disposed(by: self.disposeBag)
+            })
             .disposed(by: self.disposeBag)
     }
 

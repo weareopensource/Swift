@@ -23,6 +23,14 @@ internal enum L10n {
   internal static let authSignInTitle = L10n.tr("Localizable", "authSignIn_title")
   /// Sign Up
   internal static let authSignUpTitle = L10n.tr("Localizable", "authSignUp_title")
+  /// Cancel
+  internal static let modalConfirmationCancel = L10n.tr("Localizable", "modal_confirmation_cancel")
+  /// are you sure ?
+  internal static let modalConfirmationMessage = L10n.tr("Localizable", "modal_confirmation_message")
+  /// Ok
+  internal static let modalConfirmationOk = L10n.tr("Localizable", "modal_confirmation_ok")
+  /// Remove
+  internal static let modalConfirmationRemove = L10n.tr("Localizable", "modal_confirmation_remove")
   /// this is the first page of the application, it will only be affixed once after installation. We call it onBoarding.
   internal static let onBoardingIntroduction = L10n.tr("Localizable", "onBoarding_introduction")
   /// Welcome !

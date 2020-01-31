@@ -2,6 +2,12 @@
  * Modules
  */
 
+// modals
+"modal_confirmation_message" = "êtes-vous sûrs ?";
+"modal_confirmation_ok" = "Ok";
+"modal_confirmation_remove" = "Supprimer";
+"modal_confirmation_cancel" = "Annuler";
+
 // onBoarding
 "onBoarding_title"= "Bienvenue !";
 "onBoarding_introduction"= "ceci est la première page de l'application, elle ne sera affihcée qu'une fois après l'installation. Nous appelons cela onBoarding.";
