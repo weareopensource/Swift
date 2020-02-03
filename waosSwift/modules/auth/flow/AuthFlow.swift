@@ -37,8 +37,7 @@ final class AuthFlow: Flow {
     }
 
     private func navigateToAuthScreen() -> FlowContributors {
-        let provider = AppServicesProvider()
-        let reactor = AuthSigninReactor(provider: provider)
+        let reactor = AuthSigninReactor(provider: self.services)
         let viewController = AuthSignInController(reactor: reactor)
         viewController.title = L10n.authSignInTitle
         self.rootViewController.pushViewController(viewController, animated: false)

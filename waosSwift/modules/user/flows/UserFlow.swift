@@ -35,8 +35,7 @@ final class UserFlow: Flow {
     }
 
     private func navigateToUserScreen() -> FlowContributors {
-        let provider = AppServicesProvider()
-        let reactor = UserReactor(provider: provider)
+        let reactor = UserReactor(provider: self.services)
         let viewController = UserController(reactor: reactor)
         viewController.title = L10n.userTitle
         self.rootViewController.pushViewController(viewController, animated: true)
