@@ -35,8 +35,7 @@ final class TasksFlow: Flow {
     }
 
     private func navigateToTasksScreen() -> FlowContributors {
-        let provider = AppServicesProvider()
-        let reactor = TasksListReactor(provider: provider)
+        let reactor = TasksListReactor(provider: self.services)
         let viewController = TasksListController(reactor: reactor)
         viewController.title = L10n.tasksTitle
         self.rootViewController.pushViewController(viewController, animated: true)
