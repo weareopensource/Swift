@@ -2,6 +2,24 @@ import UIKit
 import Eureka
 
 class CoreFormController: FormViewController {
+
+    // MARK: Constants
+
+    struct Metric {
+        static let surface = UIColor(named: config["theme"]["themes"]["waos"]["surface"].string ?? "")
+        static let onSurface = UIColor(named: config["theme"]["themes"]["waos"]["onSurface"].string ?? "")
+        static let primary = UIColor(named: config["theme"]["themes"]["waos"]["primary"].string ?? "")
+        static let onPrimary = UIColor(named: config["theme"]["themes"]["waos"]["onPrimary"].string ?? "")
+        static let background = UIColor(named: config["theme"]["themes"]["waos"]["background"].string ?? "")
+        static let error = UIColor(named: config["theme"]["themes"]["waos"]["error"].string ?? "")
+        static let tableViewRowHeight = CGFloat(config["theme"]["tableView"]["rowHeight"].int ?? 0)
+        static let tableViewSectionHeaderHeight = CGFloat(config["theme"]["tableView"]["sectionHeaderHeight"].int ?? 0)
+        static let tableViewSectionFooterHeight = CGFloat(config["theme"]["tableView"]["sectionFooterHeight"].int ?? 0)
+        static let tabBarColor = NSString(string: config["theme"]["tabBar"]["color"].string ?? "").boolValue
+        static let tabBarTintColor = NSString(string: config["theme"]["tabBar"]["tintColor"].string ?? "").boolValue
+        static let tabBarTitle = NSString(string: config["theme"]["tabBar"]["title"].string ?? "").boolValue
+    }
+
     lazy private(set) var className: String = {
         return type(of: self).description().components(separatedBy: ".").last ?? ""
     }()
@@ -31,61 +49,61 @@ class CoreFormController: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // navigation
-        self.navigationController?.navigationBar.barTintColor = UIColor(named: config["theme"]["themes"]["waos"]["primary"].string ?? "")
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor(named: config["theme"]["themes"]["waos"]["onPrimary"].string ?? "")!]
-        self.navigationController?.navigationBar.tintColor = UIColor(named: config["theme"]["themes"]["waos"]["onPrimary"].string ?? "")
+        self.navigationController?.navigationBar.barTintColor = Metric.primary
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Metric.onPrimary!]
+        self.navigationController?.navigationBar.tintColor = Metric.onPrimary
         // tabar
-        if NSString(string: config["theme"]["tabBar"]["color"].string ?? "").boolValue == true {
-            self.tabBarController?.tabBar.barTintColor = UIColor(named: config["theme"]["themes"]["waos"]["primary"].string ?? "")
-            self.tabBarController?.tabBar.tintColor = UIColor(named: config["theme"]["themes"]["waos"]["onPrimary"].string ?? "")
+        if Metric.tabBarColor == true {
+            self.tabBarController?.tabBar.barTintColor = Metric.primary
+            self.tabBarController?.tabBar.tintColor = Metric.onPrimary
         }
-        if NSString(string: config["theme"]["tabBar"]["tintColor"].string ?? "").boolValue == true {
-            self.tabBarController?.tabBar.tintColor = UIColor(named: config["theme"]["themes"]["waos"]["primary"].string ?? "")
+        if Metric.tabBarTintColor == true {
+            self.tabBarController?.tabBar.tintColor = Metric.primary
         }
-        if NSString(string: config["theme"]["tabBar"]["title"].string ?? "").boolValue != true {
+        if Metric.tabBarTitle != true {
             self.tabBarController?.tabBar.items?.forEach {
                 $0.title = ""
                 $0.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
             }
         }
         // tableView
-        self.tableView?.backgroundColor = UIColor(named: config["theme"]["themes"]["waos"]["background"].string ?? "")
-        self.tableView?.rowHeight = CGFloat(config["theme"]["tableView"]["rowHeight"].int ?? 0)
-        self.tableView?.sectionHeaderHeight = CGFloat(config["theme"]["tableView"]["sectionHeaderHeight"].int ?? 0)
-        self.tableView?.sectionFooterHeight = CGFloat(config["theme"]["tableView"]["sectionFooterHeight"].int ?? 0)
+        self.tableView?.backgroundColor = Metric.background
+        self.tableView?.rowHeight = Metric.tableViewRowHeight
+        self.tableView?.sectionHeaderHeight = Metric.tableViewSectionHeaderHeight
+        self.tableView?.sectionFooterHeight = Metric.tableViewSectionFooterHeight
         // self.tableView?.separatorStyle = .none // no border
 
         // view
-        self.view.backgroundColor = UIColor(named: config["theme"]["themes"]["waos"]["background"].string ?? "")
+        self.view.backgroundColor = Metric.background
 
         TextRow.defaultCellUpdate = { cell, row in
-            cell.textLabel?.textColor = UIColor(named: config["theme"]["themes"]["waos"]["onSurface"].string ?? "")
-            cell.backgroundColor = UIColor(named: config["theme"]["themes"]["waos"]["surface"].string ?? "")
+            cell.textLabel?.textColor = Metric.onSurface
+            cell.backgroundColor = Metric.surface
 
             if !row.isValid {
-                cell.titleLabel?.textColor = UIColor(named: config["theme"]["themes"]["waos"]["error"].string ?? "")
+                cell.titleLabel?.textColor = Metric.error
             }
         }
 
         EmailRow.defaultCellUpdate = { cell, row in
-            cell.textLabel?.textColor = UIColor(named: config["theme"]["themes"]["waos"]["onSurface"].string ?? "")
-            cell.backgroundColor = UIColor(named: config["theme"]["themes"]["waos"]["surface"].string ?? "")
+            cell.textLabel?.textColor = Metric.onSurface
+            cell.backgroundColor = Metric.surface
 
             if !row.isValid {
-                cell.titleLabel?.textColor = UIColor(named: config["theme"]["themes"]["waos"]["error"].string ?? "")
+                cell.titleLabel?.textColor = Metric.error
             }
         }
 
         ButtonRow.defaultCellUpdate = { cell, row in
             cell.textLabel?.textAlignment = .left
-            cell.textLabel?.textColor = UIColor(named: config["theme"]["themes"]["waos"]["onSurface"].string ?? "")
-            cell.backgroundColor = UIColor(named: config["theme"]["themes"]["waos"]["surface"].string ?? "")
+            cell.textLabel?.textColor = Metric.onSurface
+            cell.backgroundColor = Metric.surface
         }
     }
 
     // calc
     override func viewWillLayoutSubviews() {
-        self.tableView?.separatorColor = UIColor(named: config["theme"]["themes"]["waos"]["surface"].string ?? "")?.darker(by: 8)
+        self.tableView?.separatorColor = Metric.surface?.darker(by: 8)
     }
 
 }

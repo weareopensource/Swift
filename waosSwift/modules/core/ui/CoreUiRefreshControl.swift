@@ -1,5 +1,11 @@
 @IBDesignable class CoreUIRefreshControl: UIRefreshControl {
 
+    // MARK: Constants
+
+    struct Metric {
+        static let primary = UIColor(named: config["theme"]["themes"]["waos"]["primary"].string ?? "")
+    }
+
     // MARK: Initializing
 
     override init() {
@@ -17,7 +23,7 @@
     }
 
     func shared() {
-        self.tintColor = UIColor(named: config["theme"]["themes"]["waos"]["primary"].string ?? "")?.lighter(by: 10)
+        self.tintColor = Metric.primary?.lighter(by: 10)
     }
 
 }

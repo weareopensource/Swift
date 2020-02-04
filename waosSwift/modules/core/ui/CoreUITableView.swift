@@ -1,5 +1,15 @@
 @IBDesignable class CorUITableView: UITableView {
 
+    // MARK: Constants
+
+    struct Metric {
+        static let background = UIColor(named: config["theme"]["themes"]["waos"]["background"].string ?? "")
+        static let surface = UIColor(named: config["theme"]["themes"]["waos"]["surface"].string ?? "")
+        static let tableViewRowHeight = CGFloat(config["theme"]["tableView"]["rowHeight"].int ?? 0)
+        static let tableViewSectionHeaderHeight = CGFloat(config["theme"]["tableView"]["sectionHeaderHeight"].int ?? 0)
+        static let tableViewSectionFooterHeight = CGFloat(config["theme"]["tableView"]["sectionFooterHeight"].int ?? 0)
+    }
+
     // MARK: Initializing
 
     override init(frame: CGRect, style: UITableView.Style) {
@@ -23,15 +33,15 @@
 
     func shared() {
         // tableView
-        self.backgroundColor = UIColor(named: config["theme"]["themes"]["waos"]["background"].string ?? "")
-        self.rowHeight = CGFloat(config["theme"]["tableView"]["rowHeight"].int ?? 0)
-        self.sectionHeaderHeight = CGFloat(config["theme"]["tableView"]["sectionHeaderHeight"].int ?? 0)
-        self.sectionFooterHeight = CGFloat(config["theme"]["tableView"]["sectionFooterHeight"].int ?? 0)
+        self.backgroundColor = Metric.background
+        self.rowHeight = Metric.tableViewRowHeight
+        self.sectionHeaderHeight = Metric.tableViewSectionHeaderHeight
+        self.sectionFooterHeight = Metric.tableViewSectionFooterHeight
         // $0.separatorStyle = .none // no border
     }
 
     func sharedCalc() {
         // tableView
-        self.separatorColor = UIColor(named: config["theme"]["themes"]["waos"]["surface"].string ?? "")?.darker(by: 8)
+        self.separatorColor = Metric.surface?.darker(by: 8)
     }
 }

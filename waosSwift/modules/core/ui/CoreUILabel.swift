@@ -1,5 +1,11 @@
 @IBDesignable class CoreUILabel: UILabel {
 
+    // MARK: Constants
+
+    struct Metric {
+        static let onSurface = UIColor(named: config["theme"]["themes"]["waos"]["onSurface"].string ?? "")
+    }
+
     // MARK: Initializing
 
     override init(frame: CGRect) {
@@ -17,7 +23,7 @@
     }
 
     func shared() {
-        self.textColor = UIColor(named: config["theme"]["themes"]["waos"]["onSurface"].string ?? "")
+        self.textColor = Metric.onSurface
     }
 
 }
