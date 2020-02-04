@@ -1,5 +1,13 @@
 @IBDesignable class CoreUIButton: UIButton {
 
+    // MARK: Constants
+
+    struct Metric {
+        static let surface = UIColor(named: config["theme"]["themes"]["waos"]["surface"].string ?? "")
+        static let onSurface = UIColor(named: config["theme"]["themes"]["waos"]["onSurface"].string ?? "")
+        static let radius = CGFloat(config["theme"]["global"]["radius"].int ?? 0)
+    }
+
     // MARK: Initializing
 
     override init(frame: CGRect) {
@@ -34,21 +42,21 @@
 
     func highlightBtn() {
         if traitCollection.userInterfaceStyle == .light {
-            self.backgroundColor = UIColor(named: config["theme"]["themes"]["waos"]["surface"].string ?? "")!.darker(by: 5)
+            self.backgroundColor = Metric.surface!.darker(by: 5)
         } else {
-            self.backgroundColor = UIColor(named: config["theme"]["themes"]["waos"]["surface"].string ?? "")!.lighter(by: 5)
+            self.backgroundColor = Metric.surface!.lighter(by: 5)
         }
 
     }
 
     func clearHighlighted() {
-        self.backgroundColor = UIColor(named: config["theme"]["themes"]["waos"]["surface"].string ?? "")
+        self.backgroundColor = Metric.surface
     }
 
     func shared() {
-        self.layer.cornerRadius = CGFloat(config["theme"]["global"]["radius"].int ?? 0)
-        self.backgroundColor = UIColor(named: config["theme"]["themes"]["waos"]["surface"].string ?? "")
-        self.setTitleColor(UIColor(named: config["theme"]["themes"]["waos"]["onSurface"].string ?? ""), for: .normal)
+        self.layer.cornerRadius = Metric.radius
+        self.backgroundColor = Metric.surface
+        self.setTitleColor(Metric.onSurface, for: .normal)
 
         // animation at first launch
         self.transform = CGAffineTransform.init(scaleX: 0.8, y: 0.8)

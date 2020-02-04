@@ -1,11 +1,24 @@
 import UIKit
 
 class CoreController: UIViewController {
+
+    // MARK: Constants
+
+    struct Metric {
+        static let primary = UIColor(named: config["theme"]["themes"]["waos"]["primary"].string ?? "")
+        static let onPrimary = UIColor(named: config["theme"]["themes"]["waos"]["onPrimary"].string ?? "")
+        static let background = UIColor(named: config["theme"]["themes"]["waos"]["background"].string ?? "")
+        static let tabBarColor = NSString(string: config["theme"]["tabBar"]["color"].string ?? "").boolValue
+        static let tabBarTintColor = NSString(string: config["theme"]["tabBar"]["tintColor"].string ?? "").boolValue
+        static let tabBarTitle = NSString(string: config["theme"]["tabBar"]["title"].string ?? "").boolValue
+    }
+
     lazy private(set) var className: String = {
         return type(of: self).description().components(separatedBy: ".").last ?? ""
     }()
 
     // MARK: Initializing
+
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -28,26 +41,26 @@ class CoreController: UIViewController {
 
     override func viewDidLoad() {
         self.view.setNeedsUpdateConstraints()
-        self.navigationController?.navigationBar.barTintColor = UIColor(named: config["theme"]["themes"]["waos"]["primary"].string ?? "")
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor(named: config["theme"]["themes"]["waos"]["onPrimary"].string ?? "")!]
-        self.navigationController?.navigationBar.tintColor = UIColor(named: config["theme"]["themes"]["waos"]["onPrimary"].string ?? "")
+        self.navigationController?.navigationBar.barTintColor = Metric.primary
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Metric.onPrimary!]
+        self.navigationController?.navigationBar.tintColor = Metric.onPrimary
         self.navigationController?.navigationBar.shadowImage = UIImage()
         // tabar
-        if NSString(string: config["theme"]["tabBar"]["color"].string ?? "").boolValue == true {
-            self.tabBarController?.tabBar.barTintColor = UIColor(named: config["theme"]["themes"]["waos"]["primary"].string ?? "")
-            self.tabBarController?.tabBar.tintColor = UIColor(named: config["theme"]["themes"]["waos"]["onPrimary"].string ?? "")
+        if Metric.tabBarColor == true {
+            self.tabBarController?.tabBar.barTintColor = Metric.primary
+            self.tabBarController?.tabBar.tintColor = Metric.onPrimary
         }
-        if NSString(string: config["theme"]["tabBar"]["tintColor"].string ?? "").boolValue == true {
-            self.tabBarController?.tabBar.tintColor = UIColor(named: config["theme"]["themes"]["waos"]["primary"].string ?? "")
+        if Metric.tabBarTintColor == true {
+            self.tabBarController?.tabBar.tintColor = Metric.primary
         }
-        if NSString(string: config["theme"]["tabBar"]["title"].string ?? "").boolValue != true {
+        if Metric.tabBarTitle != true {
             self.tabBarController?.tabBar.items?.forEach {
                $0.title = ""
                $0.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
             }
         }
         // view
-        self.view.backgroundColor = UIColor(named: config["theme"]["themes"]["waos"]["background"].string ?? "")
+        self.view.backgroundColor = Metric.background
     }
 
     // MARK: Layout Constraints
