@@ -43,6 +43,8 @@ internal enum L10n {
   internal static let tasksTitle = L10n.tr("Localizable", "tasks_title")
   /// About
   internal static let userAbout = L10n.tr("Localizable", "user_about")
+  /// Blog
+  internal static let userBlog = L10n.tr("Localizable", "user_blog")
   /// Contact us
   internal static let userContact = L10n.tr("Localizable", "user_contact")
   /// Request my data
@@ -69,16 +71,20 @@ internal enum L10n {
   internal static let userPrivacyPolicy = L10n.tr("Localizable", "user_privacy_policy")
   /// Report a bug
   internal static let userReport = L10n.tr("Localizable", "user_report")
-  /// Actions
+  /// Other
   internal static let userSectionActions = L10n.tr("Localizable", "user_section_actions")
   /// Waos
   internal static let userSectionApp = L10n.tr("Localizable", "user_section_app")
-  /// Waos
+  /// Contact
   internal static let userSectionContact = L10n.tr("Localizable", "user_section_contact")
+  /// Information
+  internal static let userSectionInformation = L10n.tr("Localizable", "user_section_information")
   /// Terms of service
   internal static let userTermsOfService = L10n.tr("Localizable", "user_terms_of_service")
   /// Profile
   internal static let userTitle = L10n.tr("Localizable", "user_title")
+  /// Us ?
+  internal static let userUs = L10n.tr("Localizable", "user_us")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name
