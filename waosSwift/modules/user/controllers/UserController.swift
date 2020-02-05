@@ -31,7 +31,19 @@ class UserController: CoreFormController, View {
         $0.title = L10n.userEdit
     }
 
-    // buttons link
+    // buttons App
+    let buttonBlog = ButtonRow {
+        $0.title = L10n.userBlog
+        $0.cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+    }
+    let buttonAbout = ButtonRow {
+        $0.title = L10n.userAbout
+    }
+    let buttonUs = ButtonRow {
+        $0.title = L10n.userUs
+    }
+
+    // button Information
     let buttonHelp = ButtonRow {
         $0.title = L10n.userHelp
     }
@@ -41,11 +53,8 @@ class UserController: CoreFormController, View {
     let buttonPrivacyPolicy = ButtonRow {
         $0.title = L10n.userPrivacyPolicy
     }
-    let buttonAbout = ButtonRow {
-        $0.title = L10n.userAbout
-    }
 
-    // buttons action
+    // buttons Actions
     let buttonReport = ButtonRow {
         $0.title = L10n.userReport
     }
@@ -98,10 +107,13 @@ class UserController: CoreFormController, View {
             }
             <<< self.buttonProfil
             +++ Section(header: L10n.userSectionApp, footer: "")
+            <<< self.buttonBlog
+            <<< self.buttonAbout
+            <<< self.buttonUs
+            +++ Section(header: L10n.userSectionInformation, footer: "")
             <<< self.buttonHelp
             <<< self.buttonTermsOfService
             <<< self.buttonPrivacyPolicy
-            <<< self.buttonAbout
             +++ Section(header: L10n.userSectionContact, footer: "")
             <<< self.buttonReport
             <<< self.buttonContact
@@ -134,7 +146,6 @@ private extension UserController {
     // MARK: views (View -> View)
 
     func bindView(_ reactor: UserReactor) {
-
         // buttons
         self.buttonProfil.rx.tap
             .subscribe(onNext: { _ in
@@ -143,6 +154,31 @@ private extension UserController {
                 self.present(navigationController, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
+
+        // app
+        self.buttonBlog.rx.tap
+            .subscribe(onNext: { _ in
+                guard let url = URL(string: "https://weareopensource.me") else { return }
+                let svc = SFSafariViewController(url: url)
+                self.present(svc, animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
+        self.buttonAbout.rx.tap
+            .subscribe(onNext: { _ in
+                guard let url = URL(string: "https://weareopensource.me/introduction/") else { return }
+                let svc = SFSafariViewController(url: url)
+                self.present(svc, animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
+        self.buttonUs.rx.tap
+            .subscribe(onNext: { _ in
+                guard let url = URL(string: "https://weareopensource.me/us/") else { return }
+                let svc = SFSafariViewController(url: url)
+                self.present(svc, animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
+
+        // informations
         self.buttonHelp.rx.tap
             .subscribe(onNext: { _ in
                 guard let url = URL(string: "https://google.com") else { return }
@@ -152,25 +188,20 @@ private extension UserController {
             .disposed(by: disposeBag)
         self.buttonTermsOfService.rx.tap
             .subscribe(onNext: { _ in
-                guard let url = URL(string: "https://apple.com") else { return }
+                guard let url = URL(string: "https://google.com") else { return }
                 let svc = SFSafariViewController(url: url)
                 self.present(svc, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
         self.buttonPrivacyPolicy.rx.tap
             .subscribe(onNext: { _ in
-                guard let url = URL(string: "https://weareopensource.me") else { return }
-                let svc = SFSafariViewController(url: url)
-                self.present(svc, animated: true, completion: nil)
-            })
-            .disposed(by: disposeBag)
-        self.buttonAbout.rx.tap
-            .subscribe(onNext: { _ in
                 guard let url = URL(string: "https://google.com") else { return }
                 let svc = SFSafariViewController(url: url)
                 self.present(svc, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
+
+        // contact
         self.buttonReport.rx.tap
             .subscribe(onNext: { _ in
                 if MFMailComposeViewController.canSendMail() {

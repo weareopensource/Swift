@@ -37,17 +37,21 @@
 "user_edit_lastname"= "Lastname";
 
 "user_section_app"= "Waos";
+"user_blog"= "Blog";
 "user_about"= "About";
+"user_us"= "Us ?";
+
+"user_section_information"= "Information";
 "user_help"= "Help";
 "user_terms_of_service"= "Terms of service";
 "user_privacy_policy"= "Privacy policy";
 
-"user_section_contact"= "Waos";
+"user_section_contact"= "Contact";
 "user_report"= "Report a bug";
 "user_contact"= "Contact us";
 "user_data"= "Request my data";
 
-"user_section_actions"= "Actions";
+"user_section_actions"= "Other";
 "user_logout"= "Logout";
 "user_delete"= "Delete account";
 
