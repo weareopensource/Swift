@@ -1,7 +1,19 @@
 {
     "app": {
         "service": "me.weareopensource.node",
-        "contact": "brisorgueilp@gmail.com"
+        "mails": {
+            "contact": "brisorgueilp@gmail.com",
+            "report": "brisorgueilp@gmail.com",
+            "data": "brisorgueilp@gmail.com"
+        },
+        "links": {
+            "blog": "https://weareopensource.me",
+            "about": "https://weareopensource.me/introduction/",
+            "us": "https://weareopensource.me/us/",
+            "help": "https://google.com",
+            "termsOfService": "https://google.com",
+            "privacyPolicy": "https://google.com"
+        }
     },
     "api": {
         "protocol": "http",

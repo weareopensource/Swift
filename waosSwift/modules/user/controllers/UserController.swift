@@ -158,21 +158,21 @@ private extension UserController {
         // app
         self.buttonBlog.rx.tap
             .subscribe(onNext: { _ in
-                guard let url = URL(string: "https://weareopensource.me") else { return }
+                guard let url = URL(string: (config["app"]["links"]["blog"].string ?? "")) else { return }
                 let svc = SFSafariViewController(url: url)
                 self.present(svc, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
         self.buttonAbout.rx.tap
             .subscribe(onNext: { _ in
-                guard let url = URL(string: "https://weareopensource.me/introduction/") else { return }
+                guard let url = URL(string: (config["app"]["links"]["about"].string ?? "")) else { return }
                 let svc = SFSafariViewController(url: url)
                 self.present(svc, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
         self.buttonUs.rx.tap
             .subscribe(onNext: { _ in
-                guard let url = URL(string: "https://weareopensource.me/us/") else { return }
+                guard let url = URL(string: (config["app"]["links"]["us"].string ?? "")) else { return }
                 let svc = SFSafariViewController(url: url)
                 self.present(svc, animated: true, completion: nil)
             })
@@ -181,47 +181,47 @@ private extension UserController {
         // informations
         self.buttonHelp.rx.tap
             .subscribe(onNext: { _ in
-                guard let url = URL(string: "https://google.com") else { return }
+                guard let url = URL(string: (config["app"]["links"]["help"].string ?? "")) else { return }
                 let svc = SFSafariViewController(url: url)
                 self.present(svc, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
         self.buttonTermsOfService.rx.tap
             .subscribe(onNext: { _ in
-                guard let url = URL(string: "https://google.com") else { return }
+                guard let url = URL(string: (config["app"]["links"]["termsOfService"].string ?? "")) else { return }
                 let svc = SFSafariViewController(url: url)
                 self.present(svc, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
         self.buttonPrivacyPolicy.rx.tap
             .subscribe(onNext: { _ in
-                guard let url = URL(string: "https://google.com") else { return }
+                guard let url = URL(string: (config["app"]["links"]["privacyPolicy"].string ?? "")) else { return }
                 let svc = SFSafariViewController(url: url)
                 self.present(svc, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
 
         // contact
-        self.buttonReport.rx.tap
+        self.buttonContact.rx.tap
             .subscribe(onNext: { _ in
                 if MFMailComposeViewController.canSendMail() {
                     let mvc = MFMailComposeViewController()
                     mvc.mailComposeDelegate = self
-                    mvc.setToRecipients([(config["app"]["contact"].string ?? "")])
-                    mvc.setSubject(L10n.userReport)
+                    mvc.setToRecipients([(config["app"]["mails"]["contact"].string ?? "")])
+                    mvc.setSubject(L10n.userContact)
                     self.present(mvc, animated: true)
                 } else {
                     Toast(text: L10n.userErrorMail, delay: 0, duration: Delay.long).show()
                 }
             })
             .disposed(by: disposeBag)
-        self.buttonContact.rx.tap
+        self.buttonReport.rx.tap
             .subscribe(onNext: { _ in
                 if MFMailComposeViewController.canSendMail() {
                     let mvc = MFMailComposeViewController()
                     mvc.mailComposeDelegate = self
-                    mvc.setToRecipients([(config["app"]["contact"].string ?? "")])
-                    mvc.setSubject(L10n.userContact)
+                    mvc.setToRecipients([(config["app"]["mails"]["report"].string ?? "")])
+                    mvc.setSubject(L10n.userReport)
                     self.present(mvc, animated: true)
                 } else {
                     Toast(text: L10n.userErrorMail, delay: 0, duration: Delay.long).show()
@@ -233,7 +233,7 @@ private extension UserController {
                 if MFMailComposeViewController.canSendMail() {
                     let mvc = MFMailComposeViewController()
                     mvc.mailComposeDelegate = self
-                    mvc.setToRecipients([(config["app"]["contact"].string ?? "")])
+                    mvc.setToRecipients([(config["app"]["mails"]["data"].string ?? "")])
                     mvc.setSubject(L10n.userData)
                     self.present(mvc, animated: true)
                 } else {
