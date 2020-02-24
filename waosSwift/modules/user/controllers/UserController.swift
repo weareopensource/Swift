@@ -14,10 +14,23 @@ import MessageUI
 
 class UserController: CoreFormController, View {
 
+    // MARK: Constants
+
+    struct Metric {
+        static let margin = CGFloat(config["theme"]["global"]["margin"].int ?? 0)
+        static let radius = CGFloat(config["theme"]["global"]["radius"].int ?? 0)
+    }
+
     // MARK: UI
 
     let refreshControl = CoreUIRefreshControl()
 
+    let imageProfil = UIImageView().then {
+        $0.contentMode = UIView.ContentMode.scaleAspectFill
+        $0.layer.masksToBounds = true
+        $0.backgroundColor = UIColor.lightGray.withAlphaComponent(0.25)
+        $0.kf.indicatorType = .activity
+    }
     let labelName = CoreUILabel().then {
         $0.textAlignment = .center
     }
@@ -90,17 +103,23 @@ class UserController: CoreFormController, View {
         form
             +++ Section { section in
                 var header = HeaderFooterView<UILabel>(.class)
-                header.height = { 100.0 }
+                header.height = { 175 }
                 header.onSetupView = {view, _ in
+                    view.addSubview(self.imageProfil)
                     view.addSubview(self.labelName)
                     view.addSubview(self.labelEmail)
+                    self.imageProfil.snp.makeConstraints { (make) -> Void in
+                        make.width.height.equalTo(100)
+                        make.centerX.equalTo(view)
+                        make.top.equalTo(view).offset(Metric.margin)
+                    }
                     self.labelName.snp.makeConstraints { (make) -> Void in
                         make.centerX.equalTo(view)
-                        make.centerY.equalTo(view).offset(-15)
+                        make.top.equalTo(self.imageProfil.snp.bottom).offset(Metric.margin/2)
                     }
                     self.labelEmail.snp.makeConstraints { (make) -> Void in
                         make.centerX.equalTo(view)
-                        make.centerY.equalTo(view).offset(15)
+                        make.top.equalTo(self.labelName.snp.bottom)
                     }
                 }
                 section.header = header
@@ -154,7 +173,6 @@ private extension UserController {
                 self.present(navigationController, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
-
         // app
         self.buttonBlog.rx.tap
             .subscribe(onNext: { _ in
@@ -285,6 +303,15 @@ private extension UserController {
 
     func bindState(_ reactor: UserReactor) {
         // to update button content in eureka -> self.buttonProfil.updateCell()
+        // image
+        reactor.state
+            .map { $0.user.email }
+            .distinctUntilChanged()
+            .subscribe(onNext: { email in
+                self.imageProfil.setImage(with: URL(string: "https://secure.gravatar.com/avatar/\(email.md5)?s=200"))
+                self.imageProfil.layer.cornerRadius = self.imageProfil.frame.height/2
+            })
+            .disposed(by: self.disposeBag)
         // labels
         reactor.state
             .map { $0.user.firstName }

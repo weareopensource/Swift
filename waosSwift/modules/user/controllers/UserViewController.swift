@@ -24,7 +24,6 @@ class UserViewController: CoreFormController, View {
         $0.title = L10n.userEditFirstname
         $0.validationOptions = .validatesOnDemand
     }
-
     let inputLastName = TextRow {
         $0.title = L10n.userEditLastname
         $0.validationOptions = .validatesOnDemand
@@ -32,6 +31,9 @@ class UserViewController: CoreFormController, View {
     let inputEmail = EmailRow {
         $0.title = L10n.userEditMail
         $0.validationOptions = .validatesOnDemand
+    }
+    let buttonImage = ButtonRow {
+        $0.title = L10n.userEditImage
     }
 
     // MARK: Initializing
@@ -55,6 +57,7 @@ class UserViewController: CoreFormController, View {
             <<< self.inputFirstName
             <<< self.inputLastName
             <<< self.inputEmail
+            <<< self.buttonImage
 
         self.navigationItem.leftBarButtonItem = self.barButtonCancel
         self.navigationItem.rightBarButtonItem = self.barButtonDone
@@ -153,6 +156,13 @@ private extension UserViewController {
                 }
             })
             .disposed(by: self.disposeBag)
+        self.buttonImage.rx.tap
+            .subscribe(onNext: { _ in
+                guard let url = URL(string: (config["app"]["links"]["gravatar"].string ?? "")) else { return }
+                let svc = SFSafariViewController(url: url)
+                self.present(svc, animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
     }
 
     // MARK: states (Reactor -> View)
