@@ -14,8 +14,8 @@
 "onBoarding_validation"= "J'en suis !";
 
 // auth
-"authSignIn_title"= "Inscription";
-"authSignUp_title"= "Connexion";
+"authSignIn_title"= "Connexion";
+"authSignUp_title"= "Inscription";
 "auth_mail"= "Email";
 "auth_password"= "Mot de passe";
 "auth_firstname"= "Prénom";
