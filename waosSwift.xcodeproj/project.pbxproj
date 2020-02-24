@@ -125,6 +125,9 @@
 		BFA92D2E237C050C006A3B8D /* CoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D2B237C050C006A3B8D /* CoreController.swift */; };
 		BFA92D2F237C050C006A3B8D /* CoreFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D2C237C050C006A3B8D /* CoreFormController.swift */; };
 		BFA92D3D237DA119006A3B8D /* CoreUITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D3C237DA119006A3B8D /* CoreUITableView.swift */; };
+		BFBA33882403F84900CF9299 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFBA33872403F84900CF9299 /* Kingfisher.framework */; };
+		BFBA338C2403FBB500CF9299 /* UIImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBA338B2403FBB500CF9299 /* UIImageView+Kingfisher.swift */; };
+		BFBA339224040F8A00CF9299 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBA339124040F8A00CF9299 /* String.swift */; };
 		BFC81B002383CF6500D00D3C /* CoreCollectionViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC81AFF2383CF6500D00D3C /* CoreCollectionViewCellController.swift */; };
 		BFD9CB21238435B20034837F /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD9CB20238435B20034837F /* UIImage.swift */; };
 		BFD9CB23238435CB0034837F /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD9CB22238435CB0034837F /* UILabel.swift */; };
@@ -301,6 +304,9 @@
 		BFA92D2B237C050C006A3B8D /* CoreController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreController.swift; sourceTree = "<group>"; };
 		BFA92D2C237C050C006A3B8D /* CoreFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreFormController.swift; sourceTree = "<group>"; };
 		BFA92D3C237DA119006A3B8D /* CoreUITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreUITableView.swift; sourceTree = "<group>"; };
+		BFBA33872403F84900CF9299 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = ../../private/come_swift/Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
+		BFBA338B2403FBB500CF9299 /* UIImageView+Kingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Kingfisher.swift"; sourceTree = "<group>"; };
+		BFBA339124040F8A00CF9299 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		BFC81AFF2383CF6500D00D3C /* CoreCollectionViewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreCollectionViewCellController.swift; sourceTree = "<group>"; };
 		BFD9CB20238435B20034837F /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		BFD9CB22238435CB0034837F /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
@@ -322,6 +328,7 @@
 				BF78B62A229D3F090057157A /* Toaster.framework in Frameworks */,
 				BF8CAC6A2369741A00B0B546 /* Eureka.framework in Frameworks */,
 				BF9A3642228C33A900EE2AB8 /* ReactorKitRuntime.framework in Frameworks */,
+				BFBA33882403F84900CF9299 /* Kingfisher.framework in Frameworks */,
 				BF05418F2361EF98008628CF /* FontAwesome.framework in Frameworks */,
 				BF9A3643228C33A900EE2AB8 /* ReactorKit.framework in Frameworks */,
 				BF794D41226856E6000B19F3 /* Differentiator.framework in Frameworks */,
@@ -566,6 +573,7 @@
 		BF4A2F30225B4F7F0001B4CE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BFBA33872403F84900CF9299 /* Kingfisher.framework */,
 				BF05418E2361EF98008628CF /* FontAwesome.framework */,
 				BF19509322B4EC2C00C593E5 /* RxRelay.framework */,
 				BF313C70229E64C200ADECF2 /* Validator.framework */,
@@ -729,6 +737,7 @@
 				BF00138A237427660044C01A /* Eureka.swift */,
 				BF8BD5F6235F30660083B912 /* KeyboardConstraints.swift */,
 				BF49EA0C2362CC2D00FF06E9 /* L10n.swift */,
+				BFBA339124040F8A00CF9299 /* String.swift */,
 				BF3B775B2360C35D00ECD30A /* UIColor.swift */,
 				BFD9CB20238435B20034837F /* UIImage.swift */,
 				BFD9CB22238435CB0034837F /* UILabel.swift */,
@@ -951,6 +960,7 @@
 				BFDE25FF227B053D008CBD30 /* UIViewController+Rx.swift */,
 				BF78B5F22293CD680057157A /* ObservableType+Extras.swift */,
 				BF62ADA623E45ECC000D5225 /* UIAlertController+Rx.swift */,
+				BFBA338B2403FBB500CF9299 /* UIImageView+Kingfisher.swift */,
 			);
 			path = Rx;
 			sourceTree = "<group>";
@@ -1136,6 +1146,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxRelay.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/FontAwesome.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Eureka.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 			);
 			name = Carthage;
 			outputFileListPaths = (
@@ -1210,6 +1221,7 @@
 				BF78B624229949740057157A /* AuthSignupReactor.swift in Sources */,
 				BF8C67332280222A0012B5A8 /* UITableView+RxReusableKit.swift in Sources */,
 				BFA92D2D237C050C006A3B8D /* CoreTableViewCellController.swift in Sources */,
+				BFBA338C2403FBB500CF9299 /* UIImageView+Kingfisher.swift in Sources */,
 				BF425484221EBB9700395AE6 /* AppDelegate.swift in Sources */,
 				BF7F894D2383F0BB00F98D98 /* UITricks.swift in Sources */,
 				BFA92D1E237BEEAB006A3B8D /* UserCellReactor.swift in Sources */,
@@ -1265,6 +1277,7 @@
 				BF4A2F74225BB4B90001B4CE /* AppSteps.swift in Sources */,
 				BF9A3670228D5F2700EE2AB8 /* Stubbed.swift in Sources */,
 				BFD9CB23238435CB0034837F /* UILabel.swift in Sources */,
+				BFBA339224040F8A00CF9299 /* String.swift in Sources */,
 				BF9A3663228C3F2500EE2AB8 /* TasksApi.swift in Sources */,
 				BF4A2F82225BBA3F0001B4CE /* TasksFlow.swift in Sources */,
 				BF0BB9FB236B495F00454BDD /* Eureka+Valid+Rx.swift in Sources */,

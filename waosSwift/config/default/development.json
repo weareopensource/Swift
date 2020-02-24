@@ -12,7 +12,8 @@
             "us": "https://weareopensource.me/us/",
             "help": "https://google.com",
             "termsOfService": "https://google.com",
-            "privacyPolicy": "https://google.com"
+            "privacyPolicy": "https://google.com",
+            "gravatar": "https://gravatar.com"
         }
     },
     "api": {
@@ -68,6 +69,7 @@
     "theme": {
         "global": {
             "radius": 5,
+            "margin": 15,
         },
         "tableView": {
             "rowHeight": 60,

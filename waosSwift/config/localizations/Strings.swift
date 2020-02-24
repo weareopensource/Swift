@@ -55,6 +55,8 @@ internal enum L10n {
   internal static let userEdit = L10n.tr("Localizable", "user_edit")
   /// Firstname
   internal static let userEditFirstname = L10n.tr("Localizable", "user_edit_firstname")
+  /// Profile picture
+  internal static let userEditImage = L10n.tr("Localizable", "user_edit_image")
   /// Lastname
   internal static let userEditLastname = L10n.tr("Localizable", "user_edit_lastname")
   /// Email

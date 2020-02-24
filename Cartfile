@@ -14,3 +14,4 @@ github "xmartlabs/Eureka" ~> 5.0
 github "kishikawakatsumi/KeychainAccess"
 github "devxoul/Toaster" ~> 2.2.0
 github "thii/FontAwesome.swift"
+github "onevcat/Kingfisher" ~> 5.0
