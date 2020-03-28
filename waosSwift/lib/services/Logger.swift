@@ -38,8 +38,8 @@ let log = Logger()
 final class Logger {
 
     init() {
-        DDTTYLogger.sharedInstance.logFormatter = LogFormatter()
-        DDLog.add(DDTTYLogger.sharedInstance)
+        DDOSLogger.sharedInstance.logFormatter = LogFormatter()
+        DDLog.add(DDOSLogger.sharedInstance)
 
         let fileLogger: DDFileLogger = DDFileLogger() // File Logger
         fileLogger.rollingFrequency = 60 * 60 * 24 // 24 hours
