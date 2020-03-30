@@ -43,17 +43,24 @@ enum imageStyle {
 extension UIImageView {
     @discardableResult
     func setImage(
-        with resource: Resource?,
+        url: String?,
         placeholder: UIImage? = nil,
         options: ImageOptions? = nil,
         progress: ((Int64, Int64) -> Void)? = nil,
         completion: ((ImageResult) -> Void)? = nil,
-        style: imageStyle? = nil
+        style: imageStyle? = nil,
+        defaultImage: String? = nil // should be a Bundle.main.path image name of type png
     ) -> DownloadTask? {
         var options = options ?? []
         switch style {
         case .animated:
             options = [.cacheSerializer(FormatIndicatedCacheSerializer.gif), .forceRefresh]
+        case .blured:
+            let processor = OverlayImageProcessor(overlay: .black, fraction: 0.9) |> BlurImageProcessor(blurRadius: 20)
+            options = [.processor(processor)]
+        case .bwBlured:
+            let processor = OverlayImageProcessor(overlay: .black, fraction: 0.85) |> BlurImageProcessor(blurRadius: 20)  |> BlackWhiteProcessor()
+            options = [.processor(processor)]
         default:
             options = []
         }
@@ -61,22 +68,34 @@ extension UIImageView {
         if self is AnimatedImageView == false {
             options.append(.onlyLoadFirstFrame)
         }
-        return self.kf.setImage(
-            with: resource,
-            placeholder: placeholder,
-            options: options,
-            progressBlock: progress,
-            completionHandler: { result in
-                switch result {
-                case .success:
-                    // print("Image: \(value.image). Got from: \(value.cacheType)")
-                    break
-                case .failure:
-                    //case .failure(let error):
-                    // log.error("🌄 Error -> \(error)")
-                    break
-                }
-            }
-        )
+
+        if(defaultImage != nil && (url == "default" || url == "default.png" || url == "default.jpg" || url == "")) {
+            let provider = LocalFileImageDataProvider(fileURL: URL(fileURLWithPath: Bundle.main.path(forResource: defaultImage, ofType: "png") ?? ""))
+            return self.kf.setImage(
+                with: provider,
+                placeholder: placeholder,
+                options: options,
+                progressBlock: progress
+            )
+        } else {
+            return self.kf.setImage(
+                with: URL(string: url ?? ""),
+                placeholder: placeholder,
+                options: options,
+                progressBlock: progress
+            )
+        }
+//        completionHandler: { result in
+//            switch result {
+//            case .success:
+//                // print("Image: \(value.image). Got from: \(value.cacheType)")
+//                break
+//            case .failure:
+//                //case .failure(let error):
+//                // log.error("🌄 Error -> \(error)")
+//                break
+//            }
+//        }
+
     }
 }
