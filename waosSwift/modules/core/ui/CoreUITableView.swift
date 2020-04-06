@@ -1,4 +1,4 @@
-@IBDesignable class CorUITableView: UITableView {
+@IBDesignable class CoreUITableView: UITableView {
 
     // MARK: Constants
 

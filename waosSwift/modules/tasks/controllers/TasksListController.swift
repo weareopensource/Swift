@@ -21,7 +21,7 @@ final class TasksListController: CoreController, View {
 
     // MARK: UI
 
-    let tableView = CorUITableView().then {
+    let tableView = CoreUITableView().then {
         $0.register(Reusable.taskCell)
         $0.allowsSelectionDuringEditing = true
     }
