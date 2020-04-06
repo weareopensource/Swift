@@ -15,4 +15,17 @@ extension UILabel {
             self.attributedText = attributedString
         }
     }
+    
+    /**
+    * @desc set bold text in uilabel
+    * @param {String} regualText,
+    * @param {String} boldiText,
+    **/
+    public func setBold(string: String, bold: String) {
+        let attrs = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: font.pointSize)]
+        let regularString = NSMutableAttributedString(string: string)
+        let range = (string as NSString).range(of: bold)
+        regularString.addAttributes(attrs, range: range)
+        attributedText = regularString
+    }
 }
