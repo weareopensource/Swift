@@ -40,7 +40,7 @@ final class TasksViewReactor: Reactor {
         var task: Tasks
         var mode: TasksViewMode
         var isDismissed: Bool
-        var error: DiplayError?
+        var error: DisplayError?
 
         init(task: Tasks, mode: TasksViewMode) {
             self.task = task
@@ -123,7 +123,7 @@ final class TasksViewReactor: Reactor {
             if error.code == 401 {
                 self.provider.preferencesService.isLogged = false
             } else {
-                state.error = DiplayError(title: error.message, description: (error.description ?? "Unknown error"))
+                state.error = DisplayError(title: error.message, description: (error.description ?? "Unknown error"))
             }
         }
         return state

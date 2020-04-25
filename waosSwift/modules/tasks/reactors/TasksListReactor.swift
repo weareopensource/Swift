@@ -41,7 +41,7 @@ final class TasksListReactor: Reactor {
         var tasks: [Tasks]
         var sections: [TasksSections]
         var isRefreshing: Bool
-        var error: DiplayError?
+        var error: DisplayError?
 
         init() {
             self.tasks = []
@@ -165,7 +165,7 @@ final class TasksListReactor: Reactor {
             if error.code == 401 {
                 self.provider.preferencesService.isLogged = false
             } else {
-                state.error = DiplayError(title: error.message, description: (error.description ?? "Unknown error"))
+                state.error = DisplayError(title: error.message, description: (error.description ?? "Unknown error"))
             }
         }
         return state

@@ -37,7 +37,7 @@ final class UserViewReactor: Reactor {
     struct State {
         var user: User
         var isDismissed: Bool
-        var error: DiplayError?
+        var error: DisplayError?
 
         init(user: User) {
             self.user = user
@@ -108,7 +108,7 @@ final class UserViewReactor: Reactor {
             if error.code == 401 {
                 self.provider.preferencesService.isLogged = false
             } else {
-                state.error = DiplayError(title: error.message, description: (error.description ?? "Unknown error"))
+                state.error = DisplayError(title: error.message, description: (error.description ?? "Unknown error"))
             }
         }
         return state
