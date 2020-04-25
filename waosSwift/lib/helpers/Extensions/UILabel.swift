@@ -15,7 +15,7 @@ extension UILabel {
             self.attributedText = attributedString
         }
     }
-    
+
     /**
     * @desc set bold text in uilabel
     * @param {String} regualText,

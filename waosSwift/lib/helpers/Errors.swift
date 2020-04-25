@@ -44,6 +44,21 @@ func getError(_ error: Error, file: StaticString = #file, function: StaticString
 }
 
 /**
+ * @desc function to purge errors on sucess
+ * @param {Error} error
+ * @return {CustomError}
+ */
+func purgeErrors(errors: [DisplayError], titles: [String]) -> [DisplayError] {
+    var _error: [DisplayError] = errors
+    for title in titles {
+        if let index = _error.firstIndex(where: { $0.title == title }) {
+            _error.remove(at: index)
+        }
+    }
+    return _error
+}
+
+/**
  * Custom Errors
  */
 
@@ -91,7 +106,7 @@ extension CustomError: Decodable {
     }
 }
 
-struct DiplayError: Error {
+struct DisplayError: Error {
     let title: String
     let description: String
 

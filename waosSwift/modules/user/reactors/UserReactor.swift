@@ -34,7 +34,7 @@ final class UserReactor: Reactor {
     struct State {
         var user: User
         var isRefreshing: Bool
-        var error: DiplayError?
+        var error: DisplayError?
 
         init() {
             self.user = User()
@@ -129,7 +129,7 @@ final class UserReactor: Reactor {
             if error.code == 401 {
                 self.provider.preferencesService.isLogged = false
             } else {
-                state.error = DiplayError(title: error.message, description: (error.description ?? "Unknown error"))
+                state.error = DisplayError(title: error.message, description: (error.description ?? "Unknown error"))
             }
         }
         return state

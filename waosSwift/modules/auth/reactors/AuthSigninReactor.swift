@@ -42,7 +42,7 @@ final class AuthSigninReactor: Reactor {
     struct State {
         var user: User
         var isFilled: Bool
-        var errors: [DiplayError]
+        var errors: [DisplayError]
 
         init() {
             self.user = User()
@@ -124,24 +124,16 @@ final class AuthSigninReactor: Reactor {
         // success
         case let .success(success):
             log.verbose("♻️ Mutation -> State : succes \(success)")
-            if let index = state.errors.firstIndex(where: { $0.title == success }) {
-                state.errors.remove(at: index)
-            }
-            if let index = state.errors.firstIndex(where: { $0.title == "Schema validation error" }) {
-                state.errors.remove(at: index)  // purge server error after edit form
-            }
-            if let index = state.errors.firstIndex(where: { $0.title == "jwt" }) {
-                state.errors.remove(at: index)  // purge jwt errors
-            }
+            state.errors = purgeErrors(errors: state.errors, titles: [success, "Schema validation error", "jwt", "unknow"])
         // error
         case let .error(error):
             log.verbose("♻️ Mutation -> State : error \(error)")
             if error.code == 401 {
                 self.provider.preferencesService.isLogged = false
-                state.errors.insert(DiplayError(title: "jwt", description: "Wrong Password or Email."), at: 0)
+                state.errors.insert(DisplayError(title: "jwt", description: "Wrong Password or Email."), at: 0)
             } else {
                 if state.errors.firstIndex(where: { $0.title == error.message }) == nil {
-                    state.errors.insert(DiplayError(title: error.message, description: (error.description ?? "Unknown error")), at: 0)
+                    state.errors.insert(DisplayError(title: error.message, description: (error.description ?? "Unknown error")), at: 0)
                 }
             }
         }
