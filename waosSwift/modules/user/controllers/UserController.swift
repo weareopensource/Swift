@@ -308,7 +308,7 @@ private extension UserController {
             .map { $0.user.email }
             .distinctUntilChanged()
             .subscribe(onNext: { email in
-                self.imageProfil.setImage(url: "https://secure.gravatar.com/avatar/\(email.md5)?s=200")
+                self.imageProfil.setImage(url: "https://secure.gravatar.com/avatar/\(email.md5)?s=200&d=mp")
                 self.imageProfil.layer.cornerRadius = self.imageProfil.frame.height/2
             })
             .disposed(by: self.disposeBag)
