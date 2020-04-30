@@ -61,7 +61,7 @@ For CI :
 * [install ruby for MacOs users](https://usabilityetc.com/articles/ruby-on-mac-os-x-with-rvm/)
 * Fastlane & Slather - `bundle install`
 
-## :shipit: Installation
+## :boom: Installation
 
 It's straightforward (you can use yarn if you want)
 
@@ -98,7 +98,7 @@ carthage build
 
 In develompment
 
-## :octocat: [Contribute](https://github.com/weareopensource/weareopensource.github.io/blob/master/CONTRIBUTE.md)
+## :pencil2: [Contribute](https://github.com/weareopensource/weareopensource.github.io/blob/master/CONTRIBUTE.md)
 
 ## :scroll: History
 
