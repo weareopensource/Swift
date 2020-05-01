@@ -18,6 +18,7 @@ final class UserReactor: Reactor {
         case get
         case logout
         case delete
+        case data
     }
 
     // state changes
@@ -104,6 +105,18 @@ final class UserReactor: Reactor {
                     case let .error(err): return .error(err)
                     }
             }
+        // data
+        case .data:
+            log.verbose("♻️ Action -> Mutation : data")
+            return self.provider.userService
+                .data()
+                .map { result in
+                    switch result {
+                    case .success:
+                        return .success("data")
+                    case let .error(err): return .error(err)
+                    }
+            }
         }
     }
 
@@ -122,7 +135,7 @@ final class UserReactor: Reactor {
             state.user = user
         case let .success(success):
             log.verbose("♻️ Mutation -> State : succes \(success)")
-            // state.error = nil
+            state.error = nil
         // error
         case let .error(error):
             log.verbose("♻️ Mutation -> State : error \(error)")

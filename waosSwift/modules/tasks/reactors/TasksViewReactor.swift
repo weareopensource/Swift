@@ -117,6 +117,7 @@ final class TasksViewReactor: Reactor {
         case .dismiss:
             log.verbose("♻️ Mutation -> State : dismiss")
             state.isDismissed = true
+            state.error = nil
         // error
         case let .error(error):
             log.verbose("♻️ Mutation -> State : error \(error)")

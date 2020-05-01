@@ -159,6 +159,7 @@ final class TasksListReactor: Reactor {
         // success
         case let .success(success):
             log.verbose("♻️ Mutation -> State : succes \(success)")
+            state.error = nil
         // error
         case let .error(error):
             log.verbose("♻️ Mutation -> State : error \(error)")

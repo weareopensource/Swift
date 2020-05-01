@@ -11,6 +11,12 @@ import ReactorKit
 
 final class AuthSignInController: CoreController, View, Stepper {
 
+    // MARK: Constants
+
+    struct Metric {
+        static let primary = UIColor(named: config["theme"]["themes"]["waos"]["primary"].string ?? "")
+    }
+
     // MARK: UI
 
     let inputEmail = CoreUITextField().then {
@@ -33,6 +39,7 @@ final class AuthSignInController: CoreController, View, Stepper {
     }
     let buttonSignin = CoreUIButton().then {
         $0.setTitle(L10n.authSignInTitle, for: .normal)
+        $0.setTitleColor(Metric.primary, for: .normal)
     }
     let buttonSignup = CoreUIButton().then {
         $0.setTitle(L10n.authSignUpTitle, for: .normal)

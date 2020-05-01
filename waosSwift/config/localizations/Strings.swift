@@ -31,7 +31,7 @@ internal enum L10n {
   internal static let modalConfirmationOk = L10n.tr("Localizable", "modal_confirmation_ok")
   /// Remove
   internal static let modalConfirmationRemove = L10n.tr("Localizable", "modal_confirmation_remove")
-  /// this is the first page of the application, it will only be affixed once after installation. We call it onBoarding.
+  /// this is the first page of the application, it will only be affixed once after installation. We call it onBoarding. We will not be able to recover them.
   internal static let onBoardingIntroduction = L10n.tr("Localizable", "onBoarding_introduction")
   /// Welcome !
   internal static let onBoardingTitle = L10n.tr("Localizable", "onBoarding_title")
@@ -49,7 +49,7 @@ internal enum L10n {
   internal static let userContact = L10n.tr("Localizable", "user_contact")
   /// Request my data
   internal static let userData = L10n.tr("Localizable", "user_data")
-  /// Delete account
+  /// Delete account and data
   internal static let userDelete = L10n.tr("Localizable", "user_delete")
   /// Edit
   internal static let userEdit = L10n.tr("Localizable", "user_edit")
@@ -69,6 +69,10 @@ internal enum L10n {
   internal static let userHelp = L10n.tr("Localizable", "user_help")
   /// Logout
   internal static let userLogout = L10n.tr("Localizable", "user_logout")
+  /// We will send you all of your data by email. Do not hesitate to write to us if necessary.
+  internal static let userModalConfirmationDataMessage = L10n.tr("Localizable", "user_modal_confirmation_data_message")
+  /// Are you sure? your account and all your data will be deleted.
+  internal static let userModalConfirmationDeleteMessage = L10n.tr("Localizable", "user_modal_confirmation_delete_message")
   /// Privacy policy
   internal static let userPrivacyPolicy = L10n.tr("Localizable", "user_privacy_policy")
   /// Report a bug

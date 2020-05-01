@@ -42,8 +42,9 @@ Our stack Swift is actually in Beta.
 
 #### Available
 
-* **User** : classic register / auth or oAuth(microsoft, google) - profile management (update, avatar upload ...) - **data privacy ok** (delete all data, get all data, send all by mail data)
-* **Tasks** : list tasks - get task - add tasks - edit tasks - delete tasks - **data privacy ok**
+* **User** : classic register / auth or oAuth(microsoft, google) - profile management (update, avatar upload ...)
+* **User data privacy** : delete all data & account - send all data by mai
+* **Tasks** : list tasks - get task - add tasks - edit tasks - delete tasks
 
 ## :pushpin: Prerequisites
 

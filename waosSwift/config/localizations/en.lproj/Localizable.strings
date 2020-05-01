@@ -10,7 +10,7 @@
 
 // onBoarding
 "onBoarding_title"= "Welcome !";
-"onBoarding_introduction"= "this is the first page of the application, it will only be affixed once after installation. We call it onBoarding.";
+"onBoarding_introduction"= "this is the first page of the application, it will only be affixed once after installation. We call it onBoarding. We will not be able to recover them.";
 "onBoarding_validation"= "I'm in !";
 
 // auth
@@ -54,6 +54,9 @@
 
 "user_section_actions"= "Other";
 "user_logout"= "Logout";
-"user_delete"= "Delete account";
+"user_delete"= "Delete account and data";
 
 "user_error_mail"= "You must configure mail on your phone for this.";
+
+"user_modal_confirmation_delete_message" = "Are you sure? your account and all your data will be deleted.";
+"user_modal_confirmation_data_message" = "We will send you all of your data by email. Do not hesitate to write to us if necessary.";

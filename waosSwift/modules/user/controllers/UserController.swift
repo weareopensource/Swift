@@ -246,19 +246,6 @@ private extension UserController {
                 }
             })
             .disposed(by: disposeBag)
-        self.buttonData.rx.tap
-            .subscribe(onNext: { _ in
-                if MFMailComposeViewController.canSendMail() {
-                    let mvc = MFMailComposeViewController()
-                    mvc.mailComposeDelegate = self
-                    mvc.setToRecipients([(config["app"]["mails"]["data"].string ?? "")])
-                    mvc.setSubject(L10n.userData)
-                    self.present(mvc, animated: true)
-                } else {
-                    Toast(text: L10n.userErrorMail, delay: 0, duration: Delay.long).show()
-                }
-            })
-            .disposed(by: disposeBag)
     }
 
     // MARK: actions (View -> Reactor)
@@ -275,6 +262,17 @@ private extension UserController {
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         // buttons
+        self.buttonData.rx.tap
+            .throttle(.seconds(3), latest: false, scheduler: MainScheduler.instance)
+            .subscribe(onNext: { _ in
+                let actions: [AlertAction] = [AlertAction.action(title: L10n.modalConfirmationCancel, style: .cancel), AlertAction.action(title: L10n.modalConfirmationOk, style: .default)]
+                self.showAlert(title: L10n.userData, message: L10n.userModalConfirmationDataMessage, style: .alert, actions: actions)
+                    .filter { $0 == 1 }
+                    .map { _ in Reactor.Action.data }
+                    .bind(to: reactor.action)
+                    .disposed(by: self.disposeBag)
+            })
+            .disposed(by: self.disposeBag)
         self.buttonLogout.rx.tap
             .throttle(.seconds(3), latest: false, scheduler: MainScheduler.instance)
             .subscribe(onNext: { _ in
@@ -290,7 +288,7 @@ private extension UserController {
             .throttle(.seconds(3), latest: false, scheduler: MainScheduler.instance)
             .subscribe(onNext: { _ in
                 let actions: [AlertAction] = [AlertAction.action(title: L10n.modalConfirmationCancel, style: .cancel), AlertAction.action(title: L10n.modalConfirmationOk, style: .destructive)]
-                self.showAlert(title: L10n.userDelete, message: L10n.modalConfirmationMessage, style: .alert, actions: actions)
+                self.showAlert(title: L10n.userDelete, message: L10n.userModalConfirmationDeleteMessage, style: .alert, actions: actions)
                     .filter { $0 == 1 }
                     .map { _ in Reactor.Action.delete }
                     .bind(to: reactor.action)
