@@ -9,9 +9,10 @@ import Moya
  */
 
 enum UserApi {
+    case me
     case update(firstName: String, lastName: String, email: String)
     case delete
-    case me
+    case data
 }
 
 extension UserApi: TargetType {
@@ -27,38 +28,45 @@ extension UserApi: TargetType {
         let apiPathUser = config["api"]["endPoints"]["users"].string ?? "users"
 
         switch self {
-        case .update, .delete :
-            return "/" + apiPathUser
         case .me :
             return "/" + apiPathUser + "/me"
+        case .update :
+            return "/" + apiPathUser
+        case .delete :
+            return "/" + apiPathUser + "/data"
+        case .data :
+            return "/" + apiPathUser + "/data/mail"
         }
     }
 
     var method: Moya.Method {
         switch self {
+        case .me:
+            return .get
         case .update:
             return .put
         case .delete:
             return .delete
-        case .me:
+        case .data:
             return .get
         }
     }
 
     var sampleData: Data {
         switch self {
+        case .me: return stubbed("me")
         case .update: return stubbed("update")
         case .delete: return stubbed("delete")
-        case .me: return stubbed("me")
+        case .data: return stubbed("data")
         }
     }
 
     var task: Task {
         switch self {
+        case .me, .delete, .data:
+            return .requestPlain
         case .update(let firstName, let lastName, let email):
             return .requestParameters(parameters: ["firstName": firstName, "lastName": lastName, "email": email], encoding: JSONEncoding.default)
-        case .me, .delete:
-            return .requestPlain
         }
     }
 

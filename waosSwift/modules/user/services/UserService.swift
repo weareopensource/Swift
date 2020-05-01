@@ -7,7 +7,8 @@ protocol UserServiceType {
 
     func me() -> Observable<MyResult<UserResponse, CustomError>>
     func update(_ user: User) -> Observable<MyResult<UserResponse, CustomError>>
-    func delete() -> Observable<MyResult<DeleteResponse, CustomError>>
+    func delete() -> Observable<MyResult<DeleteDataResponse, CustomError>>
+    func data() -> Observable<MyResult<MailResponse, CustomError>>
 }
 
 final class UserService: CoreService, UserServiceType {
@@ -45,13 +46,26 @@ final class UserService: CoreService, UserServiceType {
             .catchError { err in .just(.error(getError(err)))}
     }
 
-    func delete() -> Observable<MyResult<DeleteResponse, CustomError>> {
+    func delete() -> Observable<MyResult<DeleteDataResponse, CustomError>> {
         log.verbose("🔌 service : delete")
         return self.networking
             .request(.delete)
-            .map(DeleteResponse.self)
+            .map(DeleteDataResponse.self)
             .map { response in
                 self.userSubject.onNext(nil)
+                return response
+            }
+            .asObservable()
+            .map(MyResult.success)
+            .catchError { err in .just(.error(getError(err)))}
+    }
+
+    func data() -> Observable<MyResult<MailResponse, CustomError>> {
+        log.verbose("🔌 service : data")
+        return self.networking
+            .request(.data)
+            .map(MailResponse.self)
+            .map { response in
                 return response
             }
             .asObservable()
