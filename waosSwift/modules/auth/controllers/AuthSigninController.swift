@@ -11,12 +11,6 @@ import ReactorKit
 
 final class AuthSignInController: CoreController, View, Stepper {
 
-    // MARK: Constants
-
-    struct Metric {
-        static let primary = UIColor(named: config["theme"]["themes"]["waos"]["primary"].string ?? "")
-    }
-
     // MARK: UI
 
     let inputEmail = CoreUITextField().then {
