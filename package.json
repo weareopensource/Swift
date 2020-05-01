@@ -26,7 +26,7 @@
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
-    "commitizen": "^4.0.4",
+    "commitizen": "^4.0.5",
     "husky": "^4.2.5",
     "waos-conventional-changelog": "^1.9.1"
   },
