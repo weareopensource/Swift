@@ -8,3 +8,4 @@
 @import Validator;
 @import FontAwesome;
 @import Toaster;
+@import NVActivityIndicatorView;

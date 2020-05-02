@@ -32,6 +32,7 @@ final class UserViewReactor: Reactor {
         case updateEmail(String)
         // default
         case dismiss
+        case setRefreshing(Bool)
         case success(String)
         case error(CustomError)
     }
@@ -40,11 +41,13 @@ final class UserViewReactor: Reactor {
     struct State {
         var user: User
         var isDismissed: Bool
+        var isRefreshing: Bool
         var error: DisplayError?
 
         init(user: User) {
             self.user = user
             self.isDismissed = false
+            self.isRefreshing = false
         }
     }
 
@@ -76,23 +79,33 @@ final class UserViewReactor: Reactor {
             return .just(.updateEmail(email))
         // avatar
         case let .updateAvatar(data):
-            return self.provider.userService
-                .updateAvatar(file: data, partName: "img", fileName: "test.png", mimeType: data.mimeType)
-                .map { result in
-                    switch result {
-                    case .success: return .success("avatar updated")
-                    case let .error(err): return .error(err)
-                    }
-            }
+            log.verbose("♻️ Action -> Mutation : update Avatar")
+            return .concat([
+                .just(.setRefreshing(true)),
+                self.provider.userService
+                    .updateAvatar(file: data, partName: "img", fileName: "test.png", mimeType: data.mimeType)
+                    .map { result in
+                        switch result {
+                        case .success: return .success("avatar updated")
+                        case let .error(err): return .error(err)
+                        }
+                },
+                .just(.setRefreshing(false))
+            ])
         case .deleteAvatar:
-            return self.provider.userService
-                .deleteAvatar()
-                .map { result in
-                    switch result {
-                    case .success: return .success("avatar deleted")
-                    case let .error(err): return .error(err)
-                    }
-            }
+            log.verbose("♻️ Action -> Mutation : delete Avatar")
+            return .concat([
+                .just(.setRefreshing(true)),
+                self.provider.userService
+                    .deleteAvatar()
+                    .map { result in
+                        switch result {
+                        case .success: return .success("avatar deleted")
+                        case let .error(err): return .error(err)
+                        }
+                },
+                .just(.setRefreshing(false))
+            ])
         // done
         case .done:
             return self.provider.userService
@@ -124,6 +137,9 @@ final class UserViewReactor: Reactor {
         case let .success(success):
             log.verbose("♻️ Mutation -> State : succes \(success)")
             state.error = nil
+        // refreshing
+        case let .setRefreshing(isRefreshing):
+            state.isRefreshing = isRefreshing
         // dissmiss
         case .dismiss:
             log.verbose("♻️ Mutation -> State : dismiss")

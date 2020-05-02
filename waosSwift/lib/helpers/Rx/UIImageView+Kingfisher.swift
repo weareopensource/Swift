@@ -8,8 +8,6 @@
 import UIKit
 
 import Kingfisher
-import RxCocoa
-import RxSwift
 
 typealias ImageOptions = KingfisherOptionsInfo
 

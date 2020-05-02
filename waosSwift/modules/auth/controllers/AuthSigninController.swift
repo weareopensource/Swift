@@ -9,7 +9,7 @@ import ReactorKit
  * Controller
  */
 
-final class AuthSignInController: CoreController, View, Stepper {
+final class AuthSignInController: CoreController, View, Stepper, NVActivityIndicatorViewable {
 
     // MARK: UI
 
@@ -193,6 +193,12 @@ private extension AuthSignInController {
     // MARK: states (Reactor -> View)
 
     func bindState(_ reactor: AuthSigninReactor) {
+        // refreshing
+        reactor.state
+            .map { $0.isRefreshing }
+            .distinctUntilChanged()
+            .bind(to: self.rx.isAnimating)
+            .disposed(by: disposeBag)
         // error
         reactor.state
             .map { $0.errors.count }

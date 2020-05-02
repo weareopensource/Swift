@@ -39,8 +39,9 @@ final class AuthSignUpReactor: Reactor {
         case updateIsFilled(Bool)
         // others
         case goSignIn
-        case dismiss
         // default
+        case dismiss
+        case setRefreshing(Bool)
         case success(String)
         case error(CustomError)
     }
@@ -49,12 +50,14 @@ final class AuthSignUpReactor: Reactor {
     struct State {
         var user: User
         var isDismissed: Bool
+        var isRefreshing: Bool
         var isFilled: Bool
         var errors: [DisplayError]
 
         init() {
             self.user = User()
             self.isDismissed = false
+            self.isRefreshing = false
             self.isFilled = false
             self.errors = []
         }
@@ -119,17 +122,21 @@ final class AuthSignUpReactor: Reactor {
         // signup
         case .signUp:
             log.verbose("♻️ Action -> Mutation : signUp(\(self.currentState.user.firstName), \(self.currentState.user.lastName), \(self.currentState.user.email))")
-            return self.provider.authService
-                .signUp(firstName: self.currentState.user.firstName, lastName: self.currentState.user.lastName, email: self.currentState.user.email, password: self.currentState.user.password ?? "")
-                .map { result in
-                    switch result {
-                    case let .success(response):
-                        UserDefaults.standard.set(response.tokenExpiresIn, forKey: "CookieExpire")
-                        self.provider.preferencesService.isLogged = true
-                        return .dismiss
-                    case let .error(err): return .error(err)
-                    }
-            }
+            return .concat([
+                .just(.setRefreshing(true)),
+                self.provider.authService
+                    .signUp(firstName: self.currentState.user.firstName, lastName: self.currentState.user.lastName, email: self.currentState.user.email, password: self.currentState.user.password ?? "")
+                    .map { result in
+                        switch result {
+                        case let .success(response):
+                            UserDefaults.standard.set(response.tokenExpiresIn, forKey: "CookieExpire")
+                            self.provider.preferencesService.isLogged = true
+                            return .dismiss
+                        case let .error(err): return .error(err)
+                        }
+                },
+                .just(.setRefreshing(false))
+            ])
         }
     }
 
@@ -161,6 +168,9 @@ final class AuthSignUpReactor: Reactor {
         case .dismiss:
             log.verbose("♻️ Mutation -> State : dismiss")
             state.isDismissed = true
+        // refreshing
+        case let .setRefreshing(isRefreshing):
+            state.isRefreshing = isRefreshing
         case let .success(success):
             log.verbose("♻️ Mutation -> State : succes \(success)")
             state.errors = purgeErrors(errors: state.errors, titles: [success, "Schema validation error", "jwt", "unknow"])
