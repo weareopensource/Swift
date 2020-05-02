@@ -11,8 +11,9 @@ github "Moya/Moya" ~> 14.0.0-alpha.1
 github "pixeldock/RxAppState" ~> 1.5.1
 github "adamwaite/Validator" ~> 3.2.1 
 github "xmartlabs/Eureka" ~> 5.0
+github "EurekaCommunity/ImageRow" ~> 4.0
 github "kishikawakatsumi/KeychainAccess"
 github "devxoul/Toaster" ~> 2.2.0
 github "thii/FontAwesome.swift"
 github "onevcat/Kingfisher" ~> 5.0
-github "EurekaCommunity/ImageRow" ~> 4.0
+github "ninjaprox/NVActivityIndicatorView"

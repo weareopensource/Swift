@@ -89,6 +89,12 @@
             "margin": 20,
             "bottom": true
         },
+        "loader": {
+            "width": 50,
+            "height": 50,
+            "displayTimeThreshold": 1,
+            "minimumDisplayTime": 2,
+        },
         "themes": {
             "waos" :{
                 "primary": "waosPrimary",

@@ -2,6 +2,9 @@
  * Modules
  */
 
+// loader
+"loader_messagee" = "Work in progress";
+
 // modals
 "modal_confirmation_message" = "are you sure ?";
 "modal_confirmation_ok" = "Ok";

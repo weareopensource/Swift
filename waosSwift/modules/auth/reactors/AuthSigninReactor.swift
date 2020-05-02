@@ -34,6 +34,7 @@ final class AuthSigninReactor: Reactor {
         // others
         case goSignUp
         // default
+        case setRefreshing(Bool)
         case success(String)
         case error(CustomError)
     }
@@ -42,11 +43,13 @@ final class AuthSigninReactor: Reactor {
     struct State {
         var user: User
         var isFilled: Bool
+        var isRefreshing: Bool
         var errors: [DisplayError]
 
         init() {
             self.user = User()
             self.isFilled = false
+            self.isRefreshing = false
             self.errors = []
         }
     }
@@ -86,17 +89,22 @@ final class AuthSigninReactor: Reactor {
         // signin
         case .signIn:
             log.verbose("♻️ Action -> Mutation : signIn(\(self.currentState.user.email))")
-            return self.provider.authService
-                .signIn(email: self.currentState.user.email, password: self.currentState.user.password ?? "")
-                .map { result in
-                    switch result {
-                    case let .success(response):
-                        UserDefaults.standard.set(response.tokenExpiresIn, forKey: "CookieExpire")
-                        self.provider.preferencesService.isLogged = true
-                        return .success("signIn")
-                    case let .error(err): return .error(err)
-                    }
-            }
+            return .concat([
+                .just(.setRefreshing(true)),
+                self.provider.authService
+                    .signIn(email: self.currentState.user.email, password: self.currentState.user.password ?? "")
+                    .map { result in
+                        switch result {
+                        case let .success(response):
+                            UserDefaults.standard.set(response.tokenExpiresIn, forKey: "CookieExpire")
+                            self.provider.preferencesService.isLogged = true
+                            return .success("signIn")
+                        case let .error(err): return .error(err)
+                        }
+                },
+                .just(.setRefreshing(false))
+            ])
+
         // signup
         case .signUp:
             log.verbose("♻️ Action -> Mutation : signUp")
@@ -121,6 +129,9 @@ final class AuthSigninReactor: Reactor {
         // go Signup
         case .goSignUp:
             log.verbose("♻️ Mutation -> State : goSignUp")
+        // refreshing
+        case let .setRefreshing(isRefreshing):
+            state.isRefreshing = isRefreshing
         // success
         case let .success(success):
             log.verbose("♻️ Mutation -> State : succes \(success)")

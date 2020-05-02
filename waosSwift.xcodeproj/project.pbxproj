@@ -133,6 +133,8 @@
 		BFC81B002383CF6500D00D3C /* CoreCollectionViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC81AFF2383CF6500D00D3C /* CoreCollectionViewCellController.swift */; };
 		BFD9CB21238435B20034837F /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD9CB20238435B20034837F /* UIImage.swift */; };
 		BFD9CB23238435CB0034837F /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD9CB22238435CB0034837F /* UILabel.swift */; };
+		BFDA6771245DED04007038B4 /* NVActivityIndicatorView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDA6770245DED04007038B4 /* NVActivityIndicatorView+Rx.swift */; };
+		BFDA6773245DF1DA007038B4 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFDA6772245DF1DA007038B4 /* NVActivityIndicatorView.framework */; };
 		BFDE25FE227B052D008CBD30 /* NSViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE25FD227B052D008CBD30 /* NSViewController+Rx.swift */; };
 		BFDE2600227B053D008CBD30 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE25FF227B053D008CBD30 /* UIViewController+Rx.swift */; };
 		BFDE2602227B17D4008CBD30 /* AppServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE2601227B17D4008CBD30 /* AppServicesProvider.swift */; };
@@ -314,6 +316,8 @@
 		BFC81AFF2383CF6500D00D3C /* CoreCollectionViewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreCollectionViewCellController.swift; sourceTree = "<group>"; };
 		BFD9CB20238435B20034837F /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		BFD9CB22238435CB0034837F /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		BFDA6770245DED04007038B4 /* NVActivityIndicatorView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NVActivityIndicatorView+Rx.swift"; sourceTree = "<group>"; };
+		BFDA6772245DF1DA007038B4 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = Carthage/Build/iOS/NVActivityIndicatorView.framework; sourceTree = "<group>"; };
 		BFDE25FD227B052D008CBD30 /* NSViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSViewController+Rx.swift"; sourceTree = "<group>"; };
 		BFDE25FF227B053D008CBD30 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		BFDE2601227B17D4008CBD30 /* AppServicesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServicesProvider.swift; sourceTree = "<group>"; };
@@ -343,6 +347,7 @@
 				BF4A2F6D225B7D0B0001B4CE /* Reusable.framework in Frameworks */,
 				BF4A2FC42264A2350001B4CE /* SwiftyJSON.framework in Frameworks */,
 				BF8F6ED1227063F100B9447A /* RxOptional.framework in Frameworks */,
+				BFDA6773245DF1DA007038B4 /* NVActivityIndicatorView.framework in Frameworks */,
 				BF4A2FD9226710F10001B4CE /* RxDataSources.framework in Frameworks */,
 				BF8F6ED92273442100B9447A /* SnapKit.framework in Frameworks */,
 				BF2AE774228C2DDC003C5B85 /* Alamofire.framework in Frameworks */,
@@ -578,6 +583,7 @@
 		BF4A2F30225B4F7F0001B4CE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BFDA6772245DF1DA007038B4 /* NVActivityIndicatorView.framework */,
 				BF7E709B245CA447007DAB02 /* ImageRow.framework */,
 				BFBA33872403F84900CF9299 /* Kingfisher.framework */,
 				BF05418E2361EF98008628CF /* FontAwesome.framework */,
@@ -968,6 +974,7 @@
 				BF78B5F22293CD680057157A /* ObservableType+Extras.swift */,
 				BF62ADA623E45ECC000D5225 /* UIAlertController+Rx.swift */,
 				BFBA338B2403FBB500CF9299 /* UIImageView+Kingfisher.swift */,
+				BFDA6770245DED04007038B4 /* NVActivityIndicatorView+Rx.swift */,
 			);
 			path = Rx;
 			sourceTree = "<group>";
@@ -1155,6 +1162,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Eureka.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ImageRow.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/NVActivityIndicatorView.framework",
 			);
 			name = Carthage;
 			outputFileListPaths = (
@@ -1285,6 +1293,7 @@
 				BF78B61E2296CE7B0057157A /* TokenState.swift in Sources */,
 				BF4A2F74225BB4B90001B4CE /* AppSteps.swift in Sources */,
 				BF9A3670228D5F2700EE2AB8 /* Stubbed.swift in Sources */,
+				BFDA6771245DED04007038B4 /* NVActivityIndicatorView+Rx.swift in Sources */,
 				BFD9CB23238435CB0034837F /* UILabel.swift in Sources */,
 				BFBA339224040F8A00CF9299 /* String.swift in Sources */,
 				BF9A3663228C3F2500EE2AB8 /* TasksApi.swift in Sources */,

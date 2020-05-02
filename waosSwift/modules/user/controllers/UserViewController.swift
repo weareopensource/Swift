@@ -13,7 +13,7 @@ import ImageRow
  * Controller
  */
 
-class UserViewController: CoreFormController, View {
+class UserViewController: CoreFormController, View, NVActivityIndicatorViewable {
 
     // MARK: Constant
 
@@ -37,6 +37,7 @@ class UserViewController: CoreFormController, View {
         $0.title = L10n.userEditMail
         $0.validationOptions = .validatesOnDemand
     }
+
     let imageAvatar = UIImageView()
     let inputAvatar = ImageRow {
         $0.title = L10n.userEditImage
@@ -250,6 +251,12 @@ private extension UserViewController {
                 }
             })
             .disposed(by: self.disposeBag)
+        // refreshing
+        reactor.state
+            .map { $0.isRefreshing }
+            .distinctUntilChanged()
+            .bind(to: self.rx.isAnimating)
+            .disposed(by: disposeBag)
         // dissmissed
         reactor.state
             .map { $0.isDismissed }

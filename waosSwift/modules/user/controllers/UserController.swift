@@ -343,9 +343,7 @@ private extension UserController {
         reactor.state
             .map { $0.user.email }
             .distinctUntilChanged()
-            .subscribe(onNext: { email in
-                self.labelEmail.text = "\(email)"
-            })
+            .bind(to: self.labelName.rx.text)
             .disposed(by: self.disposeBag)
         // refreshing
         reactor.state
@@ -370,9 +368,7 @@ private extension UserController {
  */
 
 extension UserController: MFMailComposeViewControllerDelegate {
-
-    func mailComposeController(_ controller: MFMailComposeViewController,
-                               didFinishWith result: MFMailComposeResult, error: Error?) {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
     }
 }

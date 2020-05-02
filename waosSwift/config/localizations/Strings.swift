@@ -23,6 +23,8 @@ internal enum L10n {
   internal static let authSignInTitle = L10n.tr("Localizable", "authSignIn_title")
   /// Sign Up
   internal static let authSignUpTitle = L10n.tr("Localizable", "authSignUp_title")
+  /// Work in progress
+  internal static let loaderMessagee = L10n.tr("Localizable", "loader_messagee")
   /// Cancel
   internal static let modalConfirmationCancel = L10n.tr("Localizable", "modal_confirmation_cancel")
   /// are you sure ?
