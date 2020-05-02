@@ -24,7 +24,8 @@
             "basePath": "api",
             "auth": "auth",
             "users": "users",
-            "tasks": "tasks"
+            "tasks": "tasks",
+            "uploads": "uploads"
         }
     },
     "jwt": {

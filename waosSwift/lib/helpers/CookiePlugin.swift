@@ -4,11 +4,12 @@
 
 import Moya
 import KeychainAccess
+import Kingfisher
 
 let keychain = Keychain(service: config["app"]["service"].string ?? "localhost").synchronizable(true)
 
 /**
- * structs
+ *  Moya Plugin
  */
 
 struct CookiePlugin: PluginType {
@@ -55,4 +56,16 @@ struct CookieStorager {
             return false
         }
     }
+}
+
+/**
+*  Kingfisher Modifier
+*/
+
+let cookieModifier = AnyModifier { request in
+    var request = request
+    if let cookie = CookieStorager.cookie as? String {
+        request.addValue(cookie, forHTTPHeaderField: "Cookie")
+    }
+    return request
 }

@@ -1,6 +1,7 @@
 github "Alamofire/Alamofire" "5.0.5"
 github "AliSoftware/Reusable" "4.1.1"
 github "CocoaLumberjack/CocoaLumberjack" "3.6.1"
+github "EurekaCommunity/ImageRow" "4.0.0"
 github "Moya/Moya" "14.0.0"
 github "ReactiveCocoa/ReactiveSwift" "6.2.1"
 github "ReactiveX/RxSwift" "5.0.1"

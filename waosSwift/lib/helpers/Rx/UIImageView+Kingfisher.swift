@@ -51,25 +51,35 @@ extension UIImageView {
         style: imageStyle? = nil,
         defaultImage: String? = nil // should be a Bundle.main.path image name of type png
     ) -> DownloadTask? {
+
+        // Custome Filters add
         var options = options ?? []
         switch style {
         case .animated:
-            options = [.cacheSerializer(FormatIndicatedCacheSerializer.gif), .forceRefresh]
+            options.append(.cacheSerializer(FormatIndicatedCacheSerializer.gif))
+            options.append(.forceRefresh)
         case .blured:
-            let processor = OverlayImageProcessor(overlay: .black, fraction: 0.9) |> BlurImageProcessor(blurRadius: 20)
-            options = [.processor(processor)]
+            options.append(.processor(
+                OverlayImageProcessor(overlay: .black, fraction: 0.9)
+                |> BlurImageProcessor(blurRadius: 20)
+            ))
         case .bwBlured:
-            let processor = OverlayImageProcessor(overlay: .black, fraction: 0.85) |> BlurImageProcessor(blurRadius: 20)  |> BlackWhiteProcessor()
-            options = [.processor(processor)]
+            options.append(.processor(
+                OverlayImageProcessor(overlay: .black, fraction: 0.85)
+                |> BlurImageProcessor(blurRadius: 20)
+                |> BlackWhiteProcessor()
+            ))
         default:
-            options = []
+            break
         }
+
         // GIF will only animates in the AnimatedImageView
         if self is AnimatedImageView == false {
             options.append(.onlyLoadFirstFrame)
         }
 
         if(defaultImage != nil && (url == "default" || url == "default.png" || url == "default.jpg" || url == "")) {
+            // return default if default
             let provider = LocalFileImageDataProvider(fileURL: URL(fileURLWithPath: Bundle.main.path(forResource: defaultImage, ofType: "png") ?? ""))
             return self.kf.setImage(
                 with: provider,
@@ -78,6 +88,7 @@ extension UIImageView {
                 progressBlock: progress
             )
         } else {
+            // return image else
             return self.kf.setImage(
                 with: URL(string: url ?? ""),
                 placeholder: placeholder,
@@ -97,5 +108,9 @@ extension UIImageView {
 //            }
 //        }
 
+    }
+
+    func deleteImageCache(url: String) {
+        ImageCache.default.removeImage(forKey: url)
     }
 }

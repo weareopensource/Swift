@@ -18,6 +18,8 @@ final class UserViewReactor: Reactor {
         case updateFirstName(String)
         case updateLastName(String)
         case updateEmail(String)
+        case updateAvatar(Data)
+        case deleteAvatar
         // default
         case done
     }
@@ -30,6 +32,7 @@ final class UserViewReactor: Reactor {
         case updateEmail(String)
         // default
         case dismiss
+        case success(String)
         case error(CustomError)
     }
 
@@ -71,6 +74,25 @@ final class UserViewReactor: Reactor {
         // email
         case let .updateEmail(email):
             return .just(.updateEmail(email))
+        // avatar
+        case let .updateAvatar(data):
+            return self.provider.userService
+                .updateAvatar(file: data, partName: "img", fileName: "test.png", mimeType: data.mimeType)
+                .map { result in
+                    switch result {
+                    case .success: return .success("avatar updated")
+                    case let .error(err): return .error(err)
+                    }
+            }
+        case .deleteAvatar:
+            return self.provider.userService
+                .deleteAvatar()
+                .map { result in
+                    switch result {
+                    case .success: return .success("avatar deleted")
+                    case let .error(err): return .error(err)
+                    }
+            }
         // done
         case .done:
             return self.provider.userService
@@ -98,6 +120,10 @@ final class UserViewReactor: Reactor {
         // update email
         case let .updateEmail(email):
             state.user.email = email
+            // set
+        case let .success(success):
+            log.verbose("♻️ Mutation -> State : succes \(success)")
+            state.error = nil
         // dissmiss
         case .dismiss:
             log.verbose("♻️ Mutation -> State : dismiss")

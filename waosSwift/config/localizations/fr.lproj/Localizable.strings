@@ -35,7 +35,10 @@
 "user_edit_mail"= "Email";
 "user_edit_firstname"= "Prénom";
 "user_edit_lastname"= "Nom";
-"user_edit_image"= "Photo de profil";
+
+"user_edit_section_image"= "Photo de profil";
+"user_edit_image"= "Galerie de l'iPhone";
+"user_edit_image_gravatar"= "Gravatar";
 
 "user_section_app"= "Waos";
 "user_blog"= "Blog";

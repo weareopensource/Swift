@@ -55,14 +55,18 @@ internal enum L10n {
   internal static let userEdit = L10n.tr("Localizable", "user_edit")
   /// Firstname
   internal static let userEditFirstname = L10n.tr("Localizable", "user_edit_firstname")
-  /// Profile picture
+  /// iPhone Gallery
   internal static let userEditImage = L10n.tr("Localizable", "user_edit_image")
+  /// Gravatar
+  internal static let userEditImageGravatar = L10n.tr("Localizable", "user_edit_image_gravatar")
   /// Lastname
   internal static let userEditLastname = L10n.tr("Localizable", "user_edit_lastname")
   /// Email
   internal static let userEditMail = L10n.tr("Localizable", "user_edit_mail")
   /// Account
   internal static let userEditSection = L10n.tr("Localizable", "user_edit_section")
+  /// Profile picture
+  internal static let userEditSectionImage = L10n.tr("Localizable", "user_edit_section_image")
   /// You must configure mail on your phone for this.
   internal static let userErrorMail = L10n.tr("Localizable", "user_error_mail")
   /// Help

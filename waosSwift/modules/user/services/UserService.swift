@@ -8,6 +8,8 @@ protocol UserServiceType {
     func me() -> Observable<MyResult<UserResponse, CustomError>>
     func update(_ user: User) -> Observable<MyResult<UserResponse, CustomError>>
     func delete() -> Observable<MyResult<DeleteDataResponse, CustomError>>
+    func updateAvatar(file: Data, partName: String, fileName: String, mimeType: String) -> Observable<MyResult<UserResponse, CustomError>>
+    func deleteAvatar() -> Observable<MyResult<UserResponse, CustomError>>
     func data() -> Observable<MyResult<MailResponse, CustomError>>
 }
 
@@ -53,6 +55,34 @@ final class UserService: CoreService, UserServiceType {
             .map(DeleteDataResponse.self)
             .map { response in
                 self.userSubject.onNext(nil)
+                return response
+            }
+            .asObservable()
+            .map(MyResult.success)
+            .catchError { err in .just(.error(getError(err)))}
+    }
+
+    func updateAvatar(file: Data, partName: String, fileName: String, mimeType: String) -> Observable<MyResult<UserResponse, CustomError>> {
+        log.verbose("🔌 service : update avatar")
+        return self.networking
+            .request(.updateAvatar(file: file, partName: partName, fileName: fileName, mimeType: mimeType))
+            .map(UserResponse.self)
+            .map { response in
+                self.userSubject.onNext(response.data)
+                return response
+            }
+            .asObservable()
+            .map(MyResult.success)
+            .catchError { err in .just(.error(getError(err)))}
+    }
+
+    func deleteAvatar() -> Observable<MyResult<UserResponse, CustomError>> {
+        log.verbose("🔌 service : delete avatar ")
+        return self.networking
+            .request(.deleteAvatar)
+            .map(UserResponse.self)
+            .map { response in
+                self.userSubject.onNext(response.data)
                 return response
             }
             .asObservable()
