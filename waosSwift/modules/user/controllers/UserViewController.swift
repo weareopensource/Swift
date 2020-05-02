@@ -7,12 +7,17 @@ import ReactorKit
 import Eureka
 import SafariServices
 import MessageUI
+import ImageRow
 
 /**
  * Controller
  */
 
 class UserViewController: CoreFormController, View {
+
+    // MARK: Constant
+
+    fileprivate var avatar = BehaviorRelay<Data?>(value: nil)
 
     // MARK: UI
 
@@ -32,8 +37,22 @@ class UserViewController: CoreFormController, View {
         $0.title = L10n.userEditMail
         $0.validationOptions = .validatesOnDemand
     }
-    let buttonImage = ButtonRow {
+    let imageAvatar = UIImageView()
+    let inputAvatar = ImageRow {
         $0.title = L10n.userEditImage
+        $0.sourceTypes = .PhotoLibrary
+        $0.clearAction = .yes(style: .destructive)
+        $0.allowEditor = true
+    }
+
+    let imageGravatar = UIImageView(frame: CGRect(x: 0, y: 0, width: 44, height: 44)).then {
+        $0.contentMode = .scaleAspectFill
+        $0.image = UIImage(named: "AppIcon")
+        $0.layer.masksToBounds = true
+        $0.backgroundColor = UIColor.lightGray.withAlphaComponent(0.25)
+    }
+    let buttonImageGravatar = ButtonRow {
+        $0.title = L10n.userEditImageGravatar
     }
 
     // MARK: Initializing
@@ -57,7 +76,19 @@ class UserViewController: CoreFormController, View {
             <<< self.inputFirstName
             <<< self.inputLastName
             <<< self.inputEmail
-            <<< self.buttonImage
+            +++ Section(header: L10n.userEditSectionImage, footer: "")
+            <<< self.inputAvatar.cellUpdate { cell, _ in
+                cell.accessoryView?.layer.cornerRadius = (cell.accessoryView?.frame.height ?? 20)/2
+            }.onChange({ (img) in
+                if let aux = img.value {
+                    self.avatar.accept(aux.pngData())
+                } else {
+                    self.avatar.accept(nil)
+                }
+            })
+            <<< self.buttonImageGravatar.cellUpdate { cell, _ in
+                cell.accessoryView = self.imageGravatar
+            }
 
         self.navigationItem.leftBarButtonItem = self.barButtonCancel
         self.navigationItem.rightBarButtonItem = self.barButtonDone
@@ -156,13 +187,26 @@ private extension UserViewController {
                 }
             })
             .disposed(by: self.disposeBag)
-        self.buttonImage.rx.tap
+        self.buttonImageGravatar.rx.tap
             .subscribe(onNext: { _ in
                 guard let url = URL(string: (config["app"]["links"]["gravatar"].string ?? "")) else { return }
                 let svc = SFSafariViewController(url: url)
                 self.present(svc, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
+        self.avatar
+            .skip(1)
+            .filterNil()
+            .map {Reactor.Action.updateAvatar($0)}
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        self.avatar
+            .skip(1)
+            .filter { $0 == nil }
+            .throttle(.seconds(3), latest: false, scheduler: MainScheduler.instance)
+            .map { _ in Reactor.Action.deleteAvatar }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
     }
 
     // MARK: states (Reactor -> View)
@@ -172,25 +216,38 @@ private extension UserViewController {
         reactor.state
             .map { $0.user.firstName }
             .distinctUntilChanged()
-            .subscribe(onNext: { _ in
-                self.inputFirstName.value = reactor.currentState.user.firstName
+            .subscribe(onNext: { firstName in
+                self.inputFirstName.value = firstName
                 self.inputFirstName.updateCell()
             })
             .disposed(by: self.disposeBag)
         reactor.state
             .map { $0.user.lastName }
             .distinctUntilChanged()
-            .subscribe(onNext: { _ in
-                self.inputLastName.value = reactor.currentState.user.lastName
+            .subscribe(onNext: { lastName in
+                self.inputLastName.value = lastName
                 self.inputLastName.updateCell()
             })
             .disposed(by: self.disposeBag)
         reactor.state
             .map { $0.user.email }
             .distinctUntilChanged()
-            .subscribe(onNext: { _ in
-                self.inputEmail.value = reactor.currentState.user.email
+            .subscribe(onNext: { email in
+                self.inputEmail.value = email
                 self.inputEmail.updateCell()
+                self.imageGravatar.setImage(url: "https://secure.gravatar.com/avatar/\(email.md5)?s=200&d=mp")
+                self.imageGravatar.layer.cornerRadius = self.imageGravatar.frame.height/2
+            })
+            .disposed(by: self.disposeBag)
+        reactor.state
+            .map { $0.user.avatar }
+            .distinctUntilChanged()
+            .subscribe(onNext: { avatar in
+                if (avatar != "") {
+                    self.imageAvatar.setImage(url: setUploadImageUrl(avatar, size: "256"), options: [.requestModifier(cookieModifier)])
+                    self.inputAvatar.value = self.imageAvatar.image
+                    self.inputAvatar.updateCell()
+                }
             })
             .disposed(by: self.disposeBag)
         // dissmissed

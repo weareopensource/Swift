@@ -12,6 +12,8 @@ enum UserApi {
     case me
     case update(firstName: String, lastName: String, email: String)
     case delete
+    case updateAvatar(file: Data, partName: String, fileName: String, mimeType: String)
+    case deleteAvatar
     case data
 }
 
@@ -34,6 +36,10 @@ extension UserApi: TargetType {
             return "/" + apiPathUser
         case .delete :
             return "/" + apiPathUser + "/data"
+        case .updateAvatar :
+            return "/" + apiPathUser + "/avatar"
+        case .deleteAvatar :
+            return "/" + apiPathUser + "/avatar"
         case .data :
             return "/" + apiPathUser + "/data/mail"
         }
@@ -47,6 +53,10 @@ extension UserApi: TargetType {
             return .put
         case .delete:
             return .delete
+        case .updateAvatar:
+            return .post
+        case .deleteAvatar:
+            return .delete
         case .data:
             return .get
         }
@@ -57,16 +67,21 @@ extension UserApi: TargetType {
         case .me: return stubbed("me")
         case .update: return stubbed("update")
         case .delete: return stubbed("delete")
+        case .updateAvatar: return stubbed("avatar")
+        case .deleteAvatar: return stubbed("avatar")
         case .data: return stubbed("data")
         }
     }
 
     var task: Task {
         switch self {
-        case .me, .delete, .data:
+        case .me, .delete, .deleteAvatar, .data:
             return .requestPlain
         case .update(let firstName, let lastName, let email):
             return .requestParameters(parameters: ["firstName": firstName, "lastName": lastName, "email": email], encoding: JSONEncoding.default)
+        case .updateAvatar(let data, let partName, let fileName, let mimeType):
+            let gifData = MultipartFormData(provider: .data(data), name: partName, fileName: fileName, mimeType: mimeType)
+            return .uploadMultipart([gifData])
         }
     }
 

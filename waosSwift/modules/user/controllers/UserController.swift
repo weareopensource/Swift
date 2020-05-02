@@ -25,7 +25,7 @@ class UserController: CoreFormController, View {
 
     let refreshControl = CoreUIRefreshControl()
 
-    let imageProfil = UIImageView().then {
+    let imageAvatar = UIImageView().then {
         $0.contentMode = UIView.ContentMode.scaleAspectFill
         $0.layer.masksToBounds = true
         $0.backgroundColor = UIColor.lightGray.withAlphaComponent(0.25)
@@ -105,17 +105,17 @@ class UserController: CoreFormController, View {
                 var header = HeaderFooterView<UILabel>(.class)
                 header.height = { 175 }
                 header.onSetupView = {view, _ in
-                    view.addSubview(self.imageProfil)
+                    view.addSubview(self.imageAvatar)
                     view.addSubview(self.labelName)
                     view.addSubview(self.labelEmail)
-                    self.imageProfil.snp.makeConstraints { (make) -> Void in
+                    self.imageAvatar.snp.makeConstraints { (make) -> Void in
                         make.width.height.equalTo(100)
                         make.centerX.equalTo(view)
                         make.top.equalTo(view).offset(Metric.margin)
                     }
                     self.labelName.snp.makeConstraints { (make) -> Void in
                         make.centerX.equalTo(view)
-                        make.top.equalTo(self.imageProfil.snp.bottom).offset(Metric.margin/2)
+                        make.top.equalTo(self.imageAvatar.snp.bottom).offset(Metric.margin/2)
                     }
                     self.labelEmail.snp.makeConstraints { (make) -> Void in
                         make.centerX.equalTo(view)
@@ -306,30 +306,45 @@ private extension UserController {
             .map { $0.user.email }
             .distinctUntilChanged()
             .subscribe(onNext: { email in
-                self.imageProfil.setImage(url: "https://secure.gravatar.com/avatar/\(email.md5)?s=200&d=mp")
-                self.imageProfil.layer.cornerRadius = self.imageProfil.frame.height/2
+                if (reactor.currentState.user.avatar == "") {
+                    self.imageAvatar.setImage(url: "https://secure.gravatar.com/avatar/\(email.md5)?s=200&d=mp")
+                    self.imageAvatar.layer.cornerRadius = self.imageAvatar.frame.height/2
+                }
+            })
+            .disposed(by: self.disposeBag)
+        reactor.state
+            .map { $0.user.avatar }
+            .distinctUntilChanged()
+            .subscribe(onNext: { avatar in
+                if (avatar != "") {
+                    self.imageAvatar.setImage(url: setUploadImageUrl(avatar, size: "256"), options: [.requestModifier(cookieModifier)])
+                    self.imageAvatar.layer.cornerRadius = self.imageAvatar.frame.height/2
+                } else {
+                    self.imageAvatar.setImage(url: "https://secure.gravatar.com/avatar/\(reactor.currentState.user.email.md5)?s=200&d=mp")
+                    self.imageAvatar.layer.cornerRadius = self.imageAvatar.frame.height/2
+                }
             })
             .disposed(by: self.disposeBag)
         // labels
         reactor.state
             .map { $0.user.firstName }
             .distinctUntilChanged()
-            .subscribe(onNext: { _ in
-                self.labelName.text = "\(reactor.currentState.user.firstName) \(reactor.currentState.user.lastName)"
+            .subscribe(onNext: { firstName in
+                self.labelName.text = "\(firstName) \(reactor.currentState.user.lastName)"
             })
             .disposed(by: self.disposeBag)
         reactor.state
             .map { $0.user.lastName }
             .distinctUntilChanged()
-            .subscribe(onNext: { _ in
-                self.labelName.text = "\(reactor.currentState.user.firstName) \(reactor.currentState.user.lastName)"
+            .subscribe(onNext: { lastName in
+                self.labelName.text = "\(reactor.currentState.user.firstName) \(lastName)"
             })
             .disposed(by: self.disposeBag)
         reactor.state
             .map { $0.user.email }
             .distinctUntilChanged()
-            .subscribe(onNext: { _ in
-                self.labelEmail.text = "\(reactor.currentState.user.email)"
+            .subscribe(onNext: { email in
+                self.labelEmail.text = "\(email)"
             })
             .disposed(by: self.disposeBag)
         // refreshing
