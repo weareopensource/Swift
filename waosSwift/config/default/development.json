@@ -92,8 +92,8 @@
         "loader": {
             "width": 50,
             "height": 50,
-            "displayTimeThreshold": 1,
-            "minimumDisplayTime": 2,
+            "displayTimeThreshold": 1000,
+            "minimumDisplayTime": 2000,
         },
         "themes": {
             "waos" :{
