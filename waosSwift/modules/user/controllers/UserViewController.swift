@@ -82,7 +82,7 @@ class UserViewController: CoreFormController, View, NVActivityIndicatorViewable 
                 cell.accessoryView?.layer.cornerRadius = (cell.accessoryView?.frame.height ?? 20)/2
             }.onChange({ (img) in
                 if let aux = img.value {
-                    self.avatar.accept(aux.pngData())
+                    self.avatar.accept(aux.jpegData(compressionQuality: Metric.imgCompression))
                 } else {
                     self.avatar.accept(nil)
                 }

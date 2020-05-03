@@ -67,6 +67,9 @@
             }
         }
     ],
+    "img" : {
+        "compresion": 0.25
+    },
     "theme": {
         "global": {
             "radius": 5,

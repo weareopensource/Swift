@@ -19,6 +19,10 @@
 		BF0CD6B622563CC200844F9A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF0CD6B822563CC200844F9A /* Localizable.strings */; };
 		BF19509422B4EC2C00C593E5 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF19509322B4EC2C00C593E5 /* RxRelay.framework */; };
 		BF19509622B7CEEB00C593E5 /* Url.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF19509522B7CEEB00C593E5 /* Url.swift */; };
+		BF1D7049245F54B100F8EA36 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1D7048245F54B100F8EA36 /* NVActivityIndicatorView.framework */; };
+		BF1D704B245F54BB00F8EA36 /* ImageRow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1D704A245F54BB00F8EA36 /* ImageRow.framework */; };
+		BF1D704D245F561100F8EA36 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1D704C245F561100F8EA36 /* Data.swift */; };
+		BF1D704F245F561C00F8EA36 /* NVActivityIndicatorView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1D704E245F561C00F8EA36 /* NVActivityIndicatorView+Rx.swift */; };
 		BF2AE774228C2DDC003C5B85 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF2AE773228C2DDB003C5B85 /* Alamofire.framework */; };
 		BF313C71229E64C200ADECF2 /* Validator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF313C70229E64C200ADECF2 /* Validator.framework */; };
 		BF31714322AA6E7C005F2732 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4A2F35225B4F7F0001B4CE /* RxSwift.framework */; };
@@ -36,6 +40,7 @@
 		BF49EA0D2362CC2D00FF06E9 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF49EA0C2362CC2D00FF06E9 /* L10n.swift */; };
 		BF49EA132362E51B00FF06E9 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF49EA122362E51B00FF06E9 /* UserController.swift */; };
 		BF49EA152362E53D00FF06E9 /* UserFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF49EA142362E53D00FF06E9 /* UserFlow.swift */; };
+		BF49EA172362E54800FF06E9 /* UserReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF49EA162362E54800FF06E9 /* UserReactor.swift */; };
 		BF4A2F37225B4F7F0001B4CE /* RxFlow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4A2F31225B4F7F0001B4CE /* RxFlow.framework */; };
 		BF4A2F3A225B4F7F0001B4CE /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4A2F34225B4F7F0001B4CE /* RxCocoa.framework */; };
 		BF4A2F45225B751F0001B4CE /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A2F44225B751F0001B4CE /* AppFlow.swift */; };
@@ -63,7 +68,6 @@
 		BF4A2FCE2264A6810001B4CE /* development.json in Resources */ = {isa = PBXBuildFile; fileRef = BF4A2FCA2264A4B00001B4CE /* development.json */; };
 		BF4A2FD42265F4020001B4CE /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A2FD32265F4020001B4CE /* UserDefaults.swift */; };
 		BF4A2FD9226710F10001B4CE /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4A2FD8226710F10001B4CE /* RxDataSources.framework */; };
-		BF5D3793245D95A70096CEF7 /* UserReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D3792245D95A70096CEF7 /* UserReactor.swift */; };
 		BF62ADA723E45ECC000D5225 /* UIAlertController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62ADA623E45ECC000D5225 /* UIAlertController+Rx.swift */; };
 		BF71BD9322A12A2E002CF9DE /* Validations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF71BD9222A12A2E002CF9DE /* Validations.swift */; };
 		BF78B5F32293CD680057157A /* ObservableType+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF78B5F22293CD680057157A /* ObservableType+Extras.swift */; };
@@ -82,8 +86,6 @@
 		BF794D41226856E6000B19F3 /* Differentiator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF794D40226856E6000B19F3 /* Differentiator.framework */; };
 		BF794D51226880FB000B19F3 /* TasksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF794D50226880FB000B19F3 /* TasksService.swift */; };
 		BF794D532269C4FB000B19F3 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF794D522269C4FB000B19F3 /* TasksViewController.swift */; };
-		BF7E709C245CA447007DAB02 /* ImageRow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7E709B245CA447007DAB02 /* ImageRow.framework */; };
-		BF7E709E245CCD1D007DAB02 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7E709D245CCD1D007DAB02 /* Data.swift */; };
 		BF7F894D2383F0BB00F98D98 /* UITricks.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7F894C2383F0BB00F98D98 /* UITricks.swift */; };
 		BF8BD5F7235F30660083B912 /* KeyboardConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8BD5F6235F30660083B912 /* KeyboardConstraints.swift */; };
 		BF8C6723227C3E1E0012B5A8 /* TasksCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8C6722227C3E1E0012B5A8 /* TasksCellReactor.swift */; };
@@ -133,8 +135,6 @@
 		BFC81B002383CF6500D00D3C /* CoreCollectionViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC81AFF2383CF6500D00D3C /* CoreCollectionViewCellController.swift */; };
 		BFD9CB21238435B20034837F /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD9CB20238435B20034837F /* UIImage.swift */; };
 		BFD9CB23238435CB0034837F /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD9CB22238435CB0034837F /* UILabel.swift */; };
-		BFDA6771245DED04007038B4 /* NVActivityIndicatorView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDA6770245DED04007038B4 /* NVActivityIndicatorView+Rx.swift */; };
-		BFDA6773245DF1DA007038B4 /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFDA6772245DF1DA007038B4 /* NVActivityIndicatorView.framework */; };
 		BFDE25FE227B052D008CBD30 /* NSViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE25FD227B052D008CBD30 /* NSViewController+Rx.swift */; };
 		BFDE2600227B053D008CBD30 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE25FF227B053D008CBD30 /* UIViewController+Rx.swift */; };
 		BFDE2602227B17D4008CBD30 /* AppServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE2601227B17D4008CBD30 /* AppServicesProvider.swift */; };
@@ -191,6 +191,10 @@
 		BF0CD6B922563CC300844F9A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BF19509322B4EC2C00C593E5 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
 		BF19509522B7CEEB00C593E5 /* Url.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Url.swift; sourceTree = "<group>"; };
+		BF1D7048245F54B100F8EA36 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = Carthage/Build/iOS/NVActivityIndicatorView.framework; sourceTree = "<group>"; };
+		BF1D704A245F54BB00F8EA36 /* ImageRow.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageRow.framework; path = Carthage/Build/iOS/ImageRow.framework; sourceTree = "<group>"; };
+		BF1D704C245F561100F8EA36 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		BF1D704E245F561C00F8EA36 /* NVActivityIndicatorView+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NVActivityIndicatorView+Rx.swift"; sourceTree = "<group>"; };
 		BF2AE771228C1969003C5B85 /* Moya.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Moya.framework; path = Carthage/Build/iOS/Moya.framework; sourceTree = "<group>"; };
 		BF2AE773228C2DDB003C5B85 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		BF313C70229E64C200ADECF2 /* Validator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Validator.framework; path = Carthage/Build/iOS/Validator.framework; sourceTree = "<group>"; };
@@ -214,6 +218,7 @@
 		BF49EA0C2362CC2D00FF06E9 /* L10n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
 		BF49EA122362E51B00FF06E9 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		BF49EA142362E53D00FF06E9 /* UserFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFlow.swift; sourceTree = "<group>"; };
+		BF49EA162362E54800FF06E9 /* UserReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserReactor.swift; sourceTree = "<group>"; };
 		BF4A2F31225B4F7F0001B4CE /* RxFlow.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxFlow.framework; path = Carthage/Build/iOS/RxFlow.framework; sourceTree = "<group>"; };
 		BF4A2F32225B4F7F0001B4CE /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
 		BF4A2F34225B4F7F0001B4CE /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
@@ -245,7 +250,6 @@
 		BF4A2FCA2264A4B00001B4CE /* development.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = development.json; sourceTree = "<group>"; };
 		BF4A2FD32265F4020001B4CE /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		BF4A2FD8226710F10001B4CE /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
-		BF5D3792245D95A70096CEF7 /* UserReactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserReactor.swift; sourceTree = "<group>"; };
 		BF62ADA623E45ECC000D5225 /* UIAlertController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Rx.swift"; sourceTree = "<group>"; };
 		BF71BD9222A12A2E002CF9DE /* Validations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validations.swift; sourceTree = "<group>"; };
 		BF78B5F22293CD680057157A /* ObservableType+Extras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+Extras.swift"; sourceTree = "<group>"; };
@@ -264,8 +268,6 @@
 		BF794D40226856E6000B19F3 /* Differentiator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Differentiator.framework; path = Carthage/Build/iOS/Differentiator.framework; sourceTree = "<group>"; };
 		BF794D50226880FB000B19F3 /* TasksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksService.swift; sourceTree = "<group>"; };
 		BF794D522269C4FB000B19F3 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
-		BF7E709B245CA447007DAB02 /* ImageRow.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageRow.framework; path = Carthage/Build/iOS/ImageRow.framework; sourceTree = "<group>"; };
-		BF7E709D245CCD1D007DAB02 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		BF7F894C2383F0BB00F98D98 /* UITricks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITricks.swift; sourceTree = "<group>"; };
 		BF8BD5F6235F30660083B912 /* KeyboardConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardConstraints.swift; sourceTree = "<group>"; };
 		BF8C6722227C3E1E0012B5A8 /* TasksCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksCellReactor.swift; sourceTree = "<group>"; };
@@ -316,8 +318,6 @@
 		BFC81AFF2383CF6500D00D3C /* CoreCollectionViewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreCollectionViewCellController.swift; sourceTree = "<group>"; };
 		BFD9CB20238435B20034837F /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		BFD9CB22238435CB0034837F /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
-		BFDA6770245DED04007038B4 /* NVActivityIndicatorView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NVActivityIndicatorView+Rx.swift"; sourceTree = "<group>"; };
-		BFDA6772245DF1DA007038B4 /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = Carthage/Build/iOS/NVActivityIndicatorView.framework; sourceTree = "<group>"; };
 		BFDE25FD227B052D008CBD30 /* NSViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSViewController+Rx.swift"; sourceTree = "<group>"; };
 		BFDE25FF227B053D008CBD30 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		BFDE2601227B17D4008CBD30 /* AppServicesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServicesProvider.swift; sourceTree = "<group>"; };
@@ -335,11 +335,13 @@
 			files = (
 				BF78B62A229D3F090057157A /* Toaster.framework in Frameworks */,
 				BF8CAC6A2369741A00B0B546 /* Eureka.framework in Frameworks */,
+				BF1D7049245F54B100F8EA36 /* NVActivityIndicatorView.framework in Frameworks */,
 				BF9A3642228C33A900EE2AB8 /* ReactorKitRuntime.framework in Frameworks */,
 				BFBA33882403F84900CF9299 /* Kingfisher.framework in Frameworks */,
 				BF05418F2361EF98008628CF /* FontAwesome.framework in Frameworks */,
 				BF9A3643228C33A900EE2AB8 /* ReactorKit.framework in Frameworks */,
 				BF794D41226856E6000B19F3 /* Differentiator.framework in Frameworks */,
+				BF1D704B245F54BB00F8EA36 /* ImageRow.framework in Frameworks */,
 				BF4A2F37225B4F7F0001B4CE /* RxFlow.framework in Frameworks */,
 				BF4A2F3A225B4F7F0001B4CE /* RxCocoa.framework in Frameworks */,
 				BF4A2FB4226331B30001B4CE /* CocoaLumberjack.framework in Frameworks */,
@@ -347,11 +349,9 @@
 				BF4A2F6D225B7D0B0001B4CE /* Reusable.framework in Frameworks */,
 				BF4A2FC42264A2350001B4CE /* SwiftyJSON.framework in Frameworks */,
 				BF8F6ED1227063F100B9447A /* RxOptional.framework in Frameworks */,
-				BFDA6773245DF1DA007038B4 /* NVActivityIndicatorView.framework in Frameworks */,
 				BF4A2FD9226710F10001B4CE /* RxDataSources.framework in Frameworks */,
 				BF8F6ED92273442100B9447A /* SnapKit.framework in Frameworks */,
 				BF2AE774228C2DDC003C5B85 /* Alamofire.framework in Frameworks */,
-				BF7E709C245CA447007DAB02 /* ImageRow.framework in Frameworks */,
 				BF9A365B228C39E200EE2AB8 /* RxMoya.framework in Frameworks */,
 				BF9A368A2291BF8C00EE2AB8 /* KeychainAccess.framework in Frameworks */,
 				BF78B61A2295DBF70057157A /* RxAppState.framework in Frameworks */,
@@ -573,7 +573,7 @@
 		BF49EA112362E4FE00FF06E9 /* reactors */ = {
 			isa = PBXGroup;
 			children = (
-				BF5D3792245D95A70096CEF7 /* UserReactor.swift */,
+				BF49EA162362E54800FF06E9 /* UserReactor.swift */,
 				BFA92D1D237BEEAB006A3B8D /* UserCellReactor.swift */,
 				BFA92D1B237AED34006A3B8D /* UserViewReactor.swift */,
 			);
@@ -583,8 +583,8 @@
 		BF4A2F30225B4F7F0001B4CE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BFDA6772245DF1DA007038B4 /* NVActivityIndicatorView.framework */,
-				BF7E709B245CA447007DAB02 /* ImageRow.framework */,
+				BF1D704A245F54BB00F8EA36 /* ImageRow.framework */,
+				BF1D7048245F54B100F8EA36 /* NVActivityIndicatorView.framework */,
 				BFBA33872403F84900CF9299 /* Kingfisher.framework */,
 				BF05418E2361EF98008628CF /* FontAwesome.framework */,
 				BF19509322B4EC2C00C593E5 /* RxRelay.framework */,
@@ -755,7 +755,7 @@
 				BFD9CB22238435CB0034837F /* UILabel.swift */,
 				BF4A2F86225C8F160001B4CE /* UILocalizations.swift */,
 				BF4A2FD32265F4020001B4CE /* UserDefaults.swift */,
-				BF7E709D245CCD1D007DAB02 /* Data.swift */,
+				BF1D704C245F561100F8EA36 /* Data.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -970,11 +970,11 @@
 			children = (
 				BF0BB9FA236B495F00454BDD /* Eureka+Valid+Rx.swift */,
 				BFDE25FD227B052D008CBD30 /* NSViewController+Rx.swift */,
+				BF1D704E245F561C00F8EA36 /* NVActivityIndicatorView+Rx.swift */,
 				BFDE25FF227B053D008CBD30 /* UIViewController+Rx.swift */,
 				BF78B5F22293CD680057157A /* ObservableType+Extras.swift */,
 				BF62ADA623E45ECC000D5225 /* UIAlertController+Rx.swift */,
 				BFBA338B2403FBB500CF9299 /* UIImageView+Kingfisher.swift */,
-				BFDA6770245DED04007038B4 /* NVActivityIndicatorView+Rx.swift */,
 			);
 			path = Rx;
 			sourceTree = "<group>";
@@ -1231,7 +1231,7 @@
 				BFDE2604227B185E008CBD30 /* CoreService.swift in Sources */,
 				BFA92D17237AC709006A3B8D /* UserService.swift in Sources */,
 				BF425488221EBB9700395AE6 /* SecondController.swift in Sources */,
-				BF7E709E245CCD1D007DAB02 /* Data.swift in Sources */,
+				BF1D704D245F561100F8EA36 /* Data.swift in Sources */,
 				BF4A2F6A225B7C200001B4CE /* OnBoardingController.swift in Sources */,
 				BFE4BB47226CC7BD00739735 /* TasksViewReactor.swift in Sources */,
 				BF9A367D228EE72700EE2AB8 /* Errors.swift in Sources */,
@@ -1277,10 +1277,10 @@
 				BFC81B002383CF6500D00D3C /* CoreCollectionViewCellController.swift in Sources */,
 				BF8BD5F7235F30660083B912 /* KeyboardConstraints.swift in Sources */,
 				BF78B622229949410057157A /* AuthSignupController.swift in Sources */,
-				BF5D3793245D95A70096CEF7 /* UserReactor.swift in Sources */,
 				BF9A368322900F7200EE2AB8 /* AuthApi.swift in Sources */,
 				BFA92D15237AC684006A3B8D /* UserApi.swift in Sources */,
 				BF058D772282BCAC00E2A077 /* AuthSigninController.swift in Sources */,
+				BF49EA172362E54800FF06E9 /* UserReactor.swift in Sources */,
 				BF9A368822902DE200EE2AB8 /* AuthResponses.swift in Sources */,
 				BF4A2FD42265F4020001B4CE /* UserDefaults.swift in Sources */,
 				BFA92D1C237AED34006A3B8D /* UserViewReactor.swift in Sources */,
@@ -1293,7 +1293,7 @@
 				BF78B61E2296CE7B0057157A /* TokenState.swift in Sources */,
 				BF4A2F74225BB4B90001B4CE /* AppSteps.swift in Sources */,
 				BF9A3670228D5F2700EE2AB8 /* Stubbed.swift in Sources */,
-				BFDA6771245DED04007038B4 /* NVActivityIndicatorView+Rx.swift in Sources */,
+				BF1D704F245F561C00F8EA36 /* NVActivityIndicatorView+Rx.swift in Sources */,
 				BFD9CB23238435CB0034837F /* UILabel.swift in Sources */,
 				BFBA339224040F8A00CF9299 /* String.swift in Sources */,
 				BF9A3663228C3F2500EE2AB8 /* TasksApi.swift in Sources */,
