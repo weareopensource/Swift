@@ -4,8 +4,8 @@ struct Metric {
     static let onBackground = UIColor(named: config["theme"]["themes"]["waos"]["onBackground"].string ?? "")
     static let loaderWidth = CGFloat(config["theme"]["loader"]["width"].float ?? 50)
     static let loaderHeight = CGFloat(config["theme"]["loader"]["height"].float ?? 50)
-    static let loaderDisplayTimeThreshold = Int(config["theme"]["loader"]["displayTimeThreshold"].int ?? 1)
-    static let loaderMinimumDisplayTime = Int(config["theme"]["loader"]["minimumDisplayTime"].int ?? 2)
+    static let loaderDisplayTimeThreshold = Int(config["theme"]["loader"]["displayTimeThreshold"].int ?? 1000)
+    static let loaderMinimumDisplayTime = Int(config["theme"]["loader"]["minimumDisplayTime"].int ?? 2000)
     static let activityType: [NVActivityIndicatorType] = [.ballClipRotate, .ballClipRotateMultiple, .ballClipRotatePulse, .ballDoubleBounce, .ballGridBeat, .ballGridPulse, .ballPulse, .ballPulseRise, .ballPulseSync, .ballRotate, .ballRotateChase, .ballScale, .ballScaleMultiple, .ballScaleRipple, .ballScaleRippleMultiple, .ballSpinFadeLoader, .ballTrianglePath, .circleStrokeSpin, .lineScale, .pacman, .orbit, .lineSpinFadeLoader, .lineScalePulseOut]
 }
 
