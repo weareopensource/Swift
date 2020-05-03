@@ -32,6 +32,8 @@
 	<key>UIMainStoryboardFile</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app requires access to your photos for alerts customizations and profil avatar.</string>
 	<array>
 		<string>armv7</string>
 	</array>
