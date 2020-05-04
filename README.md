@@ -45,6 +45,7 @@ Our stack Swift is actually in Beta.
 * **User** : classic register / auth or oAuth(microsoft, google) - profile management (update, avatar upload ...)
 * **User data privacy** : delete all data & account - send all data by mai
 * **Tasks** : list tasks - get task - add tasks - edit tasks - delete tasks
+* **Uploads** : get upload stream - add upload - auto delete old via api (ex : image => kingfisher: jwt, styles, cache,  or sharp via node api)
 
 ## :pushpin: Prerequisites
 
