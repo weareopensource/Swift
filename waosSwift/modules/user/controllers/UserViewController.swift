@@ -44,11 +44,11 @@ class UserViewController: CoreFormController, View, NVActivityIndicatorViewable 
         $0.sourceTypes = .PhotoLibrary
         $0.clearAction = .yes(style: .destructive)
         $0.allowEditor = true
+        $0.value = UIImage(named: "AppIcon")
     }
 
     let imageGravatar = UIImageView(frame: CGRect(x: 0, y: 0, width: 44, height: 44)).then {
         $0.contentMode = .scaleAspectFill
-        $0.image = UIImage(named: "AppIcon")
         $0.layer.masksToBounds = true
         $0.backgroundColor = UIColor.lightGray.withAlphaComponent(0.25)
     }
@@ -245,9 +245,17 @@ private extension UserViewController {
             .distinctUntilChanged()
             .subscribe(onNext: { avatar in
                 if (avatar != "") {
-                    self.imageAvatar.setImage(url: setUploadImageUrl(avatar, size: "256"), options: [.requestModifier(cookieModifier)])
-                    self.inputAvatar.value = self.imageAvatar.image
-                    self.inputAvatar.updateCell()
+                    self.imageAvatar.setImage(url: setUploadImageUrl(avatar, size: "256"), options: [.requestModifier(cookieModifier)]) { result in
+                        switch result {
+                        case .success(let value):
+                            self.inputAvatar.value = value.image
+                            self.inputAvatar.updateCell()
+                            break
+                        case .failure(let error):
+                            log.error("🌄 Error -> \(error)")
+                            break
+                        }
+                    }
                 }
             })
             .disposed(by: self.disposeBag)
