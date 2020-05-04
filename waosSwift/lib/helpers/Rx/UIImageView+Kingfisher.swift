@@ -50,11 +50,10 @@ extension UIImageView {
         url: String?,
         placeholder: UIImage? = nil,
         options: ImageOptions? = nil,
-        progress: ((Int64, Int64) -> Void)? = nil,
-        completion: ((ImageResult) -> Void)? = nil,
         style: imageStyle? = nil,
-        defaultImage: String? = nil // should be a Bundle.main.path image name of type png
-    ) -> DownloadTask? {
+        defaultImage: String? = nil, // should be a Bundle.main.path image png
+        progressBlock: DownloadProgressBlock? = nil,
+        completionHandler: ((Result<RetrieveImageResult, KingfisherError>) -> Void)? = nil) -> DownloadTask? {
 
         // Custome Filters add
         var options = options ?? []
@@ -83,13 +82,13 @@ extension UIImageView {
         }
 
         if(defaultImage != nil && (url == "default" || url == "default.png" || url == "default.jpg" || url == "")) {
-            // return default if default
             let provider = LocalFileImageDataProvider(fileURL: URL(fileURLWithPath: Bundle.main.path(forResource: defaultImage, ofType: "png") ?? ""))
             return self.kf.setImage(
                 with: provider,
                 placeholder: placeholder,
                 options: options,
-                progressBlock: progress
+                progressBlock: progressBlock,
+                completionHandler: completionHandler
             )
         } else {
             // return image else
@@ -97,20 +96,10 @@ extension UIImageView {
                 with: URL(string: url ?? ""),
                 placeholder: placeholder,
                 options: options,
-                progressBlock: progress
+                progressBlock: progressBlock,
+                completionHandler: completionHandler
             )
         }
-//        completionHandler: { result in
-//            switch result {
-//            case .success:
-//                // print("Image: \(value.image). Got from: \(value.cacheType)")
-//                break
-//            case .failure:
-//                //case .failure(let error):
-//                // log.error("🌄 Error -> \(error)")
-//                break
-//            }
-//        }
 
     }
 
