@@ -39,6 +39,12 @@ enum imageStyle {
 }
 
 extension UIImageView {
+
+    struct Metric {
+        static let imgStylesBlured = CGFloat(config["img"]["styles"]["blured"].float ?? 10)
+        static let imgStylesOverlayFraction = CGFloat(config["img"]["styles"]["overlayFraction"].float ?? 0.9)
+    }
+
     @discardableResult
     func setImage(
         url: String?,
@@ -58,13 +64,13 @@ extension UIImageView {
             options.append(.forceRefresh)
         case .blured:
             options.append(.processor(
-                OverlayImageProcessor(overlay: .black, fraction: 0.9)
-                |> BlurImageProcessor(blurRadius: 20)
+                OverlayImageProcessor(overlay: .black, fraction: Metric.imgStylesOverlayFraction)
+                    |> BlurImageProcessor(blurRadius: Metric.imgStylesBlured)
             ))
         case .bwBlured:
             options.append(.processor(
-                OverlayImageProcessor(overlay: .black, fraction: 0.85)
-                |> BlurImageProcessor(blurRadius: 20)
+                OverlayImageProcessor(overlay: .black, fraction: Metric.imgStylesOverlayFraction)
+                |> BlurImageProcessor(blurRadius: Metric.imgStylesBlured)
                 |> BlackWhiteProcessor()
             ))
         default:
