@@ -19,6 +19,7 @@ class UserController: CoreFormController, View {
     struct Metric {
         static let margin = CGFloat(config["theme"]["global"]["margin"].int ?? 0)
         static let radius = CGFloat(config["theme"]["global"]["radius"].int ?? 0)
+        static let avatar = CGFloat(100)
     }
 
     // MARK: UI
@@ -30,6 +31,7 @@ class UserController: CoreFormController, View {
         $0.layer.masksToBounds = true
         $0.backgroundColor = UIColor.lightGray.withAlphaComponent(0.25)
         $0.kf.indicatorType = .activity
+        $0.layer.cornerRadius = Metric.avatar/2
     }
     let labelName = CoreUILabel().then {
         $0.textAlignment = .center
@@ -109,7 +111,7 @@ class UserController: CoreFormController, View {
                     view.addSubview(self.labelName)
                     view.addSubview(self.labelEmail)
                     self.imageAvatar.snp.makeConstraints { (make) -> Void in
-                        make.width.height.equalTo(100)
+                        make.width.height.equalTo(Metric.avatar)
                         make.centerX.equalTo(view)
                         make.top.equalTo(view).offset(Metric.margin)
                     }
@@ -308,7 +310,6 @@ private extension UserController {
             .subscribe(onNext: { email in
                 if (reactor.currentState.user.avatar == "") {
                     self.imageAvatar.setImage(url: "https://secure.gravatar.com/avatar/\(email.md5)?s=200&d=mp")
-                    self.imageAvatar.layer.cornerRadius = self.imageAvatar.frame.height/2
                 }
             })
             .disposed(by: self.disposeBag)
@@ -318,10 +319,8 @@ private extension UserController {
             .subscribe(onNext: { avatar in
                 if (avatar != "") {
                     self.imageAvatar.setImage(url: setUploadImageUrl(avatar, size: "256"), options: [.requestModifier(cookieModifier)])
-                    self.imageAvatar.layer.cornerRadius = self.imageAvatar.frame.height/2
                 } else {
                     self.imageAvatar.setImage(url: "https://secure.gravatar.com/avatar/\(reactor.currentState.user.email.md5)?s=200&d=mp")
-                    self.imageAvatar.layer.cornerRadius = self.imageAvatar.frame.height/2
                 }
             })
             .disposed(by: self.disposeBag)
