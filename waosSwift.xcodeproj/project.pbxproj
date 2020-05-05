@@ -123,8 +123,6 @@
 		BFA92D17237AC709006A3B8D /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D16237AC709006A3B8D /* UserService.swift */; };
 		BFA92D1A237AED1F006A3B8D /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D19237AED1F006A3B8D /* UserViewController.swift */; };
 		BFA92D1C237AED34006A3B8D /* UserViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D1B237AED34006A3B8D /* UserViewReactor.swift */; };
-		BFA92D1E237BEEAB006A3B8D /* UserCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D1D237BEEAB006A3B8D /* UserCellReactor.swift */; };
-		BFA92D20237BEEC0006A3B8D /* UserCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D1F237BEEC0006A3B8D /* UserCellController.swift */; };
 		BFA92D2D237C050C006A3B8D /* CoreTableViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D2A237C050C006A3B8D /* CoreTableViewCellController.swift */; };
 		BFA92D2E237C050C006A3B8D /* CoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D2B237C050C006A3B8D /* CoreController.swift */; };
 		BFA92D2F237C050C006A3B8D /* CoreFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA92D2C237C050C006A3B8D /* CoreFormController.swift */; };
@@ -306,8 +304,6 @@
 		BFA92D16237AC709006A3B8D /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		BFA92D19237AED1F006A3B8D /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		BFA92D1B237AED34006A3B8D /* UserViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewReactor.swift; sourceTree = "<group>"; };
-		BFA92D1D237BEEAB006A3B8D /* UserCellReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellReactor.swift; sourceTree = "<group>"; };
-		BFA92D1F237BEEC0006A3B8D /* UserCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellController.swift; sourceTree = "<group>"; };
 		BFA92D2A237C050C006A3B8D /* CoreTableViewCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreTableViewCellController.swift; sourceTree = "<group>"; };
 		BFA92D2B237C050C006A3B8D /* CoreController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreController.swift; sourceTree = "<group>"; };
 		BFA92D2C237C050C006A3B8D /* CoreFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreFormController.swift; sourceTree = "<group>"; };
@@ -556,7 +552,6 @@
 			isa = PBXGroup;
 			children = (
 				BF49EA122362E51B00FF06E9 /* UserController.swift */,
-				BFA92D1F237BEEC0006A3B8D /* UserCellController.swift */,
 				BFA92D19237AED1F006A3B8D /* UserViewController.swift */,
 			);
 			path = controllers;
@@ -574,7 +569,6 @@
 			isa = PBXGroup;
 			children = (
 				BF49EA162362E54800FF06E9 /* UserReactor.swift */,
-				BFA92D1D237BEEAB006A3B8D /* UserCellReactor.swift */,
 				BFA92D1B237AED34006A3B8D /* UserViewReactor.swift */,
 			);
 			path = reactors;
@@ -1241,13 +1235,11 @@
 				BFBA338C2403FBB500CF9299 /* UIImageView+Kingfisher.swift in Sources */,
 				BF425484221EBB9700395AE6 /* AppDelegate.swift in Sources */,
 				BF7F894D2383F0BB00F98D98 /* UITricks.swift in Sources */,
-				BFA92D1E237BEEAB006A3B8D /* UserCellReactor.swift in Sources */,
 				BF49EA0D2362CC2D00FF06E9 /* L10n.swift in Sources */,
 				BF19509622B7CEEB00C593E5 /* Url.swift in Sources */,
 				BF49EA132362E51B00FF06E9 /* UserController.swift in Sources */,
 				BFDE2600227B053D008CBD30 /* UIViewController+Rx.swift in Sources */,
 				BF794D3A22671CD8000B19F3 /* TasksModel.swift in Sources */,
-				BFA92D20237BEEC0006A3B8D /* UserCellController.swift in Sources */,
 				BFA92D3D237DA119006A3B8D /* CoreUITableView.swift in Sources */,
 				BF78B5FA22942CBB0057157A /* CoreModel.swift in Sources */,
 				BF78B5FC22942CCD0057157A /* CoreResponses.swift in Sources */,

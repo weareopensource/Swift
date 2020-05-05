@@ -33,6 +33,7 @@ class UserController: CoreFormController, View {
     }
     let labelName = CoreUILabel().then {
         $0.textAlignment = .center
+        $0.text = "totot"
     }
     let labelEmail = CoreUILabel().then {
         $0.textAlignment = .center
@@ -343,7 +344,7 @@ private extension UserController {
         reactor.state
             .map { $0.user.email }
             .distinctUntilChanged()
-            .bind(to: self.labelName.rx.text)
+            .bind(to: self.labelEmail.rx.text)
             .disposed(by: self.disposeBag)
         // refreshing
         reactor.state
