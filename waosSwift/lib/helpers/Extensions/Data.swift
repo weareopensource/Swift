@@ -19,4 +19,10 @@ extension Data {
         copyBytes(to: &c, count: 1)
         return Data.mimeTypeSignatures[c] ?? "application/octet-stream"
     }
+
+    var imgExtension: String {
+        var c: UInt8 = 0
+        copyBytes(to: &c, count: 1)
+        return String(Data.mimeTypeSignatures[c]?.split(separator: "/")[1] ?? "unknown")
+    }
 }
