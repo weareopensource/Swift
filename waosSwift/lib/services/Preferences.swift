@@ -1,4 +1,10 @@
 /**
+ * Dependencies
+ */
+
+import KeychainAccess
+
+/**
  * Struct
  */
 
@@ -41,6 +47,13 @@ class PreferencesService: PreferencesServiceType {
             return UserDefaults.standard[#function] ?? true
         }
         set {
+            if(!newValue) {
+                do {
+                    try keychain.remove("Cookie")
+                } catch let error {
+                    log.error(error)
+                }
+            }
             UserDefaults.standard[#function] = newValue
         }
     }

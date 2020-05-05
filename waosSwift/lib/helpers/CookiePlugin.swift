@@ -21,7 +21,7 @@ struct CookiePlugin: PluginType {
         return request
     }
 
-    func didReceive(_ result: Result<Moya.Response, MoyaError>, target: TargetType) {
+    func didReceive(_ result: Swift.Result<Moya.Response, MoyaError>, target: TargetType) {
         switch result {
         case .success(let response):
             guard let response = response.response else {
