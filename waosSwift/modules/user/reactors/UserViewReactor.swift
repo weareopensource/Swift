@@ -83,7 +83,7 @@ final class UserViewReactor: Reactor {
             return .concat([
                 .just(.setRefreshing(true)),
                 self.provider.userService
-                    .updateAvatar(file: data, partName: "img", fileName: "test.png", mimeType: data.mimeType)
+                    .updateAvatar(file: data, partName: "img", fileName: "test.\(data.imgExtension)", mimeType: data.mimeType)
                     .map { result in
                         switch result {
                         case .success: return .success("avatar updated")
