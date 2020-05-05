@@ -24,22 +24,6 @@ public extension Reactive where Base: BaseRow, Base: RowType {
         return ControlProperty(values: source, valueSink: bindingObserver)
     }
 
-    var isHighlighted: ControlProperty<Bool> {
-        let source = Observable<Bool>.create { [weak base] observer in
-            if let strongBase = base {
-                observer.onNext(strongBase.isHighlighted)
-                strongBase.onCellHighlightChanged({ (_, row) in
-                    observer.onNext(row.isHighlighted)
-                })
-            }
-            return Disposables.create(with: observer.onCompleted)
-        }
-        let bindingObserver = Binder(base) { (row, isHighlighted) in
-            row.isHighlighted = isHighlighted
-        }
-        return ControlProperty(values: source, valueSink: bindingObserver)
-    }
-
     var tap: ControlEvent<()> {
         //  let source = methodInvoked(#selector(Base.onCellSelection(_:))).map { _ in }
         let source = Observable<()>.create { [weak base] observer in

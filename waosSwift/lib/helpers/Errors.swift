@@ -109,9 +109,11 @@ extension CustomError: Decodable {
 struct DisplayError: Error {
     let title: String
     let description: String
+    let type: String?
 
-    init(title: String, description: String) {
+    init(title: String, description: String?, type: String? = "") {
         self.title = title
-        self.description = description
+        self.description = description ?? "Unknown error"
+        self.type = type
     }
 }

@@ -16,8 +16,15 @@ final class UserViewReactor: Reactor {
     enum Action {
         // inputs
         case updateFirstName(String)
+        case validateFirstName(String)
         case updateLastName(String)
+        case validateLastName(String)
         case updateEmail(String)
+        case validateEmail(String)
+        // extra
+        case updateBio(String)
+        case validateBio(String)
+        // avatar
         case updateAvatar(Data)
         case deleteAvatar
         // default
@@ -30,6 +37,8 @@ final class UserViewReactor: Reactor {
         case updateFirstName(String)
         case updateLastName(String)
         case updateEmail(String)
+        // extra
+        case updateBio(String)
         // default
         case dismiss
         case setRefreshing(Bool)
@@ -42,12 +51,13 @@ final class UserViewReactor: Reactor {
         var user: User
         var isDismissed: Bool
         var isRefreshing: Bool
-        var error: DisplayError?
+        var errors: [DisplayError]
 
         init(user: User) {
             self.user = user
             self.isDismissed = false
             self.isRefreshing = false
+            self.errors = []
         }
     }
 
@@ -67,16 +77,36 @@ final class UserViewReactor: Reactor {
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        // firstName
+        // inputs
         case let .updateFirstName(firstName):
             return .just(.updateFirstName(firstName))
-            // update password
-        // lastname
+        case let .validateFirstName(section):
+            switch currentState.user.validate(.firstname, section) {
+            case .valid: return .just(.success("\(User.Validators.firstname)"))
+            case let .invalid(err): return .just(.error(err[0] as! CustomError))
+            }
         case let .updateLastName(lastName):
             return .just(.updateLastName(lastName))
-        // email
+        case let .validateLastName(section):
+            switch currentState.user.validate(.lastname, section) {
+            case .valid: return .just(.success("\(User.Validators.lastname)"))
+            case let .invalid(err): return .just(.error(err[0] as! CustomError))
+            }
         case let .updateEmail(email):
             return .just(.updateEmail(email))
+        case let .validateEmail(section):
+            switch currentState.user.validate(.email, section) {
+            case .valid: return .just(.success("\(User.Validators.email)"))
+            case let .invalid(err): return .just(.error(err[0] as! CustomError))
+            }
+        // extra
+        case let .updateBio(bio):
+            return .just(.updateBio(bio))
+        case let .validateBio(section):
+            switch currentState.user.validate(.bio, section) {
+            case .valid: return .just(.success("\(User.Validators.bio)"))
+            case let .invalid(err): return .just(.error(err[0] as! CustomError))
+            }
         // avatar
         case let .updateAvatar(data):
             log.verbose("♻️ Action -> Mutation : update Avatar")
@@ -124,19 +154,16 @@ final class UserViewReactor: Reactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
-        // update firstname
+        // inputs
         case let .updateFirstName(firstName):
             state.user.firstName = firstName
-        // update lastname
         case let .updateLastName(lastName):
             state.user.lastName = lastName
-        // update email
         case let .updateEmail(email):
             state.user.email = email
-            // set
-        case let .success(success):
-            log.verbose("♻️ Mutation -> State : succes \(success)")
-            state.error = nil
+        // extra
+        case let .updateBio(bio):
+            state.user.bio = bio
         // refreshing
         case let .setRefreshing(isRefreshing):
             state.isRefreshing = isRefreshing
@@ -144,14 +171,21 @@ final class UserViewReactor: Reactor {
         case .dismiss:
             log.verbose("♻️ Mutation -> State : dismiss")
             state.isDismissed = true
-            state.error = nil
+            state.errors = []
+        // success
+        case let .success(success):
+            log.verbose("♻️ Mutation -> State : succes \(success)")
+            state.errors = purgeErrors(errors: state.errors, titles: [success, "Schema validation error", "jwt", "unknow"])
         // error
         case let .error(error):
             log.verbose("♻️ Mutation -> State : error \(error)")
             if error.code == 401 {
                 self.provider.preferencesService.isLogged = false
+                state.errors.insert(DisplayError(title: "jwt", description: "Wrong Password or Email."), at: 0)
             } else {
-                state.error = DisplayError(title: error.message, description: (error.description ?? "Unknown error"))
+                if state.errors.firstIndex(where: { $0.title == error.message }) == nil {
+                    state.errors.insert(DisplayError(title: error.message, description: error.description, type: error.type), at: 0)
+                }
             }
         }
         return state

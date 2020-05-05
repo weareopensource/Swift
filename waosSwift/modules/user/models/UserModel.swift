@@ -23,14 +23,16 @@ struct User {
     var roles: [String]?
     var password: String?
     var avatar: String
+    var bio: String?
 
-    init(firstName: String = "", lastName: String = "", email: String = "", roles: [String]? = [], password: String? = "", avatar: String = "") {
+    init(firstName: String = "", lastName: String = "", email: String = "", roles: [String]? = [], password: String? = "", avatar: String = "", bio: String? = "") {
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
         self.roles = roles
         self.password = password
         self.avatar = avatar
+        self.bio = bio
     }
 }
 
@@ -43,6 +45,7 @@ extension User: Hashable, Codable {
         case roles
         case password
         case avatar
+        case bio
     }
 
     init(from decoder: Decoder) throws {
@@ -55,6 +58,7 @@ extension User: Hashable, Codable {
         roles = try container.decodeIfPresent([String].self, forKey: .roles)
         password = try container.decodeIfPresent(String.self, forKey: .password)
         avatar = try container.decode(String.self, forKey: .avatar)
+        bio = try container.decodeIfPresent(String.self, forKey: .bio)
     }
 }
 
@@ -64,35 +68,41 @@ extension User: Validatable {
         case firstname = "Wrong firstname format"
         case lastname = "Wrong lastname format"
         case email = "Wrong email format"
-        case password = "Wrong password format (8 char, 1 number, 1 special)"
+        case password = "Wrong password format (8 chars, 1 number, 1 special)"
+        case bio = "Wrong bio format (200 chars)"
     }
 
-    func validate(_ validator: Validators) -> ValidationResult {
+    func validate(_ validator: Validators, _ section: String? = nil) -> ValidationResult {
         // default error
-        let err = CustomError(message: "\(validator)", description: validator.rawValue, type: "ValidationError")
+        let err = CustomError(message: "\(validator)", description: validator.rawValue, type: section ?? "ValidationError")
         // rules
-        let emails = ValidationRulePattern(pattern: EmailValidationPattern.standard, error: err)
+        let ruleEmails = ValidationRulePattern(pattern: EmailValidationPattern.standard, error: err)
 
-        var names = ValidationRuleSet<String>()
-        names.add(rule: ValidationRulePattern(pattern: AlphaNumValidationPattern(), error: err))
-        names.add(rule: ValidationRuleLength(min: 1, error: err))
-        names.add(rule: ValidationRuleLength(max: 30, error: err))
+        var rulesNames = ValidationRuleSet<String>()
+        rulesNames.add(rule: ValidationRulePattern(pattern: AlphaNumValidationPattern(), error: err))
+        rulesNames.add(rule: ValidationRuleLength(min: 1, error: err))
+        rulesNames.add(rule: ValidationRuleLength(max: 30, error: err))
 
-        var passwords = ValidationRuleSet<String>()
-        passwords.add(rule: ValidationRulePattern(pattern: PasswordValidationPattern(), error: err))
-        passwords.add(rule: ValidationRuleLength(min: 8, error: err))
-        passwords.add(rule: ValidationRuleLength(max: 128, error: err))
+        var rulesPasswords = ValidationRuleSet<String>()
+        rulesPasswords.add(rule: ValidationRulePattern(pattern: PasswordValidationPattern(), error: err))
+        rulesPasswords.add(rule: ValidationRuleLength(min: 8, error: err))
+        rulesPasswords.add(rule: ValidationRuleLength(max: 128, error: err))
+
+        var rulesBios = ValidationRuleSet<String>()
+        rulesBios.add(rule: ValidationRuleLength(max: 200, error: err))
 
         // validator
         switch validator {
         case .firstname:
-            return firstName.validate(rules: names)
+            return firstName.validate(rules: rulesNames)
         case .lastname:
-            return lastName.validate(rules: names)
+            return lastName.validate(rules: rulesNames)
         case .email:
-            return email.validate(rule: emails)
+            return email.validate(rule: ruleEmails)
         case .password:
-            return password?.validate(rules: passwords) ?? ValidationResult.valid
+            return password?.validate(rules: rulesPasswords) ?? ValidationResult.valid
+        case .bio:
+            return bio?.validate(rules: rulesBios) ?? ValidationResult.valid
         }
     }
 }

@@ -19,6 +19,7 @@ class CoreFormController: FormViewController {
         static let tabBarTintColor = NSString(string: config["theme"]["tabBar"]["tintColor"].string ?? "").boolValue
         static let tabBarTitle = NSString(string: config["theme"]["tabBar"]["title"].string ?? "").boolValue
         static let imgCompression = CGFloat(config["img"]["compresion"].float ?? 1.0)
+        static let margin = CGFloat(config["theme"]["global"]["margin"].int ?? 0)
     }
 
     lazy private(set) var className: String = {

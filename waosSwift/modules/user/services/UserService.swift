@@ -37,7 +37,7 @@ final class UserService: CoreService, UserServiceType {
     func update(_ user: User) -> Observable<MyResult<UserResponse, CustomError>> {
         log.verbose("🔌 service : update ", user.firstName)
         return self.networking
-            .request(.update(firstName: user.firstName, lastName: user.lastName, email: user.email))
+            .request(.update(firstName: user.firstName, lastName: user.lastName, email: user.email, bio: user.bio ?? ""))
             .map(UserResponse.self)
             .map { response in
                 self.userSubject.onNext(response.data)
