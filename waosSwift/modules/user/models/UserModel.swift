@@ -20,11 +20,11 @@ struct User {
     var firstName: String
     var lastName: String
     var email: String
-    var roles: [String]
+    var roles: [String]?
     var password: String?
     var avatar: String
 
-    init(firstName: String = "", lastName: String = "", email: String = "", roles: [String] = [], password: String? = "", avatar: String = "") {
+    init(firstName: String = "", lastName: String = "", email: String = "", roles: [String]? = [], password: String? = "", avatar: String = "") {
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
@@ -52,7 +52,7 @@ extension User: Hashable, Codable {
         firstName = try container.decode(String.self, forKey: .firstName)
         lastName = try container.decode(String.self, forKey: .lastName)
         email = try container.decode(String.self, forKey: .email)
-        roles = try container.decode([String].self, forKey: .roles)
+        roles = try container.decodeIfPresent([String].self, forKey: .roles)
         password = try container.decodeIfPresent(String.self, forKey: .password)
         avatar = try container.decode(String.self, forKey: .avatar)
     }
