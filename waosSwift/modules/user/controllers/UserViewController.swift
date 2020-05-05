@@ -41,7 +41,7 @@ class UserViewController: CoreFormController, View, NVActivityIndicatorViewable 
     }
     // extra
     let inputBio = TextAreaRow {
-        $0.placeholder = "Notes"
+        $0.placeholder = L10n.userEditBio
         $0.textAreaHeight = .dynamic(initialTextViewHeight: 50)
     }
     let labelErrorsProfil = CoreUILabel().then {
@@ -283,6 +283,7 @@ private extension UserViewController {
             .disposed(by: self.disposeBag)
         // avatar
         reactor.state
+            .take(1)
             .debounce(.seconds(2), scheduler: MainScheduler.instance)
             .map { $0.user.email }
             .distinctUntilChanged()
@@ -331,6 +332,11 @@ private extension UserViewController {
             .subscribe(onNext: { count in
                 self.labelErrorsAccount.text = reactor.currentState.errors.filter({ $0.type == "account" }).map { $0.description }.joined(separator: ". ")
                 self.labelErrorsProfil.text = reactor.currentState.errors.filter({ $0.type == "profil" }).map { $0.description }.joined(separator: ". ")
+                if(count > 0 && self.labelErrorsAccount.text?.count == 0 && self.labelErrorsProfil.text?.count == 0) {
+                    let message: [String] = reactor.currentState.errors.map { "\($0.description)." }
+                    ToastCenter.default.cancelAll()
+                    Toast(text: message.joined(separator: "\n"), delay: 0, duration: Delay.long).show()
+                }
                 if(count > 0) {
                     self.barButtonDone.isEnabled = false
                 } else {
