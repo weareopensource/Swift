@@ -2,7 +2,7 @@
  * functions
  */
 
-public struct AlphaNumValidationPattern: ValidationPattern {
+public struct NameValidationPattern: ValidationPattern {
     public var pattern: String {
         return "[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]*"
     }

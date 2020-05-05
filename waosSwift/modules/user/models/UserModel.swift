@@ -65,11 +65,11 @@ extension User: Hashable, Codable {
 extension User: Validatable {
 
     enum Validators: String {
-        case firstname = "Wrong firstname format"
-        case lastname = "Wrong lastname format"
-        case email = "Wrong email format"
-        case password = "Wrong password format (8 chars, 1 number, 1 special)"
-        case bio = "Wrong bio format (200 chars)"
+        case firstname = "Wrong firstname (letters, 1 - 30)"
+        case lastname = "Wrong lastname (letters, 1 - 30)"
+        case email = "Wrong mail format"
+        case password = "Wrong password (1 number, 1 special char, > 8)"
+        case bio = "Wrong biography (< 200)"
     }
 
     func validate(_ validator: Validators, _ section: String? = nil) -> ValidationResult {
@@ -79,7 +79,7 @@ extension User: Validatable {
         let ruleEmails = ValidationRulePattern(pattern: EmailValidationPattern.standard, error: err)
 
         var rulesNames = ValidationRuleSet<String>()
-        rulesNames.add(rule: ValidationRulePattern(pattern: AlphaNumValidationPattern(), error: err))
+        rulesNames.add(rule: ValidationRulePattern(pattern: NameValidationPattern(), error: err))
         rulesNames.add(rule: ValidationRuleLength(min: 1, error: err))
         rulesNames.add(rule: ValidationRuleLength(max: 30, error: err))
 
