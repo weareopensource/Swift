@@ -11,5 +11,6 @@
         "email": "user@localhost.com",
         "lastName": "Local",
         "firstName": "User"
+        "bio": "bio"
     }
 }

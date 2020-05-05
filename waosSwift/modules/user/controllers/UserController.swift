@@ -33,7 +33,6 @@ class UserController: CoreFormController, View {
     }
     let labelName = CoreUILabel().then {
         $0.textAlignment = .center
-        $0.text = "totot"
     }
     let labelEmail = CoreUILabel().then {
         $0.textAlignment = .center

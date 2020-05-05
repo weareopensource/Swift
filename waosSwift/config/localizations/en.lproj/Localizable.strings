@@ -34,11 +34,12 @@
 "user_title"= "Profile";
 
 "user_edit"= "Edit";
-"user_edit_section"= "Account";
+"user_edit_section_account"= "Account";
 "user_edit_mail"= "Email";
 "user_edit_firstname"= "Firstname";
 "user_edit_lastname"= "Lastname";
-
+"user_edit_section_profile"= "Profile";
+"user_edit_bio"= "Biography";
 "user_edit_section_image"= "Profile picture";
 "user_edit_image"= "iPhone Gallery";
 "user_edit_image_gravatar"= "Gravatar";

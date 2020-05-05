@@ -27,17 +27,29 @@ class UserViewController: CoreFormController, View, NVActivityIndicatorViewable 
     // inputs
     let inputFirstName = TextRow {
         $0.title = L10n.userEditFirstname
-        $0.validationOptions = .validatesOnDemand
     }
     let inputLastName = TextRow {
         $0.title = L10n.userEditLastname
-        $0.validationOptions = .validatesOnDemand
     }
     let inputEmail = EmailRow {
         $0.title = L10n.userEditMail
-        $0.validationOptions = .validatesOnDemand
     }
-
+    let labelErrorsAccount = CoreUILabel().then {
+        $0.textAlignment = .left
+        $0.textColor = Metric.error
+        $0.font = UIFont.systemFont(ofSize: 13)
+    }
+    // extra
+    let inputBio = TextAreaRow {
+        $0.placeholder = "Notes"
+        $0.textAreaHeight = .dynamic(initialTextViewHeight: 50)
+    }
+    let labelErrorsProfil = CoreUILabel().then {
+        $0.textAlignment = .left
+        $0.textColor = Metric.error
+        $0.font = UIFont.systemFont(ofSize: 13)
+    }
+    // avatar
     let imageAvatar = UIImageView()
     let inputAvatar = ImageRow {
         $0.title = L10n.userEditImage
@@ -46,11 +58,12 @@ class UserViewController: CoreFormController, View, NVActivityIndicatorViewable 
         $0.allowEditor = true
         $0.value = UIImage(named: "AppIcon")
     }
-
     let imageGravatar = UIImageView(frame: CGRect(x: 0, y: 0, width: 44, height: 44)).then {
         $0.contentMode = .scaleAspectFill
         $0.layer.masksToBounds = true
         $0.backgroundColor = UIColor.lightGray.withAlphaComponent(0.25)
+        $0.layer.cornerRadius = 44/2
+
     }
     let buttonImageGravatar = ButtonRow {
         $0.title = L10n.userEditImageGravatar
@@ -73,10 +86,36 @@ class UserViewController: CoreFormController, View, NVActivityIndicatorViewable 
         super.viewDidLoad()
 
         form
-            +++ Section(header: L10n.userEditSection, footer: "")
+            +++ Section(header: L10n.userEditSectionAccount, footer: "") { section in
+                var footer = HeaderFooterView<UILabel>(.class)
+                footer.height = { 30 }
+                footer.onSetupView = {view, _ in
+                    view.addSubview(self.labelErrorsAccount)
+                    self.labelErrorsAccount.snp.makeConstraints { (make) -> Void in
+                        make.right.left.equalTo(view).offset(Metric.margin/2)
+                        make.top.equalTo(view).offset(Metric.margin)
+                    }
+                }
+                section.footer = footer
+            }
             <<< self.inputFirstName
             <<< self.inputLastName
             <<< self.inputEmail
+
+            +++ Section(header: L10n.userEditSectionProfile, footer: "") { section in
+                var footer = HeaderFooterView<UILabel>(.class)
+                footer.height = { 30 }
+                footer.onSetupView = {view, _ in
+                    view.addSubview(self.labelErrorsProfil)
+                    self.labelErrorsProfil.snp.makeConstraints { (make) -> Void in
+                        make.right.left.equalTo(view).offset(Metric.margin/2)
+                        make.top.equalTo(view).offset(Metric.margin)
+                    }
+                }
+                section.footer = footer
+            }
+            <<< self.inputBio
+
             +++ Section(header: L10n.userEditSectionImage, footer: "")
             <<< self.inputAvatar.cellUpdate { cell, _ in
                 cell.accessoryView?.layer.cornerRadius = (cell.accessoryView?.frame.height ?? 20)/2
@@ -138,56 +177,52 @@ private extension UserViewController {
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         // inputs
-        self.inputFirstName.rx.text
+        let observableFirstName = self.inputFirstName.rx.text.share()
+        observableFirstName
             .filterNil()
-            .asObservable()
             .map {Reactor.Action.updateFirstName($0)}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
-        self.inputFirstName.rx.isHighlighted
-            .asObservable()
-            .subscribe(onNext: { result in
-                if (!result) {
-                    self.inputFirstName.remove(ruleWithIdentifier: "firstname")
-                    self.inputFirstName.add(rule: RuleUserEurekaToValidator(reactor.currentState.user, User.Validators.firstname, "firstname"))
-                    self.inputFirstName.validate()
-                    self.form.mergeErrorToFooter()
-                }
-            })
+        observableFirstName
+            .debounce(.seconds(2), scheduler: MainScheduler.instance)
+            .map {_ in Reactor.Action.validateFirstName("account")}
+            .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
-        self.inputLastName.rx.text
+        let observableLastName = self.inputLastName.rx.text.share()
+        observableLastName
             .filterNil()
-            .asObservable()
             .map {Reactor.Action.updateLastName($0)}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
-        self.inputLastName.rx.isHighlighted
-            .asObservable()
-            .subscribe(onNext: { result in
-                if (!result) {
-                    self.inputLastName.remove(ruleWithIdentifier: "lastname")
-                    self.inputLastName.add(rule: RuleUserEurekaToValidator(reactor.currentState.user, User.Validators.lastname, "lastname"))
-                    self.inputLastName.validate()
-                    self.form.mergeErrorToFooter()
-                }
-            })
+        observableLastName
+            .debounce(.seconds(2), scheduler: MainScheduler.instance)
+            .map {_ in Reactor.Action.validateLastName("account")}
+            .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
-        self.inputEmail.rx.text
+        let observableEmail = self.inputEmail.rx.text.share()
+        observableEmail
             .filterNil()
             .map {Reactor.Action.updateEmail($0)}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
-        self.inputEmail.rx.isHighlighted
-            .asObservable()
-            .subscribe(onNext: { result in
-                if (!result) {
-                    self.inputEmail.remove(ruleWithIdentifier: "email")
-                    self.inputEmail.add(rule: RuleUserEurekaToValidator(reactor.currentState.user, User.Validators.email, "email"))
-                    self.inputEmail.validate()
-                    self.form.mergeErrorToFooter()
-                }
-            })
+        observableEmail
+            .debounce(.seconds(2), scheduler: MainScheduler.instance)
+            .map {_ in Reactor.Action.validateEmail("account")}
+            .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
+        // extra
+        let observableBio = self.inputBio.rx.text.share()
+        observableBio
+            .skip(1)
+            .map {Reactor.Action.updateBio($0 ?? "")}
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        observableBio
+            .debounce(.seconds(2), scheduler: MainScheduler.instance)
+            .map {_ in Reactor.Action.validateBio("profil")}
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        // avatar
         self.buttonImageGravatar.rx.tap
             .subscribe(onNext: { _ in
                 guard let url = URL(string: (config["app"]["links"]["gravatar"].string ?? "")) else { return }
@@ -236,8 +271,23 @@ private extension UserViewController {
             .subscribe(onNext: { email in
                 self.inputEmail.value = email
                 self.inputEmail.updateCell()
+            })
+            .disposed(by: self.disposeBag)
+        // extra
+        reactor.state
+            .map { $0.user.bio }
+            .subscribe(onNext: { bio in
+                self.inputBio.value = bio
+                self.inputBio.updateCell()
+            })
+            .disposed(by: self.disposeBag)
+        // avatar
+        reactor.state
+            .debounce(.seconds(2), scheduler: MainScheduler.instance)
+            .map { $0.user.email }
+            .distinctUntilChanged()
+            .subscribe(onNext: { email in
                 self.imageGravatar.setImage(url: "https://secure.gravatar.com/avatar/\(email.md5)?s=200&d=mp")
-                self.imageGravatar.layer.cornerRadius = self.imageGravatar.frame.height/2
             })
             .disposed(by: self.disposeBag)
         reactor.state
@@ -276,43 +326,17 @@ private extension UserViewController {
             .disposed(by: self.disposeBag)
         // error
         reactor.state
-            .map { $0.error?.description }
-            .throttle(.seconds(5), scheduler: MainScheduler.instance)
-            .filterNil()
-            .subscribe(onNext: { result in
-                Toast(text: result, delay: 0, duration: Delay.long).show()
+            .map { $0.errors.count }
+            .distinctUntilChanged()
+            .subscribe(onNext: { count in
+                self.labelErrorsAccount.text = reactor.currentState.errors.filter({ $0.type == "account" }).map { $0.description }.joined(separator: ". ")
+                self.labelErrorsProfil.text = reactor.currentState.errors.filter({ $0.type == "profil" }).map { $0.description }.joined(separator: ". ")
+                if(count > 0) {
+                    self.barButtonDone.isEnabled = false
+                } else {
+                    self.barButtonDone.isEnabled = true
+                }
             })
             .disposed(by: self.disposeBag)
-    }
-}
-
-/**
- * Struct
- */
-
-public struct RuleUserEurekaToValidator: RuleType {
-
-    let _user: User
-    let _validator: User.Validators
-
-    public var id: String?
-    public var validationError: Eureka.ValidationError
-
-    init(_ user: User, _ validator: User.Validators, _ id: String, msg: String? = nil) {
-        let ruleMsg = msg ?? "Field value must have less than \(validator) characters"
-        validationError = ValidationError(msg: ruleMsg)
-        _user = user
-        _validator = validator
-        self.id = id
-    }
-
-    public func isValid(value: String?) -> Eureka.ValidationError? {
-        guard let value = value, !value.isEmpty else { return nil }
-        switch _user.validate(_validator) {
-        case .valid: return nil
-        case let .invalid(err):
-            let description = (err[0] as! CustomError).description ?? "Unknown error"
-            return ValidationError(msg: description)
-        }
     }
 }
