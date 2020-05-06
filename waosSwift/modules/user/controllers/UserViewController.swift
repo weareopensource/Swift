@@ -238,7 +238,7 @@ private extension UserViewController {
             .disposed(by: self.disposeBag)
         self.avatar
             .skip(1)
-            .filter { $0 == nil }
+            .filter { $0 == nil && reactor.currentState.user.avatar != "" }
             .throttle(.seconds(3), latest: false, scheduler: MainScheduler.instance)
             .map { _ in Reactor.Action.deleteAvatar }
             .bind(to: reactor.action)
