@@ -113,7 +113,8 @@
                 "onSecondary": "waosOnSecondary",
                 "onBackground": "waosOnBackground",
                 "onSurface": "waosOnSurface",
-                "onError": "waosOnError"
+                "onError": "waosOnError",
+                "link": "waosLink"
             }
         }
     }
