@@ -34,6 +34,7 @@ enum ImageResult {
 
 enum imageStyle {
     case blured
+    case bw
     case bwBlured
     case animated
 }
@@ -65,6 +66,11 @@ extension UIImageView {
             options.append(.processor(
                 OverlayImageProcessor(overlay: .black, fraction: Metric.imgStylesOverlayFraction)
                     |> BlurImageProcessor(blurRadius: Metric.imgStylesBlured)
+            ))
+        case .bw:
+            options.append(.processor(
+                OverlayImageProcessor(overlay: .black, fraction: Metric.imgStylesOverlayFraction)
+                |> BlackWhiteProcessor()
             ))
         case .bwBlured:
             options.append(.processor(
