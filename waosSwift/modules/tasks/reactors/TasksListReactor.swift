@@ -83,7 +83,7 @@ final class TasksListReactor: Reactor {
         // get
         case .get:
             guard !self.currentState.isRefreshing else { return .empty() }
-            log.verbose("♻️ Action -> Mutation : get")  
+            log.verbose("♻️ Action -> Mutation : get")
             return Observable.concat([
                 .just(.setRefreshing(true)),
                 self.provider.tasksService

@@ -153,4 +153,8 @@ final class UserReactor: Reactor {
     func editReactor(_ user: User) -> UserViewReactor {
         return UserViewReactor(provider: self.provider, user: user)
     }
+
+    func preferenceReactor() -> UserPreferenceReactor {
+        return UserPreferenceReactor(provider: self.provider)
+    }
 }

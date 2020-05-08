@@ -37,6 +37,8 @@
 		BF425490221EBB9800395AE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF42548E221EBB9800395AE6 /* LaunchScreen.storyboard */; };
 		BF42549B221EBB9800395AE6 /* waosSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF42549A221EBB9800395AE6 /* waosSwiftTests.swift */; };
 		BF4254A6221EBB9800395AE6 /* waosSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4254A5221EBB9800395AE6 /* waosSwiftUITests.swift */; };
+		BF42E09D246595E900DA7B1E /* UserPreferenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF42E09C246595E900DA7B1E /* UserPreferenceController.swift */; };
+		BF42E09F246595F500DA7B1E /* UserPreferenceReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF42E09E246595F500DA7B1E /* UserPreferenceReactor.swift */; };
 		BF49EA0D2362CC2D00FF06E9 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF49EA0C2362CC2D00FF06E9 /* L10n.swift */; };
 		BF49EA132362E51B00FF06E9 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF49EA122362E51B00FF06E9 /* UserController.swift */; };
 		BF49EA152362E53D00FF06E9 /* UserFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF49EA142362E53D00FF06E9 /* UserFlow.swift */; };
@@ -213,6 +215,8 @@
 		BF4254A1221EBB9800395AE6 /* waosSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = waosSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF4254A5221EBB9800395AE6 /* waosSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = waosSwiftUITests.swift; sourceTree = "<group>"; };
 		BF4254A7221EBB9800395AE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BF42E09C246595E900DA7B1E /* UserPreferenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferenceController.swift; sourceTree = "<group>"; };
+		BF42E09E246595F500DA7B1E /* UserPreferenceReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferenceReactor.swift; sourceTree = "<group>"; };
 		BF49EA0C2362CC2D00FF06E9 /* L10n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
 		BF49EA122362E51B00FF06E9 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		BF49EA142362E53D00FF06E9 /* UserFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFlow.swift; sourceTree = "<group>"; };
@@ -553,6 +557,7 @@
 			children = (
 				BF49EA122362E51B00FF06E9 /* UserController.swift */,
 				BFA92D19237AED1F006A3B8D /* UserViewController.swift */,
+				BF42E09C246595E900DA7B1E /* UserPreferenceController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -570,6 +575,7 @@
 			children = (
 				BF49EA162362E54800FF06E9 /* UserReactor.swift */,
 				BFA92D1B237AED34006A3B8D /* UserViewReactor.swift */,
+				BF42E09E246595F500DA7B1E /* UserPreferenceReactor.swift */,
 			);
 			path = reactors;
 			sourceTree = "<group>";
@@ -1273,6 +1279,7 @@
 				BFA92D15237AC684006A3B8D /* UserApi.swift in Sources */,
 				BF058D772282BCAC00E2A077 /* AuthSigninController.swift in Sources */,
 				BF49EA172362E54800FF06E9 /* UserReactor.swift in Sources */,
+				BF42E09F246595F500DA7B1E /* UserPreferenceReactor.swift in Sources */,
 				BF9A368822902DE200EE2AB8 /* AuthResponses.swift in Sources */,
 				BF4A2FD42265F4020001B4CE /* UserDefaults.swift in Sources */,
 				BFA92D1C237AED34006A3B8D /* UserViewReactor.swift in Sources */,
@@ -1293,6 +1300,7 @@
 				BF0BB9FB236B495F00454BDD /* Eureka+Valid+Rx.swift in Sources */,
 				BF4A2F84225BBA4D0001B4CE /* SecondFlow.swift in Sources */,
 				BF8C672C2280177E0012B5A8 /* UICollectionView+ReusableKit.swift in Sources */,
+				BF42E09D246595E900DA7B1E /* UserPreferenceController.swift in Sources */,
 				BFA92D2F237C050C006A3B8D /* CoreFormController.swift in Sources */,
 				BF00138B237427670044C01A /* Eureka.swift in Sources */,
 				BF3B775523608F4400ECD30A /* CoreUIButton.swift in Sources */,

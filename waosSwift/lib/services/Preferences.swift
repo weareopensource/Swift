@@ -23,10 +23,13 @@ struct Status {
  */
 
 protocol PreferencesServiceType {
+    // global
     var onBoarded: Bool { get set }
     var isLogged: Bool { get set }
-    // global
+    // status
     var status: Status { get }
+    // options
+    var isBackground: Bool { get set }
 }
 
 /**
@@ -34,6 +37,7 @@ protocol PreferencesServiceType {
  */
 
 class PreferencesService: PreferencesServiceType {
+    // global
     var onBoarded: Bool {
         get {
             return UserDefaults.standard[#function] ?? true
@@ -57,10 +61,19 @@ class PreferencesService: PreferencesServiceType {
             UserDefaults.standard[#function] = newValue
         }
     }
-    // global
+    // status
     var status: Status {
         get {
             return Status(onBoarded: onBoarded, isLogged: isLogged)
+        }
+    }
+    // options
+    var isBackground: Bool {
+        get {
+            return UserDefaults.standard[#function] ?? true
+        }
+        set {
+            UserDefaults.standard[#function] = newValue
         }
     }
 }
@@ -71,6 +84,7 @@ class PreferencesService: PreferencesServiceType {
 
 extension PreferencesService: ReactiveCompatible {}
 extension Reactive where Base: PreferencesService {
+    // global
     var onBoarded: Observable<Bool> {
         return UserDefaults.standard
             .rx
@@ -83,6 +97,7 @@ extension Reactive where Base: PreferencesService {
             .observe(Bool.self, #function)
             .map { $0 ?? false }
     }
+    // status
     var status: Observable<Status> {
         return  Observable.combineLatest(
             onBoarded, isLogged,
@@ -90,5 +105,12 @@ extension Reactive where Base: PreferencesService {
                 return Status(onBoarded: onBoarded, isLogged: isLogged)
             }
         )
+    }
+    // options
+    var isBackground: Observable<Bool> {
+        return UserDefaults.standard
+            .rx
+            .observe(Bool.self, #function)
+            .map { $0 ?? false }
     }
 }
