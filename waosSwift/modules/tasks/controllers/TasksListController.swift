@@ -98,16 +98,16 @@ private extension TasksListController {
                 self.present(navigationController, animated: true, completion: nil)
             })
             .disposed(by: self.disposeBag)
-        // view open
-        self.application.rx.didOpenApp
-            .map { Reactor.Action.checkUserToken }
-            .bind(to: reactor.action)
-            .disposed(by: self.disposeBag)
     }
 
     // MARK: actions (View -> Reactor)
 
     func bindAction(_ reactor: TasksListReactor) {
+        // view open
+        self.application.rx.didOpenApp
+            .map { Reactor.Action.checkUserToken }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
         // viewDidLoad
         self.rx.viewDidLoad
             .map { Reactor.Action.get }
