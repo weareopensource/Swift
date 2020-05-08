@@ -83,6 +83,12 @@ internal enum L10n {
   internal static let userModalConfirmationDataMessage = L10n.tr("Localizable", "user_modal_confirmation_data_message")
   /// Are you sure? your account and all your data will be deleted.
   internal static let userModalConfirmationDeleteMessage = L10n.tr("Localizable", "user_modal_confirmation_delete_message")
+  /// Preferences
+  internal static let userPreferences = L10n.tr("Localizable", "user_preferences")
+  /// Dynamique wallpaper
+  internal static let userPreferencesBackground = L10n.tr("Localizable", "user_preferences_background")
+  /// Style
+  internal static let userPreferencesSection = L10n.tr("Localizable", "user_preferences_section")
   /// Privacy policy
   internal static let userPrivacyPolicy = L10n.tr("Localizable", "user_privacy_policy")
   /// Report a bug

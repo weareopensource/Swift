@@ -45,6 +45,9 @@ class UserController: CoreFormController, View {
     let buttonProfil = ButtonRow {
         $0.title = L10n.userEdit
     }
+    let buttonPreferences = ButtonRow {
+        $0.title = L10n.userPreferences
+    }
 
     // buttons App
     let buttonBlog = ButtonRow {
@@ -127,6 +130,7 @@ class UserController: CoreFormController, View {
                 section.header = header
             }
             <<< self.buttonProfil
+            <<< self.buttonPreferences
             +++ Section(header: L10n.userSectionApp, footer: "")
             <<< self.buttonBlog
             <<< self.buttonAbout
@@ -171,6 +175,13 @@ private extension UserController {
         self.buttonProfil.rx.tap
             .subscribe(onNext: { _ in
                 let viewController = UserViewController(reactor: reactor.editReactor(reactor.currentState.user))
+                let navigationController = UINavigationController(rootViewController: viewController)
+                self.present(navigationController, animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
+        self.buttonPreferences.rx.tap
+            .subscribe(onNext: { _ in
+                let viewController = UserPreferenceController(reactor: reactor.preferenceReactor())
                 let navigationController = UINavigationController(rootViewController: viewController)
                 self.present(navigationController, animated: true, completion: nil)
             })

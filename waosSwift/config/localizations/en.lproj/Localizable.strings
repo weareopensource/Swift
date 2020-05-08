@@ -44,6 +44,10 @@
 "user_edit_image"= "iPhone Gallery";
 "user_edit_image_gravatar"= "Gravatar";
 
+"user_preferences"= "Preferences";
+"user_preferences_section"= "Style";
+"user_preferences_background"= "Dynamique wallpaper";
+
 "user_section_app"= "Waos";
 "user_blog"= "Blog";
 "user_about"= "About";

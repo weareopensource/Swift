@@ -40,10 +40,13 @@
 "user_edit_lastname"= "Nom";
 "user_edit_profile"= "Profil";
 "user_edit_bio"= "Biographie";
-
 "user_edit_section_image"= "Photo de profil";
 "user_edit_image"= "Galerie de l'iPhone";
 "user_edit_image_gravatar"= "Gravatar";
+
+"user_preferences"= "Préférences";
+"user_preferences_section"= "Style";
+"user_preferences_section_background"= "Fond d'écran dynamique";
 
 "user_section_app"= "Waos";
 "user_blog"= "Blog";
