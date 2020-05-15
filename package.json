@@ -1,7 +1,7 @@
 {
   "name": "waosSwift",
   "description": "Swift - Boilerplate Front : RxSwift, JWT (WIP)",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "private": false,
   "author": "https://github.com/weareopensource/Swift/graphs/contributors",
   "license": "MIT",
