@@ -48,14 +48,16 @@ func getError(_ error: Error, file: StaticString = #file, function: StaticString
  * @param {Error} error
  * @return {CustomError}
  */
-func purgeErrors(errors: [DisplayError], titles: [String]) -> [DisplayError] {
-    var _error: [DisplayError] = errors
-    for title in titles {
-        if let index = _error.firstIndex(where: { $0.title == title }) {
-            _error.remove(at: index)
+func purgeErrors(errors: [DisplayError], specificTitles: [String]? = nil) -> [DisplayError] {
+    var _errors: [DisplayError] = errors
+    if let _titles = specificTitles {
+        for title in _titles {
+            if let index = _errors.firstIndex(where: { $0.title == title }) {
+                _errors.remove(at: index)
+            }
         }
     }
-    return _error
+    return _errors
 }
 
 /**

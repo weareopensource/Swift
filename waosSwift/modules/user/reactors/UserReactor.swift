@@ -139,11 +139,15 @@ final class UserReactor: Reactor {
         // error
         case let .error(error):
             log.verbose("♻️ Mutation -> State : error \(error)")
+            let _error: DisplayError
             if error.code == 401 {
                 self.provider.preferencesService.isLogged = false
+                _error = DisplayError(title: "jwt", description: "Wrong Password or Email.")
             } else {
-                state.error = DisplayError(title: error.message, description: (error.description ?? "Unknown error"))
+                _error = DisplayError(title: error.message, description: (error.description ?? "Unknown error"))
             }
+            ToastCenter.default.cancelAll()
+            Toast(text: _error.description, delay: 0, duration: Delay.long).show()
         }
         return state
     }

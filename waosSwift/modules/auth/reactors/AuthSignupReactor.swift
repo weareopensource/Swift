@@ -42,6 +42,7 @@ final class AuthSignUpReactor: Reactor {
         // default
         case dismiss
         case setRefreshing(Bool)
+        case validationError(CustomError)
         case success(String)
         case error(CustomError)
     }
@@ -85,7 +86,7 @@ final class AuthSignUpReactor: Reactor {
         case .validateFirstName:
             switch currentState.user.validate(.firstname) {
             case .valid: return .just(.success("\(User.Validators.firstname)"))
-            case let .invalid(err): return .just(.error(err[0] as! CustomError))
+            case let .invalid(err): return .just(.validationError(err[0] as! CustomError))
             }
             // update password
         // lastname
@@ -94,7 +95,7 @@ final class AuthSignUpReactor: Reactor {
         case .validateLastName:
             switch currentState.user.validate(.lastname) {
             case .valid: return .just(.success("\(User.Validators.lastname)"))
-            case let .invalid(err): return .just(.error(err[0] as! CustomError))
+            case let .invalid(err): return .just(.validationError(err[0] as! CustomError))
             }
         // email
         case let .updateEmail(email):
@@ -102,7 +103,7 @@ final class AuthSignUpReactor: Reactor {
         case .validateEmail:
             switch currentState.user.validate(.email) {
             case .valid: return .just(.success("\(User.Validators.email)"))
-            case let .invalid(err): return .just(.error(err[0] as! CustomError))
+            case let .invalid(err): return .just(.validationError(err[0] as! CustomError))
             }
         // password
         case let .updatePassword(password):
@@ -110,7 +111,7 @@ final class AuthSignUpReactor: Reactor {
         case .validatePassword:
             switch currentState.user.validate(.password) {
             case .valid: return .just(.success("\(User.Validators.password)"))
-            case let .invalid(err): return .just(.error(err[0] as! CustomError))
+            case let .invalid(err): return .just(.validationError(err[0] as! CustomError))
             }
         // form
         case let .updateIsFilled(isFilled):
@@ -173,17 +174,24 @@ final class AuthSignUpReactor: Reactor {
             state.isRefreshing = isRefreshing
         case let .success(success):
             log.verbose("♻️ Mutation -> State : succes \(success)")
-            state.errors = purgeErrors(errors: state.errors, titles: [success, "Schema validation error", "jwt", "unknow"])
+            state.errors = purgeErrors(errors: state.errors, specificTitles: [success])
         // error
+        case let .validationError(error):
+            log.verbose("♻️ Mutation -> State : validation error \(error)")
+            if state.errors.firstIndex(where: { $0.title == error.message }) == nil {
+                state.errors.insert(DisplayError(title: error.message, description: (error.description ?? "Unknown error")), at: 0)
+            }
         case let .error(error):
             log.verbose("♻️ Mutation -> State : error \(error)")
+            let _error: DisplayError
             if error.code == 401 {
                 self.provider.preferencesService.isLogged = false
+                _error = DisplayError(title: "jwt", description: "Wrong Password or Email.", type: error.type)
             } else {
-                if state.errors.firstIndex(where: { $0.title == error.message }) == nil {
-                    state.errors.insert(DisplayError(title: error.message, description: (error.description ?? "Unknown error")), at: 0)
-                }
+                _error = DisplayError(title: error.message, description: (error.description ?? "Unknown error"), type: error.type)
             }
+            ToastCenter.default.cancelAll()
+            Toast(text: _error.description, delay: 0, duration: Delay.long).show()
         }
         return state
     }

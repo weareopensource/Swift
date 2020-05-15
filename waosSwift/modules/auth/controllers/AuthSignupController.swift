@@ -177,7 +177,7 @@ private extension AuthSignUpController {
             .disposed(by: self.disposeBag)
         // button signup
         buttonSignup.rx.tap
-            .throttle(.seconds(3), latest: false, scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(Metric.timesButtonsThrottle), latest: false, scheduler: MainScheduler.instance)
             .map { _ in Reactor.Action.signUp }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -194,7 +194,7 @@ private extension AuthSignUpController {
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         self.inputFirstName.rx.controlEvent(.editingChanged).asObservable()
-            .debounce(.seconds(2), scheduler: MainScheduler.instance)
+            .debounce(.milliseconds(Metric.timesErrorsDebounce), scheduler: MainScheduler.instance)
             .map {Reactor.Action.validateFirstName}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -205,7 +205,7 @@ private extension AuthSignUpController {
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         self.inputLastName.rx.controlEvent(.editingChanged).asObservable()
-            .debounce(.seconds(2), scheduler: MainScheduler.instance)
+            .debounce(.milliseconds(Metric.timesErrorsDebounce), scheduler: MainScheduler.instance)
             .map {Reactor.Action.validateLastName}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -216,7 +216,7 @@ private extension AuthSignUpController {
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         self.inputEmail.rx.controlEvent(.editingChanged).asObservable()
-            .debounce(.seconds(2), scheduler: MainScheduler.instance)
+            .debounce(.milliseconds(Metric.timesErrorsDebounce), scheduler: MainScheduler.instance)
             .map {Reactor.Action.validateEmail}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -227,7 +227,7 @@ private extension AuthSignUpController {
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         self.inputPassword.rx.controlEvent(.editingChanged).asObservable()
-            .debounce(.seconds(2), scheduler: MainScheduler.instance)
+            .debounce(.milliseconds(Metric.timesErrorsDebounce), scheduler: MainScheduler.instance)
             .map {Reactor.Action.validatePassword}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -251,19 +251,14 @@ private extension AuthSignUpController {
                 self?.dismiss(animated: true, completion: nil)
             })
             .disposed(by: self.disposeBag)
-        // errors
+        // validation errors
         reactor.state
-            .map { $0.errors.count }
-            .distinctUntilChanged()
-            .subscribe(onNext: { count in
-                if(count > 0) {
-                    let message: [String] = reactor.currentState.errors.map { "\($0.description)." }
-                    ToastCenter.default.cancelAll()
-                    Toast(text: message.joined(separator: "\n"), delay: 0, duration: Delay.long).show()
-                } else {
-                    ToastCenter.default.cancelAll()
-                }
-
+            .map { $0.errors }
+            .filter { $0.count > 0 }
+            .distinctUntilChanged { $0.count == $1.count }
+            .subscribe(onNext: { errors in
+                ToastCenter.default.cancelAll()
+                Toast(text: errors.map { "\($0.description)." }.joined(separator: "\n"), delay: 0, duration: Delay.long).show()
             })
             .disposed(by: self.disposeBag)
         reactor.state
@@ -302,7 +297,7 @@ private extension AuthSignUpController {
         )
         .map { [$0.0, $0.1] }
         .map { !$0.contains(true) }
-        .bind(to: self.buttonSignup.rx.isEnabled)
+        .bind(to: self.buttonSignin.rx.isEnabled)
         .disposed(by: disposeBag)
     }
 }

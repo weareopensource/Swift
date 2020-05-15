@@ -64,7 +64,7 @@ extension User: Hashable, Codable {
 
 extension User: Validatable {
 
-    enum Validators: String {
+    enum Validators: String, CaseIterable {
         case firstname = "Wrong firstname (letters, 1 - 30)"
         case lastname = "Wrong lastname (letters, 1 - 30)"
         case email = "Wrong mail format"

@@ -18,7 +18,6 @@ final class AuthSigninReactor: Reactor {
         case updateEmail(String)
         case validateEmail
         case updatePassword(String)
-        case validatePassword
         case updateIsFilled(Bool)
         // others
         case signIn
@@ -35,6 +34,7 @@ final class AuthSigninReactor: Reactor {
         case goSignUp
         // default
         case setRefreshing(Bool)
+        case validationError(CustomError)
         case success(String)
         case error(CustomError)
     }
@@ -76,13 +76,11 @@ final class AuthSigninReactor: Reactor {
         case .validateEmail:
             switch currentState.user.validate(.email) {
             case .valid: return .just(.success("\(User.Validators.email)"))
-            case let .invalid(err): return .just(.error(err[0] as! CustomError))
+            case let .invalid(err): return .just(.validationError(err[0] as! CustomError))
             }
         // password 
         case let .updatePassword(password):
             return .just(.updatePassword(password))
-        case .validatePassword:
-            return .just(.success("password"))
         // form
         case let .updateIsFilled(isFilled):
             return .just(.updateIsFilled(isFilled))
@@ -135,18 +133,24 @@ final class AuthSigninReactor: Reactor {
         // success
         case let .success(success):
             log.verbose("♻️ Mutation -> State : succes \(success)")
-            state.errors = purgeErrors(errors: state.errors, titles: [success, "Schema validation error", "jwt", "unknow"])
+            state.errors = purgeErrors(errors: state.errors, specificTitles: [success])
         // error
+        case let .validationError(error):
+            log.verbose("♻️ Mutation -> State : validation error \(error)")
+            if state.errors.firstIndex(where: { $0.title == error.message }) == nil {
+                state.errors.insert(DisplayError(title: error.message, description: (error.description ?? "Unknown error")), at: 0)
+            }
         case let .error(error):
             log.verbose("♻️ Mutation -> State : error \(error)")
+            let _error: DisplayError
             if error.code == 401 {
                 self.provider.preferencesService.isLogged = false
-                state.errors.insert(DisplayError(title: "jwt", description: "Wrong Password or Email."), at: 0)
+                _error = DisplayError(title: "jwt", description: "Wrong Password or Email.", type: error.type)
             } else {
-                if state.errors.firstIndex(where: { $0.title == error.message }) == nil {
-                    state.errors.insert(DisplayError(title: error.message, description: (error.description ?? "Unknown error")), at: 0)
-                }
+                _error = DisplayError(title: error.message, description: (error.description ?? "Unknown error"), type: error.type)
             }
+            ToastCenter.default.cancelAll()
+            Toast(text: _error.description, delay: 0, duration: Delay.long).show()
         }
         return state
     }

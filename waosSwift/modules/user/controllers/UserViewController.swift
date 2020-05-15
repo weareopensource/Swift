@@ -172,7 +172,7 @@ private extension UserViewController {
     func bindAction(_ reactor: UserViewReactor) {
         // buttons
         self.barButtonDone.rx.tap
-            .throttle(.seconds(3), latest: false, scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(Metric.timesButtonsThrottle), latest: false, scheduler: MainScheduler.instance)
             .map { Reactor.Action.done }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -184,7 +184,7 @@ private extension UserViewController {
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         observableFirstName
-            .debounce(.seconds(2), scheduler: MainScheduler.instance)
+            .debounce(.milliseconds(Metric.timesErrorsDebounce), scheduler: MainScheduler.instance)
             .map {_ in Reactor.Action.validateFirstName("account")}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -195,7 +195,7 @@ private extension UserViewController {
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         observableLastName
-            .debounce(.seconds(2), scheduler: MainScheduler.instance)
+            .debounce(.milliseconds(Metric.timesErrorsDebounce), scheduler: MainScheduler.instance)
             .map {_ in Reactor.Action.validateLastName("account")}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -206,7 +206,7 @@ private extension UserViewController {
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         observableEmail
-            .debounce(.seconds(2), scheduler: MainScheduler.instance)
+            .debounce(.milliseconds(Metric.timesErrorsDebounce), scheduler: MainScheduler.instance)
             .map {_ in Reactor.Action.validateEmail("account")}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -218,7 +218,7 @@ private extension UserViewController {
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         observableBio
-            .debounce(.seconds(2), scheduler: MainScheduler.instance)
+            .debounce(.milliseconds(Metric.timesErrorsDebounce), scheduler: MainScheduler.instance)
             .map {_ in Reactor.Action.validateBio("profil")}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -239,7 +239,7 @@ private extension UserViewController {
         self.avatar
             .skip(1)
             .filter { $0 == nil && reactor.currentState.user.avatar != "" }
-            .throttle(.seconds(3), latest: false, scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(Metric.timesButtonsThrottle), latest: false, scheduler: MainScheduler.instance)
             .map { _ in Reactor.Action.deleteAvatar }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -284,7 +284,7 @@ private extension UserViewController {
         // avatar
         reactor.state
             .take(1)
-            .debounce(.seconds(2), scheduler: MainScheduler.instance)
+            .debounce(.milliseconds(Metric.timesErrorsDebounce), scheduler: MainScheduler.instance)
             .map { $0.user.email }
             .distinctUntilChanged()
             .subscribe(onNext: { email in
@@ -325,23 +325,19 @@ private extension UserViewController {
                 self?.dismiss(animated: true, completion: nil)
             })
             .disposed(by: self.disposeBag)
-        // error
+        // validation errors
         reactor.state
-            .map { $0.errors.count }
-            .distinctUntilChanged()
-            .subscribe(onNext: { count in
-                self.labelErrorsAccount.text = reactor.currentState.errors.filter({ $0.type == "account" }).map { $0.description }.joined(separator: ". ")
-                self.labelErrorsProfil.text = reactor.currentState.errors.filter({ $0.type == "profil" }).map { $0.description }.joined(separator: ". ")
-                if(count > 0 && self.labelErrorsAccount.text?.count == 0 && self.labelErrorsProfil.text?.count == 0) {
-                    let message: [String] = reactor.currentState.errors.map { "\($0.description)." }
+            .map { $0.errors }
+            .distinctUntilChanged { $0.count == $1.count }
+            .subscribe(onNext: { errors in
+                self.labelErrorsAccount.text = errors.filter({ $0.type == "account" }).map { $0.description }.joined(separator: ". ")
+                self.labelErrorsProfil.text = errors.filter({ $0.type == "profil" }).map { $0.description }.joined(separator: ". ")
+                if(errors.count > 0 && self.labelErrorsAccount.text?.count == 0 && self.labelErrorsProfil.text?.count == 0) {
+                    let message: [String] = errors.map { "\($0.description)." }
                     ToastCenter.default.cancelAll()
                     Toast(text: message.joined(separator: "\n"), delay: 0, duration: Delay.long).show()
                 }
-                if(count > 0) {
-                    self.barButtonDone.isEnabled = false
-                } else {
-                    self.barButtonDone.isEnabled = true
-                }
+                self.barButtonDone.isEnabled = errors.count > 0 ? false : true
             })
             .disposed(by: self.disposeBag)
     }
