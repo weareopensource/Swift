@@ -41,7 +41,6 @@ final class TasksListReactor: Reactor {
         var tasks: [Tasks]
         var sections: [TasksSections]
         var isRefreshing: Bool
-        var error: DisplayError?
 
         init() {
             self.tasks = []
@@ -160,15 +159,18 @@ final class TasksListReactor: Reactor {
         // success
         case let .success(success):
             log.verbose("♻️ Mutation -> State : succes \(success)")
-            state.error = nil
         // error
         case let .error(error):
             log.verbose("♻️ Mutation -> State : error \(error)")
+            let _error: DisplayError
             if error.code == 401 {
                 self.provider.preferencesService.isLogged = false
+                _error = DisplayError(title: "jwt", description: "Wrong Password or Email.", type: error.type)
             } else {
-                state.error = DisplayError(title: error.message, description: (error.description ?? "Unknown error"))
+                _error = DisplayError(title: error.message, description: (error.description ?? "Unknown error"), type: error.type)
             }
+            ToastCenter.default.cancelAll()
+            Toast(text: _error.description, delay: 0, duration: Delay.long).show()
         }
         return state
     }

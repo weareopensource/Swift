@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             ToastView.appearance().bottomOffsetPortrait = 100
             ToastView.appearance().bottomOffsetLandscape = 100
         } else {
-            let marginTop: CGFloat = 165
+            let marginTop: CGFloat = 170
             ToastView.appearance().bottomOffsetPortrait = max(UIScreen.main.bounds.width, UIScreen.main.bounds.height) - marginTop
             ToastView.appearance().bottomOffsetLandscape = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height) - marginTop
         }

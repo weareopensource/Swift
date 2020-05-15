@@ -42,6 +42,7 @@ final class UserViewReactor: Reactor {
         // default
         case dismiss
         case setRefreshing(Bool)
+        case validationError(CustomError)
         case success(String)
         case error(CustomError)
     }
@@ -83,21 +84,21 @@ final class UserViewReactor: Reactor {
         case let .validateFirstName(section):
             switch currentState.user.validate(.firstname, section) {
             case .valid: return .just(.success("\(User.Validators.firstname)"))
-            case let .invalid(err): return .just(.error(err[0] as! CustomError))
+            case let .invalid(err): return .just(.validationError(err[0] as! CustomError))
             }
         case let .updateLastName(lastName):
             return .just(.updateLastName(lastName))
         case let .validateLastName(section):
             switch currentState.user.validate(.lastname, section) {
             case .valid: return .just(.success("\(User.Validators.lastname)"))
-            case let .invalid(err): return .just(.error(err[0] as! CustomError))
+            case let .invalid(err): return .just(.validationError(err[0] as! CustomError))
             }
         case let .updateEmail(email):
             return .just(.updateEmail(email))
         case let .validateEmail(section):
             switch currentState.user.validate(.email, section) {
             case .valid: return .just(.success("\(User.Validators.email)"))
-            case let .invalid(err): return .just(.error(err[0] as! CustomError))
+            case let .invalid(err): return .just(.validationError(err[0] as! CustomError))
             }
         // extra
         case let .updateBio(bio):
@@ -105,7 +106,7 @@ final class UserViewReactor: Reactor {
         case let .validateBio(section):
             switch currentState.user.validate(.bio, section) {
             case .valid: return .just(.success("\(User.Validators.bio)"))
-            case let .invalid(err): return .just(.error(err[0] as! CustomError))
+            case let .invalid(err): return .just(.validationError(err[0] as! CustomError))
             }
         // avatar
         case let .updateAvatar(data):
@@ -175,18 +176,24 @@ final class UserViewReactor: Reactor {
         // success
         case let .success(success):
             log.verbose("♻️ Mutation -> State : succes \(success)")
-            state.errors = purgeErrors(errors: state.errors, titles: [success, "Schema validation error", "jwt", "unknow"])
+            state.errors = purgeErrors(errors: state.errors, specificTitles: [success])
         // error
+        case let .validationError(error):
+            log.verbose("♻️ Mutation -> State : validation error \(error)")
+            if state.errors.firstIndex(where: { $0.title == error.message }) == nil {
+                state.errors.insert(DisplayError(title: error.message, description: error.description, type: error.type), at: 0)
+            }
         case let .error(error):
             log.verbose("♻️ Mutation -> State : error \(error)")
+            let _error: DisplayError
             if error.code == 401 {
                 self.provider.preferencesService.isLogged = false
-                state.errors.insert(DisplayError(title: "jwt", description: "Wrong Password or Email."), at: 0)
+                _error = DisplayError(title: "jwt", description: "Wrong Password or Email.", type: error.type)
             } else {
-                if state.errors.firstIndex(where: { $0.title == error.message }) == nil {
-                    state.errors.insert(DisplayError(title: error.message, description: error.description, type: error.type), at: 0)
-                }
+                _error = DisplayError(title: error.message, description: (error.description ?? "Unknown error"), type: error.type)
             }
+            ToastCenter.default.cancelAll()
+            Toast(text: _error.description, delay: 0, duration: Delay.long).show()
         }
         return state
     }

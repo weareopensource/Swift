@@ -132,7 +132,7 @@ private extension OnboardingController {
 
     func bindAction(_ reactor: OnboardingReactor) {
         completeButton.rx.tap
-            .throttle(.seconds(3), latest: false, scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(Metric.timesButtonsThrottle), latest: false, scheduler: MainScheduler.instance)
             .map { _ in Reactor.Action.complete }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)

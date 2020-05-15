@@ -11,6 +11,8 @@ class CoreController: UIViewController {
         static let tabBarColor = NSString(string: config["theme"]["tabBar"]["color"].string ?? "").boolValue
         static let tabBarTintColor = NSString(string: config["theme"]["tabBar"]["tintColor"].string ?? "").boolValue
         static let tabBarTitle = NSString(string: config["theme"]["tabBar"]["title"].string ?? "").boolValue
+        static let timesButtonsThrottle = Int(config["times"]["buttons"]["throttle"].int ?? 2000)
+        static let timesErrorsDebounce = Int(config["times"]["errors"]["debounce"].int ?? 2000)
     }
 
     lazy private(set) var className: String = {

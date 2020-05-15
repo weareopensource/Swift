@@ -88,7 +88,7 @@ private extension UserPreferenceController {
     func bindAction(_ reactor: UserPreferenceReactor) {
         // buttons
         self.barButtonDone.rx.tap
-            .throttle(.seconds(3), latest: false, scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(Metric.timesButtonsThrottle), latest: false, scheduler: MainScheduler.instance)
             .map { Reactor.Action.done }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -120,21 +120,6 @@ private extension UserPreferenceController {
             .filter { $0 }
             .subscribe(onNext: { [weak self] _ in
                 self?.dismiss(animated: true, completion: nil)
-            })
-            .disposed(by: self.disposeBag)
-        // error
-        reactor.state
-            .map { $0.errors.count }
-            .distinctUntilChanged()
-            .subscribe(onNext: { count in
-                if(count > 0) {
-                    let message: [String] = reactor.currentState.errors.map { "\($0.description)." }
-                    ToastCenter.default.cancelAll()
-                    Toast(text: message.joined(separator: "\n"), delay: 0, duration: Delay.long).show()
-                } else {
-                    ToastCenter.default.cancelAll()
-                }
-
             })
             .disposed(by: self.disposeBag)
     }

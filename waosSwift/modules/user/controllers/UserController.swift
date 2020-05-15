@@ -14,14 +14,6 @@ import MessageUI
 
 class UserController: CoreFormController, View {
 
-    // MARK: Constants
-
-    struct Metric {
-        static let margin = CGFloat(config["theme"]["global"]["margin"].int ?? 0)
-        static let radius = CGFloat(config["theme"]["global"]["radius"].int ?? 0)
-        static let avatar = CGFloat(100)
-    }
-
     // MARK: UI
 
     let refreshControl = CoreUIRefreshControl()
@@ -276,7 +268,7 @@ private extension UserController {
             .disposed(by: self.disposeBag)
         // buttons
         self.buttonData.rx.tap
-            .throttle(.seconds(3), latest: false, scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(Metric.timesButtonsThrottle), latest: false, scheduler: MainScheduler.instance)
             .subscribe(onNext: { _ in
                 let actions: [AlertAction] = [AlertAction.action(title: L10n.modalConfirmationCancel, style: .cancel), AlertAction.action(title: L10n.modalConfirmationOk, style: .default)]
                 self.showAlert(title: L10n.userData, message: L10n.userModalConfirmationDataMessage, style: .alert, actions: actions)
@@ -287,7 +279,7 @@ private extension UserController {
             })
             .disposed(by: self.disposeBag)
         self.buttonLogout.rx.tap
-            .throttle(.seconds(3), latest: false, scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(Metric.timesButtonsThrottle), latest: false, scheduler: MainScheduler.instance)
             .subscribe(onNext: { _ in
                 let actions: [AlertAction] = [AlertAction.action(title: L10n.modalConfirmationCancel, style: .cancel), AlertAction.action(title: L10n.modalConfirmationOk, style: .destructive)]
                 self.showAlert(title: L10n.userLogout, message: L10n.modalConfirmationMessage, style: .alert, actions: actions)
@@ -298,7 +290,7 @@ private extension UserController {
             })
             .disposed(by: self.disposeBag)
         self.buttonDelete.rx.tap
-            .throttle(.seconds(3), latest: false, scheduler: MainScheduler.instance)
+            .throttle(.milliseconds(Metric.timesButtonsThrottle), latest: false, scheduler: MainScheduler.instance)
             .subscribe(onNext: { _ in
                 let actions: [AlertAction] = [AlertAction.action(title: L10n.modalConfirmationCancel, style: .cancel), AlertAction.action(title: L10n.modalConfirmationOk, style: .destructive)]
                 self.showAlert(title: L10n.userDelete, message: L10n.userModalConfirmationDeleteMessage, style: .alert, actions: actions)
@@ -361,15 +353,6 @@ private extension UserController {
             .distinctUntilChanged()
             .bind(to: refreshControl.rx.isRefreshing)
             .disposed(by: disposeBag)
-        // error
-        reactor.state
-            .map { $0.error?.description }
-            .throttle(.seconds(5), scheduler: MainScheduler.instance)
-            .filterNil()
-            .subscribe(onNext: { result in
-                Toast(text: result, delay: 0, duration: Delay.long).show()
-            })
-            .disposed(by: self.disposeBag)
     }
 }
 

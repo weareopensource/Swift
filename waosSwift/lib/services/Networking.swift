@@ -49,6 +49,7 @@ final class Networking<Target: TargetType>: MoyaProvider<Target> {
                             let message = "🌎 failure -> \(requestString) (\(response.statusCode)) (\(target))"
                             log.warning(message, file: file, function: function, line: line)
                         }
+                        print("totot", response.statusCode)
                     } else {
                         let message = "🌎 failure -> \(requestString)\n\(error)"
                         log.warning(message, file: file, function: function, line: line)
