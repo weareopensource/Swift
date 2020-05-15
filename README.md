@@ -28,13 +28,21 @@ Our stack Swift is actually in Beta.
 | Subject | Informations
 | ------- | --------
 | **in development** |
-| Architecture | Layered Architecture : everything is separated in layers, and the upper layers are abstractions of the lower ones, that's why every layer should only reference the immediate lower layer (vertical modules architecture)
-| Security | JWT Stateless - have a look on [Node](https://github.com/weareopensource/Node) stack for more informations
+| Architecture | Layered Architecture : everything is separated in layers, and the upper layers are abstractions of the lower ones, that's why every layer should only reference the immediate lower layer (vertical modules architecture with Services Pattern))
+| Server / DB | Our [Node](https://github.com/weareopensource/Node) stack.
+| Reactive | [RxSwift](https://github.com/ReactiveX/RxSwift) - [ReactorKit](https://github.com/ReactorKit/ReactorKit) <br /> [RxOptional](https://github.com/RxSwiftCommunity/RxOptional) - [RxDataSources](https://github.com/RxSwiftCommunity/RxDataSources) - [RxDataSources](https://github.com/RxSwiftCommunity/RxDataSources) - [RxAppState](https://github.com/pixeldock/RxAppState)
+| Requests | [Moya](https://github.com/Moya/Moya) - [Kingfisher](https://github.com/onevcat/Kingfisher) - *images, with cookie plugin*
+| Models | [Validator](https://github.com/adamwaite/Validator) - *Models struct & Validatable*
+| Flow | [RxFlow](https://github.com/RxSwiftCommunity/RxFlow)
+| Tools | [SnapKit](https://github.com/SnapKit/SnapKit) - [Then](https://github.com/devxoul/Then) - [Reusable](https://github.com/AliSoftware/Reusable) - [ReusableKit](https://github.com/devxoul/ReusableKit)
+| UX | [Eureka](https://github.com/xmartlabs/Eureka) - [Toaster](https://github.com/devxoul/Toaster) - [FontAwesome](https://github.com/thii/FontAwesome.swift) - [NVActivityIndicatorView](https://github.com/ninjaprox/NVActivityIndicatorView)
+| Logs | [CocoaLumberjack](https://github.com/CocoaLumberjack/CocoaLumberjack) - *LogFormatter services available*
 | CI  | [Travis CI](https://travis-ci.org/weareopensource/Node) <br> [fastlane](https://github.com/fastlane/fastlane) & [Slather](https://github.com/SlatherOrg/slather)
-| Developer  | [Coveralls](https://coveralls.io/github/weareopensource/Swift) - [Code Climate](https://codeclimate.com/github/weareopensource/Swift) <br> [standard-version](https://github.com/conventional-changelog/standard-version) - [commitlint](https://github.com/conventional-changelog/commitlint) - [commitizen](https://github.com/commitizen/cz-cli) - [waos-conventional-changelog](https://github.com/WeAreOpenSourceProjects/) <br>  [SwiftLint](https://github.com/realm/SwiftLint) - [SwiftGen](https://github.com/SwiftGen/SwiftGen)
+| Linter  | [SwiftLint](https://github.com/realm/SwiftLint) - [SwiftGen](https://github.com/SwiftGen/SwiftGen)
+| Developer  | [Code Climate](https://codeclimate.com/github/weareopensource/Swift) <br> [standard-version](https://github.com/conventional-changelog/standard-version) - [commitlint](https://github.com/conventional-changelog/commitlint) - [commitizen](https://github.com/commitizen/cz-cli) - [waos-conventional-changelog](https://github.com/WeAreOpenSourceProjects/)
 | Dependencies | [Carthage](https://github.com/Carthage/Carthage)
 | **Being released** |
-| wip  | ....
+| Testing |  in development
 | **In reflexion** |
 | wip  | ....
 
@@ -117,8 +125,12 @@ Feel free to discuss, share other kind of bricks, and invite whoever you want wi
 
 ## :family: Main Team
 
-Pierre
+* Pierre Brisorgueil
 
-[![Blog](https://badges.weareopensource.me/badge/Read-WAOS%20Blog-1abc9c.svg?style=flat-square)](https://weareopensource.me) [![Slack](https://badges.weareopensource.me/badge/Chat-WAOS%20Slack-d0355b.svg?style=flat-square)](mailto:weareopensource.me@gmail.com?subject=Join%20Slack&body=Hi,%20I%20found%20your%20community%20We%20Are%20Open%20Source.%20I%20would%20be%20interested%20to%20join%20the%20Slack%20to%20share%20and%20discuss,%20Thanks) [![Mail](https://badges.weareopensource.me/badge/Contact-me%20by%20mail-00a8ff.svg?style=flat-square)](mailto:weareopensource.me@gmail.com?subject=Contact) [![Twitter](https://badges.weareopensource.me/badge/Follow-me%20on%20Twitter-3498db.svg?style=flat-square)](https://twitter.com/pbrisorgueil?lang=fr)  [![Youtube](https://badges.weareopensource.me/badge/Watch-me%20on%20Youtube-e74c3c.svg?style=flat-square)](https://www.youtube.com/channel/UCIIjHtrZL5-rFFupn7c3OtA)
+[![Github](https://badges.weareopensource.me/badge/Follow-me%20on%20Github-282828.svg?style=flat-square)](https://github.com/PierreBrisorgueil) [![Twitter](https://badges.weareopensource.me/badge/Follow-me%20on%20Twitter-3498db.svg?style=flat-square)](https://twitter.com/pbrisorgueil?lang=fr) [![Youtube](https://badges.weareopensource.me/badge/Watch-me%20on%20Youtube-e74c3c.svg?style=flat-square)](https://www.youtube.com/channel/UCIIjHtrZL5-rFFupn7c3OtA) [![Instagram](https://badges.weareopensource.me/badge/Follow-me%20on%20Instagram-f27231.svg?style=flat-square)](https://www.instagram.com/pierre_brsrgl/)
 
-Feel free to come help us ! :)
+Feel free to help us ! :)
+
+## :link: Links
+
+[![Blog](https://badges.weareopensource.me/badge/Read-WAOS%20Blog-1abc9c.svg?style=flat-square)](https://weareopensource.me) [![Slack](https://badges.weareopensource.me/badge/Chat-WAOS%20Slack-d0355b.svg?style=flat-square)](mailto:weareopensource.me@gmail.com?subject=Join%20Slack&body=Hi,%20I%20found%20your%20community%20We%20Are%20Open%20Source.%20I%20would%20be%20interested%20to%20join%20the%20Slack%20to%20share%20and%20discuss,%20Thanks) [![Mail](https://badges.weareopensource.me/badge/Contact-WAOS%20by%20mail-00a8ff.svg?style=flat-square)](mailto:weareopensource.me@gmail.com?subject=Contact)
