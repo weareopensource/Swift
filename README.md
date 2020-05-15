@@ -17,6 +17,8 @@ Quick links :
 
 Our stack Swift is actually in Beta.
 
+<img src="https://github.com/weareopensource/Swift/blob/master/screenshots/01.png" width="275px" /><img src="https://github.com/weareopensource/Swift/blob/master/screenshots/02.png" width="275px" /><img src="https://github.com/weareopensource/Swift/blob/master/screenshots/03.png" width="275px" />
+
 # :computer: Swift / RxSwift / ReactorKit
 
 * [Swift wiki](https://github.com/weareopensource/Swift/blob/master/WIKI.md) - wip
@@ -27,7 +29,7 @@ Our stack Swift is actually in Beta.
 
 | Subject | Informations
 | ------- | --------
-| **in development** |
+| **Available** |
 | Architecture | Layered Architecture : everything is separated in layers, and the upper layers are abstractions of the lower ones, that's why every layer should only reference the immediate lower layer (vertical modules architecture with Services Pattern))
 | Server / DB | Our [Node](https://github.com/weareopensource/Node) stack.
 | Reactive | [RxSwift](https://github.com/ReactiveX/RxSwift) - [ReactorKit](https://github.com/ReactorKit/ReactorKit) <br /> [RxOptional](https://github.com/RxSwiftCommunity/RxOptional) - [RxDataSources](https://github.com/RxSwiftCommunity/RxDataSources) - [RxDataSources](https://github.com/RxSwiftCommunity/RxDataSources) - [RxAppState](https://github.com/pixeldock/RxAppState)
