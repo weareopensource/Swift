@@ -297,7 +297,7 @@ private extension AuthSignUpController {
         )
         .map { [$0.0, $0.1] }
         .map { !$0.contains(true) }
-        .bind(to: self.buttonSignin.rx.isEnabled)
+        .bind(to: self.buttonSignup.rx.isEnabled)
         .disposed(by: disposeBag)
     }
 }
