@@ -6,7 +6,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### 0.0.1 (2020-05-15)
 
-
 ### Features
 
 * **assets:** add link default color ✨ ([1c3f978](https://github.com/weareopensource/Swift/commit/1c3f9786468236255d00f7d9ec88d6b3468a2d53))
@@ -67,7 +66,6 @@ All notable changes to this project will be documented in this file. See [standa
 * **users, core, config:** add data privacy request, get & delete ✨ ([409178b](https://github.com/weareopensource/Swift/commit/409178b586695e3344afdaf61adb856dc87818b6))
 * **users, helpers:** review error handling withour eureka, add bio ✨ ([20d0b88](https://github.com/weareopensource/Swift/commit/20d0b885df732988d21a7d3089ebca4c6176686d))
 
-
 ### Bug Fixes
 
 * **auth:** fix cookie not saved 🐛 ([d9a7720](https://github.com/weareopensource/Swift/commit/d9a77208f9226788ccf4f3605d87e86fb19bfd0e))
@@ -100,5 +98,3 @@ All notable changes to this project will be documented in this file. See [standa
 * **user:** avatar protect clear with null avatar 🐛 ([e9ba478](https://github.com/weareopensource/Swift/commit/e9ba478a38974f9a11795b8df4157a4b9f50e2bb))
 * **users:** avatar wrong display sometimes 🐛 ([ff2b9b7](https://github.com/weareopensource/Swift/commit/ff2b9b797284efc7c16daac1159735d818d6dd5f))
 * **users:** fix errors 🐛 ([91e9455](https://github.com/weareopensource/Swift/commit/91e9455bcb93d983c984939666f7af8db17949dd))
-
-# Change Log
