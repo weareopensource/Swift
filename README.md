@@ -10,10 +10,10 @@ More informations about us in our [global repo](https://github.com/weareopensour
 
 Quick links :
 
-* Mindset and what we would like to create : [introduction](https://weareopensource.me/introduction/) (in construction)
-* How to create a fullstack from our repo : [global wiki](https://github.com/weareopensource/weareopensource.github.io/wiki) (in construciton).
-* Global roadmap and  ideas about stacks : [board](https://github.com/weareopensource/weareopensource.github.io/projects/1)
-* How to contribute and help us : [here](https://github.com/weareopensource/weareopensource.github.io/blob/master/CONTRIBUTE.md)
+* [Mindset and what we would like to create](https://weareopensource.me/)
+* [How to start a project and maintain updates from stacks](https://blog.weareopensource.me/start-a-project-and-maintain-updates/)
+* [Global roadmap and  ideas about stacks](https://github.com/weareopensource/weareopensource.github.io/projects/1)
+* [How to contribute and help us](https://blog.weareopensource.me/how-to-contribute/)
 
 Our stack Swift is actually in Beta.
 
@@ -22,7 +22,7 @@ Our stack Swift is actually in Beta.
 # :computer: Swift / RxSwift / ReactorKit
 
 * [Swift wiki](https://github.com/weareopensource/Swift/blob/master/WIKI.md) - wip
-* [Knowledges Swift](https://github.com/weareopensource/weareopensource.github.io/wiki/Knowledges-Swift)
+* [**Knowledges Swift**](https://blog.weareopensource.me/swift-knwoledges/)
 * [**Demo**] Follow Instalation Guide (working with [Node](https://github.com/weareopensource/Node) stack, email: *test@waos.me*, password: *TestWaos@2019*)
 
 ## :package: Technology Overview
@@ -135,4 +135,4 @@ Feel free to help us ! :)
 
 ## :link: Links
 
-[![Blog](https://badges.weareopensource.me/badge/Read-our%20Blog-1abc9c.svg?style=flat-square)](https://weareopensource.me) [![Slack](https://badges.weareopensource.me/badge/Chat-on%20our%20Slack-d0355b.svg?style=flat-square)](https://join.slack.com/t/weareopensource/shared_invite/zt-62p1qxna-PEQn289qx6mmHobzKW8QFw) [![Discord](https://badges.weareopensource.me/badge/Chat-on%20our%20Discord-516DB9.svg?style=flat-square)](https://discord.gg/U2a2vVm)  [![Mail](https://badges.weareopensource.me/badge/Contact-us%20by%20mail-00a8ff.svg?style=flat-square)](mailto:weareopensource.me@gmail.com?subject=Contact)
+[![Blog](https://badges.weareopensource.me/badge/Read-our%20Blog-1abc9c.svg?style=flat-square)](https://blog.weareopensource.me) [![Slack](https://badges.weareopensource.me/badge/Chat-on%20our%20Slack-d0355b.svg?style=flat-square)](https://join.slack.com/t/weareopensource/shared_invite/zt-62p1qxna-PEQn289qx6mmHobzKW8QFw) [![Discord](https://badges.weareopensource.me/badge/Chat-on%20our%20Discord-516DB9.svg?style=flat-square)](https://discord.gg/U2a2vVm)  [![Mail](https://badges.weareopensource.me/badge/Contact-us%20by%20mail-00a8ff.svg?style=flat-square)](mailto:weareopensource.me@gmail.com?subject=Contact)
