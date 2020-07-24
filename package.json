@@ -26,13 +26,13 @@
   "devDependencies": {
     "@commitlint/cli": "^9.1.1",
     "@commitlint/config-conventional": "^9.1.1",
+    "@weareopensource/conventional-changelog": "^1.6.0",
     "commitizen": "^4.1.2",
-    "husky": "^4.2.5",
-    "waos-conventional-changelog": "^1.10.0"
+    "husky": "^4.2.5"
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/waos-conventional-changelog"
+      "path": "./node_modules/@weareopensource/conventional-changelog"
     }
   }
 }
