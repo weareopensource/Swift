@@ -1,6 +1,6 @@
 [![Build Status](https://badges.weareopensource.me/travis/weareopensource/Swift.svg?style=flat-square)](https://travis-ci.org/weareopensource/Swift) [![Coveralls Status](https://badges.weareopensource.me/coveralls/github/weareopensource/Swift.svg?style=flat-square)](https://coveralls.io/github/weareopensource/Swift) [![Code Climate](https://badges.weareopensource.me/codeclimate/maintainability-percentage/weareopensource/Swift.svg?style=flat-square)](https://codeclimate.com/github/weareopensource/Swift/maintainability)
 
-# :globe_with_meridians: [WeAreOpenSource](https://weareopensource.me) Swift
+# :globe_with_meridians: [WeAreOpenSource](https://weareopensource.me) Swift - Beta
 
 ## :book: Presentation
 
