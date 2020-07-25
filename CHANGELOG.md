@@ -96,12 +96,6 @@
 * **users, core, config:** add data privacy request, get & delete ✨ ([409178b](https://github.com/weareopensource/Swift/commit/409178b586695e3344afdaf61adb856dc87818b6))
 * **users, helpers:** review error handling withour eureka, add bio ✨ ([20d0b88](https://github.com/weareopensource/Swift/commit/20d0b885df732988d21a7d3089ebca4c6176686d))
 
-# Changelog
-
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
-
-### [0.1.1](https://github.com/weareopensource/Swift/compare/v0.0.1...v0.1.1) (2020-05-15)
-
 ### 0.0.1 (2020-05-15)
 
 ### Features
