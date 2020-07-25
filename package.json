@@ -41,7 +41,6 @@
       }
     ],
     "ci": false,
-    "repositoryUrl": "https://github.com/pierrebrisorgueil/lou_node.git",
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
