@@ -42,6 +42,7 @@
       }
     ],
     "ci": false,
+    "repositoryUrl": "https://github.com/weareopensource/Swift.git",
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",

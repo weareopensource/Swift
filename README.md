@@ -104,7 +104,7 @@ carthage build
 * lint:  `swiftlint autocorrect`
 * commit : `npm run commit`
 * release : `npm run release -- --first-release` **standard version, changelog, tag & choose version number : -- --release-as 1.1.1**
-* release:auto : `GITHUB_TOKEN=XXXXX npm run release:auto` **semantic release, changelog, tag, release**
+* release:auto : `GITHUB_TOKEN=XXXXX npm run release:auto` **semantic release, changelog, tag, release** *require repositoryUrl conf in package.json*
 
 ### Configuration
 
