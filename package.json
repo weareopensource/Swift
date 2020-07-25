@@ -1,5 +1,5 @@
 {
-  "name": "waosSwift",
+  "name": "@weareopensource/swift",
   "description": "Swift - Boilerplate Front : RxSwift, JWT (WIP)",
   "version": "0.1.1",
   "private": false,
@@ -16,7 +16,8 @@
   },
   "scripts": {
     "commit": "npx git-cz",
-    "release": "standard-version"
+    "release": "standard-version",
+    "release:auto": "npx semantic-release"
   },
   "husky": {
     "hooks": {
@@ -28,7 +29,30 @@
     "@commitlint/config-conventional": "^9.1.1",
     "@weareopensource/conventional-changelog": "^1.6.0",
     "commitizen": "^4.1.2",
-    "husky": "^4.2.5"
+    "husky": "^4.2.5",
+    "standard-version": "^8.0.2",
+    "semantic-release": "^17.1.1"
+  },
+  "release": {
+    "branches": [
+      {
+        "name": "master"
+      }
+    ],
+    "ci": false,
+    "repositoryUrl": "https://github.com/pierrebrisorgueil/lou_node.git",
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      [
+        "@semantic-release/github",
+        {
+          "successComment": false,
+          "failComment": false
+        }
+      ]
+    ]
   },
   "config": {
     "commitizen": {
