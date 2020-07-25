@@ -39,7 +39,7 @@ Our stack Swift is actually in Beta.
 | Logs | [CocoaLumberjack](https://github.com/CocoaLumberjack/CocoaLumberjack) - *LogFormatter services available*
 | CI  | [Travis CI](https://travis-ci.org/weareopensource/Node) <br> [fastlane](https://github.com/fastlane/fastlane) & [Slather](https://github.com/SlatherOrg/slather)
 | Linter  | [SwiftLint](https://github.com/realm/SwiftLint) - [SwiftGen](https://github.com/SwiftGen/SwiftGen)
-| Developer  | [Code Climate](https://codeclimate.com/github/weareopensource/Swift) <br> [standard-version](https://github.com/conventional-changelog/standard-version) - [commitlint](https://github.com/conventional-changelog/commitlint) - [commitizen](https://github.com/commitizen/cz-cli) - [waos-conventional-changelog](https://github.com/WeAreOpenSourceProjects/)
+| Developer  | [Code Climate](https://codeclimate.com/github/weareopensource/Swift) <br> [standard-version](https://github.com/conventional-changelog/standard-version) / [semantic-release](https://github.com/semantic-release/semantic-release) - [commitlint](https://github.com/conventional-changelog/commitlint) - [commitizen](https://github.com/commitizen/cz-cli) - [@weareopensource/conventional-changelog](https://github.com/weareopensource/conventional-changelog)
 | Dependencies | [Carthage](https://github.com/Carthage/Carthage)
 | **Being released** |
 | Testing |  in development
@@ -103,6 +103,8 @@ carthage build
 
 * lint:  `swiftlint autocorrect`
 * commit : `npm run commit`
+* release : `npm run release -- --first-release` **standard version, changelog, tag & choose version number : -- --release-as 1.1.1**
+* release:auto : `GITHUB_TOKEN=XXXXX npm run release:auto` **semantic release, changelog, tag, release**
 
 ### Configuration
 
