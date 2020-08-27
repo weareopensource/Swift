@@ -10,7 +10,7 @@ Quick links :
 
 * [Mindset and what we would like to create](https://weareopensource.me/)
 * [How to start a project and maintain updates from stacks](https://blog.weareopensource.me/start-a-project-and-maintain-updates/)
-* [Global roadmap and  ideas about stacks](https://github.com/weareopensource/weareopensource.github.io/projects/1)
+* [Global roadmap and  ideas about stacks](https://github.com/orgs/weareopensource/projects/3)
 * [How to contribute and help us](https://blog.weareopensource.me/how-to-contribute/)
 
 Our stack Swift is actually in Beta.
