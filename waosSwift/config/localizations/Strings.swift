@@ -13,12 +13,16 @@ import Foundation
 internal enum L10n {
   /// Firstname
   internal static let authFirstname = L10n.tr("Localizable", "auth_firstname")
+  /// Forgot password?
+  internal static let authForgot = L10n.tr("Localizable", "auth_forgot")
   /// Lastname
   internal static let authLastname = L10n.tr("Localizable", "auth_lastname")
   /// Email
   internal static let authMail = L10n.tr("Localizable", "auth_mail")
   /// Password
   internal static let authPassword = L10n.tr("Localizable", "auth_password")
+  /// Reset
+  internal static let authReset = L10n.tr("Localizable", "auth_reset")
   /// Sign In
   internal static let authSignInTitle = L10n.tr("Localizable", "authSignIn_title")
   /// Sign Up

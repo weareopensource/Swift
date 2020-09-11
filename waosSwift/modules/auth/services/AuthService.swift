@@ -6,6 +6,7 @@ protocol AuthServiceType {
     func signUp(firstName: String, lastName: String, email: String, password: String) -> Observable<MyResult<SignResponse, CustomError>>
     func signIn(email: String, password: String) -> Observable<MyResult<SignResponse, CustomError>>
     func token() -> Observable<MyResult<TokenResponse, CustomError>>
+    func forgot(email: String) -> Observable<MyResult<ForgotResponse, CustomError>>
 
     var user: Observable<User?> { get }
 }
@@ -53,6 +54,19 @@ final class AuthService: CoreService, AuthServiceType {
             .map(TokenResponse.self)
             .map { response in
                 self.userSubject.on(.next(response.user))
+                return response
+            }
+            .asObservable()
+            .map(MyResult.success)
+            .catchError { err in .just(.error(getError(err)))}
+    }
+
+    func forgot(email: String) -> Observable<MyResult<ForgotResponse, CustomError>> {
+        log.verbose("🔌 service : forgot")
+        return self.networking
+            .request(.forgot(email: email))
+            .map(ForgotResponse.self)
+            .map { response in
                 return response
             }
             .asObservable()

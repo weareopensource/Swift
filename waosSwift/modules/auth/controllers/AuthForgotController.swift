@@ -9,7 +9,7 @@ import ReactorKit
  * Controller
  */
 
-final class AuthSignInController: CoreController, View, Stepper, NVActivityIndicatorViewable {
+final class AuthForgotController: CoreController, View, Stepper, NVActivityIndicatorViewable {
 
     // MARK: UI
 
@@ -21,32 +21,22 @@ final class AuthSignInController: CoreController, View, Stepper, NVActivityIndic
         $0.textContentType = .username
         //$0.text = "test@waos.me"
     }
-    let inputPassword = CoreUITextField().then {
-        $0.autocorrectionType = .no
-        $0.setFontAwesomeIcon("fa-key")
-        $0.placeholder = L10n.authPassword + "..."
-        $0.autocapitalizationType = .none
-        $0.returnKeyType = .done
-        $0.isSecureTextEntry = true
-        $0.textContentType = .password
-        //$0.text = "TestWaos@2019"
+    let buttonReset = CoreUIButton().then {
+        $0.setTitle(L10n.authReset, for: .normal)
+        $0.setTitleColor(Metric.primary, for: .normal)
     }
     let buttonSignin = CoreUIButton().then {
         $0.setTitle(L10n.authSignInTitle, for: .normal)
-        $0.setTitleColor(Metric.primary, for: .normal)
-    }
-    let buttonSignup = CoreUIButton().then {
-        $0.setTitle(L10n.authSignUpTitle, for: .normal)
     }
     let labelErrors = CoreUILabel().then {
         $0.numberOfLines = 4
         $0.textAlignment = .center
         $0.textColor = UIColor.red
     }
-    let buttonForgot = UIButton().then {
-        $0.setTitle(L10n.authForgot, for: .normal)
-        $0.setTitleColor(.gray, for: .normal)
-        $0.backgroundColor = .clear
+    let labelSuccess = CoreUILabel().then {
+        $0.numberOfLines = 2
+        $0.textAlignment = .center
+        $0.textColor = UIColor(named: config["theme"]["themes"]["waos"]["primary"].string ?? "")
     }
 
     // MARK: Properties
@@ -55,7 +45,7 @@ final class AuthSignInController: CoreController, View, Stepper, NVActivityIndic
 
     // MARK: Initializing
 
-    init(reactor: AuthSigninReactor) {
+    init(reactor: AuthForgotReactor) {
         super.init()
         self.reactor = reactor
     }
@@ -70,49 +60,48 @@ final class AuthSignInController: CoreController, View, Stepper, NVActivityIndic
         super.viewDidLoad()
         self.view.registerAutomaticKeyboardConstraints() // active layout with snapkit
         self.view.addSubview(self.inputEmail)
-        self.view.addSubview(self.inputPassword)
+        self.view.addSubview(self.buttonReset)
         self.view.addSubview(self.buttonSignin)
-        self.view.addSubview(self.buttonSignup)
         self.view.addSubview(self.labelErrors)
-        self.view.addSubview(self.buttonForgot)
+        self.view.addSubview(self.labelSuccess)
     }
 
     override func setupConstraints() {
+        labelSuccess.snp.makeConstraints { (make) -> Void in
+            make.left.equalTo(25)
+            make.right.equalTo(-25)
+            make.centerX.equalTo(self.view)
+            make.centerY.equalTo(self.view).offset(-90).keyboard(false, in: self.view)
+        }
+        labelSuccess.snp.prepareConstraints { (make) -> Void in
+            make.centerY.equalTo(self.view).offset(-190).keyboard(true, in: self.view)
+        }
         inputEmail.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(300)
             make.height.equalTo(50)
             make.centerX.equalTo(self.view)
-            make.centerY.equalTo(self.view).offset(-60).keyboard(false, in: self.view)
+            make.centerY.equalTo(self.view).offset(-30).keyboard(false, in: self.view)
         }
         inputEmail.snp.prepareConstraints { (make) -> Void in
-            make.centerY.equalTo(self.view).offset(-160).keyboard(true, in: self.view)
-        }
-        inputPassword.snp.makeConstraints { (make) -> Void in
-            make.width.equalTo(300)
-            make.height.equalTo(50)
-            make.centerX.equalTo(self.view)
-            make.centerY.equalTo(self.view).keyboard(false, in: self.view)
-        }
-        inputPassword.snp.prepareConstraints { (make) -> Void in
-            make.centerY.equalTo(self.view).offset(-100).keyboard(true, in: self.view)
-        }
-        buttonSignup.snp.makeConstraints { (make) -> Void in
-            make.width.equalTo(140)
-            make.height.equalTo(50)
-            make.centerX.equalTo(self.view).offset(-80)
-            make.centerY.equalTo(self.view).offset(60).keyboard(false, in: self.view)
-        }
-        buttonSignup.snp.prepareConstraints { (make) -> Void in
-            make.centerY.equalTo(self.view).offset(-40).keyboard(true, in: self.view)
+            make.centerY.equalTo(self.view).offset(-130).keyboard(true, in: self.view)
         }
         buttonSignin.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(140)
             make.height.equalTo(50)
-            make.centerX.equalTo(self.view).offset(80)
-            make.centerY.equalTo(self.view).offset(60).keyboard(false, in: self.view)
+            make.centerX.equalTo(self.view).offset(-80)
+            make.centerY.equalTo(self.view).offset(30).keyboard(false, in: self.view)
         }
         buttonSignin.snp.prepareConstraints { (make) -> Void in
-            make.centerY.equalTo(self.view).offset(-40).keyboard(true, in: self.view)
+            make.centerY.equalTo(self.view).offset(-70).keyboard(true, in: self.view)
+        }
+        buttonReset.snp.makeConstraints { (make) -> Void in
+            make.width.equalTo(140)
+            make.height.equalTo(50)
+            make.centerX.equalTo(self.view).offset(80)
+            make.centerY.equalTo(self.view).offset(30).keyboard(false, in: self.view)
+        }
+        buttonReset.snp.prepareConstraints { (make) -> Void in
+            make.centerY.equalTo(self.view).offset(-70).keyboard(true, in: self.view)
         }
         labelErrors.snp.makeConstraints {  (make) -> Void in
             make.left.equalTo(25)
@@ -123,17 +112,11 @@ final class AuthSignInController: CoreController, View, Stepper, NVActivityIndic
         labelErrors.snp.prepareConstraints {  (make) -> Void in
             make.centerY.equalTo(self.view).offset(20).keyboard(true, in: self.view)
         }
-        buttonForgot.snp.makeConstraints {  (make) -> Void in
-            make.width.equalTo(300)
-            make.height.equalTo(50)
-            make.centerX.equalTo(self.view)
-            make.bottom.equalTo(self.view).offset(-25)
-        }
     }
 
     // MARK: Binding
 
-    func bind(reactor: AuthSigninReactor) {
+    func bind(reactor: AuthForgotReactor) {
         bindView(reactor)
         bindAction(reactor)
         bindState(reactor)
@@ -144,47 +127,30 @@ final class AuthSignInController: CoreController, View, Stepper, NVActivityIndic
  * Extensions
  */
 
-private extension AuthSignInController {
+private extension AuthForgotController {
 
     // MARK: views (View -> View)
 
-    func bindView(_ reactor: AuthSigninReactor) {
-        // button signup
-        self.buttonSignup.rx.tap
-            .map(reactor.signUpReactor)
-            .subscribe(onNext: { [weak self] reactor in
-                guard let `self` = self else { return }
-                let viewController = AuthSignUpController(reactor: reactor)
-                viewController.title = L10n.authSignUpTitle
-                let navigationController = UINavigationController(rootViewController: viewController)
-                self.present(navigationController, animated: true, completion: nil)
-            })
-            .disposed(by: self.disposeBag)
-        // button forgot
-        self.buttonForgot.rx.tap
-            .map(reactor.forgotReactor)
-            .subscribe(onNext: { [weak self] reactor in
-                guard let `self` = self else { return }
-                let viewController = AuthForgotController(reactor: reactor)
-                viewController.title = L10n.authForgot
-                let navigationController = UINavigationController(rootViewController: viewController)
-                self.present(navigationController, animated: true, completion: nil)
-            })
-            .disposed(by: self.disposeBag)
+    func bindView(_ reactor: AuthForgotReactor) {
 
     }
 
     // MARK: actions (View -> Reactor)
 
-    func bindAction(_ reactor: AuthSigninReactor) {
+    func bindAction(_ reactor: AuthForgotReactor) {
+        // button signin
+        buttonReset.rx.tap
+            .throttle(.milliseconds(Metric.timesButtonsThrottle), latest: false, scheduler: MainScheduler.instance)
+            .map { _ in Reactor.Action.reset }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
         // button signin
         buttonSignin.rx.tap
-            .throttle(.milliseconds(Metric.timesButtonsThrottle), latest: false, scheduler: MainScheduler.instance)
             .map { _ in Reactor.Action.signIn }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         // form
-        Observable.combineLatest([self.inputEmail, self.inputPassword].map { $0.rx.text.orEmpty })
+        Observable.combineLatest([self.inputEmail].map { $0.rx.text.orEmpty })
             .map { $0.map { $0.isEmpty } }
             .map {Reactor.Action.updateIsFilled(!$0.contains(true))}
             .bind(to: reactor.action)
@@ -200,23 +166,45 @@ private extension AuthSignInController {
             .map {Reactor.Action.validateEmail}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
-        // password
-        self.inputPassword.rx.text
-            .filter {($0?.count)! > 0}
-            .map {Reactor.Action.updatePassword($0!)}
-            .bind(to: reactor.action)
-            .disposed(by: self.disposeBag)
     }
 
     // MARK: states (Reactor -> View)
 
-    func bindState(_ reactor: AuthSigninReactor) {
+    func bindState(_ reactor: AuthForgotReactor) {
         // refreshing
         reactor.state
             .map { $0.isRefreshing }
             .distinctUntilChanged()
             .bind(to: self.rx.isAnimating)
             .disposed(by: disposeBag)
+        // dissmissed
+        reactor.state
+            .map { $0.isDismissed }
+            .distinctUntilChanged()
+            .filter { $0 }
+            .subscribe(onNext: { [weak self] _ in
+                self?.dismiss(animated: true, completion: nil)
+            })
+            .disposed(by: self.disposeBag)
+        // success
+        reactor.state
+            .map { $0.success }
+            .filter { $0 != "" && $0 != "email" }
+            .distinctUntilChanged()
+            .debounce(.milliseconds(2000), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { success in
+                self.labelSuccess.text = success
+            })
+            .disposed(by: self.disposeBag)
+        reactor.state
+            .map { $0.success }
+            .filter { $0 != "" && $0 != "email" }
+            .distinctUntilChanged()
+            .debounce(.milliseconds(7000), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { _ in
+                self.buttonSignin.sendActions(for: .touchUpInside)
+            })
+            .disposed(by: self.disposeBag)
         // validation errors
         reactor.state
             .map { $0.errors }
@@ -248,7 +236,7 @@ private extension AuthSignInController {
         )
         .map { [$0.0, $0.1] }
         .map { !$0.contains(true) }
-        .bind(to: self.buttonSignin.rx.isEnabled)
+        .bind(to: self.buttonReset.rx.isEnabled)
         .disposed(by: disposeBag)
     }
 }

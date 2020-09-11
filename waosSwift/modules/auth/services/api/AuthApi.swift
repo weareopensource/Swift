@@ -12,6 +12,7 @@ enum AuthApi {
     case signUp(firstName: String, lastName: String, email: String, password: String)
     case signIn(email: String, password: String)
     case token
+    case forgot(email: String)
 }
 
 extension AuthApi: TargetType {
@@ -33,12 +34,14 @@ extension AuthApi: TargetType {
             return "/" + apiPathAuth + "/signin"
         case .token :
             return "/" + apiPathAuth + "/token"
+        case .forgot :
+            return "/" + apiPathAuth + "/forgot"
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .signUp, .signIn:
+        case .signUp, .signIn, .forgot:
             return .post
         case .token:
             return .get
@@ -50,6 +53,7 @@ extension AuthApi: TargetType {
         case .signUp: return stubbed("signup")
         case .signIn: return stubbed("signin")
         case .token: return stubbed("me")
+        case .forgot: return stubbed("forgot")
         }
     }
 
@@ -61,6 +65,8 @@ extension AuthApi: TargetType {
             return .requestParameters(parameters: ["email": email, "password": password], encoding: JSONEncoding.default)
         case .token:
             return .requestPlain
+        case .forgot(let email):
+            return .requestParameters(parameters: ["email": email], encoding: JSONEncoding.default)
         }
     }
 
