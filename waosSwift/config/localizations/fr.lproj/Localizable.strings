@@ -23,6 +23,8 @@
 "auth_password"= "Mot de passe";
 "auth_firstname"= "Prénom";
 "auth_lastname"= "Nom";
+"auth_forgot"= "Mot de passe oublié?";
+"auth_reset"= "Reset";
 
 // task
 "tasks_title"= "Tasks";

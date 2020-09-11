@@ -102,7 +102,6 @@ final class AuthSigninReactor: Reactor {
                 },
                 .just(.setRefreshing(false))
             ])
-
         // signup
         case .signUp:
             log.verbose("♻️ Action -> Mutation : signUp")
@@ -159,6 +158,10 @@ final class AuthSigninReactor: Reactor {
 
     func signUpReactor() -> AuthSignUpReactor {
         return AuthSignUpReactor(provider: self.provider)
+    }
+
+    func forgotReactor() -> AuthForgotReactor {
+        return AuthForgotReactor(provider: self.provider)
     }
 
 }

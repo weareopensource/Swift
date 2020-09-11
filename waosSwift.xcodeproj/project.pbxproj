@@ -133,6 +133,9 @@
 		BFBA338C2403FBB500CF9299 /* UIImageView+Kingfisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBA338B2403FBB500CF9299 /* UIImageView+Kingfisher.swift */; };
 		BFBA339224040F8A00CF9299 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBA339124040F8A00CF9299 /* String.swift */; };
 		BFC81B002383CF6500D00D3C /* CoreCollectionViewCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC81AFF2383CF6500D00D3C /* CoreCollectionViewCellController.swift */; };
+		BFCAA248250A7CE40065FB69 /* AuthForgotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCAA247250A7CE40065FB69 /* AuthForgotController.swift */; };
+		BFCAA24A250A7CFF0065FB69 /* AuthForgotReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCAA249250A7CFF0065FB69 /* AuthForgotReactor.swift */; };
+		BFCAA24C250B58DF0065FB69 /* forgot.json in Resources */ = {isa = PBXBuildFile; fileRef = BFCAA24B250B58DE0065FB69 /* forgot.json */; };
 		BFD9CB21238435B20034837F /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD9CB20238435B20034837F /* UIImage.swift */; };
 		BFD9CB23238435CB0034837F /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD9CB22238435CB0034837F /* UILabel.swift */; };
 		BFDE25FE227B052D008CBD30 /* NSViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE25FD227B052D008CBD30 /* NSViewController+Rx.swift */; };
@@ -316,6 +319,9 @@
 		BFBA338B2403FBB500CF9299 /* UIImageView+Kingfisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Kingfisher.swift"; sourceTree = "<group>"; };
 		BFBA339124040F8A00CF9299 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		BFC81AFF2383CF6500D00D3C /* CoreCollectionViewCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreCollectionViewCellController.swift; sourceTree = "<group>"; };
+		BFCAA247250A7CE40065FB69 /* AuthForgotController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthForgotController.swift; sourceTree = "<group>"; };
+		BFCAA249250A7CFF0065FB69 /* AuthForgotReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthForgotReactor.swift; sourceTree = "<group>"; };
+		BFCAA24B250B58DE0065FB69 /* forgot.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = forgot.json; sourceTree = "<group>"; };
 		BFD9CB20238435B20034837F /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		BFD9CB22238435CB0034837F /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		BFDE25FD227B052D008CBD30 /* NSViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSViewController+Rx.swift"; sourceTree = "<group>"; };
@@ -422,6 +428,7 @@
 			children = (
 				BF058D762282BCAC00E2A077 /* AuthSigninController.swift */,
 				BF78B621229949410057157A /* AuthSignupController.swift */,
+				BFCAA247250A7CE40065FB69 /* AuthForgotController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -439,6 +446,7 @@
 			children = (
 				BF058D7A2282BCC500E2A077 /* AuthSigninReactor.swift */,
 				BF78B623229949740057157A /* AuthSignupReactor.swift */,
+				BFCAA249250A7CFF0065FB69 /* AuthForgotReactor.swift */,
 			);
 			path = reactors;
 			sourceTree = "<group>";
@@ -919,6 +927,7 @@
 				BF78B625229964050057157A /* signUp.json */,
 				BF78B627229964290057157A /* signIn.json */,
 				BF78B61B229683A90057157A /* token.json */,
+				BFCAA24B250B58DE0065FB69 /* forgot.json */,
 			);
 			path = stubbed;
 			sourceTree = "<group>";
@@ -1098,6 +1107,7 @@
 				BF9A366A228D5CDA00EE2AB8 /* list.json in Resources */,
 				BF4A2FAB225CA6DB0001B4CE /* LICENSE.md in Resources */,
 				BF78B60822954B3F0057157A /* me.json in Resources */,
+				BFCAA24C250B58DF0065FB69 /* forgot.json in Resources */,
 				BF78B628229964290057157A /* signIn.json in Resources */,
 				BF9A3669228D5CDA00EE2AB8 /* delete.json in Resources */,
 				BF4A2FA9225CA6DB0001B4CE /* Readme.md in Resources */,
@@ -1245,6 +1255,7 @@
 				BF19509622B7CEEB00C593E5 /* Url.swift in Sources */,
 				BF49EA132362E51B00FF06E9 /* UserController.swift in Sources */,
 				BFDE2600227B053D008CBD30 /* UIViewController+Rx.swift in Sources */,
+				BFCAA24A250A7CFF0065FB69 /* AuthForgotReactor.swift in Sources */,
 				BF794D3A22671CD8000B19F3 /* TasksModel.swift in Sources */,
 				BFA92D3D237DA119006A3B8D /* CoreUITableView.swift in Sources */,
 				BF78B5FA22942CBB0057157A /* CoreModel.swift in Sources */,
@@ -1302,6 +1313,7 @@
 				BF8C672C2280177E0012B5A8 /* UICollectionView+ReusableKit.swift in Sources */,
 				BF42E09D246595E900DA7B1E /* UserPreferenceController.swift in Sources */,
 				BFA92D2F237C050C006A3B8D /* CoreFormController.swift in Sources */,
+				BFCAA248250A7CE40065FB69 /* AuthForgotController.swift in Sources */,
 				BF00138B237427670044C01A /* Eureka.swift in Sources */,
 				BF3B775523608F4400ECD30A /* CoreUIButton.swift in Sources */,
 				BF425486221EBB9700395AE6 /* TasksListController.swift in Sources */,
