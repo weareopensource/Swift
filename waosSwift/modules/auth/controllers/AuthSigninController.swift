@@ -4,6 +4,7 @@
 
 import UIKit
 import ReactorKit
+import AuthenticationServices
 
 /**
  * Controller
@@ -48,6 +49,9 @@ final class AuthSignInController: CoreController, View, Stepper, NVActivityIndic
         $0.setTitleColor(.gray, for: .normal)
         $0.backgroundColor = .clear
     }
+    let buttonSignInApple = ASAuthorizationAppleIDButton().then {
+        $0.isHidden = !(config["oAuth"]["apple"].bool ?? false)
+    }
 
     // MARK: Properties
 
@@ -75,9 +79,11 @@ final class AuthSignInController: CoreController, View, Stepper, NVActivityIndic
         self.view.addSubview(self.buttonSignup)
         self.view.addSubview(self.labelErrors)
         self.view.addSubview(self.buttonForgot)
+        self.view.addSubview(self.buttonSignInApple)
     }
 
     override func setupConstraints() {
+        // inputs
         inputEmail.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(300)
             make.height.equalTo(50)
@@ -96,6 +102,7 @@ final class AuthSignInController: CoreController, View, Stepper, NVActivityIndic
         inputPassword.snp.prepareConstraints { (make) -> Void in
             make.centerY.equalTo(self.view).offset(-100).keyboard(true, in: self.view)
         }
+        // buttons
         buttonSignup.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(140)
             make.height.equalTo(50)
@@ -120,9 +127,21 @@ final class AuthSignInController: CoreController, View, Stepper, NVActivityIndic
             make.centerX.equalTo(self.view)
             make.centerY.equalTo(self.view).offset(120).keyboard(false, in: self.view)
         }
+        buttonSignInApple.snp.makeConstraints { (make) -> Void in
+            make.width.equalTo(300)
+            make.height.equalTo(50)
+            make.centerX.equalTo(self.view).keyboard(false, in: self.view)
+            make.centerY.equalTo(self.view).offset(140).keyboard(false, in: self.view)
+        }
+        buttonSignInApple.snp.prepareConstraints { (make) -> Void in
+            make.right.equalTo(self.view.snp.left).keyboard(true, in: self.view)
+            make.centerY.equalTo(self.view).offset(65).keyboard(true, in: self.view)
+        }
+        // errors
         labelErrors.snp.prepareConstraints {  (make) -> Void in
             make.centerY.equalTo(self.view).offset(20).keyboard(true, in: self.view)
         }
+        // forgot
         buttonForgot.snp.makeConstraints {  (make) -> Void in
             make.width.equalTo(300)
             make.height.equalTo(50)
@@ -171,7 +190,6 @@ private extension AuthSignInController {
                 self.present(navigationController, animated: true, completion: nil)
             })
             .disposed(by: self.disposeBag)
-
     }
 
     // MARK: actions (View -> Reactor)
@@ -181,6 +199,15 @@ private extension AuthSignInController {
         buttonSignin.rx.tap
             .throttle(.milliseconds(Metric.timesButtonsThrottle), latest: false, scheduler: MainScheduler.instance)
             .map { _ in Reactor.Action.signIn }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        // button signin apple
+        self.buttonSignInApple.rx
+            .loginOnTap(scope: [.fullName, .email])
+            .map { result in
+                let auth = result.credential as! ASAuthorizationAppleIDCredential
+                return Reactor.Action.oAuthApple(auth.fullName?.givenName ?? "", auth.fullName?.familyName ?? "", auth.email ?? "", auth.user)
+            }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         // form
@@ -246,9 +273,9 @@ private extension AuthSignInController {
                 .map { !$0.isFilled }
                 .distinctUntilChanged()
         )
-        .map { [$0.0, $0.1] }
-        .map { !$0.contains(true) }
-        .bind(to: self.buttonSignin.rx.isEnabled)
-        .disposed(by: disposeBag)
+            .map { [$0.0, $0.1] }
+            .map { !$0.contains(true) }
+            .bind(to: self.buttonSignin.rx.isEnabled)
+            .disposed(by: disposeBag)
     }
 }

@@ -70,6 +70,9 @@
 		BF4A2FCE2264A6810001B4CE /* development.json in Resources */ = {isa = PBXBuildFile; fileRef = BF4A2FCA2264A4B00001B4CE /* development.json */; };
 		BF4A2FD42265F4020001B4CE /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4A2FD32265F4020001B4CE /* UserDefaults.swift */; };
 		BF4A2FD9226710F10001B4CE /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4A2FD8226710F10001B4CE /* RxDataSources.framework */; };
+		BF5BA0EE251206ED005DCDDD /* ASAuthorizationAppleIDButton+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5BA0ED251206ED005DCDDD /* ASAuthorizationAppleIDButton+Rx.swift */; };
+		BF5BA0F0251206FA005DCDDD /* ASAuthorizationControllerProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5BA0EF251206FA005DCDDD /* ASAuthorizationControllerProxy.swift */; };
+		BF5BA0F22512483A005DCDDD /* oauth.json in Resources */ = {isa = PBXBuildFile; fileRef = BF5BA0F12512483A005DCDDD /* oauth.json */; };
 		BF62ADA723E45ECC000D5225 /* UIAlertController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62ADA623E45ECC000D5225 /* UIAlertController+Rx.swift */; };
 		BF71BD9322A12A2E002CF9DE /* Validations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF71BD9222A12A2E002CF9DE /* Validations.swift */; };
 		BF78B5F32293CD680057157A /* ObservableType+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF78B5F22293CD680057157A /* ObservableType+Extras.swift */; };
@@ -255,6 +258,9 @@
 		BF4A2FCA2264A4B00001B4CE /* development.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = development.json; sourceTree = "<group>"; };
 		BF4A2FD32265F4020001B4CE /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		BF4A2FD8226710F10001B4CE /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
+		BF5BA0ED251206ED005DCDDD /* ASAuthorizationAppleIDButton+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASAuthorizationAppleIDButton+Rx.swift"; sourceTree = "<group>"; };
+		BF5BA0EF251206FA005DCDDD /* ASAuthorizationControllerProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASAuthorizationControllerProxy.swift; sourceTree = "<group>"; };
+		BF5BA0F12512483A005DCDDD /* oauth.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = oauth.json; sourceTree = "<group>"; };
 		BF62ADA623E45ECC000D5225 /* UIAlertController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Rx.swift"; sourceTree = "<group>"; };
 		BF71BD9222A12A2E002CF9DE /* Validations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validations.swift; sourceTree = "<group>"; };
 		BF78B5F22293CD680057157A /* ObservableType+Extras.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+Extras.swift"; sourceTree = "<group>"; };
@@ -753,6 +759,7 @@
 		BF78B60222952EEE0057157A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				BF5BA0EF251206FA005DCDDD /* ASAuthorizationControllerProxy.swift */,
 				BF8C6726227C43E80012B5A8 /* Array+SectionModel.swift */,
 				BF00138A237427660044C01A /* Eureka.swift */,
 				BF8BD5F6235F30660083B912 /* KeyboardConstraints.swift */,
@@ -924,6 +931,7 @@
 		BF9A368122900F5500EE2AB8 /* stubbed */ = {
 			isa = PBXGroup;
 			children = (
+				BF5BA0F12512483A005DCDDD /* oauth.json */,
 				BF78B625229964050057157A /* signUp.json */,
 				BF78B627229964290057157A /* signIn.json */,
 				BF78B61B229683A90057157A /* token.json */,
@@ -977,6 +985,7 @@
 		BFDE25FC227B0522008CBD30 /* Rx */ = {
 			isa = PBXGroup;
 			children = (
+				BF5BA0ED251206ED005DCDDD /* ASAuthorizationAppleIDButton+Rx.swift */,
 				BF0BB9FA236B495F00454BDD /* Eureka+Valid+Rx.swift */,
 				BFDE25FD227B052D008CBD30 /* NSViewController+Rx.swift */,
 				BF1D704E245F561C00F8EA36 /* NVActivityIndicatorView+Rx.swift */,
@@ -1116,6 +1125,7 @@
 				BF9A366B228D5CDA00EE2AB8 /* create.json in Resources */,
 				BF78B61C229683A90057157A /* token.json in Resources */,
 				BF425490221EBB9800395AE6 /* LaunchScreen.storyboard in Resources */,
+				BF5BA0F22512483A005DCDDD /* oauth.json in Resources */,
 				BF0CD6B622563CC200844F9A /* Localizable.strings in Resources */,
 				BF4A2F9E225CA6DB0001B4CE /* CHANGELOG.md in Resources */,
 				BF42548D221EBB9800395AE6 /* Assets.xcassets in Resources */,
@@ -1271,6 +1281,7 @@
 				BF8C6723227C3E1E0012B5A8 /* TasksCellReactor.swift in Sources */,
 				BF3B775A2360C01F00ECD30A /* CoreUITextField.swift in Sources */,
 				BFA92D2E237C050C006A3B8D /* CoreController.swift in Sources */,
+				BF5BA0EE251206ED005DCDDD /* ASAuthorizationAppleIDButton+Rx.swift in Sources */,
 				BF4A2F87225C8F160001B4CE /* UILocalizations.swift in Sources */,
 				BF058D7E2282BCDD00E2A077 /* AuthService.swift in Sources */,
 				BF9A3674228DFDAE00EE2AB8 /* TasksResponses.swift in Sources */,
@@ -1313,6 +1324,7 @@
 				BF8C672C2280177E0012B5A8 /* UICollectionView+ReusableKit.swift in Sources */,
 				BF42E09D246595E900DA7B1E /* UserPreferenceController.swift in Sources */,
 				BFA92D2F237C050C006A3B8D /* CoreFormController.swift in Sources */,
+				BF5BA0F0251206FA005DCDDD /* ASAuthorizationControllerProxy.swift in Sources */,
 				BFCAA248250A7CE40065FB69 /* AuthForgotController.swift in Sources */,
 				BF00138B237427670044C01A /* Eureka.swift in Sources */,
 				BF3B775523608F4400ECD30A /* CoreUIButton.swift in Sources */,
@@ -1500,6 +1512,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = waosSwift/waosSwift.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5TTXU376YU;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1512,8 +1525,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.waosSwift;
+				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensoruce.vue.testing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = waosSwift/config/BridgingHeader.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1525,6 +1539,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = waosSwift/waosSwift.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5TTXU376YU;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1537,8 +1552,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.waosSwift;
+				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensoruce.vue.testing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = waosSwift/config/BridgingHeader.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1692,6 +1708,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = waosSwift/waosSwift.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5TTXU376YU;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1704,8 +1721,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensource.waosSwift;
+				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensoruce.vue.testing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = waosSwift/config/BridgingHeader.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

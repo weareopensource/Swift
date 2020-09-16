@@ -13,6 +13,7 @@ enum AuthApi {
     case signIn(email: String, password: String)
     case token
     case forgot(email: String)
+    case oauth(strategy: Bool, key: String, value: String, firstName: String, lastName: String, email: String)
 }
 
 extension AuthApi: TargetType {
@@ -36,12 +37,14 @@ extension AuthApi: TargetType {
             return "/" + apiPathAuth + "/token"
         case .forgot :
             return "/" + apiPathAuth + "/forgot"
+        case .oauth :
+            return "/" + apiPathAuth + "/apple/callback"
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .signUp, .signIn, .forgot:
+        case .signUp, .signIn, .forgot, .oauth:
             return .post
         case .token:
             return .get
@@ -54,6 +57,7 @@ extension AuthApi: TargetType {
         case .signIn: return stubbed("signin")
         case .token: return stubbed("me")
         case .forgot: return stubbed("forgot")
+        case .oauth: return stubbed("oauth")
         }
     }
 
@@ -67,6 +71,8 @@ extension AuthApi: TargetType {
             return .requestPlain
         case .forgot(let email):
             return .requestParameters(parameters: ["email": email], encoding: JSONEncoding.default)
+        case .oauth(let strategy, let key, let value, let firstName, let lastName, let email):
+            return .requestParameters(parameters: ["strategy": strategy, "key": key, "value": value, "firstName": firstName, "lastName": lastName, "email": email], encoding: JSONEncoding.default)
         }
     }
 
