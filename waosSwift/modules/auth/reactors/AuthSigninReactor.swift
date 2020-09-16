@@ -21,6 +21,7 @@ final class AuthSigninReactor: Reactor {
         case updateIsFilled(Bool)
         // others
         case signIn
+        case oAuthApple(String, String, String, String)
         case signUp
     }
 
@@ -97,6 +98,24 @@ final class AuthSigninReactor: Reactor {
                             UserDefaults.standard.set(response.tokenExpiresIn, forKey: "CookieExpire")
                             self.provider.preferencesService.isLogged = true
                             return .success("signIn")
+                        case let .error(err): return .error(err)
+                        }
+                },
+                .just(.setRefreshing(false))
+            ])
+        // signin
+        case let .oAuthApple(firstName, lastName, email, sub):
+            log.verbose("♻️ Action -> Mutation : oAuthApple")
+            return .concat([
+                .just(.setRefreshing(true)),
+                self.provider.authService
+                    .oauth(strategy: false, key: "sub", value: sub, firstName: firstName, lastName: lastName, email: email)
+                    .map { result in
+                        switch result {
+                        case let .success(response):
+                            UserDefaults.standard.set(response.tokenExpiresIn, forKey: "CookieExpire")
+                            self.provider.preferencesService.isLogged = true
+                            return .success("oAuth")
                         case let .error(err): return .error(err)
                         }
                 },

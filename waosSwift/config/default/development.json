@@ -74,6 +74,9 @@
             "overlayFraction": 0.9
         }
     },
+    "oAuth": {
+      "apple": true,
+    },
     "times": {
         "buttons": {
             "throttle": 3000
