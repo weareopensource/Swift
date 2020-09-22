@@ -296,7 +296,7 @@ private extension UserViewController {
             .distinctUntilChanged()
             .subscribe(onNext: { avatar in
                 if (avatar != "") {
-                    self.imageAvatar.setImage(url: setUploadImageUrl(avatar, size: "256"), options: [.requestModifier(cookieModifier)]) { result in
+                    self.imageAvatar.setImage(url: setUploadImageUrl(avatar, size: "256"), options: [.requestModifier(cookieModifier)], completionHandler: { result in
                         switch result {
                         case .success(let value):
                             self.inputAvatar.value = value.image
@@ -306,7 +306,7 @@ private extension UserViewController {
                             log.error("🌄 Error -> \(error)")
                             break
                         }
-                    }
+                    })
                 }
             })
             .disposed(by: self.disposeBag)

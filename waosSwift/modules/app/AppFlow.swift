@@ -38,7 +38,7 @@ final class AppFlow: Flow {
             rootViewController.dismiss(animated: false)
         }
         let onboardingFlow = OnboardingFlow(withServices: self.services)
-        Flows.whenReady(flow1: onboardingFlow) { [unowned self] (root) in
+        Flows.use(onboardingFlow, when: .ready) { [unowned self] (root) in
             self.rootWindow.rootViewController = root
         }
         return .one(flowContributor: .contribute(withNextPresentable: onboardingFlow, withNextStepper: OneStepper(withSingleStep: Steps.onboardingIsRequired)))
@@ -60,7 +60,7 @@ final class AppFlow: Flow {
             rootViewController.dismiss(animated: false)
         }
         let authFlow = AuthFlow(withServices: self.services)
-        Flows.whenReady(flow1: authFlow) { [unowned self] (root) in
+        Flows.use(authFlow, when: .ready) { [unowned self] (root) in
             self.rootWindow.rootViewController = root
         }
         return .one(flowContributor: .contribute(withNextPresentable: authFlow, withNextStepper: OneStepper(withSingleStep: Steps.authIsRequired)))
@@ -68,7 +68,7 @@ final class AppFlow: Flow {
 
     private func navigationToDashboardScreen() -> FlowContributors {
         let coreFlow = CoreFlow(withServices: self.services)
-        Flows.whenReady(flow1: coreFlow) { [unowned self] (root) in
+        Flows.use(coreFlow, when: .ready) { [unowned self] (root) in
             self.rootWindow.rootViewController = root
         }
         return .one(flowContributor: .contribute(withNextPresentable: coreFlow, withNextStepper: OneStepper(withSingleStep: Steps.dashboardIsRequired)))
