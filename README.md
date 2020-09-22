@@ -77,7 +77,7 @@ It's straightforward :
 
 ```bash
 git clone https://github.com/weareopensource/swift.git && cd Swift
-carthage update 2>/dev/null                                                                                                                                                                                        ✔  13:12:01
+carthage update 2>/dev/null
 (cd Carthage/Checkouts/ReactorKit && swift package generate-xcodeproj)
 ./carthage-build.sh --platform iOS --no-use-binaries 
 ```
