@@ -32,7 +32,7 @@ final class CoreFlow: Flow {
         let secondFlow = SecondFlow(withServices: self.services)
         let profilFlow = UserFlow(withServices: self.services)
 
-        Flows.whenReady(flows: [tasksFlow, secondFlow, profilFlow]) { [unowned self] (root: [UINavigationController]) in
+        Flows.use([tasksFlow, secondFlow, profilFlow], when: .ready) { [unowned self] (root: [UINavigationController]) in
 
             for (index, route) in root.enumerated() {
                 route.tabBarItem = UITabBarItem(title: L10n.get("Localizable", config["router"][index]["name"].string ?? ""), image: UIImage.fontAwesomeIcon(code: "fa-" + (config["router"][index]["meta"]["icon"].string ?? ""), style: .solid, textColor: .blue, size: CGSize(width: config["router"][index]["meta"]["width"].int ?? 0, height: config["router"][index]["meta"]["height"].int ?? 0)), selectedImage: nil)

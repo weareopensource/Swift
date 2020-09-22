@@ -1,19 +1,19 @@
-github "ReactiveX/RxSwift" "5.0.1"
-github "RxSwiftCommunity/RxOptional" ~> 4.0.0
-github "RxSwiftCommunity/RxFlow" ~> 2.3.0
-github "ReactorKit/ReactorKit" ~> 2.0.1
-github "CocoaLumberjack/CocoaLumberjack" ~> 3.5.3
-github "AliSoftware/Reusable" ~> 4.0.1
+github "ReactiveX/RxSwift" "5.1.1"
+github "RxSwiftCommunity/RxOptional" ~> 4.1.0
+github "RxSwiftCommunity/RxFlow" ~> 2.9.1
+github "pierrebrisorgueil/ReactorKit" "fixUpgradeIosDeploymentTarget2"
+github "CocoaLumberjack/CocoaLumberjack" ~> 3.6.2
+github "AliSoftware/Reusable" ~> 4.1.1
 github "SwiftyJSON/SwiftyJSON" ~> 5.0.0
-github "RxSwiftCommunity/RxDataSources" ~> 4.0.0
-github "SnapKit/SnapKit" ~> 5.0.0
-github "Moya/Moya" ~> 14.0.0-alpha.1
-github "pixeldock/RxAppState" ~> 1.5.1
+github "RxSwiftCommunity/RxDataSources" ~> 4.0.1
+github "SnapKit/SnapKit" ~> 5.0.1
+github "Moya/Moya" ~> 15.0.0-alpha.1
+github "pixeldock/RxAppState" ~> 1.6.1
 github "adamwaite/Validator" ~> 3.2.1 
-github "xmartlabs/Eureka" ~> 5.0
-github "EurekaCommunity/ImageRow" ~> 4.0
+github "xmartlabs/Eureka" ~> 5.3.0
+github "EurekaCommunity/ImageRow" ~> 4.0.0
 github "kishikawakatsumi/KeychainAccess"
-github "devxoul/Toaster" ~> 2.2.0
+github "devxoul/Toaster" "master"
 github "thii/FontAwesome.swift"
-github "onevcat/Kingfisher" ~> 5.0
-github "ninjaprox/NVActivityIndicatorView"
+github "onevcat/Kingfisher" ~> 5.15.3
+github "ninjaprox/NVActivityIndicatorView" ~> 4.8.0
