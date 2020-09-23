@@ -52,10 +52,10 @@
 
 "user_section_app"= "Waos";
 "user_blog"= "Blog";
-"user_about"= "About";
+"user_site"= "Website";
 "user_us"= "Us ?";
 
-"user_section_information"= "Information";
+"user_section_about"= "About";
 "user_support"= "Support";
 "user_terms_of_use"= "Terms of use";
 "user_privacy_policy"= "Privacy policy";
