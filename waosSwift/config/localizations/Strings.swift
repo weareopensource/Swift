@@ -79,8 +79,8 @@ internal enum L10n {
   internal static let userEditSectionProfile = L10n.tr("Localizable", "user_edit_section_profile")
   /// You must configure mail on your phone for this.
   internal static let userErrorMail = L10n.tr("Localizable", "user_error_mail")
-  /// Help
-  internal static let userHelp = L10n.tr("Localizable", "user_help")
+  /// Waos legal
+  internal static let userLegalNotice = L10n.tr("Localizable", "user_legal_notice")
   /// Logout
   internal static let userLogout = L10n.tr("Localizable", "user_logout")
   /// We will send you all of your data by email. Do not hesitate to write to us if necessary.
@@ -105,8 +105,10 @@ internal enum L10n {
   internal static let userSectionContact = L10n.tr("Localizable", "user_section_contact")
   /// Information
   internal static let userSectionInformation = L10n.tr("Localizable", "user_section_information")
-  /// Terms of service
-  internal static let userTermsOfService = L10n.tr("Localizable", "user_terms_of_service")
+  /// Support
+  internal static let userSupport = L10n.tr("Localizable", "user_support")
+  /// Terms of use
+  internal static let userTermsOfUse = L10n.tr("Localizable", "user_terms_of_use")
   /// Profile
   internal static let userTitle = L10n.tr("Localizable", "user_title")
   /// Us ?

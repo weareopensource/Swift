@@ -56,9 +56,10 @@
 "user_us"= "Qui sommes-nous ?";
 
 "user_section_information"= "Informations";
-"user_help"= "Aide";
-"user_terms_of_service"= "Conditions d'utilisation";
+"user_support"= "Aide";
+"user_terms_of_use"= "Conditions d'utilisation";
 "user_privacy_policy"= "Politique de confidentialité";
+"user_legal_notice"= "Mentions légales";
 
 "user_section_contact"= "Contact";
 "user_report"= "Remonter un bug";

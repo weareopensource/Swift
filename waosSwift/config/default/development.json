@@ -10,9 +10,10 @@
             "blog": "https://blog.weareopensource.me",
             "about": "https://weareopensource.me",
             "us": "https://weareopensource.me/us/",
-            "help": "https://google.com",
-            "termsOfService": "https://google.com",
-            "privacyPolicy": "https://google.com",
+            "support": "https://developer.apple.com/support/",
+            "termsOfUse": "https://www.apple.com/legal/internet-services/terms/site.html",
+            "privacyPolicy": "https://www.apple.com/legal/privacy/en-ww/",
+            "legalNotice": "https://www.apple.com/fr/legal/",
             "gravatar": "https://gravatar.com"
         }
     },

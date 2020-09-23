@@ -54,14 +54,17 @@ class UserController: CoreFormController, View {
     }
 
     // button Information
-    let buttonHelp = ButtonRow {
-        $0.title = L10n.userHelp
+    let buttonSupport = ButtonRow {
+        $0.title = L10n.userSupport
     }
-    let buttonTermsOfService = ButtonRow {
-        $0.title = L10n.userTermsOfService
+    let buttonTermsOfUse = ButtonRow {
+        $0.title = L10n.userTermsOfUse
     }
     let buttonPrivacyPolicy = ButtonRow {
         $0.title = L10n.userPrivacyPolicy
+    }
+    let buttonLegalNotice = ButtonRow {
+        $0.title = L10n.userLegalNotice
     }
 
     // buttons Actions
@@ -128,9 +131,10 @@ class UserController: CoreFormController, View {
             <<< self.buttonAbout
             <<< self.buttonUs
             +++ Section(header: L10n.userSectionInformation, footer: "")
-            <<< self.buttonHelp
-            <<< self.buttonTermsOfService
+            <<< self.buttonSupport
+            <<< self.buttonTermsOfUse
             <<< self.buttonPrivacyPolicy
+            <<< self.buttonLegalNotice
             +++ Section(header: L10n.userSectionContact, footer: "")
             <<< self.buttonReport
             <<< self.buttonContact
@@ -202,16 +206,16 @@ private extension UserController {
             .disposed(by: disposeBag)
 
         // informations
-        self.buttonHelp.rx.tap
+        self.buttonSupport.rx.tap
             .subscribe(onNext: { _ in
-                guard let url = URL(string: (config["app"]["links"]["help"].string ?? "")) else { return }
+                guard let url = URL(string: (config["app"]["links"]["support"].string ?? "")) else { return }
                 let svc = SFSafariViewController(url: url)
                 self.present(svc, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
-        self.buttonTermsOfService.rx.tap
+        self.buttonTermsOfUse.rx.tap
             .subscribe(onNext: { _ in
-                guard let url = URL(string: (config["app"]["links"]["termsOfService"].string ?? "")) else { return }
+                guard let url = URL(string: (config["app"]["links"]["termsOfUse"].string ?? "")) else { return }
                 let svc = SFSafariViewController(url: url)
                 self.present(svc, animated: true, completion: nil)
             })
@@ -219,6 +223,13 @@ private extension UserController {
         self.buttonPrivacyPolicy.rx.tap
             .subscribe(onNext: { _ in
                 guard let url = URL(string: (config["app"]["links"]["privacyPolicy"].string ?? "")) else { return }
+                let svc = SFSafariViewController(url: url)
+                self.present(svc, animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
+        self.buttonLegalNotice.rx.tap
+            .subscribe(onNext: { _ in
+                guard let url = URL(string: (config["app"]["links"]["legalNotice"].string ?? "")) else { return }
                 let svc = SFSafariViewController(url: url)
                 self.present(svc, animated: true, completion: nil)
             })

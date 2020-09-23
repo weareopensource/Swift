@@ -56,9 +56,10 @@
 "user_us"= "Us ?";
 
 "user_section_information"= "Information";
-"user_help"= "Help";
-"user_terms_of_service"= "Terms of service";
+"user_support"= "Support";
+"user_terms_of_use"= "Terms of use";
 "user_privacy_policy"= "Privacy policy";
+"user_legal_notice"= "Waos legal";
 
 "user_section_contact"= "Contact";
 "user_report"= "Report a bug";
