@@ -18,6 +18,7 @@ class CoreFormController: FormViewController {
         static let tabBarColor = NSString(string: config["theme"]["tabBar"]["color"].string ?? "").boolValue
         static let tabBarTintColor = NSString(string: config["theme"]["tabBar"]["tintColor"].string ?? "").boolValue
         static let tabBarTitle = NSString(string: config["theme"]["tabBar"]["title"].string ?? "").boolValue
+        static let tabBarBorder = NSString(string: config["theme"]["tabBar"]["border"].string ?? "").boolValue
         static let imgCompression = CGFloat(config["img"]["compresion"].float ?? 1.0)
         static let margin = CGFloat(config["theme"]["global"]["margin"].int ?? 0)
         static let radius = CGFloat(config["theme"]["global"]["radius"].int ?? 0)
@@ -71,6 +72,10 @@ class CoreFormController: FormViewController {
                 $0.title = ""
                 $0.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
             }
+        }
+        if Metric.tabBarBorder == false {
+            self.tabBarController?.tabBar.layer.borderColor = UIColor.clear.cgColor
+            self.tabBarController?.tabBar.clipsToBounds = true
         }
         // tableView
         self.tableView?.backgroundColor = Metric.background

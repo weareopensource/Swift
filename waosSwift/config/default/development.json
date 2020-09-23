@@ -99,7 +99,8 @@
         "tabBar": {
             "color": "false",
             "title": "false",
-            "tintColor" : "true"
+            "tintColor" : "true",
+            "border": "false"
         },
         "toast": {
             "background": "waosError",
