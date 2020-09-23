@@ -192,7 +192,7 @@ private extension UserController {
             .disposed(by: disposeBag)
         self.buttonSite.rx.tap
             .subscribe(onNext: { _ in
-                guard let url = URL(string: (config["app"]["links"]["about"].string ?? "")) else { return }
+                guard let url = URL(string: (config["app"]["links"]["site"].string ?? "")) else { return }
                 let svc = SFSafariViewController(url: url)
                 self.present(svc, animated: true, completion: nil)
             })
