@@ -47,8 +47,6 @@ internal enum L10n {
   internal static let secondTitle = L10n.tr("Localizable", "second_title")
   /// Tasks
   internal static let tasksTitle = L10n.tr("Localizable", "tasks_title")
-  /// About
-  internal static let userAbout = L10n.tr("Localizable", "user_about")
   /// Blog
   internal static let userBlog = L10n.tr("Localizable", "user_blog")
   /// Contact us
@@ -97,14 +95,16 @@ internal enum L10n {
   internal static let userPrivacyPolicy = L10n.tr("Localizable", "user_privacy_policy")
   /// Report a bug
   internal static let userReport = L10n.tr("Localizable", "user_report")
+  /// About
+  internal static let userSectionAbout = L10n.tr("Localizable", "user_section_about")
   /// Other
   internal static let userSectionActions = L10n.tr("Localizable", "user_section_actions")
   /// Waos
   internal static let userSectionApp = L10n.tr("Localizable", "user_section_app")
   /// Contact
   internal static let userSectionContact = L10n.tr("Localizable", "user_section_contact")
-  /// Information
-  internal static let userSectionInformation = L10n.tr("Localizable", "user_section_information")
+  /// Website
+  internal static let userSite = L10n.tr("Localizable", "user_site")
   /// Support
   internal static let userSupport = L10n.tr("Localizable", "user_support")
   /// Terms of use

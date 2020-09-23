@@ -46,16 +46,16 @@ class UserController: CoreFormController, View {
         $0.title = L10n.userBlog
         $0.cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
     }
-    let buttonAbout = ButtonRow {
-        $0.title = L10n.userAbout
+    let buttonSite = ButtonRow {
+        $0.title = L10n.userSite
     }
-    let buttonUs = ButtonRow {
-        $0.title = L10n.userUs
+    let buttonSupport = ButtonRow {
+        $0.title = L10n.userSupport
     }
 
     // button Information
-    let buttonSupport = ButtonRow {
-        $0.title = L10n.userSupport
+    let buttonUs = ButtonRow {
+        $0.title = L10n.userUs
     }
     let buttonTermsOfUse = ButtonRow {
         $0.title = L10n.userTermsOfUse
@@ -128,10 +128,10 @@ class UserController: CoreFormController, View {
             <<< self.buttonPreferences
             +++ Section(header: L10n.userSectionApp, footer: "")
             <<< self.buttonBlog
-            <<< self.buttonAbout
-            <<< self.buttonUs
-            +++ Section(header: L10n.userSectionInformation, footer: "")
+            <<< self.buttonSite
             <<< self.buttonSupport
+            +++ Section(header: L10n.userSectionAbout, footer: "")
+            <<< self.buttonUs
             <<< self.buttonTermsOfUse
             <<< self.buttonPrivacyPolicy
             <<< self.buttonLegalNotice
@@ -190,7 +190,7 @@ private extension UserController {
                 self.present(svc, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
-        self.buttonAbout.rx.tap
+        self.buttonSite.rx.tap
             .subscribe(onNext: { _ in
                 guard let url = URL(string: (config["app"]["links"]["about"].string ?? "")) else { return }
                 let svc = SFSafariViewController(url: url)
