@@ -11,6 +11,7 @@ class CoreController: UIViewController {
         static let tabBarColor = NSString(string: config["theme"]["tabBar"]["color"].string ?? "").boolValue
         static let tabBarTintColor = NSString(string: config["theme"]["tabBar"]["tintColor"].string ?? "").boolValue
         static let tabBarTitle = NSString(string: config["theme"]["tabBar"]["title"].string ?? "").boolValue
+        static let tabBarBorder = NSString(string: config["theme"]["tabBar"]["border"].string ?? "").boolValue
         static let timesButtonsThrottle = Int(config["times"]["buttons"]["throttle"].int ?? 2000)
         static let timesErrorsDebounce = Int(config["times"]["errors"]["debounce"].int ?? 2000)
     }
@@ -60,6 +61,10 @@ class CoreController: UIViewController {
                $0.title = ""
                $0.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
             }
+        }
+        if Metric.tabBarBorder == false {
+            self.tabBarController?.tabBar.layer.borderColor = UIColor.clear.cgColor
+            self.tabBarController?.tabBar.clipsToBounds = true
         }
         // view
         self.view.backgroundColor = Metric.background
