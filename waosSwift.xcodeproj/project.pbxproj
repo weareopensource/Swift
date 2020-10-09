@@ -59,6 +59,7 @@
 		BF5BA0EE251206ED005DCDDD /* ASAuthorizationAppleIDButton+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5BA0ED251206ED005DCDDD /* ASAuthorizationAppleIDButton+Rx.swift */; };
 		BF5BA0F0251206FA005DCDDD /* ASAuthorizationControllerProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5BA0EF251206FA005DCDDD /* ASAuthorizationControllerProxy.swift */; };
 		BF5BA0F22512483A005DCDDD /* oauth.json in Resources */ = {isa = PBXBuildFile; fileRef = BF5BA0F12512483A005DCDDD /* oauth.json */; };
+		BF5DD0082530472700F14D3C /* ComplementaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5DD0072530472700F14D3C /* ComplementaryModel.swift */; };
 		BF62ADA723E45ECC000D5225 /* UIAlertController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62ADA623E45ECC000D5225 /* UIAlertController+Rx.swift */; };
 		BF71BD9322A12A2E002CF9DE /* Validations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF71BD9222A12A2E002CF9DE /* Validations.swift */; };
 		BF7369A625191A2A00A5BDAB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BF7369A525191A2A00A5BDAB /* README.md */; };
@@ -263,6 +264,8 @@
 		BF5BA0ED251206ED005DCDDD /* ASAuthorizationAppleIDButton+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASAuthorizationAppleIDButton+Rx.swift"; sourceTree = "<group>"; };
 		BF5BA0EF251206FA005DCDDD /* ASAuthorizationControllerProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASAuthorizationControllerProxy.swift; sourceTree = "<group>"; };
 		BF5BA0F12512483A005DCDDD /* oauth.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = oauth.json; sourceTree = "<group>"; };
+		BF5DD0072530472700F14D3C /* ComplementaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplementaryModel.swift; sourceTree = "<group>"; };
+		BF5DD00B253049B400F14D3C /* waosSwiftRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = waosSwiftRelease.entitlements; sourceTree = "<group>"; };
 		BF62ADA623E45ECC000D5225 /* UIAlertController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Rx.swift"; sourceTree = "<group>"; };
 		BF71BD9222A12A2E002CF9DE /* Validations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validations.swift; sourceTree = "<group>"; };
 		BF7369A525191A2A00A5BDAB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -531,6 +534,7 @@
 		BF425482221EBB9700395AE6 /* waosSwift */ = {
 			isa = PBXGroup;
 			children = (
+				BF5DD00B253049B400F14D3C /* waosSwiftRelease.entitlements */,
 				BF42548C221EBB9800395AE6 /* Assets.xcassets */,
 				BF05418D2361964F008628CF /* waosSwift.entitlements */,
 				BF0CD6A822563C7700844F9A /* config */,
@@ -959,6 +963,7 @@
 			isa = PBXGroup;
 			children = (
 				BF9A368522901D7000EE2AB8 /* UserModel.swift */,
+				BF5DD0072530472700F14D3C /* ComplementaryModel.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -1315,6 +1320,7 @@
 				BF4A2FD42265F4020001B4CE /* UserDefaults.swift in Sources */,
 				BFA92D1C237AED34006A3B8D /* UserViewReactor.swift in Sources */,
 				BF9A368C2292D0C700EE2AB8 /* CookiePlugin.swift in Sources */,
+				BF5DD0082530472700F14D3C /* ComplementaryModel.swift in Sources */,
 				BF8F6EDB2273453100B9447A /* Then.swift in Sources */,
 				BF4A2F6F225BB2B10001B4CE /* OnBoardingFlow.swift in Sources */,
 				BFD9CB21238435B20034837F /* UIImage.swift in Sources */,
@@ -1549,7 +1555,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = waosSwift/waosSwift.entitlements;
+				CODE_SIGN_ENTITLEMENTS = waosSwift/waosSwiftRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5TTXU376YU;

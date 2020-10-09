@@ -21,6 +21,8 @@ final class TasksListReactor: Reactor {
         case refresh([Tasks])
         case get
         case delete(IndexPath)
+        // Notificaitons
+        case getIndexPath(String)
         // user
         case checkUserToken // (only in tab main controller)
     }
@@ -30,6 +32,8 @@ final class TasksListReactor: Reactor {
         // task
         case set([Tasks])
         case setRefreshing(Bool)
+        // Notificaitons
+        case setIndexPath(String)
         // default
         case success(String)
         case error(CustomError)
@@ -41,6 +45,8 @@ final class TasksListReactor: Reactor {
         var tasks: [Tasks]
         var sections: [TasksSections]
         var isRefreshing: Bool
+        // Notificaitons
+        var indexPath: IndexPath?
 
         init() {
             self.tasks = []
@@ -107,6 +113,10 @@ final class TasksListReactor: Reactor {
                     case let .error(err): return .error(err)
                     }
             }
+        // notification
+        case let .getIndexPath(id):
+            log.verbose("♻️ Action -> Mutation : getIndexPath")
+            return .just(.setIndexPath(id))
         // check user token when open application
         case .checkUserToken:
             log.verbose("♻️ Action -> Mutation : checkUserToken")
@@ -154,6 +164,14 @@ final class TasksListReactor: Reactor {
                     state.sections.remove(at: IndexPath(item: index, section: 0))
                 case let .insert(index, element, _):
                     state.sections.insert(TasksCellReactor(task: element), at: IndexPath(item: index, section: 0))
+                }
+            }
+        //
+        case let .setIndexPath(id):
+            log.verbose("♻️ Mutation -> State : setIndexPath")
+            if let section = state.sections.firstIndex(where: { $0.items.firstIndex(where: { $0.currentState.id == id }) != nil ? true : false }) {
+                if let row = state.sections[section].items.firstIndex(where: { $0.currentState.id == id }) {
+                    state.indexPath = IndexPath(row: row, section: section)
                 }
             }
         // success
