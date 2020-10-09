@@ -10,7 +10,7 @@ import Moya
 
 enum UserApi {
     case me
-    case update(firstName: String, lastName: String, email: String, bio: String)
+    case update(_ user: User)
     case delete
     case updateAvatar(file: Data, partName: String, fileName: String, mimeType: String)
     case deleteAvatar
@@ -77,8 +77,8 @@ extension UserApi: TargetType {
         switch self {
         case .me, .delete, .deleteAvatar, .data:
             return .requestPlain
-        case .update(let firstName, let lastName, let email, let bio):
-            return .requestParameters(parameters: ["firstName": firstName, "lastName": lastName, "email": email, "bio": bio], encoding: JSONEncoding.default)
+        case .update(let user):
+            return .requestJSONEncodable(user)
         case .updateAvatar(let data, let partName, let fileName, let mimeType):
             let gifData = MultipartFormData(provider: .data(data), name: partName, fileName: fileName, mimeType: mimeType)
             return .uploadMultipart([gifData])

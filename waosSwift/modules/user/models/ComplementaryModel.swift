@@ -3,21 +3,45 @@
  */
 
 struct Complementary: Equatable {
-    var instagram: String?
+    var iosDevices: [Devices]?
 
-    init(instagram: String? = nil) {
-        self.instagram = instagram
+    init(iosDevices: [Devices]? = nil) {
+        self.iosDevices = iosDevices
     }
 }
 
 extension Complementary: Codable, Hashable {
     enum ComplementaryCodingKeys: String, CodingKey {
-        case instagram
+        case iosDevices
     }
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: ComplementaryCodingKeys.self)
 
-        instagram = try container.decodeIfPresent(String.self, forKey: .instagram)
+        iosDevices = try container.decodeIfPresent([Devices].self, forKey: .iosDevices)
+    }
+}
+
+struct Devices: Equatable {
+    var token: String?
+    var swift: String?
+
+    init(token: String? = nil, swift: String? = nil) {
+        self.token = token
+        self.swift = swift
+    }
+}
+
+extension Devices: Codable, Hashable {
+    enum DevicesCodingKeys: String, CodingKey {
+        case token
+        case swift
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: DevicesCodingKeys.self)
+
+        token = try container.decodeIfPresent(String.self, forKey: .token)
+        swift = try container.decodeIfPresent(String.self, forKey: .swift)
     }
 }

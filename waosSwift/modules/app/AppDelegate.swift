@@ -49,43 +49,63 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         // MARK: Notifications
-        registerForPushNotifications()
-        let notificationOption = launchOptions?[.remoteNotification]
-        if let notification = notificationOption as? [String: AnyObject], let aps = notification["aps"] as? [String: AnyObject] {
-            log.debug("📱 Launched from notification notificationOption: \(String(describing: notificationOption))")
-            log.debug("📱 Launched from notification aps: \(aps)")
-            handleNotification(aps: aps)
+
+        if(config["notifications"].bool ?? false) {
+            registerForPushNotifications()
+            let notificationOption = launchOptions?[.remoteNotification]
+            if let notification = notificationOption as? [String: AnyObject], let aps = notification["aps"] as? [String: AnyObject] {
+                log.verbose("📱 Launched from notification notificationOption: \(String(describing: notificationOption))")
+                log.verbose("📱 Launched from notification aps: \(aps)")
+                handleNotification(aps: aps)
+            }
         }
 
         return true
     }
 
-    // MARK: Notifications
     func application( _ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
-        let token = tokenParts.joined()
-        log.debug("📱 Device Token: \(token)")
+
+        // MARK: Notifications
+
+        if(config["notifications"].bool ?? false) {
+            let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
+            let token = tokenParts.joined()
+            log.verbose("📱 Device Token: \(token)")
+            self.servicesProvider.userService.updateDeviceToken(token)
+        }
     }
 
     func application( _ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        log.error("📱 Failed to register: \(error)")
+
+        // MARK: Notifications
+
+        if(config["notifications"].bool ?? false) {
+            log.error("📱 Failed to register: \(error)")
+        }
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler:@escaping (UIBackgroundFetchResult) -> Void) {
-        guard let aps = userInfo["aps"] as? [String: AnyObject] else {
-            completionHandler(.failed)
-            return
-        }
-        log.debug("📱 Received notification aps: \(aps)")
-        if (UIApplication.shared.applicationState != .active) {
-            handleNotification(aps: aps)
+
+        // MARK: Notifications
+
+        if(config["notifications"].bool ?? false) {
+            guard let aps = userInfo["aps"] as? [String: AnyObject] else {
+                completionHandler(.failed)
+                return
+            }
+            log.debug("📱 Received notification aps: \(aps)")
+            if (UIApplication.shared.applicationState != .active) {
+                handleNotification(aps: aps)
+            }
         }
     }
+
+    // MARK: Notifications
 
     func registerForPushNotifications() {
         UNUserNotificationCenter.current().requestAuthorization(
             options: [.alert, .sound, .badge]) { [weak self] granted, _ in
-            log.debug("📱 Permission granted: \(granted)")
+            log.verbose("📱 Permission granted: \(granted)")
             guard granted else { return }
             self?.getNotificationSettings()
         }
@@ -93,7 +113,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func getNotificationSettings() {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
-            log.debug("📱 Notification settings: \(settings)")
+            log.verbose("📱 Notification settings: \(settings)")
             guard settings.authorizationStatus == .authorized else { return }
             DispatchQueue.main.async {
                 UIApplication.shared.registerForRemoteNotifications()

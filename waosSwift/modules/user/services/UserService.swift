@@ -11,6 +11,9 @@ protocol UserServiceType {
     func updateAvatar(file: Data, partName: String, fileName: String, mimeType: String) -> Observable<MyResult<UserResponse, CustomError>>
     func deleteAvatar() -> Observable<MyResult<UserResponse, CustomError>>
     func data() -> Observable<MyResult<MailResponse, CustomError>>
+
+    func updateDeviceToken(_ deviceToken: String)
+
 }
 
 final class UserService: CoreService, UserServiceType {
@@ -37,7 +40,7 @@ final class UserService: CoreService, UserServiceType {
     func update(_ user: User) -> Observable<MyResult<UserResponse, CustomError>> {
         log.verbose("🔌 service : update ", user.firstName)
         return self.networking
-            .request(.update(firstName: user.firstName, lastName: user.lastName, email: user.email, bio: user.bio ?? ""))
+            .request(.update(user))
             .map(UserResponse.self)
             .map { response in
                 self.userSubject.onNext(response.data)
@@ -103,4 +106,49 @@ final class UserService: CoreService, UserServiceType {
             .catchError { err in .just(.error(getError(err)))}
     }
 
+    func updateDeviceToken(_ deviceToken: String) {
+        self.networking.request(.me) { result in
+            switch result {
+            case let .success(moyaResponse):
+                do {
+                    let filteredResponse = try moyaResponse.filterSuccessfulStatusCodes()
+                    var user = try filteredResponse.map(UserResponse.self)
+                    var shouldUpdate = false
+                    if let complementary = user.data.complementary {
+                        if complementary.iosDevices != nil {
+                            if let index = complementary.iosDevices?.firstIndex(where: { $0.token == deviceToken }) {
+                                if user.data.complementary?.iosDevices![index].swift != UIDevice.current.systemVersion {
+                                    user.data.complementary?.iosDevices![index].swift = UIDevice.current.systemVersion
+                                    shouldUpdate = true
+                                }
+                            } else {
+                                user.data.complementary?.iosDevices?.append(Devices(token: deviceToken, swift: UIDevice.current.systemVersion))
+                                shouldUpdate = true
+                            }
+                        } else {
+                           user.data.complementary?.iosDevices = [Devices(token: deviceToken, swift: UIDevice.current.systemVersion)]
+                            shouldUpdate = true
+                        }
+                    } else {
+                        user.data.complementary = Complementary(iosDevices: [Devices(token: deviceToken, swift: UIDevice.current.systemVersion)])
+                        shouldUpdate = true
+                    }
+                    if shouldUpdate {
+                        self.networking.request(.update(user.data)) { result in
+                            switch result {
+                            case  .success:
+                                log.verbose("📱 Success update of user deviceToken")
+                            case let .failure(error):
+                                log.error("📱 Failed to update user deviceToken\(error) ")
+                            }
+                        }
+                    }
+                } catch let error {
+                    log.error("📱 Failed to handle user deviceToken \(error)")
+                }
+            case let .failure(error):
+                log.error("📱 Failed to get user deviceToken \(error)")
+            }
+        }
+    }
 }

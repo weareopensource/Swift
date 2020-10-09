@@ -78,6 +78,7 @@
     "oAuth": {
       "apple": true,
     },
+    "notifications": false,
     "times": {
         "buttons": {
             "throttle": 3000
