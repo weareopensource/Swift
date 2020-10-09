@@ -15,6 +15,7 @@ final class TasksListController: CoreController, View {
 
     // MARK: Constants
 
+    fileprivate var notification = BehaviorRelay<String?>(value: nil)
     struct Reusable {
         static let taskCell = ReusableCell<TasksCellController>()
     }
@@ -57,11 +58,23 @@ final class TasksListController: CoreController, View {
         self.navigationItem.rightBarButtonItem = self.barButtonAdd
         self.tableView.refreshControl = refreshControl
         self.view.addSubview(self.tableView)
+        // notification
+        NotificationCenter.default.addObserver(self, selector: #selector(self.ReceivedNotification(notification:)), name: Notification.Name("openTask"), object: nil)
     }
 
     override func setupConstraints() {
         self.tableView.snp.makeConstraints { make in
             make.edges.equalTo(0)
+        }
+    }
+
+    // MARK: Notification
+
+    @objc func ReceivedNotification(notification: Notification) {
+        if let id = notification.userInfo?["id"] as? String {
+            self.notification.accept(id)
+        } else {
+            self.notification.accept(nil)
         }
     }
 
@@ -123,6 +136,13 @@ private extension TasksListController {
             .map(Reactor.Action.delete)
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
+        // notification
+        self.notification
+            .skip(1)
+            .filterNil()
+            .map {Reactor.Action.getIndexPath($0)}
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
     }
 
     // MARK: states (Reactor -> View)
@@ -139,6 +159,17 @@ private extension TasksListController {
             .distinctUntilChanged()
             .bind(to: refreshControl.rx.isRefreshing)
             .disposed(by: disposeBag)
+        // notification
+        reactor.state
+            .map { $0.indexPath }
+            .filterNil()
+            .throttle(.seconds(5), latest: false, scheduler: MainScheduler.instance)
+            .subscribe(onNext: { indexPath in
+                self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
+                self.tableView.delegate?.tableView!(self.tableView, didSelectRowAt: indexPath)
+            })
+            .disposed(by: self.disposeBag)
+
     }
 }
 

@@ -1,0 +1,8 @@
+{
+  "aps": {
+    "alert": "Breaking News!",
+    "sound": "default",
+    "link_url": "openTask:5f5d562f71cbbaf22bad3b13"
+  }
+}
+

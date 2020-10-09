@@ -51,9 +51,11 @@ Our stack Swift is actually in Beta.
 #### Available
 
 * **User** : classic register / auth or oAuth(microsoft, google) - profile management (update, avatar upload ...)
-* **User data privacy** : delete all data & account - send all data by mai
+* **User data privacy** : delete all data & account - send all data by mail
 * **Tasks** : list tasks - get task - add tasks - edit tasks - delete tasks
 * **Uploads** : get upload stream - add upload - auto delete old via api (ex : image => kingfisher: jwt, styles, cache,  or sharp via node api)
+
+* **Notification** : example of notificaiton management
 
 ## :pushpin: Prerequisites
 
@@ -102,6 +104,11 @@ carthage update 2>/dev/null
 ### Configuration
 
 In develompment
+
+### Notifications
+
+* `xcrun simctl push 2D27349F-91E4-45BB-84C9-9D8C2D47A637 me.weareopensoruce.vue.testing example.apn`
+*  [article](https://www.raywenderlich.com/11395893-push-notifications-tutorial-getting-started)
 
 ## :pencil2: [Contribute](https://blog.weareopensource.me/how-to-contribute/)
 
