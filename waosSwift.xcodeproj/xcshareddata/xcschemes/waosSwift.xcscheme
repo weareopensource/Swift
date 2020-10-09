@@ -61,7 +61,7 @@
       </Testables>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "production"
+      buildConfiguration = "development"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       enableASanStackUseAfterReturn = "YES"

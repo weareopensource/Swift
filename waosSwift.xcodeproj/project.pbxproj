@@ -261,6 +261,7 @@
 		BF4A2FCA2264A4B00001B4CE /* development.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = development.json; sourceTree = "<group>"; };
 		BF4A2FD32265F4020001B4CE /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		BF4A2FD8226710F10001B4CE /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
+		BF532FF22530A6A000D47C4A /* waosSwiftdevelopment.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = waosSwiftdevelopment.entitlements; sourceTree = "<group>"; };
 		BF5BA0ED251206ED005DCDDD /* ASAuthorizationAppleIDButton+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASAuthorizationAppleIDButton+Rx.swift"; sourceTree = "<group>"; };
 		BF5BA0EF251206FA005DCDDD /* ASAuthorizationControllerProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASAuthorizationControllerProxy.swift; sourceTree = "<group>"; };
 		BF5BA0F12512483A005DCDDD /* oauth.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = oauth.json; sourceTree = "<group>"; };
@@ -534,6 +535,7 @@
 		BF425482221EBB9700395AE6 /* waosSwift */ = {
 			isa = PBXGroup;
 			children = (
+				BF532FF22530A6A000D47C4A /* waosSwiftdevelopment.entitlements */,
 				BF5DD00B253049B400F14D3C /* waosSwiftRelease.entitlements */,
 				BF42548C221EBB9800395AE6 /* Assets.xcassets */,
 				BF05418D2361964F008628CF /* waosSwift.entitlements */,
@@ -1528,7 +1530,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = waosSwift/waosSwift.entitlements;
+				CODE_SIGN_ENTITLEMENTS = waosSwift/waosSwiftdevelopment.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5TTXU376YU;
