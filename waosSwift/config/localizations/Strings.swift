@@ -75,6 +75,14 @@ internal enum L10n {
   internal static let userEditSectionImage = L10n.tr("Localizable", "user_edit_section_image")
   /// Profile
   internal static let userEditSectionProfile = L10n.tr("Localizable", "user_edit_section_profile")
+  /// Social networks
+  internal static let userEditSectionSocialnetworks = L10n.tr("Localizable", "user_edit_section_socialnetworks")
+  /// Facebook account name
+  internal static let userEditSocialnetworksFacebook = L10n.tr("Localizable", "user_edit_socialnetworks_facebook")
+  /// Instagram account name
+  internal static let userEditSocialnetworksInstagram = L10n.tr("Localizable", "user_edit_socialnetworks_instagram")
+  /// Twitter account name
+  internal static let userEditSocialnetworksTwitter = L10n.tr("Localizable", "user_edit_socialnetworks_twitter")
   /// You must configure mail on your phone for this.
   internal static let userErrorMail = L10n.tr("Localizable", "user_error_mail")
   /// Waos legal

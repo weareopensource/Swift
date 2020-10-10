@@ -45,6 +45,10 @@
 "user_edit_section_image"= "Photo de profil";
 "user_edit_image"= "Galerie de l'iPhone";
 "user_edit_image_gravatar"= "Gravatar";
+"user_edit_section_socialnetworks"= "Réseaux sociaux";
+"user_edit_socialnetworks_instagram"= "Nom de compte Instagram";
+"user_edit_socialnetworks_twitter"= "Nom de compte Twitter";
+"user_edit_socialnetworks_facebook"= "Nom de compte Facebook";
 
 "user_preferences"= "Préférences";
 "user_preferences_section"= "Style";

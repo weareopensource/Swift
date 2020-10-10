@@ -69,6 +69,31 @@ class UserViewController: CoreFormController, View, NVActivityIndicatorViewable 
         $0.title = L10n.userEditImageGravatar
     }
 
+    // social networks
+    let inputInstagram = TextRow {
+        $0.placeholder = L10n.userEditSocialnetworksInstagram
+        $0.setFontAwesomeIcon("fa-instagram", style: .brands)
+    }.cellSetup { (cell, _) in
+        cell.textField.autocapitalizationType = .none
+    }
+    let inputTwitter = TextRow {
+        $0.placeholder = L10n.userEditSocialnetworksTwitter
+        $0.setFontAwesomeIcon("fa-twitter", style: .brands)
+    }.cellSetup { (cell, _) in
+        cell.textField.autocapitalizationType = .none
+    }
+    let inputFacebook = TextRow {
+        $0.placeholder = L10n.userEditSocialnetworksFacebook
+        $0.setFontAwesomeIcon("fa-facebook", style: .brands)
+    }.cellSetup { (cell, _) in
+        cell.textField.autocapitalizationType = .none
+    }
+    let labelErrorsSocialNetworks = CoreUILabel().then {
+        $0.textAlignment = .left
+        $0.textColor = Metric.error
+        $0.font = UIFont.systemFont(ofSize: 13)
+    }
+
     // MARK: Initializing
 
     init(reactor: UserViewReactor) {
@@ -86,6 +111,7 @@ class UserViewController: CoreFormController, View, NVActivityIndicatorViewable 
         super.viewDidLoad()
 
         form
+            // Account
             +++ Section(header: L10n.userEditSectionAccount, footer: "") { section in
                 var footer = HeaderFooterView<UILabel>(.class)
                 footer.height = { 30 }
@@ -101,7 +127,7 @@ class UserViewController: CoreFormController, View, NVActivityIndicatorViewable 
             <<< self.inputFirstName
             <<< self.inputLastName
             <<< self.inputEmail
-
+            // Profile
             +++ Section(header: L10n.userEditSectionProfile, footer: "") { section in
                 var footer = HeaderFooterView<UILabel>(.class)
                 footer.height = { 30 }
@@ -115,7 +141,7 @@ class UserViewController: CoreFormController, View, NVActivityIndicatorViewable 
                 section.footer = footer
             }
             <<< self.inputBio
-
+            // Avatar
             +++ Section(header: L10n.userEditSectionImage, footer: "")
             <<< self.inputAvatar.cellUpdate { cell, _ in
                 cell.accessoryView?.layer.cornerRadius = (cell.accessoryView?.frame.height ?? 20)/2
@@ -129,6 +155,22 @@ class UserViewController: CoreFormController, View, NVActivityIndicatorViewable 
             <<< self.buttonImageGravatar.cellUpdate { cell, _ in
                 cell.accessoryView = self.imageGravatar
             }
+            // Social Networks
+            +++ Section(header: L10n.userEditSectionSocialnetworks, footer: "") { section in
+                var footer = HeaderFooterView<UILabel>(.class)
+                footer.height = { 30 }
+                footer.onSetupView = {view, _ in
+                    view.addSubview(self.labelErrorsSocialNetworks)
+                    self.labelErrorsSocialNetworks.snp.makeConstraints { (make) -> Void in
+                        make.right.left.equalTo(view).offset(Metric.margin/2)
+                        make.top.equalTo(view).offset(Metric.margin)
+                    }
+                }
+                section.footer = footer
+            }
+            <<< self.inputInstagram
+            <<< self.inputTwitter
+            <<< self.inputFacebook
 
         self.navigationItem.leftBarButtonItem = self.barButtonCancel
         self.navigationItem.rightBarButtonItem = self.barButtonDone
@@ -243,6 +285,40 @@ private extension UserViewController {
             .map { _ in Reactor.Action.deleteAvatar }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
+        // social networks
+        let observableInstagram = self.inputInstagram.rx.text.share()
+        observableInstagram
+            .skip(1)
+            .map {Reactor.Action.updateInstagram($0)}
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        observableInstagram
+            .debounce(.milliseconds(Metric.timesErrorsDebounce), scheduler: MainScheduler.instance)
+            .map {_ in Reactor.Action.validateInstagram("socialnetworks")}
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        let observableTwitter = self.inputTwitter.rx.text.share()
+        observableTwitter
+            .skip(1)
+            .map {Reactor.Action.updateTwitter($0)}
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        observableTwitter
+            .debounce(.milliseconds(Metric.timesErrorsDebounce), scheduler: MainScheduler.instance)
+            .map {_ in Reactor.Action.validateTwitter("socialnetworks")}
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        let observableFacebook = self.inputFacebook.rx.text.share()
+        observableFacebook
+            .skip(1)
+            .map {Reactor.Action.updateFacebook($0)}
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        observableFacebook
+            .debounce(.milliseconds(Metric.timesErrorsDebounce), scheduler: MainScheduler.instance)
+            .map {_ in Reactor.Action.validateFacebook("socialnetworks")}
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
     }
 
     // MARK: states (Reactor -> View)
@@ -308,6 +384,31 @@ private extension UserViewController {
                         }
                     })
                 }
+            })
+            .disposed(by: self.disposeBag)
+        // social networks
+        reactor.state
+            .map { $0.user.complementary?.socialNetworks?.instagram }
+            .distinctUntilChanged()
+            .subscribe(onNext: { instagram in
+                self.inputInstagram.value = instagram
+                self.inputInstagram.updateCell()
+            })
+            .disposed(by: self.disposeBag)
+        reactor.state
+            .map { $0.user.complementary?.socialNetworks?.twitter }
+            .distinctUntilChanged()
+            .subscribe(onNext: { twitter in
+                self.inputTwitter.value = twitter
+                self.inputTwitter.updateCell()
+            })
+            .disposed(by: self.disposeBag)
+        reactor.state
+            .map { $0.user.complementary?.socialNetworks?.facebook }
+            .distinctUntilChanged()
+            .subscribe(onNext: { facebook in
+                self.inputFacebook.value = facebook
+                self.inputFacebook.updateCell()
             })
             .disposed(by: self.disposeBag)
         // refreshing

@@ -27,6 +27,13 @@ final class UserViewReactor: Reactor {
         // avatar
         case updateAvatar(Data)
         case deleteAvatar
+        // social Networks
+        case updateInstagram(String?)
+        case validateInstagram(String)
+        case updateTwitter(String?)
+        case validateTwitter(String)
+        case updateFacebook(String?)
+        case validateFacebook(String)
         // default
         case done
     }
@@ -39,6 +46,10 @@ final class UserViewReactor: Reactor {
         case updateEmail(String)
         // extra
         case updateBio(String)
+        // social Networks
+        case updateInstagram(String?)
+        case updateTwitter(String?)
+        case updateFacebook(String?)
         // default
         case dismiss
         case setRefreshing(Bool)
@@ -137,6 +148,28 @@ final class UserViewReactor: Reactor {
                 },
                 .just(.setRefreshing(false))
             ])
+        // social networks
+        case let .updateInstagram(avatar):
+            return .just(.updateInstagram(avatar))
+        case let .validateInstagram(section):
+            switch currentState.user.validate(.instagram, section) {
+            case .valid: return .just(.success("\(User.Validators.instagram)"))
+            case let .invalid(err): return .just(.validationError(err[0] as! CustomError))
+            }
+        case let .updateTwitter(firstName):
+            return .just(.updateTwitter(firstName))
+        case let .validateTwitter(section):
+            switch currentState.user.validate(.twitter, section) {
+            case .valid: return .just(.success("\(User.Validators.twitter)"))
+            case let .invalid(err): return .just(.validationError(err[0] as! CustomError))
+            }
+        case let .updateFacebook(firstName):
+            return .just(.updateFacebook(firstName))
+        case let .validateFacebook(section):
+            switch currentState.user.validate(.facebook, section) {
+            case .valid: return .just(.success("\(User.Validators.facebook)"))
+            case let .invalid(err): return .just(.validationError(err[0] as! CustomError))
+            }
         // done
         case .done:
             return self.provider.userService
@@ -165,6 +198,37 @@ final class UserViewReactor: Reactor {
         // extra
         case let .updateBio(bio):
             state.user.bio = bio
+        // social networks
+        case let .updateInstagram(instagram):
+            if state.user.complementary != nil {
+                if state.user.complementary!.socialNetworks != nil {
+                    state.user.complementary?.socialNetworks?.instagram = instagram
+                } else {
+                    state.user.complementary?.socialNetworks = SocialNetworks(instagram: instagram)
+                }
+            } else {
+                state.user.complementary = Complementary(socialNetworks: SocialNetworks(instagram: instagram))
+            }
+        case let .updateTwitter(twitter):
+            if state.user.complementary != nil {
+                if state.user.complementary!.socialNetworks != nil {
+                    state.user.complementary?.socialNetworks?.twitter = twitter
+                } else {
+                    state.user.complementary?.socialNetworks = SocialNetworks(twitter: twitter)
+                }
+            } else {
+                state.user.complementary = Complementary(socialNetworks: SocialNetworks(twitter: twitter))
+            }
+        case let .updateFacebook(facebook):
+            if state.user.complementary != nil {
+                if state.user.complementary!.socialNetworks != nil {
+                    state.user.complementary?.socialNetworks?.facebook = facebook
+                } else {
+                    state.user.complementary?.socialNetworks = SocialNetworks(facebook: facebook)
+                }
+            } else {
+                state.user.complementary = Complementary(socialNetworks: SocialNetworks(facebook: facebook))
+            }
         // refreshing
         case let .setRefreshing(isRefreshing):
             state.isRefreshing = isRefreshing
