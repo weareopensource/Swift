@@ -202,32 +202,32 @@ final class UserViewReactor: Reactor {
         case let .updateInstagram(instagram):
             if state.user.complementary != nil {
                 if state.user.complementary!.socialNetworks != nil {
-                    state.user.complementary?.socialNetworks?.instagram = instagram
+                    state.user.complementary?.socialNetworks?.instagram = instagram?.lowercased()
                 } else {
-                    state.user.complementary?.socialNetworks = SocialNetworks(instagram: instagram)
+                    state.user.complementary?.socialNetworks = SocialNetworks(instagram: instagram?.lowercased())
                 }
             } else {
-                state.user.complementary = Complementary(socialNetworks: SocialNetworks(instagram: instagram))
+                state.user.complementary = Complementary(socialNetworks: SocialNetworks(instagram: instagram?.lowercased()))
             }
         case let .updateTwitter(twitter):
             if state.user.complementary != nil {
                 if state.user.complementary!.socialNetworks != nil {
-                    state.user.complementary?.socialNetworks?.twitter = twitter
+                    state.user.complementary?.socialNetworks?.twitter = twitter?.lowercased()
                 } else {
-                    state.user.complementary?.socialNetworks = SocialNetworks(twitter: twitter)
+                    state.user.complementary?.socialNetworks = SocialNetworks(twitter: twitter?.lowercased())
                 }
             } else {
-                state.user.complementary = Complementary(socialNetworks: SocialNetworks(twitter: twitter))
+                state.user.complementary = Complementary(socialNetworks: SocialNetworks(twitter: twitter?.lowercased()))
             }
         case let .updateFacebook(facebook):
             if state.user.complementary != nil {
                 if state.user.complementary!.socialNetworks != nil {
-                    state.user.complementary?.socialNetworks?.facebook = facebook
+                    state.user.complementary?.socialNetworks?.facebook = facebook?.lowercased()
                 } else {
-                    state.user.complementary?.socialNetworks = SocialNetworks(facebook: facebook)
+                    state.user.complementary?.socialNetworks = SocialNetworks(facebook: facebook?.lowercased())
                 }
             } else {
-                state.user.complementary = Complementary(socialNetworks: SocialNetworks(facebook: facebook))
+                state.user.complementary = Complementary(socialNetworks: SocialNetworks(facebook: facebook?.lowercased()))
             }
         // refreshing
         case let .setRefreshing(isRefreshing):
