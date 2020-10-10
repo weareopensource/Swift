@@ -13,3 +13,9 @@ public struct PasswordValidationPattern: ValidationPattern {
         return "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$"
     }
 }
+
+public struct AccountValidationPattern: ValidationPattern {
+    public var pattern: String {
+        return "[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð,.'-_]*"
+    }
+}

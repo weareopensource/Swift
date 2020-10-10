@@ -74,6 +74,9 @@ extension User: Validatable {
         case email = "Wrong mail format"
         case password = "Wrong password (1 number, 1 special char, > 8)"
         case bio = "Wrong biography (< 200)"
+        case instagram = "Wrong intagram (< 200)"
+        case twitter = "Wrong twitter (< 200)"
+        case facebook = "Wrong facebook (< 200)"
     }
 
     func validate(_ validator: Validators, _ section: String? = nil) -> ValidationResult {
@@ -95,6 +98,10 @@ extension User: Validatable {
         var rulesBios = ValidationRuleSet<String>()
         rulesBios.add(rule: ValidationRuleLength(max: 200, error: err))
 
+        var rulesSocialNetworks = ValidationRuleSet<String>()
+        rulesNames.add(rule: ValidationRulePattern(pattern: AccountValidationPattern(), error: err))
+        rulesSocialNetworks.add(rule: ValidationRuleLength(max: 100, error: err))
+
         // validator
         switch validator {
         case .firstname:
@@ -107,6 +114,12 @@ extension User: Validatable {
             return password?.validate(rules: rulesPasswords) ?? ValidationResult.valid
         case .bio:
             return bio?.validate(rules: rulesBios) ?? ValidationResult.valid
+        case .instagram:
+            return complementary?.socialNetworks?.instagram?.validate(rules: rulesSocialNetworks) ?? ValidationResult.valid
+        case .twitter:
+            return complementary?.socialNetworks?.twitter?.validate(rules: rulesSocialNetworks) ?? ValidationResult.valid
+        case .facebook:
+            return complementary?.socialNetworks?.facebook?.validate(rules: rulesSocialNetworks) ?? ValidationResult.valid
         }
     }
 }
