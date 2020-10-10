@@ -73,20 +73,14 @@ class UserViewController: CoreFormController, View, NVActivityIndicatorViewable 
     let inputInstagram = TextRow {
         $0.placeholder = L10n.userEditSocialnetworksInstagram
         $0.setFontAwesomeIcon("fa-instagram", style: .brands)
-    }.cellSetup { (cell, _) in
-        cell.textField.autocapitalizationType = .none
     }
     let inputTwitter = TextRow {
         $0.placeholder = L10n.userEditSocialnetworksTwitter
         $0.setFontAwesomeIcon("fa-twitter", style: .brands)
-    }.cellSetup { (cell, _) in
-        cell.textField.autocapitalizationType = .none
     }
     let inputFacebook = TextRow {
         $0.placeholder = L10n.userEditSocialnetworksFacebook
         $0.setFontAwesomeIcon("fa-facebook", style: .brands)
-    }.cellSetup { (cell, _) in
-        cell.textField.autocapitalizationType = .none
     }
     let labelErrorsSocialNetworks = CoreUILabel().then {
         $0.textAlignment = .left
