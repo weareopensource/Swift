@@ -58,6 +58,9 @@
 "user_blog"= "Blog";
 "user_site"= "Site web";
 "user_us"= "Qui sommes-nous ?";
+"user_more"= "Plus d'informations";
+
+"user_section_socialnetworks"= "Suivez-nous !";
 
 "user_section_about"= "À propos";
 "user_support"= "Aide";

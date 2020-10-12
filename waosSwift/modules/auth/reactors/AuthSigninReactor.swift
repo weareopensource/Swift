@@ -98,7 +98,8 @@ final class AuthSigninReactor: Reactor {
                             UserDefaults.standard.set(response.tokenExpiresIn, forKey: "CookieExpire")
                             self.provider.preferencesService.isLogged = true
                             return .success("signIn")
-                        case let .error(err): return .error(err)
+                        case let .error(err):
+                            return .error(err)
                         }
                 },
                 .just(.setRefreshing(false))

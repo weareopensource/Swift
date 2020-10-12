@@ -36,52 +36,69 @@ class UserController: CoreFormController, View {
     // buttons profil
     let buttonProfil = ButtonRow {
         $0.title = L10n.userEdit
+        $0.setFontAwesomeIcon("fa-user")
     }
     let buttonPreferences = ButtonRow {
         $0.title = L10n.userPreferences
+        $0.setFontAwesomeIcon("fa-drafting-compass")
     }
 
     // buttons App
-    let buttonBlog = ButtonRow {
-        $0.title = L10n.userBlog
-        $0.cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-    }
     let buttonSite = ButtonRow {
         $0.title = L10n.userSite
+        $0.setFontAwesomeIcon("fa-external-link-alt", color: Metric.primary ?? .lightGray)
     }
-    let buttonSupport = ButtonRow {
-        $0.title = L10n.userSupport
+    let buttonBlog = ButtonRow {
+        $0.title = L10n.userBlog
+        $0.setFontAwesomeIcon("fa-rss", color: Metric.primary ?? .lightGray)
     }
-
-    // button Information
     let buttonUs = ButtonRow {
         $0.title = L10n.userUs
+        $0.setFontAwesomeIcon("fa-user-astronaut")
     }
-    let buttonTermsOfUse = ButtonRow {
-        $0.title = L10n.userTermsOfUse
+    let buttonMore = ButtonRow {
+        $0.title = L10n.userMore
+        $0.setFontAwesomeIcon("fa-ellipsis-h")
     }
-    let buttonPrivacyPolicy = ButtonRow {
-        $0.title = L10n.userPrivacyPolicy
+
+    // buttons social Networks
+    let buttonInstagram = ButtonRow {
+        $0.title = "Instagram"
+        $0.setFontAwesomeIcon("fa-instagram", style: .brands, color: Metric.instagram ?? .lightGray)
     }
-    let buttonLegalNotice = ButtonRow {
-        $0.title = L10n.userLegalNotice
+    let buttonTwitter = ButtonRow {
+        $0.title = "Twitter"
+        $0.setFontAwesomeIcon("fa-twitter", style: .brands, color: Metric.twitter ?? .lightGray)
+    }
+    let buttonLinkedin = ButtonRow {
+        $0.title = "Linkedin"
+        $0.setFontAwesomeIcon("fa-linkedin", style: .brands, color: Metric.linkedin ?? .lightGray)
+    }
+    let buttonFacebook = ButtonRow {
+        $0.title = "Facebook"
+        $0.setFontAwesomeIcon("fa-facebook", style: .brands, color: Metric.facebook ?? .lightGray)
     }
 
     // buttons Actions
     let buttonReport = ButtonRow {
         $0.title = L10n.userReport
+        $0.setFontAwesomeIcon("fa-bug")
     }
     let buttonContact = ButtonRow {
         $0.title = L10n.userContact
+        $0.setFontAwesomeIcon("fa-envelope")
     }
     let buttonData = ButtonRow {
         $0.title = L10n.userData
+        $0.setFontAwesomeIcon("fa-database")
     }
     let buttonLogout = ButtonRow {
         $0.title = L10n.userLogout
+        $0.setFontAwesomeIcon("fa-arrow-left")
     }
     let buttonDelete = ButtonRow {
         $0.title = L10n.userDelete
+        $0.setFontAwesomeIcon("fa-trash-alt", color: Metric.error ?? .red)
     }
 
     // MARK: Initializing
@@ -129,15 +146,16 @@ class UserController: CoreFormController, View {
             +++ Section(header: L10n.userSectionApp, footer: "")
             <<< self.buttonBlog
             <<< self.buttonSite
-            <<< self.buttonSupport
-            +++ Section(header: L10n.userSectionAbout, footer: "")
             <<< self.buttonUs
-            <<< self.buttonTermsOfUse
-            <<< self.buttonPrivacyPolicy
-            <<< self.buttonLegalNotice
+            <<< self.buttonMore
+            +++ Section(header: L10n.userSectionSocialnetworks, footer: "")
+            <<< self.buttonInstagram
+            <<< self.buttonTwitter
+            <<< self.buttonLinkedin
+            <<< self.buttonFacebook
             +++ Section(header: L10n.userSectionContact, footer: "")
-            <<< self.buttonReport
             <<< self.buttonContact
+            <<< self.buttonReport
             <<< self.buttonData
             +++ Section(header: L10n.userSectionActions, footer: "")
             <<< self.buttonLogout
@@ -204,32 +222,39 @@ private extension UserController {
                 self.present(svc, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
+        self.buttonMore.rx.tap
+            .subscribe(onNext: { _ in
+                let viewController = UserMoreController(reactor: reactor.moreReactor())
+                let navigationController = UINavigationController(rootViewController: viewController)
+                self.present(navigationController, animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
 
-        // informations
-        self.buttonSupport.rx.tap
+        //social networks
+        self.buttonInstagram.rx.tap
             .subscribe(onNext: { _ in
-                guard let url = URL(string: (config["app"]["links"]["support"].string ?? "")) else { return }
+                guard let url = URL(string: (config["app"]["links"]["instagram"].string ?? "")) else { return }
                 let svc = SFSafariViewController(url: url)
                 self.present(svc, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
-        self.buttonTermsOfUse.rx.tap
+        self.buttonTwitter.rx.tap
             .subscribe(onNext: { _ in
-                guard let url = URL(string: (config["app"]["links"]["termsOfUse"].string ?? "")) else { return }
+                guard let url = URL(string: (config["app"]["links"]["twitter"].string ?? "")) else { return }
                 let svc = SFSafariViewController(url: url)
                 self.present(svc, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
-        self.buttonPrivacyPolicy.rx.tap
+        self.buttonLinkedin.rx.tap
             .subscribe(onNext: { _ in
-                guard let url = URL(string: (config["app"]["links"]["privacyPolicy"].string ?? "")) else { return }
+                guard let url = URL(string: (config["app"]["links"]["linkedin"].string ?? "")) else { return }
                 let svc = SFSafariViewController(url: url)
                 self.present(svc, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
-        self.buttonLegalNotice.rx.tap
+        self.buttonFacebook.rx.tap
             .subscribe(onNext: { _ in
-                guard let url = URL(string: (config["app"]["links"]["legalNotice"].string ?? "")) else { return }
+                guard let url = URL(string: (config["app"]["links"]["facebook"].string ?? "")) else { return }
                 let svc = SFSafariViewController(url: url)
                 self.present(svc, animated: true, completion: nil)
             })
@@ -335,6 +360,43 @@ private extension UserController {
                     self.imageAvatar.setImage(url: setUploadImageUrl(avatar, size: "256"), options: [.requestModifier(cookieModifier)])
                 } else {
                     self.imageAvatar.setImage(url: "https://secure.gravatar.com/avatar/\(reactor.currentState.user.email.md5)?s=200&d=mp")
+                }
+            })
+            .disposed(by: self.disposeBag)
+        // social networks
+        reactor.state
+            .map { $0.configuration }
+            .subscribe(onNext: { configuration in
+                if(configuration["app"]["links"]["instagram"].string == "") {
+                    self.buttonInstagram.hidden = true
+                    self.buttonInstagram.evaluateHidden()
+                }
+            })
+            .disposed(by: self.disposeBag)
+        reactor.state
+            .map { $0.configuration }
+            .subscribe(onNext: { configuration in
+                if(configuration["app"]["links"]["twitter"].string == "") {
+                    self.buttonTwitter.hidden = true
+                    self.buttonTwitter.evaluateHidden()
+                }
+            })
+            .disposed(by: self.disposeBag)
+        reactor.state
+            .map { $0.configuration }
+            .subscribe(onNext: { configuration in
+                if(configuration["app"]["links"]["linkedin"].string == "") {
+                    self.buttonLinkedin.hidden = true
+                    self.buttonLinkedin.evaluateHidden()
+                }
+            })
+            .disposed(by: self.disposeBag)
+        reactor.state
+            .map { $0.configuration }
+            .subscribe(onNext: { configuration in
+                if(configuration["app"]["links"]["facebook"].string == "") {
+                    self.buttonFacebook.hidden = true
+                    self.buttonFacebook.evaluateHidden()
                 }
             })
             .disposed(by: self.disposeBag)
