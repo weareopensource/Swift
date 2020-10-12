@@ -72,15 +72,15 @@ class UserViewController: CoreFormController, View, NVActivityIndicatorViewable 
     // social networks
     let inputInstagram = TextRow {
         $0.placeholder = L10n.userEditSocialnetworksInstagram
-        $0.setFontAwesomeIcon("fa-instagram", style: .brands)
+        $0.setFontAwesomeIcon("fa-instagram", style: .brands, color: Metric.instagram ?? .lightGray, opacity: 1)
     }
     let inputTwitter = TextRow {
         $0.placeholder = L10n.userEditSocialnetworksTwitter
-        $0.setFontAwesomeIcon("fa-twitter", style: .brands)
+        $0.setFontAwesomeIcon("fa-twitter", style: .brands, color: Metric.twitter ?? .lightGray, opacity: 1)
     }
     let inputFacebook = TextRow {
         $0.placeholder = L10n.userEditSocialnetworksFacebook
-        $0.setFontAwesomeIcon("fa-facebook", style: .brands)
+        $0.setFontAwesomeIcon("fa-facebook", style: .brands, color: Metric.facebook ?? .lightGray, opacity: 1)
     }
     let labelErrorsSocialNetworks = CoreUILabel().then {
         $0.textAlignment = .left

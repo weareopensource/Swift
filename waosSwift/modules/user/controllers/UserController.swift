@@ -46,11 +46,11 @@ class UserController: CoreFormController, View {
     // buttons App
     let buttonSite = ButtonRow {
         $0.title = L10n.userSite
-        $0.setFontAwesomeIcon("fa-external-link-alt", color: Metric.primary ?? .lightGray)
+        $0.setFontAwesomeIcon("fa-external-link-alt", color: Metric.secondary ?? .lightGray, opacity: 1)
     }
     let buttonBlog = ButtonRow {
         $0.title = L10n.userBlog
-        $0.setFontAwesomeIcon("fa-rss", color: Metric.primary ?? .lightGray)
+        $0.setFontAwesomeIcon("fa-rss", color: Metric.secondary ?? .lightGray, opacity: 1)
     }
     let buttonUs = ButtonRow {
         $0.title = L10n.userUs
@@ -64,19 +64,19 @@ class UserController: CoreFormController, View {
     // buttons social Networks
     let buttonInstagram = ButtonRow {
         $0.title = "Instagram"
-        $0.setFontAwesomeIcon("fa-instagram", style: .brands, color: Metric.instagram ?? .lightGray)
+        $0.setFontAwesomeIcon("fa-instagram", style: .brands, color: Metric.instagram ?? .lightGray, opacity: 1)
     }
     let buttonTwitter = ButtonRow {
         $0.title = "Twitter"
-        $0.setFontAwesomeIcon("fa-twitter", style: .brands, color: Metric.twitter ?? .lightGray)
+        $0.setFontAwesomeIcon("fa-twitter", style: .brands, color: Metric.twitter ?? .lightGray, opacity: 1)
     }
     let buttonLinkedin = ButtonRow {
         $0.title = "Linkedin"
-        $0.setFontAwesomeIcon("fa-linkedin", style: .brands, color: Metric.linkedin ?? .lightGray)
+        $0.setFontAwesomeIcon("fa-linkedin", style: .brands, color: Metric.linkedin ?? .lightGray, opacity: 1)
     }
     let buttonFacebook = ButtonRow {
         $0.title = "Facebook"
-        $0.setFontAwesomeIcon("fa-facebook", style: .brands, color: Metric.facebook ?? .lightGray)
+        $0.setFontAwesomeIcon("fa-facebook", style: .brands, color: Metric.facebook ?? .lightGray, opacity: 1)
     }
 
     // buttons Actions
@@ -98,7 +98,7 @@ class UserController: CoreFormController, View {
     }
     let buttonDelete = ButtonRow {
         $0.title = L10n.userDelete
-        $0.setFontAwesomeIcon("fa-trash-alt", color: Metric.error ?? .red)
+        $0.setFontAwesomeIcon("fa-trash-alt", color: Metric.error ?? .red, opacity: 1)
     }
 
     // MARK: Initializing
