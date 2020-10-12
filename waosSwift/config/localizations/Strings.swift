@@ -93,6 +93,8 @@ internal enum L10n {
   internal static let userModalConfirmationDataMessage = L10n.tr("Localizable", "user_modal_confirmation_data_message")
   /// Are you sure? your account and all your data will be deleted.
   internal static let userModalConfirmationDeleteMessage = L10n.tr("Localizable", "user_modal_confirmation_delete_message")
+  /// More informations
+  internal static let userMore = L10n.tr("Localizable", "user_more")
   /// Preferences
   internal static let userPreferences = L10n.tr("Localizable", "user_preferences")
   /// Dynamique wallpaper
@@ -111,6 +113,8 @@ internal enum L10n {
   internal static let userSectionApp = L10n.tr("Localizable", "user_section_app")
   /// Contact
   internal static let userSectionContact = L10n.tr("Localizable", "user_section_contact")
+  /// Follow us !
+  internal static let userSectionSocialnetworks = L10n.tr("Localizable", "user_section_socialnetworks")
   /// Website
   internal static let userSite = L10n.tr("Localizable", "user_site")
   /// Support

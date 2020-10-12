@@ -40,6 +40,7 @@ final class AuthService: CoreService, AuthServiceType {
             .request(.signIn(email: email, password: password))
             .map(SignResponse.self)
             .map { response in
+                print(response)
                 self.userSubject.on(.next(response.user))
                 return response
             }

@@ -154,6 +154,8 @@
 		BFE4BB47226CC7BD00739735 /* TasksViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4BB46226CC7BD00739735 /* TasksViewReactor.swift */; };
 		BFE912A22341CDA40074FAAB /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = BFE912A02341CDA40074FAAB /* Cartfile */; };
 		BFE912A32341CDA40074FAAB /* Cartfile.resolved in Resources */ = {isa = PBXBuildFile; fileRef = BFE912A12341CDA40074FAAB /* Cartfile.resolved */; };
+		BFF596642534506700D0E08D /* UserMoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF596632534506700D0E08D /* UserMoreController.swift */; };
+		BFF5966A2534508700D0E08D /* UserMoreReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF596692534508700D0E08D /* UserMoreReactor.swift */; };
 		BFF663B523A8A9CE00BB66CC /* CoreUiRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF663B423A8A9CE00BB66CC /* CoreUiRefreshControl.swift */; };
 /* End PBXBuildFile section */
 
@@ -347,6 +349,8 @@
 		BFE672AB2519E6C700ABECC8 /* ReactorKitRuntime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactorKitRuntime.framework; path = Carthage/Build/iOS/ReactorKitRuntime.framework; sourceTree = "<group>"; };
 		BFE912A02341CDA40074FAAB /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		BFE912A12341CDA40074FAAB /* Cartfile.resolved */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile.resolved; sourceTree = "<group>"; };
+		BFF596632534506700D0E08D /* UserMoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMoreController.swift; sourceTree = "<group>"; };
+		BFF596692534508700D0E08D /* UserMoreReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMoreReactor.swift; sourceTree = "<group>"; };
 		BFF663B423A8A9CE00BB66CC /* CoreUiRefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreUiRefreshControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -587,6 +591,7 @@
 			children = (
 				BF49EA122362E51B00FF06E9 /* UserController.swift */,
 				BFA92D19237AED1F006A3B8D /* UserViewController.swift */,
+				BFF596632534506700D0E08D /* UserMoreController.swift */,
 				BF42E09C246595E900DA7B1E /* UserPreferenceController.swift */,
 			);
 			path = controllers;
@@ -605,6 +610,7 @@
 			children = (
 				BF49EA162362E54800FF06E9 /* UserReactor.swift */,
 				BFA92D1B237AED34006A3B8D /* UserViewReactor.swift */,
+				BFF596692534508700D0E08D /* UserMoreReactor.swift */,
 				BF42E09E246595F500DA7B1E /* UserPreferenceReactor.swift */,
 			);
 			path = reactors;
@@ -1322,12 +1328,14 @@
 				BF49EA172362E54800FF06E9 /* UserReactor.swift in Sources */,
 				BF42E09F246595F500DA7B1E /* UserPreferenceReactor.swift in Sources */,
 				BF9A368822902DE200EE2AB8 /* AuthResponses.swift in Sources */,
+				BFF5966A2534508700D0E08D /* UserMoreReactor.swift in Sources */,
 				BF4A2FD42265F4020001B4CE /* UserDefaults.swift in Sources */,
 				BFA92D1C237AED34006A3B8D /* UserViewReactor.swift in Sources */,
 				BF9A368C2292D0C700EE2AB8 /* CookiePlugin.swift in Sources */,
 				BF5DD0082530472700F14D3C /* ComplementaryModel.swift in Sources */,
 				BF8F6EDB2273453100B9447A /* Then.swift in Sources */,
 				BF4A2F6F225BB2B10001B4CE /* OnBoardingFlow.swift in Sources */,
+				BFF596642534506700D0E08D /* UserMoreController.swift in Sources */,
 				BFD9CB21238435B20034837F /* UIImage.swift in Sources */,
 				BF4A2F45225B751F0001B4CE /* AppFlow.swift in Sources */,
 				BF4A2FAE2260F0040001B4CE /* Logger.swift in Sources */,

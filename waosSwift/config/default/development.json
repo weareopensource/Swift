@@ -9,6 +9,10 @@
         "links": {
             "blog": "https://blog.weareopensource.me",
             "site": "https://weareopensource.me",
+            "instagram": "https://instagram.com",
+            "twitter": "https://twitter.com",
+            "linkedin": "https://linkedin.com",
+            "facebook": "",
             "us": "https://weareopensource.me/us/",
             "support": "https://developer.apple.com/support/",
             "termsOfUse": "https://www.apple.com/legal/internet-services/terms/site.html",
@@ -128,7 +132,10 @@
                 "onBackground": "waosOnBackground",
                 "onSurface": "waosOnSurface",
                 "onError": "waosOnError",
-                "link": "waosLink"
+                "instagram": "waosInstagram",
+                "twitter": "waosTwitter",
+                "linkedin": "waosLinkedin",
+                "facebook": "waosFacebook"
             }
         }
     }

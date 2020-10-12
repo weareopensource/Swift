@@ -36,6 +36,7 @@ final class UserReactor: Reactor {
         var user: User
         var isRefreshing: Bool
         var error: DisplayError?
+        var configuration = config
 
         init() {
             self.user = User()
@@ -160,5 +161,9 @@ final class UserReactor: Reactor {
 
     func preferenceReactor() -> UserPreferenceReactor {
         return UserPreferenceReactor(provider: self.provider)
+    }
+
+    func moreReactor() -> UserMoreReactor {
+        return UserMoreReactor(provider: self.provider)
     }
 }
