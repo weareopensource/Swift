@@ -15,6 +15,7 @@ enum UserApi {
     case updateAvatar(file: Data, partName: String, fileName: String, mimeType: String)
     case deleteAvatar
     case data
+
 }
 
 extension UserApi: TargetType {

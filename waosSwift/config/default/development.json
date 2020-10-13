@@ -30,7 +30,8 @@
             "auth": "auth",
             "users": "users",
             "tasks": "tasks",
-            "uploads": "uploads"
+            "uploads": "uploads",
+            "home": "core",
         }
     },
     "jwt": {

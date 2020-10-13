@@ -17,3 +17,4 @@ github "devxoul/Toaster" "master"
 github "thii/FontAwesome.swift"
 github "onevcat/Kingfisher" ~> 5.15.3
 github "ninjaprox/NVActivityIndicatorView" ~> 4.8.0
+github "iwasrobbed/Down"
