@@ -86,7 +86,7 @@ private extension HomePageController {
         self.segmentedControlTitles.rx.value
             .skip(1)
             .subscribe(onNext: { index in
-                self.webView.loadHTMLString(generateWebPage(reactor.currentState.pages[index].markdown, links: reactor.currentState.displayLinks, head: reactor.currentState.pages.count > 1 ? true : false), baseURL: nil)
+                self.webView.loadHTMLString(generateWebPage(reactor.currentState.pages[index].markdown, style: reactor.currentState.style, links: reactor.currentState.displayLinks, head: reactor.currentState.pages.count > 1 ? true : false), baseURL: nil)
             })
             .disposed(by: self.disposeBag)
     }
@@ -120,7 +120,7 @@ private extension HomePageController {
                 self.segmentedControlTitles.isHidden = pages.count > 1 ? false : true
                 self.segmentedControlTitles.updateTitle(titles)
                 self.segmentedControlTitles.selectedSegmentIndex = 0
-                self.webView.loadHTMLString(generateWebPage(pages[0].markdown, links: reactor.currentState.displayLinks, head: pages.count > 1 ? true : false), baseURL: nil)
+                self.webView.loadHTMLString(generateWebPage(pages[0].markdown, style: reactor.currentState.style, links: reactor.currentState.displayLinks, head: pages.count > 1 ? true : false), baseURL: nil)
             })
             .disposed(by: self.disposeBag)
     }

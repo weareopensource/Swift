@@ -168,6 +168,6 @@ final class UserReactor: Reactor {
     }
 
     func pageReactor() -> HomePageReactor {
-        return HomePageReactor(provider: self.provider, api: .changelogs, displayLinks: false)
+        return HomePageReactor(provider: self.provider, api: .changelogs, style: .air, displayLinks: false)
     }
 }

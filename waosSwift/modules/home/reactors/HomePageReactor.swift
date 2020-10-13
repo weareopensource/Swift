@@ -37,15 +37,17 @@ final class HomePageReactor: Reactor {
         var pages: [Pages]
         // settings
         var displayLinks: Bool
+        var style: markDownStyles
         // work
         var isRefreshing: Bool
         var isDismissed: Bool
         var errors: [DisplayError]
 
-        init(displayLinks: Bool) {
+        init(style: markDownStyles, displayLinks: Bool) {
             // pages
             self.pages = []
             // settings
+            self.style = style
             self.displayLinks = displayLinks
             // work
             self.isRefreshing = false
@@ -62,10 +64,10 @@ final class HomePageReactor: Reactor {
 
     // MARK: Initialization
 
-    init(provider: AppServicesProviderType, api: HomeApi, displayLinks: Bool) {
+    init(provider: AppServicesProviderType, api: HomeApi, style: markDownStyles = .air, displayLinks: Bool = true) {
         self.provider = provider
         self.api = api
-        self.initialState = State(displayLinks: displayLinks)
+        self.initialState = State(style: style, displayLinks: displayLinks)
     }
 
     // MARK: Action -> Mutation (mutate() receives an Action and generates an Observable<Mutation>)
