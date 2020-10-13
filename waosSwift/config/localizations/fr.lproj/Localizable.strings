@@ -3,7 +3,7 @@
  */
 
 // loader
-"loader_messagee" = "Travail en cours";
+"loader_messagee" = "Chargement ...";
 
 // modals
 "modal_confirmation_message" = "êtes-vous sûrs ?";

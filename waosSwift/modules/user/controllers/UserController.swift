@@ -56,6 +56,10 @@ class UserController: CoreFormController, View {
         $0.title = L10n.userUs
         $0.setFontAwesomeIcon("fa-user-astronaut")
     }
+    let buttonChangelog = ButtonRow {
+        $0.title = "Changelog"
+        $0.setFontAwesomeIcon("fa-file")
+    }
     let buttonMore = ButtonRow {
         $0.title = L10n.userMore
         $0.setFontAwesomeIcon("fa-ellipsis-h")
@@ -147,6 +151,7 @@ class UserController: CoreFormController, View {
             <<< self.buttonBlog
             <<< self.buttonSite
             <<< self.buttonUs
+            <<< self.buttonChangelog
             <<< self.buttonMore
             +++ Section(header: L10n.userSectionSocialnetworks, footer: "")
             <<< self.buttonInstagram
@@ -220,6 +225,13 @@ private extension UserController {
                 guard let url = URL(string: (config["app"]["links"]["us"].string ?? "")) else { return }
                 let svc = SFSafariViewController(url: url)
                 self.present(svc, animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
+        self.buttonChangelog.rx.tap
+            .subscribe(onNext: { _ in
+                let viewController = HomePageController(reactor: reactor.pageReactor())
+                let navigationController = UINavigationController(rootViewController: viewController)
+                self.present(navigationController, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
         self.buttonMore.rx.tap

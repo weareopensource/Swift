@@ -166,4 +166,8 @@ final class UserReactor: Reactor {
     func moreReactor() -> UserMoreReactor {
         return UserMoreReactor(provider: self.provider)
     }
+
+    func pageReactor() -> HomePageReactor {
+        return HomePageReactor(provider: self.provider, api: .changelogs, style: .air, displayLinks: false)
+    }
 }
