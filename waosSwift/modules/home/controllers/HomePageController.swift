@@ -49,7 +49,7 @@ class HomePageController: CoreController, View, NVActivityIndicatorViewable {
         self.segmentedControlTitles.snp.makeConstraints { (make) -> Void in
             make.left.equalTo(self.view).offset(Metric.margin)
             make.right.equalTo(self.view).inset(Metric.margin)
-            make.top.equalTo(self.view).offset(50 + Metric.margin)
+            make.top.equalTo(self.view).offset(55 + Metric.margin)
             make.height.equalTo(50)
         }
         self.webView.snp.makeConstraints { (make) -> Void in
