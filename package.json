@@ -32,7 +32,7 @@
     "@weareopensource/conventional-changelog": "^1.7.0",
     "commitizen": "^4.2.1",
     "husky": "^4.3.0",
-    "semantic-release": "^17.2.0",
+    "semantic-release": "^17.2.1",
     "standard-version": "^9.0.0"
   },
   "release": {
