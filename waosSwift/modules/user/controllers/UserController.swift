@@ -245,30 +245,78 @@ private extension UserController {
         //social networks
         self.buttonInstagram.rx.tap
             .subscribe(onNext: { _ in
-                guard let url = URL(string: (config["app"]["links"]["instagram"].string ?? "")) else { return }
-                let svc = SFSafariViewController(url: url)
-                self.present(svc, animated: true, completion: nil)
+                guard let appURL = URL(string: "instagram://user?username=\(config["app"]["links"]["instagram"].string ?? "")") else { return }
+                guard let webURL = URL(string: "https://instagram.com/\(config["app"]["links"]["instagram"].string ?? "")") else { return }
+                if UIApplication.shared.canOpenURL(appURL) {
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(appURL)
+                    }
+                } else {
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(webURL, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(webURL)
+                    }
+                }
             })
             .disposed(by: disposeBag)
         self.buttonTwitter.rx.tap
             .subscribe(onNext: { _ in
-                guard let url = URL(string: (config["app"]["links"]["twitter"].string ?? "")) else { return }
-                let svc = SFSafariViewController(url: url)
-                self.present(svc, animated: true, completion: nil)
+                guard let appURL = URL(string: "twitter://user?screen_name=\(config["app"]["links"]["twitter"].string ?? "")") else { return }
+                guard let webURL = URL(string: "https://twitter.com/\(config["app"]["links"]["twitter"].string ?? "")") else { return }
+                if UIApplication.shared.canOpenURL(appURL) {
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(appURL)
+                    }
+                } else {
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(webURL, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(webURL)
+                    }
+                }
             })
             .disposed(by: disposeBag)
         self.buttonLinkedin.rx.tap
             .subscribe(onNext: { _ in
-                guard let url = URL(string: (config["app"]["links"]["linkedin"].string ?? "")) else { return }
-                let svc = SFSafariViewController(url: url)
-                self.present(svc, animated: true, completion: nil)
+                guard let appURL = URL(string: "linkedin://company/\(config["app"]["links"]["linkedin"].string ?? "")") else { return }
+                guard let webURL = URL(string: "https://linkedin.com/company/\(config["app"]["links"]["linkedin"].string ?? "")") else { return }
+                if UIApplication.shared.canOpenURL(appURL) {
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(appURL)
+                    }
+                } else {
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(webURL, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(webURL)
+                    }
+                }
             })
             .disposed(by: disposeBag)
         self.buttonFacebook.rx.tap
             .subscribe(onNext: { _ in
-                guard let url = URL(string: (config["app"]["links"]["facebook"].string ?? "")) else { return }
-                let svc = SFSafariViewController(url: url)
-                self.present(svc, animated: true, completion: nil)
+                guard let appURL = URL(string: "fb://profile/\(config["app"]["links"]["facebook"].string ?? "")") else { return }
+                guard let webURL = URL(string: "https://www.facebook.com/\(config["app"]["links"]["facebook"].string ?? "")") else { return }
+                if UIApplication.shared.canOpenURL(appURL) {
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(appURL)
+                    }
+                } else {
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(webURL, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(webURL)
+                    }
+                }
             })
             .disposed(by: disposeBag)
 
