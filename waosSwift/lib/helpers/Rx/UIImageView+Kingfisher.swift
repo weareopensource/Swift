@@ -11,27 +11,6 @@ import Kingfisher
 
 typealias ImageOptions = KingfisherOptionsInfo
 
-enum ImageResult {
-    case success(UIImage)
-    case failure(Error)
-
-    var image: UIImage? {
-        if case .success(let image) = self {
-            return image
-        } else {
-            return nil
-        }
-    }
-
-    var error: Error? {
-        if case .failure(let error) = self {
-            return error
-        } else {
-            return nil
-        }
-    }
-}
-
 enum imageStyle {
     case blured
     case bw
