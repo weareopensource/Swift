@@ -140,7 +140,7 @@ class UserViewController: CoreFormController, View, NVActivityIndicatorViewable 
             <<< self.inputAvatar.cellUpdate { cell, _ in
                 cell.accessoryView?.layer.cornerRadius = (cell.accessoryView?.frame.height ?? 20)/2
             }.onChange({ (img) in
-                if let aux = img.value {
+                if let aux = img.value?.adjustOrientation() {
                     self.avatar.accept(aux.jpegData(compressionQuality: Metric.imgCompression))
                 } else {
                     self.avatar.accept(nil)

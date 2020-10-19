@@ -49,4 +49,20 @@ extension UIImage {
         guard let cgImage2 = ciContext.createCGImage(resultImage, from: inputImage.extent) else { return self }
         return UIImage(cgImage: cgImage2)
     }
+    
+    /**
+     * @desc adjust image orientation if needed in exif
+     */
+    func adjustOrientation() -> UIImage? {
+        switch imageOrientation {
+        case .up:
+            return self
+        default:
+            UIGraphicsBeginImageContextWithOptions(size, false, scale)
+            draw(in: CGRect(origin: .zero, size: size))
+            let result = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            return result
+        }
+    }
 }
