@@ -107,7 +107,7 @@ In develompment
 
 ### Notifications
 
-* `xcrun simctl push 2D27349F-91E4-45BB-84C9-9D8C2D47A637 me.weareopensoruce.vue.testing example.apn`
+* `xcrun simctl push XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX me.weareopensoruce.vue.testing example.apn` (xx => device token)
 *  [article](https://www.raywenderlich.com/11395893-push-notifications-tutorial-getting-started)
 
 ## :pencil2: [Contribute](https://blog.weareopensource.me/how-to-contribute/)
