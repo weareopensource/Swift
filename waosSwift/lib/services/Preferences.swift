@@ -111,6 +111,6 @@ extension Reactive where Base: PreferencesService {
         return UserDefaults.standard
             .rx
             .observe(Bool.self, #function)
-            .map { $0 ?? false }
+            .map { $0 ?? true }
     }
 }
