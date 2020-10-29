@@ -49,7 +49,7 @@ extension UIImage {
         guard let cgImage2 = ciContext.createCGImage(resultImage, from: inputImage.extent) else { return self }
         return UIImage(cgImage: cgImage2)
     }
-    
+
     /**
      * @desc adjust image orientation if needed in exif
      */
