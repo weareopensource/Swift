@@ -31,7 +31,6 @@ final class TasksListController: CoreController, View {
 
     // MARK: Properties
 
-    let application = UIApplication.shared
     let dataSource = RxTableViewSectionedReloadDataSource<TasksSections>(
         configureCell: { _, tableView, indexPath, reactor in
             let cell = tableView.dequeue(Reusable.taskCell, for: indexPath)
@@ -116,11 +115,6 @@ private extension TasksListController {
     // MARK: actions (View -> Reactor)
 
     func bindAction(_ reactor: TasksListReactor) {
-        // view open
-        self.application.rx.didOpenApp
-            .map { Reactor.Action.checkUserToken }
-            .bind(to: reactor.action)
-            .disposed(by: self.disposeBag)
         // viewDidLoad
         self.rx.viewDidLoad
             .map { Reactor.Action.get }

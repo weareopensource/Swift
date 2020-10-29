@@ -105,6 +105,10 @@ class UserController: CoreFormController, View {
         $0.setFontAwesomeIcon("fa-trash-alt", color: Metric.error ?? .red, opacity: 1)
     }
 
+    // MARK: Properties
+
+    let application = UIApplication.shared
+
     // MARK: Initializing
 
     init(reactor: UserReactor) {
@@ -352,6 +356,11 @@ private extension UserController {
     // MARK: actions (View -> Reactor)
 
     func bindAction(_ reactor: UserReactor) {
+        // view open
+        self.application.rx.didOpenApp
+            .map { Reactor.Action.checkUserToken }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
         // viewDidLoad
         self.rx.viewDidLoad
             .map { Reactor.Action.get }
