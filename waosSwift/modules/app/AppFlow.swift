@@ -67,6 +67,9 @@ final class AppFlow: Flow {
     }
 
     private func navigationToDashboardScreen() -> FlowContributors {
+        if let rootViewController = self.rootWindow.rootViewController {
+            rootViewController.dismiss(animated: false)
+        }
         let coreFlow = CoreFlow(withServices: self.services)
         Flows.use(coreFlow, when: .ready) { [unowned self] (root) in
             self.rootWindow.rootViewController = root
