@@ -158,7 +158,7 @@ final class UserReactor: Reactor {
             state.isRefreshing = isRefreshing
         // set
         case let .set(user):
-            log.verbose("♻️ Mutation -> State : set", user)
+            log.verbose("♻️ Mutation -> State : set", user.email)
             state.user = user
         case let .success(success):
             log.verbose("♻️ Mutation -> State : succes \(success)")
