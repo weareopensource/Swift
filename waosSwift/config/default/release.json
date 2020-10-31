@@ -1,0 +1,7 @@
+{
+    "api": {
+        "protocol": "https",
+        "host": "node.weareopensource.me",
+        "port": "",
+    }
+}
