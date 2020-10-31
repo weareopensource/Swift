@@ -7,11 +7,11 @@ class CoreFormController: FormViewController {
 
     struct Metric {
         static let surface = UIColor(named: config["theme"]["themes"]["waos"]["surface"].string ?? "")
-        static let onSurface = UIColor(named: config["theme"]["themes"]["waos"]["onSurface"].string ?? "")
         static let primary = UIColor(named: config["theme"]["themes"]["waos"]["primary"].string ?? "")
         static let onPrimary = UIColor(named: config["theme"]["themes"]["waos"]["onPrimary"].string ?? "")
         static let secondary = UIColor(named: config["theme"]["themes"]["waos"]["secondary"].string ?? "")
         static let background = UIColor(named: config["theme"]["themes"]["waos"]["background"].string ?? "")
+        static let onBackground = UIColor(named: config["theme"]["themes"]["waos"]["onBackground"].string ?? "")
         static let error = UIColor(named: config["theme"]["themes"]["waos"]["error"].string ?? "")
         static let instagram = UIColor(named: config["theme"]["themes"]["waos"]["instagram"].string ?? "")
         static let twitter = UIColor(named: config["theme"]["themes"]["waos"]["twitter"].string ?? "")
@@ -70,7 +70,7 @@ class CoreFormController: FormViewController {
             self.tabBarController?.tabBar.tintColor = Metric.onPrimary
         }
         if Metric.tabBarTintColor == true {
-            self.tabBarController?.tabBar.tintColor = Metric.primary
+            self.tabBarController?.tabBar.tintColor = Metric.onBackground
         }
         if Metric.tabBarTitle != true {
             self.tabBarController?.tabBar.items?.forEach {
