@@ -8,6 +8,7 @@ class CoreController: UIViewController {
         static let primary = UIColor(named: config["theme"]["themes"]["waos"]["primary"].string ?? "")
         static let onPrimary = UIColor(named: config["theme"]["themes"]["waos"]["onPrimary"].string ?? "")
         static let background = UIColor(named: config["theme"]["themes"]["waos"]["background"].string ?? "")
+        static let onBackground = UIColor(named: config["theme"]["themes"]["waos"]["onBackground"].string ?? "")
         static let tabBarColor = NSString(string: config["theme"]["tabBar"]["color"].string ?? "").boolValue
         static let tabBarTintColor = NSString(string: config["theme"]["tabBar"]["tintColor"].string ?? "").boolValue
         static let tabBarTitle = NSString(string: config["theme"]["tabBar"]["title"].string ?? "").boolValue
@@ -55,7 +56,7 @@ class CoreController: UIViewController {
             self.tabBarController?.tabBar.tintColor = Metric.onPrimary
         }
         if Metric.tabBarTintColor == true {
-            self.tabBarController?.tabBar.tintColor = Metric.primary
+            self.tabBarController?.tabBar.tintColor = Metric.onBackground
         }
         if Metric.tabBarTitle != true {
             self.tabBarController?.tabBar.items?.forEach {
