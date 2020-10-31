@@ -70,6 +70,7 @@
 		BF5BA0F22512483A005DCDDD /* oauth.json in Resources */ = {isa = PBXBuildFile; fileRef = BF5BA0F12512483A005DCDDD /* oauth.json */; };
 		BF5DD0082530472700F14D3C /* ComplementaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5DD0072530472700F14D3C /* ComplementaryModel.swift */; };
 		BF62ADA723E45ECC000D5225 /* UIAlertController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF62ADA623E45ECC000D5225 /* UIAlertController+Rx.swift */; };
+		BF6F5E3C254DE9F1003D4B4A /* release.json in Resources */ = {isa = PBXBuildFile; fileRef = BF6F5E3B254DE9F1003D4B4A /* release.json */; };
 		BF71BD9322A12A2E002CF9DE /* Validations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF71BD9222A12A2E002CF9DE /* Validations.swift */; };
 		BF7369A625191A2A00A5BDAB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BF7369A525191A2A00A5BDAB /* README.md */; };
 		BF78B5F32293CD680057157A /* ObservableType+Extras.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF78B5F22293CD680057157A /* ObservableType+Extras.swift */; };
@@ -290,6 +291,7 @@
 		BF5DD0072530472700F14D3C /* ComplementaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplementaryModel.swift; sourceTree = "<group>"; };
 		BF5DD00B253049B400F14D3C /* waosSwiftRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = waosSwiftRelease.entitlements; sourceTree = "<group>"; };
 		BF62ADA623E45ECC000D5225 /* UIAlertController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Rx.swift"; sourceTree = "<group>"; };
+		BF6F5E3B254DE9F1003D4B4A /* release.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = release.json; sourceTree = "<group>"; };
 		BF71BD9222A12A2E002CF9DE /* Validations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validations.swift; sourceTree = "<group>"; };
 		BF7369A525191A2A00A5BDAB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BF7369A9251920DB00A5BDAB /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
@@ -850,6 +852,7 @@
 			children = (
 				BF4A2FCA2264A4B00001B4CE /* development.json */,
 				BF4A2FC92264A4B00001B4CE /* production.json */,
+				BF6F5E3B254DE9F1003D4B4A /* release.json */,
 			);
 			path = default;
 			sourceTree = "<group>";
@@ -1223,6 +1226,7 @@
 				BF9A366C228D5CDA00EE2AB8 /* get.json in Resources */,
 				BF4A2FCD2264A6810001B4CE /* production.json in Resources */,
 				BF4A2FCE2264A6810001B4CE /* development.json in Resources */,
+				BF6F5E3C254DE9F1003D4B4A /* release.json in Resources */,
 				BF9A366A228D5CDA00EE2AB8 /* list.json in Resources */,
 				BF4A2FAB225CA6DB0001B4CE /* LICENSE.md in Resources */,
 				BF78B60822954B3F0057157A /* me.json in Resources */,
