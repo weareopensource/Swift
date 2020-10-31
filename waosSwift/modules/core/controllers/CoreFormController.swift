@@ -7,6 +7,7 @@ class CoreFormController: FormViewController {
 
     struct Metric {
         static let surface = UIColor(named: config["theme"]["themes"]["waos"]["surface"].string ?? "")
+        static let onSurface = UIColor(named: config["theme"]["themes"]["waos"]["onSurface"].string ?? "")
         static let primary = UIColor(named: config["theme"]["themes"]["waos"]["primary"].string ?? "")
         static let onPrimary = UIColor(named: config["theme"]["themes"]["waos"]["onPrimary"].string ?? "")
         static let secondary = UIColor(named: config["theme"]["themes"]["waos"]["secondary"].string ?? "")
