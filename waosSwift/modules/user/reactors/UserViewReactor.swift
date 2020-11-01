@@ -46,6 +46,8 @@ final class UserViewReactor: Reactor {
         case updateEmail(String)
         // extra
         case updateBio(String)
+        // avatar
+        case updateAvatar(String)
         // social Networks
         case updateInstagram(String?)
         case updateTwitter(String?)
@@ -128,7 +130,8 @@ final class UserViewReactor: Reactor {
                     .updateAvatar(file: data, partName: "img", fileName: "test.\(data.imgExtension)", mimeType: data.mimeType)
                     .map { result in
                         switch result {
-                        case .success: return .success("avatar updated")
+                        case let .success(result):
+                            return .updateAvatar(result.data.avatar)
                         case let .error(err): return .error(err)
                         }
                 },
@@ -198,6 +201,9 @@ final class UserViewReactor: Reactor {
         // extra
         case let .updateBio(bio):
             state.user.bio = bio
+        // avatar
+        case let .updateAvatar(avatar):
+            state.user.avatar = avatar
         // social networks
         case let .updateInstagram(instagram):
             if state.user.complementary != nil {
