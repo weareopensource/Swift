@@ -363,7 +363,7 @@ private extension UserViewController {
             .disposed(by: self.disposeBag)
         reactor.state
             .map { $0.user.avatar }
-            .distinctUntilChanged()
+            .take(1)
             .subscribe(onNext: { avatar in
                 if (avatar != "") {
                     self.imageAvatar.setImage(url: setUploadImageUrl(avatar, size: "256"), options: [.requestModifier(cookieModifier)], completionHandler: { result in
