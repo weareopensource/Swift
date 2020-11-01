@@ -34,7 +34,7 @@ final class AuthSignInController: CoreController, View, Stepper, NVActivityIndic
     }
     let buttonSignin = CoreUIButton().then {
         $0.setTitle(L10n.authSignInTitle, for: .normal)
-        $0.setTitleColor(Metric.primary, for: .normal)
+        $0.setTitleColor(Metric.secondary, for: .normal)
     }
     let buttonSignup = CoreUIButton().then {
         $0.setTitle(L10n.authSignUpTitle, for: .normal)

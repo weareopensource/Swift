@@ -7,6 +7,7 @@ class CoreController: UIViewController {
     struct Metric {
         static let primary = UIColor(named: config["theme"]["themes"]["waos"]["primary"].string ?? "")
         static let onPrimary = UIColor(named: config["theme"]["themes"]["waos"]["onPrimary"].string ?? "")
+        static let secondary = UIColor(named: config["theme"]["themes"]["waos"]["secondary"].string ?? "")
         static let background = UIColor(named: config["theme"]["themes"]["waos"]["background"].string ?? "")
         static let onBackground = UIColor(named: config["theme"]["themes"]["waos"]["onBackground"].string ?? "")
         static let tabBarColor = NSString(string: config["theme"]["tabBar"]["color"].string ?? "").boolValue
