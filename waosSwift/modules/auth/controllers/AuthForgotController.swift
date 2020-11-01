@@ -23,7 +23,7 @@ final class AuthForgotController: CoreController, View, Stepper, NVActivityIndic
     }
     let buttonReset = CoreUIButton().then {
         $0.setTitle(L10n.authReset, for: .normal)
-        $0.setTitleColor(Metric.primary, for: .normal)
+        $0.setTitleColor(Metric.secondary, for: .normal)
     }
     let buttonSignin = CoreUIButton().then {
         $0.setTitle(L10n.authSignInTitle, for: .normal)
@@ -36,7 +36,7 @@ final class AuthForgotController: CoreController, View, Stepper, NVActivityIndic
     let labelSuccess = CoreUILabel().then {
         $0.numberOfLines = 2
         $0.textAlignment = .center
-        $0.textColor = UIColor(named: config["theme"]["themes"]["waos"]["primary"].string ?? "")
+        $0.textColor = Metric.secondary
     }
 
     // MARK: Properties

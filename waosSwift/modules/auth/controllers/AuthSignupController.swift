@@ -44,7 +44,7 @@ final class AuthSignUpController: CoreController, View, Stepper, NVActivityIndic
     }
     let buttonSignup = CoreUIButton().then {
         $0.setTitle(L10n.authSignUpTitle, for: .normal)
-        $0.setTitleColor(Metric.primary, for: .normal)
+        $0.setTitleColor(Metric.secondary, for: .normal)
     }
     let labelErrors = CoreUILabel().then {
         $0.numberOfLines = 5
