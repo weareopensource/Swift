@@ -3,7 +3,7 @@
     // MARK: Constants
 
     struct Metric {
-        static let primary = UIColor(named: config["theme"]["themes"]["waos"]["primary"].string ?? "")
+        static let onBackground = UIColor(named: config["theme"]["themes"]["waos"]["onBackground"].string ?? "")
     }
 
     // MARK: Initializing
@@ -23,7 +23,7 @@
     }
 
     func shared() {
-        self.tintColor = Metric.primary?.lighter(by: 10)
+        self.tintColor = Metric.onBackground
     }
 
 }
