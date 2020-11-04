@@ -140,7 +140,6 @@
 		BFD72A782519E83A0040BF78 /* ReactorKitRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF9A3640228C33A900EE2AB8 /* ReactorKitRuntime.framework */; };
 		BFD72A792519E83A0040BF78 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF2AE773228C2DDB003C5B85 /* Alamofire.framework */; };
 		BFD72A7A2519E83A0040BF78 /* ReactorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFB7C5AA25192F0E00AC0001 /* ReactorKit.framework */; };
-		BFD72A7B2519E83A0040BF78 /* ReactorKitRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFE672AB2519E6C700ABECC8 /* ReactorKitRuntime.framework */; };
 		BFD72A7C2519E83A0040BF78 /* Moya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF2AE771228C1969003C5B85 /* Moya.framework */; };
 		BFD72A7D2519E83A0040BF78 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF8F6ED82273442100B9447A /* SnapKit.framework */; };
 		BFD72A7E2519E83A0040BF78 /* RxOptional.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF8F6ED0227063F100B9447A /* RxOptional.framework */; };
@@ -394,7 +393,6 @@
 				BFD72A782519E83A0040BF78 /* ReactorKitRuntime.framework in Frameworks */,
 				BFD72A792519E83A0040BF78 /* Alamofire.framework in Frameworks */,
 				BFD72A7A2519E83A0040BF78 /* ReactorKit.framework in Frameworks */,
-				BFD72A7B2519E83A0040BF78 /* ReactorKitRuntime.framework in Frameworks */,
 				BFD72A7C2519E83A0040BF78 /* Moya.framework in Frameworks */,
 				BFD72A7D2519E83A0040BF78 /* SnapKit.framework in Frameworks */,
 				BFD72A7E2519E83A0040BF78 /* RxOptional.framework in Frameworks */,
@@ -1177,7 +1175,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1210;
 				ORGANIZATIONNAME = WeAreOpenSource;
 				TargetAttributes = {
 					BF42547F221EBB9700395AE6 = {

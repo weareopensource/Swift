@@ -13,11 +13,11 @@ enum markDownStyles: String {
  * @return {String} to path to webview
  */
 func generateWebPage(_ markdown: String, style: markDownStyles = .air, links: Bool = true, head: Bool = false) -> String {
-    
+
     struct Metric {
         static let background = UIColor(named: config["theme"]["themes"]["waos"]["background"].string ?? "")
     }
-    
+
     let down = Down(markdownString: markdown)
     let htmlString = (try? down.toHTML()) ?? ""
     var output = """
