@@ -80,7 +80,7 @@ It's straightforward :
 ```bash
 git clone https://github.com/weareopensource/swift.git && cd Swift
 carthage update 2>/dev/null
-(cd Carthage/Checkouts/ReactorKit && swift package generate-xcodeproj)
+(cd Carthage/Checkouts/ReactorKit && swift package generate-xcodeproj && xcrun agvtool new-marketing-version 1 && xcrun agvtool new-version -all 1) 
 ./carthage-build.sh --platform iOS --no-use-binaries 
 ```
 
