@@ -215,8 +215,8 @@ private extension UserViewController {
         // inputs
         let observableFirstName = self.inputFirstName.rx.text.share()
         observableFirstName
-            .filterNil()
-            .map {Reactor.Action.updateFirstName($0)}
+            .skip(1)
+            .map {Reactor.Action.updateFirstName($0 ?? "")}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         observableFirstName
@@ -226,8 +226,8 @@ private extension UserViewController {
             .disposed(by: self.disposeBag)
         let observableLastName = self.inputLastName.rx.text.share()
         observableLastName
-            .filterNil()
-            .map {Reactor.Action.updateLastName($0)}
+            .skip(1)
+            .map {Reactor.Action.updateLastName($0 ?? "")}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         observableLastName
@@ -237,8 +237,8 @@ private extension UserViewController {
             .disposed(by: self.disposeBag)
         let observableEmail = self.inputEmail.rx.text.share()
         observableEmail
-            .filterNil()
-            .map {Reactor.Action.updateEmail($0)}
+            .skip(1)
+            .map {Reactor.Action.updateEmail($0 ?? "")}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         observableEmail
@@ -321,7 +321,7 @@ private extension UserViewController {
         // inputs
         reactor.state
             .map { $0.user.firstName }
-            .distinctUntilChanged()
+            .take(1)
             .subscribe(onNext: { firstName in
                 self.inputFirstName.value = firstName
                 self.inputFirstName.updateCell()
@@ -329,7 +329,7 @@ private extension UserViewController {
             .disposed(by: self.disposeBag)
         reactor.state
             .map { $0.user.lastName }
-            .distinctUntilChanged()
+            .take(1)
             .subscribe(onNext: { lastName in
                 self.inputLastName.value = lastName
                 self.inputLastName.updateCell()
@@ -337,7 +337,7 @@ private extension UserViewController {
             .disposed(by: self.disposeBag)
         reactor.state
             .map { $0.user.email }
-            .distinctUntilChanged()
+            .take(1)
             .subscribe(onNext: { email in
                 self.inputEmail.value = email
                 self.inputEmail.updateCell()
@@ -346,6 +346,8 @@ private extension UserViewController {
         // extra
         reactor.state
             .map { $0.user.bio }
+            .filterNil()
+            .take(1)
             .subscribe(onNext: { bio in
                 self.inputBio.value = bio
                 self.inputBio.updateCell()
@@ -383,7 +385,8 @@ private extension UserViewController {
         // social networks
         reactor.state
             .map { $0.user.complementary?.socialNetworks?.instagram }
-            .distinctUntilChanged()
+            .filterNil()
+            .take(1)
             .subscribe(onNext: { instagram in
                 self.inputInstagram.value = instagram
                 self.inputInstagram.updateCell()
@@ -391,7 +394,8 @@ private extension UserViewController {
             .disposed(by: self.disposeBag)
         reactor.state
             .map { $0.user.complementary?.socialNetworks?.twitter }
-            .distinctUntilChanged()
+            .filterNil()
+            .take(1)
             .subscribe(onNext: { twitter in
                 self.inputTwitter.value = twitter
                 self.inputTwitter.updateCell()
@@ -399,7 +403,8 @@ private extension UserViewController {
             .disposed(by: self.disposeBag)
         reactor.state
             .map { $0.user.complementary?.socialNetworks?.facebook }
-            .distinctUntilChanged()
+            .filterNil()
+            .take(1)
             .subscribe(onNext: { facebook in
                 self.inputFacebook.value = facebook
                 self.inputFacebook.updateCell()
