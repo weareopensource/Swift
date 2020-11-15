@@ -12,6 +12,8 @@ import AuthenticationServices
 
 final class AuthSignInController: CoreController, View, Stepper, NVActivityIndicatorViewable {
 
+    var width: CGFloat = 0
+
     // MARK: UI
 
     let inputEmail = CoreUITextField().then {
@@ -46,11 +48,22 @@ final class AuthSignInController: CoreController, View, Stepper, NVActivityIndic
     }
     let buttonForgot = UIButton().then {
         $0.setTitle(L10n.authForgot, for: .normal)
-        $0.setTitleColor(.gray, for: .normal)
+        $0.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .normal)
         $0.backgroundColor = .clear
     }
     let buttonSignInApple = ASAuthorizationAppleIDButton().then {
         $0.isHidden = !(config["oAuth"]["apple"].bool ?? false)
+    }
+
+    // background
+    let backgroundImage = UIImageView().then {
+        $0.contentMode = .scaleToFill
+        $0.alpha = 1
+        $0.image = UIImage(named: "authBackground")
+        $0.alpha = 0.4
+    }
+    let backgroundView = UIView().then {
+        $0.backgroundColor = .clear
     }
 
     // MARK: Properties
@@ -72,6 +85,10 @@ final class AuthSignInController: CoreController, View, Stepper, NVActivityIndic
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // background
+        self.view.addSubview(self.backgroundImage)
+        self.view.addSubview(self.backgroundView)
+        // content
         self.view.registerAutomaticKeyboardConstraints() // active layout with snapkit
         self.view.addSubview(self.inputEmail)
         self.view.addSubview(self.inputPassword)
@@ -80,9 +97,13 @@ final class AuthSignInController: CoreController, View, Stepper, NVActivityIndic
         self.view.addSubview(self.labelErrors)
         self.view.addSubview(self.buttonForgot)
         self.view.addSubview(self.buttonSignInApple)
+        // config
+        self.view.backgroundColor = Metric.primary
+        self.navigationController?.navigationBar.isHidden = true
     }
 
     override func setupConstraints() {
+        self.width = self.view.frame.width
         // inputs
         inputEmail.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(300)
@@ -147,6 +168,17 @@ final class AuthSignInController: CoreController, View, Stepper, NVActivityIndic
             make.height.equalTo(50)
             make.centerX.equalTo(self.view)
             make.bottom.equalTo(self.view).offset(-25)
+        }
+        // background
+        self.backgroundView.snp.makeConstraints { make in
+            make.bottom.equalTo(self.view)
+            make.width.equalTo(self.view)
+            make.height.equalTo(self.view.snp.width)
+        }
+        self.backgroundImage.snp.makeConstraints { make in
+            make.top.equalTo(self.view)
+            make.centerX.equalTo(self.view)
+            make.width.height.equalTo(self.view.frame.height + self.width/5)
         }
     }
 

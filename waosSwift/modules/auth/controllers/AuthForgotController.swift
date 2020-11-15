@@ -11,6 +11,8 @@ import ReactorKit
 
 final class AuthForgotController: CoreController, View, Stepper, NVActivityIndicatorViewable {
 
+    var width: CGFloat = 0
+
     // MARK: UI
 
     let inputEmail = CoreUITextField().then {
@@ -39,6 +41,17 @@ final class AuthForgotController: CoreController, View, Stepper, NVActivityIndic
         $0.textColor = Metric.secondary
     }
 
+    // background
+    let backgroundImage = UIImageView().then {
+        $0.contentMode = .scaleToFill
+        $0.alpha = 1
+        $0.image = UIImage(named: "authBackground")
+        $0.alpha = 0.4
+    }
+    let backgroundView = UIView().then {
+        $0.backgroundColor = .clear
+    }
+
     // MARK: Properties
 
     let steps = PublishRelay<Step>()
@@ -58,15 +71,23 @@ final class AuthForgotController: CoreController, View, Stepper, NVActivityIndic
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // background
+        self.view.addSubview(self.backgroundImage)
+        self.view.addSubview(self.backgroundView)
+        // content
         self.view.registerAutomaticKeyboardConstraints() // active layout with snapkit
         self.view.addSubview(self.inputEmail)
         self.view.addSubview(self.buttonReset)
         self.view.addSubview(self.buttonSignin)
         self.view.addSubview(self.labelErrors)
         self.view.addSubview(self.labelSuccess)
+        // config
+        self.view.backgroundColor = Metric.primary
     }
 
     override func setupConstraints() {
+        self.width = self.view.frame.width
+        // inputs
         labelSuccess.snp.makeConstraints { (make) -> Void in
             make.left.equalTo(25)
             make.right.equalTo(-25)
@@ -111,6 +132,17 @@ final class AuthForgotController: CoreController, View, Stepper, NVActivityIndic
         }
         labelErrors.snp.prepareConstraints {  (make) -> Void in
             make.centerY.equalTo(self.view).offset(20).keyboard(true, in: self.view)
+        }
+        // background
+        self.backgroundView.snp.makeConstraints { make in
+            make.bottom.equalTo(self.view)
+            make.width.equalTo(self.view)
+            make.height.equalTo(self.view.snp.width)
+        }
+        self.backgroundImage.snp.makeConstraints { make in
+            make.top.equalTo(self.view)
+            make.centerX.equalTo(self.view)
+            make.width.height.equalTo(self.view.frame.height + self.width/5)
         }
     }
 

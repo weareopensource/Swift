@@ -11,6 +11,8 @@ import ReactorKit
 
 final class AuthSignUpController: CoreController, View, Stepper, NVActivityIndicatorViewable {
 
+    var width: CGFloat = 0
+
     // MARK: UI
 
     let inputFirstName = CoreUITextField().then {
@@ -52,6 +54,17 @@ final class AuthSignUpController: CoreController, View, Stepper, NVActivityIndic
         $0.textColor = UIColor.red
     }
 
+    // background
+    let backgroundImage = UIImageView().then {
+        $0.contentMode = .scaleToFill
+        $0.alpha = 1
+        $0.image = UIImage(named: "authBackground")
+        $0.alpha = 0.4
+    }
+    let backgroundView = UIView().then {
+        $0.backgroundColor = .clear
+    }
+
     // MARK: Properties
 
     let steps = PublishRelay<Step>()
@@ -71,6 +84,10 @@ final class AuthSignUpController: CoreController, View, Stepper, NVActivityIndic
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // background
+        self.view.addSubview(self.backgroundImage)
+        self.view.addSubview(self.backgroundView)
+        // content
         self.view.registerAutomaticKeyboardConstraints() // active layout with snapkit
         self.view.addSubview(self.inputFirstName)
         self.view.addSubview(self.inputLastName)
@@ -79,9 +96,13 @@ final class AuthSignUpController: CoreController, View, Stepper, NVActivityIndic
         self.view.addSubview(self.buttonSignin)
         self.view.addSubview(self.buttonSignup)
         self.view.addSubview(self.labelErrors)
+        // config
+        self.view.backgroundColor = Metric.primary
     }
 
     override func setupConstraints() {
+        self.width = self.view.frame.width
+        // inputs
         inputFirstName.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(300)
             make.height.equalTo(50)
@@ -144,6 +165,17 @@ final class AuthSignUpController: CoreController, View, Stepper, NVActivityIndic
         }
         labelErrors.snp.prepareConstraints { (make) -> Void in
             make.centerY.equalTo(self.view).offset(60).keyboard(true, in: self.view)
+        }
+        // background
+        self.backgroundView.snp.makeConstraints { make in
+            make.bottom.equalTo(self.view)
+            make.width.equalTo(self.view)
+            make.height.equalTo(self.view.snp.width)
+        }
+        self.backgroundImage.snp.makeConstraints { make in
+            make.top.equalTo(self.view)
+            make.centerX.equalTo(self.view)
+            make.width.height.equalTo(self.view.frame.height + self.width/5)
         }
     }
 
