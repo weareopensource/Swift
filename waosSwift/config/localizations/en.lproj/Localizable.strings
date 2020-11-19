@@ -10,6 +10,8 @@
 "modal_confirmation_ok" = "Ok";
 "modal_confirmation_remove" = "Remove";
 "modal_confirmation_cancel" = "Cancel";
+"modal_requirement_title" = "Validation required";
+"modal_requirement_accept" = "Accept";
 
 // onBoarding
 "onBoarding_title"= "Welcome !";

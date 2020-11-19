@@ -23,6 +23,9 @@ final class TasksListReactor: Reactor {
         case delete(IndexPath)
         // Notificaitons
         case getIndexPath(String)
+        // user
+        case checkUserToken
+        case checkUserTerms
     }
 
     // state changes
@@ -32,6 +35,8 @@ final class TasksListReactor: Reactor {
         case setRefreshing(Bool)
         // Notificaitons
         case setIndexPath(String)
+        // user
+        case setTerms(Pages?)
         // default
         case success(String)
         case error(CustomError)
@@ -45,11 +50,16 @@ final class TasksListReactor: Reactor {
         var isRefreshing: Bool
         // Notificaitons
         var indexPath: IndexPath?
+        // user
+        var terms: Pages?
 
         init() {
+            // task
             self.tasks = []
             self.sections = [TasksSections(model: Void(), items: [])]
             self.isRefreshing = false
+            // user
+            self.terms = nil
         }
     }
 
@@ -96,7 +106,7 @@ final class TasksListReactor: Reactor {
                         case let .success(result): return .set(result.data)
                         case let .error(err): return .error(err)
                         }
-                },
+                    },
                 .just(.setRefreshing(false))
             ])
         // delete
@@ -110,11 +120,55 @@ final class TasksListReactor: Reactor {
                     case .success: return .success("delete")
                     case let .error(err): return .error(err)
                     }
-            }
+                }
         // notification
         case let .getIndexPath(id):
             log.verbose("♻️ Action -> Mutation : getIndexPath")
             return .just(.setIndexPath(id))
+        // check user token when open application
+        case .checkUserToken:
+            log.verbose("♻️ Action -> Mutation : checkUserToken")
+            switch getTokenStatus() {
+            case .isOk:
+                return .just(.success("token ok"))
+            case .toDefine:
+                self.provider.preferencesService.isLogged = false
+                return .just(.success("token to define"))
+            case .toRenew:
+                // check terms
+                return self.provider.authService
+                    .token()
+                    .map { result in
+                        switch result {
+                        case let .success(response):
+                            UserDefaults.standard.set(response.tokenExpiresIn, forKey: "CookieExpire")
+                            UserDefaults.standard.set(response.user.terms, forKey: "Terms")
+                            // also check terms update
+                            return .success("token renewed")
+                        case let .error(err):
+                            self.provider.preferencesService.isLogged = false
+                            return .error(err)
+                        }
+                    }
+            }
+        // check terms and conditions
+        case .checkUserTerms:
+            log.verbose("♻️ Action -> Mutation : checkUserTerms")
+            if(getTokenStatus() == .toRenew || UserDefaults.standard.value(forKey: "Terms") == nil) {
+                return  self.provider.homeService
+                    .getPages(.page("terms"))
+                    .map { result in
+                        switch result {
+                        case let .success(result):
+                            let termsStatus = getTermsStatus(terms: result.data[0].updatedAt)
+                            return termsStatus ? .setTerms(nil): .setTerms(result.data[0])
+                        case let .error(err): return .error(err)
+                        }
+                    }
+            } else {
+                return .empty()
+            }
+
         }
     }
 
@@ -140,7 +194,7 @@ final class TasksListReactor: Reactor {
                     state.sections.insert(TasksCellReactor(task: element), at: IndexPath(item: index, section: 0))
                 }
             }
-        //
+        // notification
         case let .setIndexPath(id):
             log.verbose("♻️ Mutation -> State : setIndexPath")
             if let section = state.sections.firstIndex(where: { $0.items.firstIndex(where: { $0.currentState.id == id }) != nil ? true : false }) {
@@ -148,6 +202,10 @@ final class TasksListReactor: Reactor {
                     state.indexPath = IndexPath(row: row, section: section)
                 }
             }
+        // user
+        case let .setTerms(terms):
+            log.verbose("♻️ Mutation -> State : setTerms")
+            state.terms = terms
         // success
         case let .success(success):
             log.verbose("♻️ Mutation -> State : succes \(success)")
@@ -176,5 +234,9 @@ final class TasksListReactor: Reactor {
     func editReactor(_ taskCellReactor: TasksCellReactor) -> TasksViewReactor {
         let task = taskCellReactor.currentState
         return TasksViewReactor(provider: self.provider, mode: .edit(task))
+    }
+
+    func termsReactor(terms: Pages) -> HomeTermsReactor {
+        return HomeTermsReactor(provider: self.provider, terms: terms, style: .classic, displayLinks: true)
     }
 }

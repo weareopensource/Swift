@@ -101,30 +101,62 @@ private extension UserMoreController {
         // informations
         self.buttonSupport.rx.tap
             .subscribe(onNext: { _ in
-                guard let url = URL(string: (config["app"]["links"]["support"].string ?? "")) else { return }
-                let svc = SFSafariViewController(url: url)
-                self.present(svc, animated: true, completion: nil)
+                if let url = config["app"]["links"]["support"].string {
+                    if (url.prefix(4) == "http") {
+                        guard let url = URL(string: url) else { return }
+                        let svc = SFSafariViewController(url: url)
+                        self.present(svc, animated: true, completion: nil)
+                    } else {
+                        let viewController = HomePageController(reactor: reactor.pageReactor(name: url))
+                        let navigationController = UINavigationController(rootViewController: viewController)
+                        self.present(navigationController, animated: true, completion: nil)
+                    }
+                }
             })
             .disposed(by: disposeBag)
         self.buttonTermsOfUse.rx.tap
             .subscribe(onNext: { _ in
-                guard let url = URL(string: (config["app"]["links"]["termsOfUse"].string ?? "")) else { return }
-                let svc = SFSafariViewController(url: url)
-                self.present(svc, animated: true, completion: nil)
+                if let url = config["app"]["links"]["terms"].string {
+                    if (url.prefix(4) == "http") {
+                        guard let url = URL(string: url) else { return }
+                        let svc = SFSafariViewController(url: url)
+                        self.present(svc, animated: true, completion: nil)
+                    } else {
+                        let viewController = HomePageController(reactor: reactor.pageReactor(name: url))
+                        let navigationController = UINavigationController(rootViewController: viewController)
+                        self.present(navigationController, animated: true, completion: nil)
+                    }
+                }
             })
             .disposed(by: disposeBag)
         self.buttonPrivacyPolicy.rx.tap
             .subscribe(onNext: { _ in
-                guard let url = URL(string: (config["app"]["links"]["privacyPolicy"].string ?? "")) else { return }
-                let svc = SFSafariViewController(url: url)
-                self.present(svc, animated: true, completion: nil)
+                if let url = config["app"]["links"]["privacy"].string {
+                    if (url.prefix(4) == "http") {
+                        guard let url = URL(string: url) else { return }
+                        let svc = SFSafariViewController(url: url)
+                        self.present(svc, animated: true, completion: nil)
+                    } else {
+                        let viewController = HomePageController(reactor: reactor.pageReactor(name: url))
+                        let navigationController = UINavigationController(rootViewController: viewController)
+                        self.present(navigationController, animated: true, completion: nil)
+                    }
+                }
             })
             .disposed(by: disposeBag)
         self.buttonLegalNotice.rx.tap
             .subscribe(onNext: { _ in
-                guard let url = URL(string: (config["app"]["links"]["legalNotice"].string ?? "")) else { return }
-                let svc = SFSafariViewController(url: url)
-                self.present(svc, animated: true, completion: nil)
+                if let url = config["app"]["links"]["legal"].string {
+                    if (url.prefix(4) == "http") {
+                        guard let url = URL(string: url) else { return }
+                        let svc = SFSafariViewController(url: url)
+                        self.present(svc, animated: true, completion: nil)
+                    } else {
+                        let viewController = HomePageController(reactor: reactor.pageReactor(name: url))
+                        let navigationController = UINavigationController(rootViewController: viewController)
+                        self.present(navigationController, animated: true, completion: nil)
+                    }
+                }
             })
             .disposed(by: disposeBag)
     }

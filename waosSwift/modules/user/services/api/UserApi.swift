@@ -11,6 +11,7 @@ import Moya
 enum UserApi {
     case me
     case update(_ user: User)
+    case terms
     case delete
     case updateAvatar(file: Data, partName: String, fileName: String, mimeType: String)
     case deleteAvatar
@@ -35,6 +36,8 @@ extension UserApi: TargetType {
             return "/" + apiPathUser + "/me"
         case .update :
             return "/" + apiPathUser
+        case .terms :
+            return "/" + apiPathUser + "/terms"
         case .delete :
             return "/" + apiPathUser + "/data"
         case .updateAvatar :
@@ -52,6 +55,8 @@ extension UserApi: TargetType {
             return .get
         case .update:
             return .put
+        case .terms:
+            return .get
         case .delete:
             return .delete
         case .updateAvatar:
@@ -67,6 +72,7 @@ extension UserApi: TargetType {
         switch self {
         case .me: return stubbed("me")
         case .update: return stubbed("update")
+        case .terms: return stubbed("terms")
         case .delete: return stubbed("delete")
         case .updateAvatar: return stubbed("avatar")
         case .deleteAvatar: return stubbed("avatar")
@@ -76,7 +82,7 @@ extension UserApi: TargetType {
 
     var task: Task {
         switch self {
-        case .me, .delete, .deleteAvatar, .data:
+        case .me, .terms, .delete, .deleteAvatar, .data:
             return .requestPlain
         case .update(let user):
             return .requestJSONEncodable(user)

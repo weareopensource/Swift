@@ -96,6 +96,7 @@ final class AuthSigninReactor: Reactor {
                         switch result {
                         case let .success(response):
                             UserDefaults.standard.set(response.tokenExpiresIn, forKey: "CookieExpire")
+                            UserDefaults.standard.set(response.user.terms ?? nil, forKey: "Terms")
                             self.provider.preferencesService.isLogged = true
                             return .success("signIn")
                         case let .error(err):
@@ -115,6 +116,7 @@ final class AuthSigninReactor: Reactor {
                         switch result {
                         case let .success(response):
                             UserDefaults.standard.set(response.tokenExpiresIn, forKey: "CookieExpire")
+                            UserDefaults.standard.set(response.user.terms ?? nil, forKey: "Terms")
                             self.provider.preferencesService.isLogged = true
                             return .success("oAuth")
                         case let .error(err): return .error(err)

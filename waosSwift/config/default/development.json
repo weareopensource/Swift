@@ -15,9 +15,9 @@
             "facebook": "pageid",
             "us": "https://weareopensource.me/us/",
             "support": "https://developer.apple.com/support/",
-            "termsOfUse": "https://www.apple.com/legal/internet-services/terms/site.html",
-            "privacyPolicy": "https://www.apple.com/legal/privacy/en-ww/",
-            "legalNotice": "https://www.apple.com/fr/legal/",
+            "terms": "terms",
+            "privacy": "https://www.apple.com/legal/privacy/en-ww/",
+            "legal": "legal",
             "gravatar": "https://gravatar.com"
         }
     },
@@ -31,7 +31,7 @@
             "users": "users",
             "tasks": "tasks",
             "uploads": "uploads",
-            "home": "core",
+            "home": "home",
         }
     },
     "jwt": {

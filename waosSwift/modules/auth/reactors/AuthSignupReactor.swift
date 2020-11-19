@@ -131,6 +131,7 @@ final class AuthSignUpReactor: Reactor {
                         switch result {
                         case let .success(response):
                             UserDefaults.standard.set(response.tokenExpiresIn, forKey: "CookieExpire")
+                            UserDefaults.standard.set(response.user.terms ?? nil, forKey: "Terms")
                             self.provider.preferencesService.isLogged = true
                             return .dismiss
                         case let .error(err): return .error(err)
