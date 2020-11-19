@@ -24,9 +24,23 @@ struct User {
     var password: String?
     var avatar: String
     var bio: String?
+    // startup requirement
+    var terms: String?
+    // others
     var complementary: Complementary?
 
-    init(firstName: String = "", lastName: String = "", email: String = "", roles: [String]? = [], password: String? = "", avatar: String = "", bio: String? = "", complementary: Complementary? = nil) {
+    init(firstName: String = "",
+         lastName: String = "",
+         email: String = "",
+         roles: [String]? = [],
+         password: String? = "",
+         avatar: String = "",
+         bio: String? = "",
+         // startup requirement
+         terms: String? = nil,
+         // others
+         complementary: Complementary? = nil
+    ) {
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
@@ -34,6 +48,9 @@ struct User {
         self.password = password
         self.avatar = avatar
         self.bio = bio
+        // startup requirement
+        self.terms = terms
+        // others
         self.complementary = complementary
     }
 }
@@ -48,6 +65,9 @@ extension User: Hashable, Codable {
         case password
         case avatar
         case bio
+        // startup requirement
+        case terms
+        // others
         case complementary
     }
 
@@ -62,6 +82,9 @@ extension User: Hashable, Codable {
         password = try container.decodeIfPresent(String.self, forKey: .password)
         avatar = try container.decode(String.self, forKey: .avatar)
         bio = try container.decodeIfPresent(String.self, forKey: .bio)
+        // startup requirement
+        terms = try container.decodeIfPresent(String.self, forKey: .terms)
+        // others
         complementary = try container.decodeIfPresent(Complementary.self, forKey: .complementary)
     }
 }

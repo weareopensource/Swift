@@ -36,8 +36,9 @@ final class TasksListController: CoreController, View {
             let cell = tableView.dequeue(Reusable.taskCell, for: indexPath)
             cell.reactor = reactor
             return cell
-    })
+        })
     //let steps = PublishRelay<Step>()
+    let application = UIApplication.shared
 
     // MARK: Initializing
 
@@ -115,6 +116,15 @@ private extension TasksListController {
     // MARK: actions (View -> Reactor)
 
     func bindAction(_ reactor: TasksListReactor) {
+        // application open
+        self.application.rx.didOpenApp
+            .map { Reactor.Action.checkUserToken }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
+        self.rx.viewDidLoad
+            .map { Reactor.Action.checkUserTerms }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
         // viewDidLoad
         self.rx.viewDidLoad
             .map { Reactor.Action.get }
@@ -161,6 +171,19 @@ private extension TasksListController {
             .subscribe(onNext: { indexPath in
                 self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
                 self.tableView.delegate?.tableView!(self.tableView, didSelectRowAt: indexPath)
+            })
+            .disposed(by: self.disposeBag)
+        // user
+        reactor.state
+            .map { $0.terms }
+            .filterNil()
+            .distinctUntilChanged()
+            .subscribe(onNext: { terms in
+                let viewController = HomeTermsController(reactor: reactor.termsReactor(terms: terms))
+                viewController.title = L10n.modalRequirementTitle
+                let navigationController = UINavigationController(rootViewController: viewController)
+                navigationController.modalPresentationStyle = .fullScreen
+                self.present(navigationController, animated: true, completion: nil)
             })
             .disposed(by: self.disposeBag)
 

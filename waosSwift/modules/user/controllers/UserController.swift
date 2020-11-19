@@ -233,7 +233,7 @@ private extension UserController {
             .disposed(by: disposeBag)
         self.buttonChangelog.rx.tap
             .subscribe(onNext: { _ in
-                let viewController = HomePageController(reactor: reactor.pageReactor())
+                let viewController = HomePageController(reactor: reactor.changelogReactor())
                 let navigationController = UINavigationController(rootViewController: viewController)
                 self.present(navigationController, animated: true, completion: nil)
             })
@@ -351,16 +351,12 @@ private extension UserController {
                 }
             })
             .disposed(by: disposeBag)
+
     }
 
     // MARK: actions (View -> Reactor)
 
     func bindAction(_ reactor: UserReactor) {
-        // view open
-        self.application.rx.didOpenApp
-            .map { Reactor.Action.checkUserToken }
-            .bind(to: reactor.action)
-            .disposed(by: self.disposeBag)
         // viewDidLoad
         self.rx.viewDidLoad
             .map { Reactor.Action.get }

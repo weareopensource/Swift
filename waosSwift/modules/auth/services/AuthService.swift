@@ -50,7 +50,7 @@ final class AuthService: CoreService, AuthServiceType {
     }
 
     func token() -> Observable<MyResult<TokenResponse, CustomError>> {
-        log.verbose("🔌 service : me")
+        log.verbose("🔌 service : token")
         return self.networking
             .request(.token)
             .map(TokenResponse.self)

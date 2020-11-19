@@ -19,8 +19,6 @@ final class UserReactor: Reactor {
         case logout
         case delete
         case data
-        // user
-        case checkUserToken // (only in tab main controller)
     }
 
     // state changes
@@ -88,7 +86,7 @@ final class UserReactor: Reactor {
                         case let .success(result): return .set(result.data)
                         case let .error(err): return .error(err)
                         }
-                },
+                    },
                 .just(.setRefreshing(false))
             ])
         // case logout
@@ -107,7 +105,7 @@ final class UserReactor: Reactor {
                         return .success("delete")
                     case let .error(err): return .error(err)
                     }
-            }
+                }
         // data
         case .data:
             log.verbose("♻️ Action -> Mutation : data")
@@ -119,31 +117,7 @@ final class UserReactor: Reactor {
                         return .success("data")
                     case let .error(err): return .error(err)
                     }
-            }
-        // check user token when open application
-        case .checkUserToken:
-            log.verbose("♻️ Action -> Mutation : checkUserToken")
-            let status = getTokenStatus()
-            switch status {
-            case .isOk:
-                return .just(.success("token ok"))
-            case .toDefine:
-                self.provider.preferencesService.isLogged = false
-                return .just(.success("token to define"))
-            case .toRenew:
-                return self.provider.authService
-                    .token()
-                    .map { result in
-                        switch result {
-                        case let .success(response):
-                            UserDefaults.standard.set(response.tokenExpiresIn, forKey: "CookieExpire")
-                            return .success("token renewed")
-                        case let .error(err):
-                            self.provider.preferencesService.isLogged = false
-                            return .error(err)
-                        }
                 }
-            }
         }
     }
 
@@ -193,7 +167,7 @@ final class UserReactor: Reactor {
         return UserMoreReactor(provider: self.provider)
     }
 
-    func pageReactor() -> HomePageReactor {
+    func changelogReactor() -> HomePageReactor {
         return HomePageReactor(provider: self.provider, api: .changelogs, style: .air, displayLinks: false)
     }
 }

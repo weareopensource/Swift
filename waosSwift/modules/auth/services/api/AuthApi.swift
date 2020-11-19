@@ -55,7 +55,7 @@ extension AuthApi: TargetType {
         switch self {
         case .signUp: return stubbed("signup")
         case .signIn: return stubbed("signin")
-        case .token: return stubbed("me")
+        case .token: return stubbed("token")
         case .forgot: return stubbed("forgot")
         case .oauth: return stubbed("oauth")
         }

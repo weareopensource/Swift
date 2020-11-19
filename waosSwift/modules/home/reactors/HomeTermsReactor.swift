@@ -8,45 +8,43 @@ import ReactorKit
  * Reactor
  */
 
-final class HomePageReactor: Reactor {
+final class HomeTermsReactor: Reactor {
 
     // MARK: Constants
 
     // user actions
     enum Action {
-        // pages
-        case get
+        // default
+        case done
     }
 
     // state changes
     enum Mutation {
-        // pages
-        case set([Pages])
         // inputs
-        case setRefreshing(Bool)
+        case dismiss
         case success(String)
         case error(CustomError)
     }
 
     // the current view state
     struct State {
-        // pages
+        // terms
         var pages: [Pages]
         // settings
         var displayLinks: Bool
         var style: markDownStyles
         // work
-        var isRefreshing: Bool
+        var isDismissed: Bool
         var errors: [DisplayError]
 
-        init(style: markDownStyles, displayLinks: Bool) {
+        init(terms: Pages, style: markDownStyles, displayLinks: Bool) {
             // pages
-            self.pages = []
+            self.pages = [terms]
             // settings
             self.style = style
             self.displayLinks = displayLinks
             // work
-            self.isRefreshing = false
+            self.isDismissed = false
             self.errors = []
         }
     }
@@ -55,36 +53,30 @@ final class HomePageReactor: Reactor {
 
     let provider: AppServicesProviderType
     let initialState: State
-    let api: HomeApi
 
     // MARK: Initialization
 
-    init(provider: AppServicesProviderType, api: HomeApi, style: markDownStyles = .air, displayLinks: Bool = true) {
+    init(provider: AppServicesProviderType, terms: Pages, style: markDownStyles = .air, displayLinks: Bool = true) {
         self.provider = provider
-        self.api = api
-        self.initialState = State(style: style, displayLinks: displayLinks)
+        self.initialState = State(terms: terms, style: style, displayLinks: displayLinks)
     }
 
     // MARK: Action -> Mutation (mutate() receives an Action and generates an Observable<Mutation>)
 
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
-        case .get:
-            guard !self.currentState.isRefreshing else { return .empty() }
-            log.verbose("♻️ Action -> Mutation : get")
-            return Observable.concat([
-                .just(.setRefreshing(true)),
-                self.provider.homeService
-                    .getPages(self.api)
-                    .map { result in
-                        switch result {
-                        case let .success(result):
-                            return .set(result.data)
-                        case let .error(err): return .error(err)
-                        }
-                },
-                .just(.setRefreshing(false))
-            ])
+        // done
+        case .done:
+            return self.provider.userService
+                .terms()
+                .map { result in
+                    switch result {
+                    case let .success(response):
+                        UserDefaults.standard.set(response.data.terms ?? nil, forKey: "Terms")
+                        return .dismiss
+                    case let .error(err): return .error(err)
+                    }
+                }
         }
     }
 
@@ -93,14 +85,11 @@ final class HomePageReactor: Reactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
-        // refreshing
-        case let .setRefreshing(isRefreshing):
-            log.verbose("♻️ Mutation -> State : setRefreshing")
-            state.isRefreshing = isRefreshing
-        // set
-        case let .set(pages):
-            log.verbose("♻️ Mutation -> State : set")
-            state.pages = pages
+        // dissmiss
+        case .dismiss:
+            log.verbose("♻️ Mutation -> State : dismiss")
+            state.isDismissed = true
+            state.errors = []
         // success
         case let .success(success):
             log.verbose("♻️ Mutation -> State : succes \(success)")

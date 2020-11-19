@@ -10,6 +10,7 @@ import Moya
 
 enum HomeApi {
     case changelogs
+    case page(_ name: String)
 }
 
 extension HomeApi: TargetType {
@@ -22,11 +23,14 @@ extension HomeApi: TargetType {
     }
 
     var path: String {
-        let apiPathTasks = config["api"]["endPoints"]["home"].string ?? "home"
+        let apiPathHome = config["api"]["endPoints"]["home"].string ?? "home"
 
         switch self {
         case .changelogs:
-            return "/" + apiPathTasks + "/changelogs"
+            return "/" + apiPathHome + "/changelogs"
+        case .page(let name):
+            return "/" + apiPathHome + "/pages/" + (name )
+
         }
     }
 
@@ -34,19 +38,23 @@ extension HomeApi: TargetType {
         switch self {
         case .changelogs:
             return .get
+        case .page:
+            return .get
         }
     }
 
     var sampleData: Data {
         switch self {
         case .changelogs: return stubbed("changelogs")
+        case .page: return stubbed("getPages")
         }
     }
 
     var task: Task {
         switch self {
-        case .changelogs:
+        case .changelogs, .page:
             return .requestPlain
+
         }
     }
 

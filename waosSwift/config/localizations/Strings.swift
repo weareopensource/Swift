@@ -37,6 +37,10 @@ internal enum L10n {
   internal static let modalConfirmationOk = L10n.tr("Localizable", "modal_confirmation_ok")
   /// Remove
   internal static let modalConfirmationRemove = L10n.tr("Localizable", "modal_confirmation_remove")
+  /// Accept
+  internal static let modalRequirementAccept = L10n.tr("Localizable", "modal_requirement_accept")
+  /// Validation required
+  internal static let modalRequirementTitle = L10n.tr("Localizable", "modal_requirement_title")
   /// this is the first page of the application, it will only be affixed once after installation. We call it onBoarding. We will not be able to recover them.
   internal static let onBoardingIntroduction = L10n.tr("Localizable", "onBoarding_introduction")
   /// Welcome !

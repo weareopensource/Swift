@@ -1,6 +1,6 @@
 extension UISegmentedControl {
 
-    func updateTitle(_ titles: [String]) {
+    func updateTitle(_ titles: [String?]) {
      removeAllSegments()
         for t in titles {
             insertSegment(withTitle: t, at: numberOfSegments, animated: true)
