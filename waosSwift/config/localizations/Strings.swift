@@ -27,6 +27,16 @@ internal enum L10n {
   internal static let authSignInTitle = L10n.tr("Localizable", "authSignIn_title")
   /// Sign Up
   internal static let authSignUpTitle = L10n.tr("Localizable", "authSignUp_title")
+  /// legal
+  internal static let linksLegal = L10n.tr("Localizable", "links_legal")
+  /// https://www.apple.com/legal/privacy/en-ww/
+  internal static let linksPrivacy = L10n.tr("Localizable", "links_privacy")
+  /// https://developer.apple.com/support/
+  internal static let linksSupport = L10n.tr("Localizable", "links_support")
+  /// terms
+  internal static let linksTerms = L10n.tr("Localizable", "links_terms")
+  /// https://weareopensource.me/us/
+  internal static let linksUs = L10n.tr("Localizable", "links_us")
   /// Loading ...
   internal static let loaderMessagee = L10n.tr("Localizable", "loader_messagee")
   /// Cancel

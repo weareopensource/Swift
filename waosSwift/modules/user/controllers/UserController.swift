@@ -233,16 +233,14 @@ private extension UserController {
             .disposed(by: disposeBag)
         self.buttonSupport.rx.tap
             .subscribe(onNext: { _ in
-                if let url = config["app"]["links"]["support"].string {
-                    if (url.prefix(4) == "http") {
-                        guard let url = URL(string: url) else { return }
-                        let svc = SFSafariViewController(url: url)
-                        self.present(svc, animated: true, completion: nil)
-                    } else {
-                        let viewController = HomePageController(reactor: reactor.pageReactor(name: url))
-                        let navigationController = UINavigationController(rootViewController: viewController)
-                        self.present(navigationController, animated: true, completion: nil)
-                    }
+                if (L10n.linksSupport.prefix(4) == "http") {
+                    guard let url = URL(string: L10n.linksSupport) else { return }
+                    let svc = SFSafariViewController(url: url)
+                    self.present(svc, animated: true, completion: nil)
+                } else {
+                    let viewController = HomePageController(reactor: reactor.pageReactor(name: L10n.linksSupport))
+                    let navigationController = UINavigationController(rootViewController: viewController)
+                    self.present(navigationController, animated: true, completion: nil)
                 }
             })
             .disposed(by: disposeBag)
