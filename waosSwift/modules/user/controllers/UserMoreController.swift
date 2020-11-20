@@ -108,46 +108,40 @@ private extension UserMoreController {
             .disposed(by: disposeBag)
         self.buttonTermsOfUse.rx.tap
             .subscribe(onNext: { _ in
-                if let url = config["app"]["links"]["terms"].string {
-                    if (url.prefix(4) == "http") {
-                        guard let url = URL(string: url) else { return }
-                        let svc = SFSafariViewController(url: url)
-                        self.present(svc, animated: true, completion: nil)
-                    } else {
-                        let viewController = HomePageController(reactor: reactor.pageReactor(name: url))
-                        let navigationController = UINavigationController(rootViewController: viewController)
-                        self.present(navigationController, animated: true, completion: nil)
-                    }
+                if (L10n.linksTerms.prefix(4) == "http") {
+                    guard let url = URL(string: L10n.linksTerms) else { return }
+                    let svc = SFSafariViewController(url: url)
+                    self.present(svc, animated: true, completion: nil)
+                } else {
+                    let viewController = HomePageController(reactor: reactor.pageReactor(name: L10n.linksTerms))
+                    let navigationController = UINavigationController(rootViewController: viewController)
+                    self.present(navigationController, animated: true, completion: nil)
                 }
             })
             .disposed(by: disposeBag)
         self.buttonPrivacyPolicy.rx.tap
             .subscribe(onNext: { _ in
-                if let url = config["app"]["links"]["privacy"].string {
-                    if (url.prefix(4) == "http") {
-                        guard let url = URL(string: url) else { return }
-                        let svc = SFSafariViewController(url: url)
-                        self.present(svc, animated: true, completion: nil)
-                    } else {
-                        let viewController = HomePageController(reactor: reactor.pageReactor(name: url))
-                        let navigationController = UINavigationController(rootViewController: viewController)
-                        self.present(navigationController, animated: true, completion: nil)
-                    }
+                if (L10n.linksPrivacy.prefix(4) == "http") {
+                    guard let url = URL(string: L10n.linksPrivacy) else { return }
+                    let svc = SFSafariViewController(url: url)
+                    self.present(svc, animated: true, completion: nil)
+                } else {
+                    let viewController = HomePageController(reactor: reactor.pageReactor(name: L10n.linksPrivacy))
+                    let navigationController = UINavigationController(rootViewController: viewController)
+                    self.present(navigationController, animated: true, completion: nil)
                 }
             })
             .disposed(by: disposeBag)
         self.buttonLegalNotice.rx.tap
             .subscribe(onNext: { _ in
-                if let url = config["app"]["links"]["legal"].string {
-                    if (url.prefix(4) == "http") {
-                        guard let url = URL(string: url) else { return }
-                        let svc = SFSafariViewController(url: url)
-                        self.present(svc, animated: true, completion: nil)
-                    } else {
-                        let viewController = HomePageController(reactor: reactor.pageReactor(name: url))
-                        let navigationController = UINavigationController(rootViewController: viewController)
-                        self.present(navigationController, animated: true, completion: nil)
-                    }
+                if (L10n.linksLegal.prefix(4) == "http") {
+                    guard let url = URL(string: L10n.linksLegal) else { return }
+                    let svc = SFSafariViewController(url: url)
+                    self.present(svc, animated: true, completion: nil)
+                } else {
+                    let viewController = HomePageController(reactor: reactor.pageReactor(name: L10n.linksLegal))
+                    let navigationController = UINavigationController(rootViewController: viewController)
+                    self.present(navigationController, animated: true, completion: nil)
                 }
             })
             .disposed(by: disposeBag)

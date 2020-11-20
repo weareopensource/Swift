@@ -2,6 +2,13 @@
  * Modules
  */
 
+// links
+"links_us" = "https://weareopensource.me/us/";
+"links_support" = "https://developer.apple.com/support/";
+"links_terms" = "terms";
+"links_privacy" = "https://www.apple.com/legal/privacy/en-ww/";
+"links_legal" = "legal";
+
 // loader
 "loader_messagee" = "Chargement ...";
 
