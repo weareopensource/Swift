@@ -56,9 +56,9 @@ class UserController: CoreFormController, View {
         $0.title = L10n.userUs
         $0.setFontAwesomeIcon("fa-user-astronaut")
     }
-    let buttonChangelog = ButtonRow {
-        $0.title = "Changelog"
-        $0.setFontAwesomeIcon("fa-file")
+    let buttonSupport = ButtonRow {
+        $0.title = L10n.userSupport
+        $0.setFontAwesomeIcon("fa-question")
     }
     let buttonMore = ButtonRow {
         $0.title = L10n.userMore
@@ -155,7 +155,7 @@ class UserController: CoreFormController, View {
             <<< self.buttonBlog
             <<< self.buttonSite
             <<< self.buttonUs
-            <<< self.buttonChangelog
+            <<< self.buttonSupport
             <<< self.buttonMore
             +++ Section(header: L10n.userSectionSocialnetworks, footer: "")
             <<< self.buttonInstagram
@@ -231,11 +231,19 @@ private extension UserController {
                 self.present(svc, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
-        self.buttonChangelog.rx.tap
+        self.buttonSupport.rx.tap
             .subscribe(onNext: { _ in
-                let viewController = HomePageController(reactor: reactor.changelogReactor())
-                let navigationController = UINavigationController(rootViewController: viewController)
-                self.present(navigationController, animated: true, completion: nil)
+                if let url = config["app"]["links"]["support"].string {
+                    if (url.prefix(4) == "http") {
+                        guard let url = URL(string: url) else { return }
+                        let svc = SFSafariViewController(url: url)
+                        self.present(svc, animated: true, completion: nil)
+                    } else {
+                        let viewController = HomePageController(reactor: reactor.pageReactor(name: url))
+                        let navigationController = UINavigationController(rootViewController: viewController)
+                        self.present(navigationController, animated: true, completion: nil)
+                    }
+                }
             })
             .disposed(by: disposeBag)
         self.buttonMore.rx.tap
