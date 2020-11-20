@@ -92,4 +92,8 @@ final class UserMoreReactor: Reactor {
     func pageReactor(name: String) -> HomePageReactor {
         return HomePageReactor(provider: self.provider, api: .page(name), style: .classic, displayLinks: true)
     }
+
+    func changelogReactor() -> HomePageReactor {
+        return HomePageReactor(provider: self.provider, api: .changelogs, style: .air, displayLinks: false)
+    }
 }

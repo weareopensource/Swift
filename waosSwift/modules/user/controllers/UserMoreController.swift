@@ -23,9 +23,9 @@ class UserMoreController: CoreFormController, View, NVActivityIndicatorViewable 
     let barButtonDone = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: nil)
 
     // button Information
-    let buttonSupport = ButtonRow {
-        $0.title = L10n.userSupport
-        $0.setFontAwesomeIcon("fa-question")
+    let buttonChangelog = ButtonRow {
+        $0.title = "Changelog"
+        $0.setFontAwesomeIcon("fa-file")
     }
     let buttonTermsOfUse = ButtonRow {
         $0.title = L10n.userTermsOfUse
@@ -58,7 +58,7 @@ class UserMoreController: CoreFormController, View, NVActivityIndicatorViewable 
 
         form
             +++ Section(header: L10n.userSectionAbout, footer: "")
-            <<< self.buttonSupport
+            <<< self.buttonChangelog
             <<< self.buttonTermsOfUse
             <<< self.buttonPrivacyPolicy
             <<< self.buttonLegalNotice
@@ -99,19 +99,11 @@ private extension UserMoreController {
             })
             .disposed(by: self.disposeBag)
         // informations
-        self.buttonSupport.rx.tap
+        self.buttonChangelog.rx.tap
             .subscribe(onNext: { _ in
-                if let url = config["app"]["links"]["support"].string {
-                    if (url.prefix(4) == "http") {
-                        guard let url = URL(string: url) else { return }
-                        let svc = SFSafariViewController(url: url)
-                        self.present(svc, animated: true, completion: nil)
-                    } else {
-                        let viewController = HomePageController(reactor: reactor.pageReactor(name: url))
-                        let navigationController = UINavigationController(rootViewController: viewController)
-                        self.present(navigationController, animated: true, completion: nil)
-                    }
-                }
+                let viewController = HomePageController(reactor: reactor.changelogReactor())
+                let navigationController = UINavigationController(rootViewController: viewController)
+                self.present(navigationController, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
         self.buttonTermsOfUse.rx.tap
