@@ -2,9 +2,8 @@
     "app": {
         "service": "me.weareopensource.node",
         "mails": {
-            "contact": "brisorgueilp@gmail.com",
-            "report": "brisorgueilp@gmail.com",
-            "data": "brisorgueilp@gmail.com"
+            "contact": "pierre@weareopensource.me",
+            "report": "pierre@weareopensource.me"
         },
         "links": {
             "blog": "https://blog.weareopensource.me",
