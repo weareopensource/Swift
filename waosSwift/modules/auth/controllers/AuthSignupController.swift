@@ -12,6 +12,7 @@ import ReactorKit
 final class AuthSignUpController: CoreController, View, Stepper, NVActivityIndicatorViewable {
 
     var width: CGFloat = 0
+    var isPasswordValid: Bool = false
 
     // MARK: UI
 
@@ -41,6 +42,10 @@ final class AuthSignUpController: CoreController, View, Stepper, NVActivityIndic
         $0.isSecureTextEntry = true
         $0.textContentType = .password
     }
+    let progressPassword = UIProgressView().then {
+        $0.setProgress(0, animated: true)
+    }
+
     let buttonSignin = CoreUIButton().then {
         $0.setTitle(L10n.authSignInTitle, for: .normal)
     }
@@ -93,6 +98,7 @@ final class AuthSignUpController: CoreController, View, Stepper, NVActivityIndic
         self.view.addSubview(self.inputLastName)
         self.view.addSubview(self.inputEmail)
         self.view.addSubview(self.inputPassword)
+        self.view.addSubview(self.progressPassword)
         self.view.addSubview(self.buttonSignin)
         self.view.addSubview(self.buttonSignup)
         self.view.addSubview(self.labelErrors)
@@ -107,55 +113,67 @@ final class AuthSignUpController: CoreController, View, Stepper, NVActivityIndic
             make.width.equalTo(300)
             make.height.equalTo(50)
             make.centerX.equalTo(self.view)
-            make.centerY.equalTo(self.view).offset(-140).keyboard(false, in: self.view)
+            make.centerY.equalTo(self.view).offset(-120).keyboard(false, in: self.view)
         }
         inputFirstName.snp.prepareConstraints { (make) -> Void in
-            make.centerY.equalTo(self.view).offset(-240).keyboard(true, in: self.view)
+            make.centerY.equalTo(self.view).offset(-220).keyboard(true, in: self.view)
         }
         inputLastName.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(300)
             make.height.equalTo(50)
             make.centerX.equalTo(self.view)
-            make.centerY.equalTo(self.view).offset(-80).keyboard(false, in: self.view)
+            make.centerY.equalTo(self.view).offset(-60).keyboard(false, in: self.view)
         }
         inputLastName.snp.prepareConstraints { (make) -> Void in
-            make.centerY.equalTo(self.view).offset(-180).keyboard(true, in: self.view)
+            make.centerY.equalTo(self.view).offset(-160).keyboard(true, in: self.view)
         }
         inputEmail.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(300)
             make.height.equalTo(50)
             make.centerX.equalTo(self.view)
-            make.centerY.equalTo(self.view).offset(-20).keyboard(false, in: self.view)
+            make.centerY.equalTo(self.view).offset(0).keyboard(false, in: self.view)
         }
         inputEmail.snp.prepareConstraints { (make) -> Void in
-            make.centerY.equalTo(self.view).offset(-120).keyboard(true, in: self.view)
+            make.centerY.equalTo(self.view).offset(-100).keyboard(true, in: self.view)
         }
+
         inputPassword.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(300)
             make.height.equalTo(50)
             make.centerX.equalTo(self.view)
-            make.centerY.equalTo(self.view).offset(40).keyboard(false, in: self.view)
+            make.centerY.equalTo(self.view).offset(60).keyboard(false, in: self.view)
         }
         inputPassword.snp.prepareConstraints { (make) -> Void in
-            make.centerY.equalTo(self.view).offset(-60).keyboard(true, in: self.view)
+            make.centerY.equalTo(self.view).offset(-40).keyboard(true, in: self.view)
         }
+
+        progressPassword.snp.makeConstraints { (make) -> Void in
+            make.width.equalTo(300)
+            make.height.equalTo(5)
+            make.centerX.equalTo(self.view)
+            make.centerY.equalTo(self.view).offset(95).keyboard(false, in: self.view)
+        }
+        progressPassword.snp.prepareConstraints { (make) -> Void in
+            make.centerY.equalTo(self.view).offset(-5).keyboard(true, in: self.view)
+        }
+
         buttonSignup.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(140)
             make.height.equalTo(50)
             make.centerX.equalTo(self.view).offset(80)
-            make.centerY.equalTo(self.view).offset(100).keyboard(false, in: self.view)
+            make.centerY.equalTo(self.view).offset(140).keyboard(false, in: self.view)
         }
         buttonSignup.snp.prepareConstraints { (make) -> Void in
-            make.centerY.equalTo(self.view).offset(0).keyboard(true, in: self.view)
+            make.centerY.equalTo(self.view).offset(40).keyboard(true, in: self.view)
         }
         buttonSignin.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(140)
             make.height.equalTo(50)
             make.centerX.equalTo(self.view).offset(-80)
-            make.centerY.equalTo(self.view).offset(100).keyboard(false, in: self.view)
+            make.centerY.equalTo(self.view).offset(140).keyboard(false, in: self.view)
         }
         buttonSignin.snp.prepareConstraints { (make) -> Void in
-            make.centerY.equalTo(self.view).offset(0).keyboard(true, in: self.view)
+            make.centerY.equalTo(self.view).offset(40).keyboard(true, in: self.view)
         }
         labelErrors.snp.makeConstraints {  (make) -> Void in
             make.left.equalTo(25)
@@ -263,11 +281,37 @@ private extension AuthSignUpController {
             .map {Reactor.Action.validatePassword}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
+        self.inputPassword.rx.controlEvent(.editingChanged).asObservable()
+            .map {Reactor.Action.validateStrength}
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
     }
 
     // MARK: states (Reactor -> View)
 
     func bindState(_ reactor: AuthSignUpReactor) {
+        reactor.state
+            .map { $0.strength }
+            .distinctUntilChanged()
+            .subscribe(onNext: { strength in
+                switch strength {
+                case 3:
+                    self.progressPassword.setProgress(0.25, animated: true)
+                    self.progressPassword.progressTintColor = UIColor.red.darker(by: 10)
+                case 2:
+                    self.progressPassword.setProgress(0.5, animated: true)
+                    self.progressPassword.progressTintColor = UIColor.orange.darker(by: 10)
+                case 1:
+                    self.progressPassword.setProgress(0.75, animated: true)
+                    self.progressPassword.progressTintColor = UIColor.cyan.darker(by: 10)
+                case 0:
+                    self.progressPassword.setProgress(1, animated: true)
+                    self.progressPassword.progressTintColor = UIColor.green.darker(by: 10)
+                default:
+                    self.progressPassword.setProgress(0, animated: true)
+                }
+            })
+            .disposed(by: self.disposeBag)
         // refreshing
         reactor.state
             .map { $0.isRefreshing }

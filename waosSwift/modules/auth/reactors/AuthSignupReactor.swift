@@ -22,6 +22,7 @@ final class AuthSignUpReactor: Reactor {
         case updateEmail(String)
         case validateEmail
         case updatePassword(String)
+        case validateStrength
         case validatePassword
         case updateIsFilled(Bool)
         // others
@@ -36,6 +37,7 @@ final class AuthSignUpReactor: Reactor {
         case updateLastName(String)
         case updateEmail(String)
         case updatePassword(String)
+        case updateStrength(Int)
         case updateIsFilled(Bool)
         // others
         case goSignIn
@@ -50,6 +52,7 @@ final class AuthSignUpReactor: Reactor {
     // the current view state
     struct State {
         var user: User
+        var strength: Int
         var isDismissed: Bool
         var isRefreshing: Bool
         var isFilled: Bool
@@ -57,6 +60,7 @@ final class AuthSignUpReactor: Reactor {
 
         init() {
             self.user = User()
+            self.strength = 4
             self.isDismissed = false
             self.isRefreshing = false
             self.isFilled = false
@@ -108,6 +112,11 @@ final class AuthSignUpReactor: Reactor {
         // password
         case let .updatePassword(password):
             return .just(.updatePassword(password))
+        case .validateStrength:
+            switch currentState.user.validate(.password) {
+            case .valid: return .just(.updateStrength(0))
+            case let .invalid(err): return .just(.updateStrength(err.count))
+            }
         case .validatePassword:
             switch currentState.user.validate(.password) {
             case .valid: return .just(.success("\(User.Validators.password)"))
@@ -159,6 +168,8 @@ final class AuthSignUpReactor: Reactor {
         // update password
         case let .updatePassword(password):
             state.user.password = password
+        case let .updateStrength(strength):
+            state.strength = strength
         // form
         case let .updateIsFilled(isFilled):
             state.isFilled = isFilled
