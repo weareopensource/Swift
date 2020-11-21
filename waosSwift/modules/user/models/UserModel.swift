@@ -92,14 +92,14 @@ extension User: Hashable, Codable {
 extension User: Validatable {
 
     enum Validators: String, CaseIterable {
-        case firstname = "Wrong firstname (letters, 1 - 30)"
-        case lastname = "Wrong lastname (letters, 1 - 30)"
+        case firstname = "Firstname: letters 1-30"
+        case lastname = "Lastname: letters 1-30"
         case email = "Wrong mail format"
-        case password = "Wrong password (1 number, 1 special char, > 8)"
-        case bio = "Wrong biography (< 200)"
-        case instagram = "Wrong intagram (< 200)"
-        case twitter = "Wrong twitter (< 200)"
-        case facebook = "Wrong facebook (< 200)"
+        case password = "Password: 1 number, 1 special, >8"
+        case bio = "Biography: <200"
+        case instagram = "Instagram: <100"
+        case twitter = "Twitter: <100"
+        case facebook = "Facebook: <200"
     }
 
     func validate(_ validator: Validators, _ section: String? = nil) -> ValidationResult {
@@ -114,7 +114,9 @@ extension User: Validatable {
         rulesNames.add(rule: ValidationRuleLength(max: 30, error: err))
 
         var rulesPasswords = ValidationRuleSet<String>()
-        rulesPasswords.add(rule: ValidationRulePattern(pattern: PasswordValidationPattern(), error: err))
+        rulesPasswords.add(rule: ValidationRulePattern(pattern: UpperCaseValidationPattern(), error: err))
+        rulesPasswords.add(rule: ValidationRulePattern(pattern: DigitValidationPattern(), error: err))
+        rulesPasswords.add(rule: ValidationRuleCondition(error: err, condition: { SpecialCharValidationCondition($0) }))
         rulesPasswords.add(rule: ValidationRuleLength(min: 8, error: err))
         rulesPasswords.add(rule: ValidationRuleLength(max: 128, error: err))
 
