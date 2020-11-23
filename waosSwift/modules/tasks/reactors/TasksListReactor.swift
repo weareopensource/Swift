@@ -183,10 +183,12 @@ final class TasksListReactor: Reactor {
         // refreshing
         case let .setRefreshing(isRefreshing):
             log.verbose("♻️ Mutation -> State : setRefreshing")
+            state.error = nil
             state.isRefreshing = isRefreshing
         // set
         case let .set(tasks):
             log.verbose("♻️ Mutation -> State : set")
+            state.error = nil
             let difference = tasks.difference(from: state.tasks)
             state.tasks = state.tasks.applying(difference) ?? []
             for change in difference {
@@ -208,20 +210,17 @@ final class TasksListReactor: Reactor {
         // user
         case let .setTerms(terms):
             log.verbose("♻️ Mutation -> State : setTerms")
+            state.error = nil
             state.terms = terms
         // success
         case let .success(success):
             log.verbose("♻️ Mutation -> State : succes \(success)")
+            state.error = nil
         // error
         case let .error(error):
             log.verbose("♻️ Mutation -> State : error \(error)")
-            let _error: DisplayError
-            if error.code == 401 {
-                self.provider.preferencesService.isLogged = false
-                _error = DisplayError(title: "SignIn", description: L10n.popupLogout, type: error.type, source: getRawError(error))
-            } else {
-                _error = DisplayError(title: error.message, description: (error.description ?? "Unknown error"), type: error.type, source: getRawError(error))
-            }
+            let _error: DisplayError = getDisplayError(error)
+            self.provider.preferencesService.isLogged = _error.code == 401 ? false : true
             state.error = _error
         }
         return state

@@ -121,30 +121,29 @@ final class AuthForgotReactor: Reactor {
         // go Signin
         case .goSignIn:
             log.verbose("♻️ Mutation -> State : goSignIn")
+            state.error = nil
             state.isDismissed = true
         // refreshing
         case let .setRefreshing(isRefreshing):
+            log.verbose("♻️ Mutation -> State : setRefreshing")
+            state.error = nil
             state.isRefreshing = isRefreshing
         // success
         case let .success(success):
             log.verbose("♻️ Mutation -> State : succes \(success)")
+            state.error = nil
             state.success = success
             state.errors = purgeErrors(errors: state.errors, specificTitles: [success])
         // error
         case let .validationError(error):
             log.verbose("♻️ Mutation -> State : validation error \(error)")
             if state.errors.firstIndex(where: { $0.title == error.message }) == nil {
-                state.errors.insert(DisplayError(title: error.message, description: (error.description ?? "Unknown error"), source: getRawError(error)), at: 0)
+                state.errors.insert(getDisplayError(error), at: 0)
             }
         case let .error(error):
             log.verbose("♻️ Mutation -> State : error \(error)")
-            let _error: DisplayError
-            if error.code == 401 {
-                self.provider.preferencesService.isLogged = false
-                _error = DisplayError(title: "SignIn", description: "Wrong Password or Email.", type: error.type, source: getRawError(error))
-            } else {
-                _error = DisplayError(title: error.message, description: (error.description ?? "Unknown error"), type: error.type, source: getRawError(error))
-            }
+            let _error: DisplayError = getDisplayError(error)
+            self.provider.preferencesService.isLogged = _error.code == 401 ? false : true
             state.error = _error
         }
         return state

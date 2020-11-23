@@ -238,6 +238,7 @@ final class UserViewReactor: Reactor {
             }
         // refreshing
         case let .setRefreshing(isRefreshing):
+            log.verbose("♻️ Mutation -> State : setRefreshing")
             state.isRefreshing = isRefreshing
         // dissmiss
         case .dismiss:
@@ -247,22 +248,18 @@ final class UserViewReactor: Reactor {
         // success
         case let .success(success):
             log.verbose("♻️ Mutation -> State : succes \(success)")
+            state.error = nil
             state.errors = purgeErrors(errors: state.errors, specificTitles: [success])
         // error
         case let .validationError(error):
             log.verbose("♻️ Mutation -> State : validation error \(error)")
             if state.errors.firstIndex(where: { $0.title == error.message }) == nil {
-                state.errors.insert(DisplayError(title: error.message, description: error.description, type: error.type, source: getRawError(error)), at: 0)
+                state.errors.insert(getDisplayError(error), at: 0)
             }
         case let .error(error):
             log.verbose("♻️ Mutation -> State : error \(error)")
-            let _error: DisplayError
-            if error.code == 401 {
-                self.provider.preferencesService.isLogged = false
-                _error = DisplayError(title: "SignIn", description: L10n.popupLogout, type: error.type, source: getRawError(error))
-            } else {
-                _error = DisplayError(title: error.message, description: (error.description ?? "Unknown error"), type: error.type, source: getRawError(error))
-            }
+            let _error: DisplayError = getDisplayError(error)
+            self.provider.preferencesService.isLogged = _error.code == 401 ? false : true
             state.error = _error
         }
         return state

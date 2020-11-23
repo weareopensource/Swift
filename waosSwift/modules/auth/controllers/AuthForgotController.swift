@@ -287,10 +287,10 @@ private extension AuthForgotController {
         reactor.state
             .map { $0.error }
             .filterNil()
-            .distinctUntilChanged()
+            .throttle(.milliseconds(Metric.timesButtonsThrottle), latest: false, scheduler: MainScheduler.instance)
             .subscribe(onNext: { error in
                 self.error.configureContent(title: error.title, body: error.description)
-                self.error.button?.isHidden = (error.source != nil) ? false : true
+                self.error.button?.isHidden = (error.source != nil && error.code != 401) ? false : true
                 SwiftMessages.show(config: self.popupConfig, view: self.error)
             })
             .disposed(by: self.disposeBag)

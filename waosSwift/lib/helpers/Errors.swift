@@ -44,6 +44,21 @@ func getError(_ error: Error, file: StaticString = #file, function: StaticString
 }
 
 /**
+ * @desc function to generate display error (Tempo used to help homemade errors)
+ * @param {CustomError} error
+ * @return {DisplayError}
+ */
+func getDisplayError(_ error: CustomError) -> DisplayError {
+    let _error: DisplayError
+    if error.code == 401 {
+        _error = DisplayError(code: error.code ?? 0, title: "SignIn", description: "Wrong Password or Email.", type: error.type, source: getRawError(error))
+    } else {
+        _error = DisplayError(code: error.code ?? 0, title: error.message, description: (error.description ?? "Unknown error"), type: error.type, source: getRawError(error))
+    }
+    return _error
+}
+
+/**
  * @desc function to purge errors on sucess
  * @param {Error} error
  * @return {CustomError}
@@ -131,12 +146,14 @@ extension CustomError: Decodable, Encodable {
 }
 
 struct DisplayError: Error, Equatable {
+    let code: Int
     let title: String
     let description: String
     let type: String?
     let source: String?
 
-    init(title: String, description: String?, type: String? = "", source: String?) {
+    init(code: Int, title: String, description: String?, type: String? = "", source: String?) {
+        self.code = code
         self.title = title
         self.description = description ?? "Unknown error"
         self.type = type
@@ -144,6 +161,6 @@ struct DisplayError: Error, Equatable {
     }
 
     static func == (lhs: DisplayError, rhs: DisplayError) -> Bool {
-        return lhs.title == rhs.title && lhs.description == rhs.description
+        return lhs.title == rhs.title && lhs.description == rhs.description && lhs.code == rhs.code
     }
 }
