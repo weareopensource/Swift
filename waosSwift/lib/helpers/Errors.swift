@@ -48,10 +48,14 @@ func getError(_ error: Error, file: StaticString = #file, function: StaticString
  * @param {CustomError} error
  * @return {DisplayError}
  */
-func getDisplayError(_ error: CustomError) -> DisplayError {
+func getDisplayError(_ error: CustomError, _ isLogged: Bool) -> DisplayError {
     let _error: DisplayError
     if error.code == 401 {
-        _error = DisplayError(code: error.code ?? 0, title: "SignIn", description: "Wrong Password or Email.", type: error.type, source: getRawError(error))
+        if(isLogged) {
+            _error = DisplayError(code: error.code ?? 0, title: "Sign In", description: L10n.popupLogout, type: error.type, source: getRawError(error))
+        } else {
+            _error = DisplayError(code: error.code ?? 0, title: "Sign In", description: L10n.popupSignfail, type: error.type, source: getRawError(error))
+        }
     } else {
         _error = DisplayError(code: error.code ?? 0, title: error.message, description: (error.description ?? "Unknown error"), type: error.type, source: getRawError(error))
     }
