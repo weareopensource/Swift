@@ -254,11 +254,11 @@ final class UserViewReactor: Reactor {
         case let .validationError(error):
             log.verbose("♻️ Mutation -> State : validation error \(error)")
             if state.errors.firstIndex(where: { $0.title == error.message }) == nil {
-                state.errors.insert(getDisplayError(error), at: 0)
+                state.errors.insert(getDisplayError(error, self.provider.preferencesService.isLogged), at: 0)
             }
         case let .error(error):
             log.verbose("♻️ Mutation -> State : error \(error)")
-            let _error: DisplayError = getDisplayError(error)
+            let _error: DisplayError = getDisplayError(error, self.provider.preferencesService.isLogged)
             self.provider.preferencesService.isLogged = _error.code == 401 ? false : true
             state.error = _error
         }

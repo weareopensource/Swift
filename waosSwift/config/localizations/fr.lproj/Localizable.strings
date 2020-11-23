@@ -13,6 +13,7 @@
 "loader_messagee" = "Chargement ...";
 
 // popup
+"popup_signfail" = "Mot de passe ou adresse e-mail incorrect.";
 "popup_logout" = "Vous avez été déconnecté !";
 
 // modals

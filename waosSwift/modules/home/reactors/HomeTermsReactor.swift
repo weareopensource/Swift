@@ -99,7 +99,7 @@ final class HomeTermsReactor: Reactor {
         // error
         case let .error(error):
             log.verbose("♻️ Mutation -> State : error \(error)")
-            let _error: DisplayError = getDisplayError(error)
+            let _error: DisplayError = getDisplayError(error, self.provider.preferencesService.isLogged)
             self.provider.preferencesService.isLogged = _error.code == 401 ? false : true
             state.error = _error
         }

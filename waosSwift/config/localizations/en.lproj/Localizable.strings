@@ -13,6 +13,7 @@
 "loader_messagee" = "Loading ...";
 
 // popup
+"popup_signfail" = "Wrong Password or Email.";
 "popup_logout" = "You have been logged out !";
 
 // modals
