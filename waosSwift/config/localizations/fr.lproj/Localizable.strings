@@ -12,6 +12,9 @@
 // loader
 "loader_messagee" = "Chargement ...";
 
+// popup
+"popup_logout" = "Vous avez été déconnecté !";
+
 // modals
 "modal_confirmation_message" = "êtes-vous sûrs ?";
 "modal_confirmation_ok" = "Ok";

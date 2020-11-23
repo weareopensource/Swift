@@ -32,22 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         coordinator.coordinate(flow: self.appFlow, with: AppStepper(withServices: self.servicesProvider))
 
-        // MARK: Toasts
-
-        ToastView.appearance().backgroundColor = UIColor(named: config["theme"]["toast"]["background"].string ?? "")?.withAlphaComponent(CGFloat(config["theme"]["toast"]["alpha"].float ?? 1))
-        ToastView.appearance().textColor = UIColor(named: config["theme"]["toast"]["text"].string ?? "")
-        ToastView.appearance().font = UIFont.init(name: "Arial", size: 16)
-        ToastView.appearance().textInsets = UIEdgeInsets(top: (CGFloat(config["theme"]["toast"]["margin"].float ?? 10)), left: (CGFloat(config["theme"]["toast"]["margin"].float ?? 10)), bottom: (CGFloat(config["theme"]["toast"]["margin"].float ?? 10)), right: (CGFloat(config["theme"]["toast"]["margin"].float ?? 10)))
-        ToastView.appearance().cornerRadius = CGFloat(config["theme"]["global"]["radius"].int ?? 0)
-        if NSString(string: config["theme"]["toast"]["bottom"].string ?? "").boolValue == true {
-            ToastView.appearance().bottomOffsetPortrait = 100
-            ToastView.appearance().bottomOffsetLandscape = 100
-        } else {
-            let marginTop: CGFloat = 170
-            ToastView.appearance().bottomOffsetPortrait = max(UIScreen.main.bounds.width, UIScreen.main.bounds.height) - marginTop
-            ToastView.appearance().bottomOffsetLandscape = min(UIScreen.main.bounds.width, UIScreen.main.bounds.height) - marginTop
-        }
-
         // MARK: Notifications
 
         if(config["notifications"].bool ?? false) {

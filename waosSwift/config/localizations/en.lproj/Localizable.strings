@@ -12,6 +12,9 @@
 // loader
 "loader_messagee" = "Loading ...";
 
+// popup
+"popup_logout" = "You have been logged out !";
+
 // modals
 "modal_confirmation_message" = "are you sure ?";
 "modal_confirmation_ok" = "Ok";

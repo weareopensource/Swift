@@ -222,6 +222,19 @@ private extension AuthSignInController {
                 self.present(navigationController, animated: true, completion: nil)
             })
             .disposed(by: self.disposeBag)
+        // error
+        self.error.button?.rx.tap
+            .subscribe(onNext: { _ in
+                if MFMailComposeViewController.canSendMail() {
+                    let mvc = MFMailComposeViewController()
+                    mvc.mailComposeDelegate = self
+                    mvc.setToRecipients([(config["app"]["mails"]["report"].string ?? "")])
+                    mvc.setSubject(L10n.userReport)
+                    mvc.setMessageBody(setMailError(reactor.currentState.error?.source), isHTML: true)
+                    self.present(mvc, animated: true)
+                }
+            })
+            .disposed(by: disposeBag)
     }
 
     // MARK: actions (View -> Reactor)
@@ -282,8 +295,10 @@ private extension AuthSignInController {
             .filter { $0.count > 0 }
             .distinctUntilChanged { $0.count == $1.count }
             .subscribe(onNext: { errors in
-                ToastCenter.default.cancelAll()
-                Toast(text: errors.map { "\($0.description)." }.joined(separator: "\n"), delay: 0, duration: Delay.long).show()
+                self.error.configureContent(title: "Schema", body: errors.map { "\($0.description)." }.joined(separator: "\n"))
+                self.error.button?.isHidden = true
+                SwiftMessages.hideAll()
+                SwiftMessages.show(config: self.popupConfig, view: self.error)
             })
             .disposed(by: self.disposeBag)
         reactor.state
@@ -305,9 +320,21 @@ private extension AuthSignInController {
                 .map { !$0.isFilled }
                 .distinctUntilChanged()
         )
-            .map { [$0.0, $0.1] }
-            .map { !$0.contains(true) }
-            .bind(to: self.buttonSignin.rx.isEnabled)
-            .disposed(by: disposeBag)
+        .map { [$0.0, $0.1] }
+        .map { !$0.contains(true) }
+        .bind(to: self.buttonSignin.rx.isEnabled)
+        .disposed(by: disposeBag)
+        // error
+        reactor.state
+            .map { $0.error }
+            .filterNil()
+            .distinctUntilChanged()
+            .subscribe(onNext: { error in
+                self.error.configureContent(title: error.title, body: error.description)
+                self.error.button?.isHidden = (error.source != nil) ? false : true
+                SwiftMessages.hideAll()
+                SwiftMessages.show(config: self.popupConfig, view: self.error)
+            })
+            .disposed(by: self.disposeBag)
     }
 }

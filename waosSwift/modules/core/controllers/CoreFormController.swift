@@ -37,6 +37,18 @@ class CoreFormController: FormViewController {
         return type(of: self).description().components(separatedBy: ".").last ?? ""
     }()
 
+    // MARK: UI
+
+    let error = MessageView.viewFromNib(layout: .cardView).then {
+        $0.configureTheme(.error, iconStyle: .subtle)
+        $0.backgroundView.backgroundColor = Metric.error?.withAlphaComponent(CGFloat(config["theme"]["popup"]["alpha"].float ?? 0.9))
+        $0.button?.backgroundColor = .clear
+        $0.button?.tintColor = UIColor.white.withAlphaComponent(0.5)
+        $0.button?.setTitle("", for: .normal)
+        $0.button?.setImage(UIImage.fontAwesomeIcon(code: "fa-paper-plane", style: .solid, textColor: .white, size: CGSize(width: 22, height: 22)), for: .normal)
+    }
+    var popupConfig = SwiftMessages.defaultConfig
+
     // MARK: Initializing
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -89,7 +101,8 @@ class CoreFormController: FormViewController {
         self.tableView?.sectionHeaderHeight = Metric.tableViewSectionHeaderHeight
         self.tableView?.sectionFooterHeight = Metric.tableViewSectionFooterHeight
         // self.tableView?.separatorStyle = .none // no border
-
+        // popup
+        popupConfig.duration = .seconds(seconds: TimeInterval(Int(config["theme"]["popup"]["duration"].int ?? 3)))
         // view
         self.view.backgroundColor = Metric.background
 
@@ -123,4 +136,14 @@ class CoreFormController: FormViewController {
         self.tableView?.separatorColor = Metric.surface?.darker(by: 8)
     }
 
+}
+
+/**
+ * Extension
+ */
+
+extension CoreFormController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
 }

@@ -6,7 +6,6 @@ import UIKit
 import ReactorKit
 import Eureka
 import SafariServices
-import MessageUI
 
 /**
  * Controller
@@ -339,8 +338,6 @@ private extension UserController {
                     mvc.setToRecipients([(config["app"]["mails"]["contact"].string ?? "")])
                     mvc.setSubject(L10n.userContact)
                     self.present(mvc, animated: true)
-                } else {
-                    Toast(text: L10n.userErrorMail, delay: 0, duration: Delay.long).show()
                 }
             })
             .disposed(by: disposeBag)
@@ -352,12 +349,23 @@ private extension UserController {
                     mvc.setToRecipients([(config["app"]["mails"]["report"].string ?? "")])
                     mvc.setSubject(L10n.userReport)
                     self.present(mvc, animated: true)
-                } else {
-                    Toast(text: L10n.userErrorMail, delay: 0, duration: Delay.long).show()
                 }
             })
             .disposed(by: disposeBag)
 
+        // error
+        self.error.button?.rx.tap
+            .subscribe(onNext: { _ in
+                if MFMailComposeViewController.canSendMail() {
+                    let mvc = MFMailComposeViewController()
+                    mvc.mailComposeDelegate = self
+                    mvc.setToRecipients([(config["app"]["mails"]["report"].string ?? "")])
+                    mvc.setSubject(L10n.userReport)
+                    mvc.setMessageBody(setMailError(reactor.currentState.error?.source), isHTML: true)
+                    self.present(mvc, animated: true)
+                }
+            })
+            .disposed(by: disposeBag)
     }
 
     // MARK: actions (View -> Reactor)
@@ -497,15 +505,17 @@ private extension UserController {
             .distinctUntilChanged()
             .bind(to: refreshControl.rx.isRefreshing)
             .disposed(by: disposeBag)
-    }
-}
-
-/**
- * Extension
- */
-
-extension UserController: MFMailComposeViewControllerDelegate {
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true, completion: nil)
+        // error
+        reactor.state
+            .map { $0.error }
+            .filterNil()
+            .distinctUntilChanged()
+            .subscribe(onNext: { error in
+                self.error.configureContent(title: error.title, body: error.description)
+                self.error.button?.isHidden = (error.source != nil) ? false : true
+                SwiftMessages.hideAll()
+                SwiftMessages.show(config: self.popupConfig, view: self.error)
+            })
+            .disposed(by: self.disposeBag)
     }
 }

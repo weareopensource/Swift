@@ -7,5 +7,6 @@
 @import RxAppState;
 @import Validator;
 @import FontAwesome;
-@import Toaster;
 @import NVActivityIndicatorView;
+@import SwiftMessages;
+@import MessageUI;

@@ -88,7 +88,7 @@
             "throttle": 3000
         },
         "errors": {
-            "debounce": 1750
+            "debounce": 2000
         },
     },
     "theme": {
@@ -107,12 +107,9 @@
             "tintColor" : "true",
             "border": "false"
         },
-        "toast": {
-            "background": "waosError",
-            "alpha": 0.80,
-            "text": "waosOnError",
-            "margin": 20,
-            "bottom": true
+        "popup": {
+            "alpha": 0.9,
+            "duration": 3
         },
         "loader": {
             "width": 50,

@@ -61,6 +61,28 @@ func purgeErrors(errors: [DisplayError], specificTitles: [String]? = nil) -> [Di
 }
 
 /**
+ * @desc function to purge errors on sucess
+ * @param {Error} error
+ * @return {CustomError}
+ */
+func getRawError(_ error: CustomError) -> String? {
+    if let jsonData = try? JSONEncoder().encode(error) {
+        let jsonString = String(data: jsonData, encoding: .utf8)
+        return jsonString
+    }
+    return nil
+}
+
+/**
+ * @desc function to format mail error
+ * @param {Error} error
+ * @return {CustomError}
+ */
+func setMailError(_ source: String?) -> String {
+    return "<body><p>Dear Comes team,</p><p>I found a strange error that I want to report to you: :</p><pre style='background: #f5f2f0; color:#72972c; padding: 15px; border-radius: 7px;'>\(source ?? "")</pre><p>Sincerely, <br/>a loyal user.</o></body>"
+}
+
+/**
  * Custom Errors
  */
 
@@ -88,7 +110,7 @@ struct CustomError: Error, ValidationError {
     }
 }
 
-extension CustomError: Decodable {
+extension CustomError: Decodable, Encodable {
     enum CustomErrorCodingKeys: String, CodingKey {
         case code
         case message
@@ -108,14 +130,20 @@ extension CustomError: Decodable {
     }
 }
 
-struct DisplayError: Error {
+struct DisplayError: Error, Equatable {
     let title: String
     let description: String
     let type: String?
+    let source: String?
 
-    init(title: String, description: String?, type: String? = "") {
+    init(title: String, description: String?, type: String? = "", source: String?) {
         self.title = title
         self.description = description ?? "Unknown error"
         self.type = type
+        self.source = source
+    }
+
+    static func == (lhs: DisplayError, rhs: DisplayError) -> Bool {
+        return lhs.title == rhs.title && lhs.description == rhs.description
     }
 }
