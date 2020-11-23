@@ -44,6 +44,7 @@ final class AuthForgotReactor: Reactor {
         var isFilled: Bool
         var isRefreshing: Bool
         var errors: [DisplayError]
+        var error: DisplayError?
         var success: String
 
         init() {
@@ -133,19 +134,18 @@ final class AuthForgotReactor: Reactor {
         case let .validationError(error):
             log.verbose("♻️ Mutation -> State : validation error \(error)")
             if state.errors.firstIndex(where: { $0.title == error.message }) == nil {
-                state.errors.insert(DisplayError(title: error.message, description: (error.description ?? "Unknown error")), at: 0)
+                state.errors.insert(DisplayError(title: error.message, description: (error.description ?? "Unknown error"), source: getRawError(error)), at: 0)
             }
         case let .error(error):
             log.verbose("♻️ Mutation -> State : error \(error)")
             let _error: DisplayError
             if error.code == 401 {
                 self.provider.preferencesService.isLogged = false
-                _error = DisplayError(title: "jwt", description: "Wrong Password or Email.", type: error.type)
+                _error = DisplayError(title: "SignIn", description: "Wrong Password or Email.", type: error.type, source: getRawError(error))
             } else {
-                _error = DisplayError(title: error.message, description: (error.description ?? "Unknown error"), type: error.type)
+                _error = DisplayError(title: error.message, description: (error.description ?? "Unknown error"), type: error.type, source: getRawError(error))
             }
-            ToastCenter.default.cancelAll()
-            Toast(text: _error.description, delay: 0, duration: Delay.long).show()
+            state.error = _error
         }
         return state
     }

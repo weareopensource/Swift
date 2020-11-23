@@ -57,6 +57,8 @@ internal enum L10n {
   internal static let onBoardingTitle = L10n.tr("Localizable", "onBoarding_title")
   /// I'm in !
   internal static let onBoardingValidation = L10n.tr("Localizable", "onBoarding_validation")
+  /// You have been logged out !
+  internal static let popupLogout = L10n.tr("Localizable", "popup_logout")
   /// Example
   internal static let secondTitle = L10n.tr("Localizable", "second_title")
   /// Tasks

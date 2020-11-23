@@ -6,7 +6,6 @@ import UIKit
 import ReactorKit
 import Eureka
 import SafariServices
-import MessageUI
 import ImageRow
 
 /**
@@ -201,6 +200,19 @@ private extension UserViewController {
                 self.dismiss(animated: true, completion: nil)
             })
             .disposed(by: self.disposeBag)
+        // error
+        self.error.button?.rx.tap
+            .subscribe(onNext: { _ in
+                if MFMailComposeViewController.canSendMail() {
+                    let mvc = MFMailComposeViewController()
+                    mvc.mailComposeDelegate = self
+                    mvc.setToRecipients([(config["app"]["mails"]["report"].string ?? "")])
+                    mvc.setSubject(L10n.userReport)
+                    mvc.setMessageBody(setMailError(reactor.currentState.error?.source), isHTML: true)
+                    self.present(mvc, animated: true)
+                }
+            })
+            .disposed(by: disposeBag)
     }
 
     // MARK: actions (View -> Reactor)
@@ -434,10 +446,22 @@ private extension UserViewController {
                 self.labelErrorsProfil.text = errors.filter({ $0.type == "profil" }).map { $0.description }.joined(separator: ". ")
                 if(errors.count > 0 && self.labelErrorsAccount.text?.count == 0 && self.labelErrorsProfil.text?.count == 0) {
                     let message: [String] = errors.map { "\($0.description)." }
-                    ToastCenter.default.cancelAll()
-                    Toast(text: message.joined(separator: "\n"), delay: 0, duration: Delay.long).show()
+                    self.error.configureContent(title: "Schema", body: message.joined(separator: "\n"))
+
                 }
                 self.barButtonDone.isEnabled = errors.count > 0 ? false : true
+            })
+            .disposed(by: self.disposeBag)
+        // error
+        reactor.state
+            .map { $0.error }
+            .filterNil()
+            .distinctUntilChanged()
+            .subscribe(onNext: { error in
+                self.error.configureContent(title: error.title, body: error.description)
+                self.error.button?.isHidden = (error.source != nil) ? false : true
+                SwiftMessages.hideAll()
+                SwiftMessages.show(config: self.popupConfig, view: self.error)
             })
             .disposed(by: self.disposeBag)
     }

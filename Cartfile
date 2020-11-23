@@ -13,8 +13,8 @@ github "adamwaite/Validator" ~> 3.2.1
 github "xmartlabs/Eureka" ~> 5.3.0
 github "EurekaCommunity/ImageRow" ~> 4.0.0
 github "kishikawakatsumi/KeychainAccess"
-github "devxoul/Toaster" "master"
 github "thii/FontAwesome.swift"
 github "onevcat/Kingfisher" ~> 5.15.3
 github "ninjaprox/NVActivityIndicatorView" ~> 4.8.0
 github "iwasrobbed/Down"
+github "SwiftKickMobile/SwiftMessages"

@@ -80,6 +80,19 @@ private extension HomeTermsController {
             .map { Reactor.Action.done }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
+        // error
+        self.error.button?.rx.tap
+            .subscribe(onNext: { _ in
+                if MFMailComposeViewController.canSendMail() {
+                    let mvc = MFMailComposeViewController()
+                    mvc.mailComposeDelegate = self
+                    mvc.setToRecipients([(config["app"]["mails"]["report"].string ?? "")])
+                    mvc.setSubject(L10n.userReport)
+                    mvc.setMessageBody(setMailError(reactor.currentState.error?.source), isHTML: true)
+                    self.present(mvc, animated: true)
+                }
+            })
+            .disposed(by: disposeBag)
     }
 
     // MARK: actions (View -> Reactor)
@@ -106,6 +119,18 @@ private extension HomeTermsController {
             .subscribe(onNext: { [weak self] _ in
                 guard let `self` = self else { return }
                 self.dismiss(animated: true, completion: nil)
+            })
+            .disposed(by: self.disposeBag)
+        // error
+        reactor.state
+            .map { $0.error }
+            .filterNil()
+            .distinctUntilChanged()
+            .subscribe(onNext: { error in
+                self.error.configureContent(title: error.title, body: error.description)
+                self.error.button?.isHidden = (error.source != nil) ? false : true
+                SwiftMessages.hideAll()
+                SwiftMessages.show(config: self.popupConfig, view: self.error)
             })
             .disposed(by: self.disposeBag)
     }

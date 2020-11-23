@@ -30,6 +30,7 @@ final class UserMoreReactor: Reactor {
     struct State {
         var isDismissed: Bool
         var errors: [DisplayError]
+        var error: DisplayError?
 
         init() {
             self.isDismissed = false
@@ -79,12 +80,11 @@ final class UserMoreReactor: Reactor {
             let _error: DisplayError
             if error.code == 401 {
                 self.provider.preferencesService.isLogged = false
-                _error = DisplayError(title: "jwt", description: "Wrong Password or Email.", type: error.type)
+                _error = DisplayError(title: "SignIn", description: L10n.popupLogout, type: error.type, source: getRawError(error))
             } else {
-                _error = DisplayError(title: error.message, description: (error.description ?? "Unknown error"), type: error.type)
+                _error = DisplayError(title: error.message, description: (error.description ?? "Unknown error"), type: error.type, source: getRawError(error))
             }
-            ToastCenter.default.cancelAll()
-            Toast(text: _error.description, delay: 0, duration: Delay.long).show()
+            state.error = _error
         }
         return state
     }
