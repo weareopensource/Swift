@@ -76,6 +76,7 @@ final class UserReactor: Reactor {
             return .just(.set(user))
         // get
         case .get:
+            guard !self.currentState.isRefreshing else { return .empty() }
             log.verbose("♻️ Action -> Mutation : get")
             return Observable.concat([
                 .just(.setRefreshing(true)),
