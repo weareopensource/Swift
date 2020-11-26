@@ -22,7 +22,7 @@ final class TasksListReactor: Reactor {
         case get
         case delete(IndexPath)
         // Notificaitons
-        case getIndexPath(String)
+        case getIndexPath(String?)
         // user
         case checkUserToken
         case checkUserTerms
@@ -34,7 +34,7 @@ final class TasksListReactor: Reactor {
         case set([Tasks])
         case setRefreshing(Bool)
         // Notificaitons
-        case setIndexPath(String)
+        case setIndexPath(String?)
         // user
         case setTerms(Pages?)
         // default
@@ -201,11 +201,13 @@ final class TasksListReactor: Reactor {
             }
         // notification
         case let .setIndexPath(id):
-            log.verbose("♻️ Mutation -> State : setIndexPath")
+            log.verbose("♻️ Mutation -> State : setIndexPath, \(id ?? "nil")")
             if let section = state.sections.firstIndex(where: { $0.items.firstIndex(where: { $0.currentState.id == id }) != nil ? true : false }) {
                 if let row = state.sections[section].items.firstIndex(where: { $0.currentState.id == id }) {
                     state.indexPath = IndexPath(row: row, section: section)
                 }
+            } else {
+                state.indexPath = nil
             }
         // user
         case let .setTerms(terms):

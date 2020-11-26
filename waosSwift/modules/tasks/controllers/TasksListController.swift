@@ -129,7 +129,7 @@ private extension TasksListController {
     // MARK: actions (View -> Reactor)
 
     func bindAction(_ reactor: TasksListReactor) {
-        // application open
+        // checks
         self.application.rx.didOpenApp
             .map { Reactor.Action.checkUserToken }
             .bind(to: reactor.action)
@@ -138,13 +138,13 @@ private extension TasksListController {
             .map { Reactor.Action.checkUserTerms }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
-        // viewDidLoad
+        // init
         self.rx.viewDidLoad
             .map { Reactor.Action.get }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         // refresh
-        self.refreshControl.rx.controlEvent(.valueChanged)
+        self.application.rx.didOpenApp
             .map { Reactor.Action.get }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -155,8 +155,6 @@ private extension TasksListController {
             .disposed(by: self.disposeBag)
         // notification
         self.notification
-            .skip(1)
-            .filterNil()
             .map {Reactor.Action.getIndexPath($0)}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -180,7 +178,7 @@ private extension TasksListController {
         reactor.state
             .map { $0.indexPath }
             .filterNil()
-            .throttle(.seconds(5), latest: false, scheduler: MainScheduler.instance)
+            .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
             .subscribe(onNext: { indexPath in
                 self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
                 self.tableView.delegate?.tableView!(self.tableView, didSelectRowAt: indexPath)
