@@ -371,8 +371,10 @@ private extension UserController {
     // MARK: actions (View -> Reactor)
 
     func bindAction(_ reactor: UserReactor) {
-        // viewDidLoad
-        self.rx.viewDidLoad
+        // init
+        Observable.of(self.application.rx.didOpenApp.map { $0 }, self.rx.viewDidLoad.map { $0 })
+            .merge()
+            .throttle(.milliseconds(Metric.timesButtonsThrottle), latest: false, scheduler: MainScheduler.instance)
             .map { Reactor.Action.get }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)

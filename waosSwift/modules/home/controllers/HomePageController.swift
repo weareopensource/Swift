@@ -25,6 +25,10 @@ class HomePageController: CoreController, View, NVActivityIndicatorViewable {
         $0.backgroundColor = .clear
     }
 
+    // MARK: Properties
+
+    let application = UIApplication.shared
+
     // MARK: Initializing
 
     init(reactor: HomePageReactor) {
@@ -107,8 +111,10 @@ private extension HomePageController {
     // MARK: actions (View -> Reactor)
 
     func bindAction(_ reactor: HomePageReactor) {
-        // viewDidLoad
-        self.rx.viewDidLoad
+        // init
+        Observable.of(self.application.rx.didOpenApp.map { $0 }, self.rx.viewDidLoad.map { $0 })
+            .merge()
+            .throttle(.milliseconds(Metric.timesButtonsThrottle), latest: false, scheduler: MainScheduler.instance)
             .map { Reactor.Action.get }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
