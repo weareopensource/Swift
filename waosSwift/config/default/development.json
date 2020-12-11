@@ -88,7 +88,8 @@
             "throttle": 3000
         },
         "errors": {
-            "debounce": 2000
+            "debounce": 2000,
+            "short": 500
         },
     },
     "theme": {
