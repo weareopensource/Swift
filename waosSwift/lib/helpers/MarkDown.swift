@@ -34,7 +34,8 @@ func generateWebPage(_ markdown: String, style: markDownStyles = .air, links: Bo
     """
     if(!links) {
         output = output
-            .replacingOccurrences(of: "<a.*?</a>", with: "", options: [.regularExpression])
+            .replacingOccurrences(of: "<a href=.*?>(.*?)</a>", with: "$1", options: [.regularExpression])
+            .replacingOccurrences(of: "\\(([a-zA-Z0-9]{7})\\)", with: "", options: [.regularExpression])
             .replacingOccurrences(of: "\\(\\)", with: "", options: [.regularExpression])
     }
     return output
