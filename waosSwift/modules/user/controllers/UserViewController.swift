@@ -232,7 +232,7 @@ private extension UserViewController {
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         observableFirstName
-            .debounce(.milliseconds(Metric.timesErrorsDebounce), scheduler: MainScheduler.instance)
+            .debounce(.milliseconds(Metric.timesErrorsShort), scheduler: MainScheduler.instance)
             .map {_ in Reactor.Action.validateFirstName("account")}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -243,7 +243,7 @@ private extension UserViewController {
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         observableLastName
-            .debounce(.milliseconds(Metric.timesErrorsDebounce), scheduler: MainScheduler.instance)
+            .debounce(.milliseconds(Metric.timesErrorsShort), scheduler: MainScheduler.instance)
             .map {_ in Reactor.Action.validateLastName("account")}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -254,7 +254,7 @@ private extension UserViewController {
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         observableEmail
-            .debounce(.milliseconds(Metric.timesErrorsDebounce), scheduler: MainScheduler.instance)
+            .debounce(.milliseconds(Metric.timesErrorsShort), scheduler: MainScheduler.instance)
             .map {_ in Reactor.Action.validateEmail("account")}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -266,7 +266,7 @@ private extension UserViewController {
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         observableBio
-            .debounce(.milliseconds(Metric.timesErrorsDebounce), scheduler: MainScheduler.instance)
+            .debounce(.milliseconds(Metric.timesErrorsShort), scheduler: MainScheduler.instance)
             .map {_ in Reactor.Action.validateBio("profil")}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -299,7 +299,7 @@ private extension UserViewController {
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         observableInstagram
-            .debounce(.milliseconds(Metric.timesErrorsDebounce), scheduler: MainScheduler.instance)
+            .debounce(.milliseconds(Metric.timesErrorsShort), scheduler: MainScheduler.instance)
             .map {_ in Reactor.Action.validateInstagram("socialnetworks")}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -310,7 +310,7 @@ private extension UserViewController {
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         observableTwitter
-            .debounce(.milliseconds(Metric.timesErrorsDebounce), scheduler: MainScheduler.instance)
+            .debounce(.milliseconds(Metric.timesErrorsShort), scheduler: MainScheduler.instance)
             .map {_ in Reactor.Action.validateTwitter("socialnetworks")}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -321,7 +321,7 @@ private extension UserViewController {
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         observableFacebook
-            .debounce(.milliseconds(Metric.timesErrorsDebounce), scheduler: MainScheduler.instance)
+            .debounce(.milliseconds(Metric.timesErrorsShort), scheduler: MainScheduler.instance)
             .map {_ in Reactor.Action.validateFacebook("socialnetworks")}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
