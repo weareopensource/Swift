@@ -14,7 +14,7 @@ class HomePageController: CoreController, View, NVActivityIndicatorViewable {
 
     // MARK: UI
 
-    let barButtonCancel = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: nil)
+    let barButtonClose = UIBarButtonItem(barButtonSystemItem: .close, target: nil, action: nil)
 
     let segmentedControlTitles = UISegmentedControl().then {
         $0.translatesAutoresizingMaskIntoConstraints = false
@@ -46,7 +46,9 @@ class HomePageController: CoreController, View, NVActivityIndicatorViewable {
         super.viewDidLoad()
         self.view.addSubview(self.webView)
         self.view.addSubview(self.segmentedControlTitles)
-        self.navigationItem.leftBarButtonItem = self.barButtonCancel
+
+        self.navigationController?.clear()
+        self.navigationItem.leftBarButtonItem = self.barButtonClose
     }
 
     override func setupConstraints() {
@@ -80,7 +82,7 @@ private extension HomePageController {
 
     func bindView(_ reactor: HomePageReactor) {
         // cancel
-        self.barButtonCancel.rx.tap
+        self.barButtonClose.rx.tap
             .subscribe(onNext: { [weak self] _ in
                 guard let `self` = self else { return }
                 self.dismiss(animated: true, completion: nil)

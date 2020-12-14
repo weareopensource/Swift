@@ -14,8 +14,6 @@ final class UserMoreReactor: Reactor {
 
     // user actions
     enum Action {
-        // default
-        case done
     }
 
     // state changes
@@ -52,13 +50,10 @@ final class UserMoreReactor: Reactor {
 
     // MARK: Action -> Mutation (mutate() receives an Action and generates an Observable<Mutation>)
 
-    func mutate(action: Action) -> Observable<Mutation> {
-        switch action {
-        // done
-        case .done:
-            return .just(.dismiss)
-        }
-    }
+    //    func mutate(action: Action) -> Observable<Mutation> {
+    //        switch action {
+    //        }
+    //    }
 
     // MARK: Mutation -> State (reduce() generates a new State from a previous State and a Mutation)
 

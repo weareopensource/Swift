@@ -14,8 +14,7 @@ class UserPreferenceController: CoreFormController, View, NVActivityIndicatorVie
 
     // MARK: UI
 
-    let barButtonCancel = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: nil)
-    let barButtonDone = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: nil)
+    let barButtonClose = UIBarButtonItem(barButtonSystemItem: .close, target: nil, action: nil)
 
     // inputs
     let switchBackground = SwitchRow {
@@ -42,8 +41,9 @@ class UserPreferenceController: CoreFormController, View, NVActivityIndicatorVie
             +++ Section(header: L10n.userPreferencesSection, footer: "")
             <<< self.switchBackground
 
-        self.navigationItem.leftBarButtonItem = self.barButtonCancel
-        self.navigationItem.rightBarButtonItem = self.barButtonDone
+        self.navigationController?.clear()
+        self.navigationItem.leftBarButtonItem = self.barButtonClose
+
         self.view.addSubview(self.tableView)
     }
 
@@ -71,7 +71,7 @@ private extension UserPreferenceController {
 
     func bindView(_ reactor: UserPreferenceReactor) {
         // cancel
-        self.barButtonCancel.rx.tap
+        self.barButtonClose.rx.tap
             .subscribe(onNext: { [weak self] _ in
                 guard let `self` = self else { return }
                 self.dismiss(animated: true, completion: nil)
@@ -95,12 +95,6 @@ private extension UserPreferenceController {
     // MARK: actions (View -> Reactor)
 
     func bindAction(_ reactor: UserPreferenceReactor) {
-        // buttons
-        self.barButtonDone.rx.tap
-            .throttle(.milliseconds(Metric.timesButtonsThrottle), latest: false, scheduler: MainScheduler.instance)
-            .map { Reactor.Action.done }
-            .bind(to: reactor.action)
-            .disposed(by: self.disposeBag)
         // inputs
         self.switchBackground.rx.text
             .filterNil()

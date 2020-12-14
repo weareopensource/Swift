@@ -19,8 +19,7 @@ class UserMoreController: CoreFormController, View, NVActivityIndicatorViewable 
 
     // MARK: UI
 
-    let barButtonCancel = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: nil)
-    let barButtonDone = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: nil)
+    let barButtonClose = UIBarButtonItem(barButtonSystemItem: .close, target: nil, action: nil)
 
     // button Information
     let buttonChangelog = ButtonRow {
@@ -63,8 +62,9 @@ class UserMoreController: CoreFormController, View, NVActivityIndicatorViewable 
             <<< self.buttonPrivacyPolicy
             <<< self.buttonLegalNotice
 
-        self.navigationItem.leftBarButtonItem = self.barButtonCancel
-        self.navigationItem.rightBarButtonItem = self.barButtonDone
+        self.navigationController?.clear()
+        self.navigationItem.leftBarButtonItem = self.barButtonClose
+
         self.view.addSubview(self.tableView)
     }
 
@@ -92,7 +92,7 @@ private extension UserMoreController {
 
     func bindView(_ reactor: UserMoreReactor) {
         // cancel
-        self.barButtonCancel.rx.tap
+        self.barButtonClose.rx.tap
             .subscribe(onNext: { [weak self] _ in
                 guard let `self` = self else { return }
                 self.dismiss(animated: true, completion: nil)
@@ -163,12 +163,6 @@ private extension UserMoreController {
     // MARK: actions (View -> Reactor)
 
     func bindAction(_ reactor: UserMoreReactor) {
-        // buttons
-        self.barButtonDone.rx.tap
-            .throttle(.milliseconds(Metric.timesButtonsThrottle), latest: false, scheduler: MainScheduler.instance)
-            .map { Reactor.Action.done }
-            .bind(to: reactor.action)
-            .disposed(by: self.disposeBag)
     }
 
     // MARK: states (Reactor -> View)

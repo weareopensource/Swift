@@ -16,8 +16,6 @@ final class UserPreferenceReactor: Reactor {
     enum Action {
         // inputs
         case updateBackground(Bool)
-        // default
-        case done
     }
 
     // state changes
@@ -63,9 +61,6 @@ final class UserPreferenceReactor: Reactor {
         case let .updateBackground(background):
             self.provider.preferencesService.isBackground = background
             return .just(.updateBackground(background))
-        // done
-        case .done:
-            return .just(.dismiss)
         }
     }
 

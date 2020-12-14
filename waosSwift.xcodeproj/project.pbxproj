@@ -116,6 +116,7 @@
 		BF9A368622901D7000EE2AB8 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9A368522901D7000EE2AB8 /* UserModel.swift */; };
 		BF9A368822902DE200EE2AB8 /* AuthResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9A368722902DE200EE2AB8 /* AuthResponses.swift */; };
 		BF9A368C2292D0C700EE2AB8 /* CookiePlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9A368B2292D0C700EE2AB8 /* CookiePlugin.swift */; };
+		BFA1E4592587C9FF009210B5 /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA1E4582587C9FF009210B5 /* UINavigationController.swift */; };
 		BFA7131D256BB539008ACCDD /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA7131C256BB539008ACCDD /* PopupView.swift */; };
 		BFA71323256BB7FF008ACCDD /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA71322256BB7FF008ACCDD /* File.swift */; };
 		BFA71330256BC5F1008ACCDD /* SwiftMessages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA7132F256BC5F1008ACCDD /* SwiftMessages.framework */; };
@@ -351,6 +352,7 @@
 		BF9A368722902DE200EE2AB8 /* AuthResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponses.swift; sourceTree = "<group>"; };
 		BF9A36892291BF8C00EE2AB8 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		BF9A368B2292D0C700EE2AB8 /* CookiePlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookiePlugin.swift; sourceTree = "<group>"; };
+		BFA1E4582587C9FF009210B5 /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		BFA7131C256BB539008ACCDD /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		BFA71322256BB7FF008ACCDD /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		BFA7132F256BC5F1008ACCDD /* SwiftMessages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftMessages.framework; path = Carthage/Build/iOS/SwiftMessages.framework; sourceTree = "<group>"; };
@@ -894,6 +896,7 @@
 				BF4A2FD32265F4020001B4CE /* UserDefaults.swift */,
 				BF1D704C245F561100F8EA36 /* Data.swift */,
 				BFBBE1AD2566F4D50067510D /* UIButton.swift */,
+				BFA1E4582587C9FF009210B5 /* UINavigationController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1414,6 +1417,7 @@
 				BF78B5FA22942CBB0057157A /* CoreModel.swift in Sources */,
 				BF16E7C92534C44200200046 /* HomeApi.swift in Sources */,
 				BF78B5FC22942CCD0057157A /* CoreResponses.swift in Sources */,
+				BFA1E4592587C9FF009210B5 /* UINavigationController.swift in Sources */,
 				BF8C672E228017940012B5A8 /* UITableView+ReusableKit.swift in Sources */,
 				BF8C6725227C3E310012B5A8 /* TasksCellController.swift in Sources */,
 				BF4A2F80225BB9360001B4CE /* SecondReactor.swift in Sources */,
