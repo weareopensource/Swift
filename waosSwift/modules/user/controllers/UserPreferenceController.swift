@@ -12,10 +12,6 @@ import Eureka
 
 class UserPreferenceController: CoreFormController, View, NVActivityIndicatorViewable {
 
-    // MARK: Constant
-
-    fileprivate var avatar = BehaviorRelay<Data?>(value: nil)
-
     // MARK: UI
 
     let barButtonCancel = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: nil)
