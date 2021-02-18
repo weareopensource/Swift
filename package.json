@@ -33,7 +33,7 @@
     "commitizen": "^4.2.3",
     "husky": "^5.0.9",
     "semantic-release": "^17.3.9",
-    "standard-version": "^9.1.0"
+    "standard-version": "^9.1.1"
   },
   "release": {
     "branches": [
