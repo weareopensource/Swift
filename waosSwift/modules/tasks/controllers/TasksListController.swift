@@ -134,7 +134,7 @@ private extension TasksListController {
             .map { Reactor.Action.checkUserToken }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
-        self.rx.viewDidLoad
+        self.application.rx.didOpenApp
             .map { Reactor.Action.checkUserTerms }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
