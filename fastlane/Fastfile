@@ -30,17 +30,18 @@ platform :ios do
     )
   end
 
-  desc "test the project - .swiftlint.yml"
-  lane :test do
+  desc "buil and test the project - .swiftlint.yml"
+  lane :build_and_test do
 	# Run tests
 	scan({
     workspace: ENV["WORKSPACE"],
 		scheme: ENV["SCHEME"],
+    cloned_source_packages_path: "SourcePackages"
 		clean: true,
 		code_coverage: true,
 		output_types: "html, junit",
     devices: [
-      "iPhone 11 (13.2)",
+      "iPhone 12 (13.2)",
     ],
 	})
 

@@ -2,12 +2,10 @@ language: swift
 osx_image: xcode12
 xcode_workspace: waosSwift.xcworkspace
 xcode_scheme: waosSwift
-xcode_destination: platform=iOS Simulator,OS=13.2.2,name=iPhone 11
+xcode_destination: platform=iOS Simulator,OS=13.2.2,name=iPhone 12
 before_install:
   - rvm use $RVM_RUBY_VERSION #slather
 install: bundle install --without=documentation
-before_script:
-  - swift build
 after_success:
   - fastlane lint
-  - fastlane test
+  - fastlane build_and_test
