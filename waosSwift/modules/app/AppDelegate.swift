@@ -1,6 +1,15 @@
+/**
+ * Dependencies
+ */
+
 import UIKit
+import RxFlow
 import ReactorKit
 import UserNotifications
+
+/**
+ * Delegate
+ */
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,13 +29,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // MARK: Flow
 
-        coordinator.rx.willNavigate.subscribe(onNext: { (flow, step) in
-            log.debug("🚀 will nav to \(flow) & step \(step)")
-        }).disposed(by: self.disposeBag)
-
-        coordinator.rx.didNavigate.subscribe(onNext: { (flow, step) in
-            log.debug("🚀 did nav to \(flow) & step \(step)")
-        }).disposed(by: self.disposeBag)
+//        self.coordinator.rx.willNavigate.subscribe(onNext: { (flow, step) in
+//            log.debug("🚀 will nav to \(flow) & step \(step)")
+//        }).disposed(by: self.disposeBag)
+//
+//        self.coordinator.rx.didNavigate.subscribe(onNext: { (flow, step) in
+//            log.debug("🚀 did nav to \(flow) & step \(step)")
+//        }).disposed(by: self.disposeBag)
 
         self.appFlow = AppFlow(withWindow: window, andServices: self.servicesProvider)
 

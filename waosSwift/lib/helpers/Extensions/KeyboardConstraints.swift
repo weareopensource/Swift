@@ -1,13 +1,13 @@
-//
-//  KeyboardConstraints.swift
-//  snapkitkeyboard
-//
-//  Created by Szymon Maślanka on 03/01/2017.
-//  Copyright © 2017 Szymon Maślanka. All rights reserved.
-//
+/**
+ * Dependencies
+ */
 
 import UIKit
 import SnapKit
+
+/**
+ * extension
+ */
 
 extension ConstraintMakerEditable {
     @discardableResult

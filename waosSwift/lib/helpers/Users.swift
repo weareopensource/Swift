@@ -1,4 +1,10 @@
 /**
+ * Dependencies
+ */
+
+import UIKit
+
+/**
  * functions
  */
 

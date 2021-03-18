@@ -1,3 +1,13 @@
+/**
+ * Dependencies
+ */
+
+import UIKit
+
+/**
+ * extension
+ */
+
 extension UIImage {
     /**
      * @desc set blur effect on UIImageView with a radius coefficient

@@ -1,4 +1,14 @@
+/**
+ * Dependencies
+ */
+
 import AuthenticationServices
+import UIKit
+import RxSwift
+
+/**
+ * extension
+ */
 
 @available(iOS 13.0, *)
 extension Reactive where Base: ASAuthorizationAppleIDProvider {

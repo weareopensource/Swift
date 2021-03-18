@@ -35,12 +35,12 @@ Our stack Swift is actually in Beta.
 | Models | [Validator](https://github.com/adamwaite/Validator) - *Models struct & Validatable*
 | Flow | [RxFlow](https://github.com/RxSwiftCommunity/RxFlow)
 | Tools | [SnapKit](https://github.com/SnapKit/SnapKit) - [Then](https://github.com/devxoul/Then) - [Reusable](https://github.com/AliSoftware/Reusable) - [ReusableKit](https://github.com/devxoul/ReusableKit)
-| UX | [Eureka](https://github.com/xmartlabs/Eureka) - [Toaster](https://github.com/devxoul/Toaster) - [FontAwesome](https://github.com/thii/FontAwesome.swift) - [NVActivityIndicatorView](https://github.com/ninjaprox/NVActivityIndicatorView)
+| UX | [Eureka](https://github.com/xmartlabs/Eureka) - [Toaster](https://github.com/devxoul/Toaster) - [FontAwesome](https://github.com/thii/FontAwesome.swift) - [SwiftSpinner](https://github.com/icanzilb/SwiftSpinner)
 | Logs | [CocoaLumberjack](https://github.com/CocoaLumberjack/CocoaLumberjack) - *LogFormatter services available*
 | CI  | [Travis CI](https://travis-ci.org/weareopensource/Node) <br> [fastlane](https://github.com/fastlane/fastlane) & [Slather](https://github.com/SlatherOrg/slather)
 | Linter  | [SwiftLint](https://github.com/realm/SwiftLint) - [SwiftGen](https://github.com/SwiftGen/SwiftGen)
 | Developer  | [Code Climate](https://codeclimate.com/github/weareopensource/Swift) <br> [standard-version](https://github.com/conventional-changelog/standard-version) / [semantic-release](https://github.com/semantic-release/semantic-release) - [commitlint](https://github.com/conventional-changelog/commitlint) - [commitizen](https://github.com/commitizen/cz-cli) - [@weareopensource/conventional-changelog](https://github.com/weareopensource/conventional-changelog)
-| Dependencies | [Carthage](https://github.com/Carthage/Carthage)
+| Dependencies | [SPM](https://swift.org/package-manager/)
 | **Being released** |
 | Testing |  in development
 | **In reflexion** |
@@ -64,7 +64,6 @@ Make sure you have installed all of the following prerequisites on your developm
 * Git - [Download & Install Git](https://git-scm.com/downloads)
 * Xcode (10.x) - [Download & Install Xcode](https://itunes.apple.com/us/app/xcode/id497799835?mt=12)
 * HomeBrew - `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
-* Carthage - `brew update && brew install carthage`
 * SwiftLint - `brew update && brew install swiftlint` (`swiftlint autocorrect`)
 * SwiftGen - `brew update && brew install swiftgen`
 
@@ -79,8 +78,6 @@ It's straightforward :
 
 ```bash
 git clone https://github.com/weareopensource/swift.git && cd Swift
-carthage update 2>/dev/null
-(cd Carthage/Checkouts/ReactorKit && swift package generate-xcodeproj && xcrun agvtool new-marketing-version 1 && xcrun agvtool new-version -all 1) 
 ./carthage-build.sh --platform iOS --no-use-binaries 
 ```
 

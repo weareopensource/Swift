@@ -1,3 +1,13 @@
+/**
+ * Controller
+ */
+
+import UIKit
+
+/**
+ * IBDesignable
+ */
+
 @IBDesignable class CoreUITableView: UITableView {
 
     // MARK: Constants

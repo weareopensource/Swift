@@ -3,15 +3,18 @@
  */
 
 import UIKit
+import RxRelay
 import ReactorKit
 import Eureka
 import SafariServices
+import MessageUI
+import SwiftMessages
 
 /**
  * Controller
  */
 
-class UserMoreController: CoreFormController, View, NVActivityIndicatorViewable {
+class UserMoreController: CoreFormController, View {
 
     // MARK: Constant
 

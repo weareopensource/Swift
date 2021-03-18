@@ -4,10 +4,4 @@
    <FileRef
       location = "container:waosSwift.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:Cartfile">
-   </FileRef>
-   <FileRef
-      location = "group:Cartfile.resolved">
-   </FileRef>
 </Workspace>

@@ -1,3 +1,13 @@
+/**
+ * Controller
+ */
+
+import UIKit
+
+/**
+ * IBDesignable
+ */
+
 @IBDesignable class CoreUILabel: UILabel {
 
     // MARK: Constants

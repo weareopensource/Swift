@@ -1,5 +1,17 @@
+/**
+ * Dependencies
+ */
+
 import UIKit
+import RxSwift
 import Eureka
+import MessageUI
+import SwiftyJSON
+import SwiftMessages
+
+/**
+ * controller
+ */
 
 class CoreFormController: FormViewController {
 

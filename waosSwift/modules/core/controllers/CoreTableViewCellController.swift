@@ -1,4 +1,15 @@
+/**
+ * Dependencies
+ */
+
 import UIKit
+import RxSwift
+import SwiftMessages
+import MessageUI
+
+/**
+ * Controller
+ */
 
 class CoreTableViewCellController: UITableViewCell {
 

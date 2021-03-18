@@ -9,9 +9,6 @@
 "links_privacy" = "https://www.apple.com/legal/privacy/en-ww/";
 "links_legal" = "legal";
 
-// loader
-"loader_messagee" = "Loading ...";
-
 // popup
 "popup_signfail" = "Wrong Password or Email.";
 "popup_logout" = "You have been logged out !";
