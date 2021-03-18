@@ -41,7 +41,7 @@ platform :ios do
 		code_coverage: true,
 		output_types: "html, junit",
     devices: [
-      "iPhone 12 (13.2)",
+      "iPhone 11 (13.2)",
     ],
 	})
 
