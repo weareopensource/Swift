@@ -29,8 +29,6 @@
 		BF10C83C25F78B8C00327730 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF10C82C25F78B8C00327730 /* UserService.swift */; };
 		BF10C83D25F78B8C00327730 /* UserApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF10C82E25F78B8C00327730 /* UserApi.swift */; };
 		BF10C83E25F78B8C00327730 /* me.json in Resources */ = {isa = PBXBuildFile; fileRef = BF10C83025F78B8C00327730 /* me.json */; };
-		BF12119926035F4100C57F1F /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = BF12119826035F4100C57F1F /* NVActivityIndicatorView */; };
-		BF12119B26035F4100C57F1F /* NVActivityIndicatorViewExtended in Frameworks */ = {isa = PBXBuildFile; productRef = BF12119A26035F4100C57F1F /* NVActivityIndicatorViewExtended */; };
 		BF1211AD260369C700C57F1F /* Font Awesome 5 Brands-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF1211A82603677B00C57F1F /* Font Awesome 5 Brands-Regular-400.otf */; };
 		BF1211B0260369C900C57F1F /* Font Awesome 5 Free-Regular-400.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF1211A92603677B00C57F1F /* Font Awesome 5 Free-Regular-400.otf */; };
 		BF1211B1260369CC00C57F1F /* Font Awesome 5 Free-Solid-900.otf in Resources */ = {isa = PBXBuildFile; fileRef = BF1211AA2603677B00C57F1F /* Font Awesome 5 Free-Solid-900.otf */; };
@@ -368,14 +366,12 @@
 				BF35331F2602BE6C005EA507 /* CocoaLumberjackSwift in Frameworks */,
 				BF35332B2602BE9D005EA507 /* SwiftyJSON in Frameworks */,
 				BF3533152602BD97005EA507 /* RxFlow in Frameworks */,
-				BF12119926035F4100C57F1F /* NVActivityIndicatorView in Frameworks */,
 				BF3533212602BE6C005EA507 /* CocoaLumberjack in Frameworks */,
 				BF1211B626038A7B00C57F1F /* SwiftSpinner in Frameworks */,
 				BF35335F2602C063005EA507 /* ImageRow in Frameworks */,
 				BF35335A2602C006005EA507 /* SwiftMessages in Frameworks */,
 				BF3533262602BE88005EA507 /* Reusable in Frameworks */,
 				BF3533442602BF3A005EA507 /* FontAwesome in Frameworks */,
-				BF12119B26035F4100C57F1F /* NVActivityIndicatorViewExtended in Frameworks */,
 				BF3533102602BD78005EA507 /* RxOptional in Frameworks */,
 				BF35336B2602C112005EA507 /* RxDataSources in Frameworks */,
 				BF3533092602BD4F005EA507 /* RxMoya in Frameworks */,
@@ -1114,8 +1110,6 @@
 				BF3533632602C0D7005EA507 /* Validator */,
 				BF3533682602C112005EA507 /* Differentiator */,
 				BF35336A2602C112005EA507 /* RxDataSources */,
-				BF12119826035F4100C57F1F /* NVActivityIndicatorView */,
-				BF12119A26035F4100C57F1F /* NVActivityIndicatorViewExtended */,
 				BF1211B526038A7B00C57F1F /* SwiftSpinner */,
 			);
 			productName = waosSwift;
@@ -1213,7 +1207,6 @@
 				BF35335D2602C063005EA507 /* XCRemoteSwiftPackageReference "ImageRow" */,
 				BF3533622602C0D7005EA507 /* XCRemoteSwiftPackageReference "Validator" */,
 				BF3533672602C112005EA507 /* XCRemoteSwiftPackageReference "RxDataSources" */,
-				BF12119726035F4100C57F1F /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
 				BF1211B426038A7B00C57F1F /* XCRemoteSwiftPackageReference "SwiftSpinner" */,
 			);
 			productRefGroup = BF425481221EBB9700395AE6 /* Products */;
@@ -1920,14 +1913,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		BF12119726035F4100C57F1F /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.1.1;
-			};
-		};
 		BF1211B426038A7B00C57F1F /* XCRemoteSwiftPackageReference "SwiftSpinner" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/icanzilb/SwiftSpinner";
@@ -2091,16 +2076,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BF12119826035F4100C57F1F /* NVActivityIndicatorView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BF12119726035F4100C57F1F /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
-			productName = NVActivityIndicatorView;
-		};
-		BF12119A26035F4100C57F1F /* NVActivityIndicatorViewExtended */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BF12119726035F4100C57F1F /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
-			productName = NVActivityIndicatorViewExtended;
-		};
 		BF1211B526038A7B00C57F1F /* SwiftSpinner */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BF1211B426038A7B00C57F1F /* XCRemoteSwiftPackageReference "SwiftSpinner" */;
