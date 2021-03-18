@@ -1,4 +1,11 @@
 /**
+ * Dependencies
+ */
+
+import UIKit
+import SwiftyJSON
+
+/**
  * class
  */
 

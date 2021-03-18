@@ -3,14 +3,20 @@
  */
 
 import UIKit
+import RxSwift
+import RxRelay
 import ReactorKit
 import AuthenticationServices
+import RxFlow
+import FontAwesome
+import SwiftMessages
+import MessageUI
 
 /**
  * Controller
  */
 
-final class AuthSignInController: CoreController, View, Stepper, NVActivityIndicatorViewable {
+final class AuthSignInController: CoreController, View, Stepper {
 
     var width: CGFloat = 0
 

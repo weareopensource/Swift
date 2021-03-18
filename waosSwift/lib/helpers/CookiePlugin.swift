@@ -2,6 +2,7 @@
  * Dependencies
  */
 
+import UIKit
 import Moya
 import KeychainAccess
 import Kingfisher

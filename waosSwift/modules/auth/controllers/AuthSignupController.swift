@@ -4,12 +4,16 @@
 
 import UIKit
 import ReactorKit
+import RxFlow
+import RxRelay
+import MessageUI
+import SwiftMessages
 
 /**
  * Controller
  */
 
-final class AuthSignUpController: CoreController, View, Stepper, NVActivityIndicatorViewable {
+final class AuthSignUpController: CoreController, View, Stepper {
 
     var width: CGFloat = 0
     var isPasswordValid: Bool = false

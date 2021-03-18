@@ -1,5 +1,14 @@
+/**
+ * Dependencies
+ */
+
+import UIKit
 import Foundation
 import CommonCrypto
+
+/**
+ * extension
+ */
 
 extension String {
     var md5: String {

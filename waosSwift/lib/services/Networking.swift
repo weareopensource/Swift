@@ -2,6 +2,7 @@
  * Dependencies
  */
 
+import RxSwift
 import Moya
 import RxMoya
 import UIKit

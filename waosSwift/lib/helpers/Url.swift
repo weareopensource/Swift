@@ -1,4 +1,14 @@
 /**
+ * Dependencies
+ */
+
+import UIKit
+
+/**
+ * functions
+ */
+
+/**
  * @desc generate api url
  * @param {String} _protocol,
  * @param {String} _host,

@@ -1,4 +1,16 @@
+/**
+ * Dependencies
+ */
+
 import UIKit
+import RxSwift
+import SwiftMessages
+import FontAwesome
+import MessageUI
+
+/**
+ * Dependencies
+ */
 
 class CoreController: UIViewController {
 

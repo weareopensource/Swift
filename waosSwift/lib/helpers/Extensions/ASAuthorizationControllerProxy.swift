@@ -1,9 +1,16 @@
+/**
+ * Dependencies
+ */
+
 import AuthenticationServices
 import RxCocoa
 import RxSwift
 import UIKit
-
 import AuthenticationServices
+
+/**
+* Extension
+*/
 
 @available(iOS 13.0, *)
 extension ASAuthorizationController: HasDelegate {

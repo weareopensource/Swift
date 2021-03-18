@@ -1,4 +1,11 @@
 /**
+ * Controller
+ */
+
+import UIKit
+import RxSwift
+
+/**
  * Service
  */
 
@@ -35,7 +42,7 @@ final class UserService: CoreService, UserServiceType {
             }
             .asObservable()
             .map(MyResult.success)
-            .catchError { err in .just(.error(getError(err)))}
+            .catch { err in .just(.error(getError(err)))}
     }
 
     func update(_ user: User) -> Observable<MyResult<UserResponse, CustomError>> {
@@ -49,7 +56,7 @@ final class UserService: CoreService, UserServiceType {
             }
             .asObservable()
             .map(MyResult.success)
-            .catchError { err in .just(.error(getError(err)))}
+            .catch { err in .just(.error(getError(err)))}
     }
 
     func terms() -> Observable<MyResult<UserResponse, CustomError>> {
@@ -62,7 +69,7 @@ final class UserService: CoreService, UserServiceType {
             }
             .asObservable()
             .map(MyResult.success)
-            .catchError { err in .just(.error(getError(err)))}
+            .catch { err in .just(.error(getError(err)))}
     }
 
     func delete() -> Observable<MyResult<DeleteDataResponse, CustomError>> {
@@ -76,7 +83,7 @@ final class UserService: CoreService, UserServiceType {
             }
             .asObservable()
             .map(MyResult.success)
-            .catchError { err in .just(.error(getError(err)))}
+            .catch { err in .just(.error(getError(err)))}
     }
 
     func updateAvatar(file: Data, partName: String, fileName: String, mimeType: String) -> Observable<MyResult<UserResponse, CustomError>> {
@@ -90,7 +97,7 @@ final class UserService: CoreService, UserServiceType {
             }
             .asObservable()
             .map(MyResult.success)
-            .catchError { err in .just(.error(getError(err)))}
+            .catch { err in .just(.error(getError(err)))}
     }
 
     func deleteAvatar() -> Observable<MyResult<UserResponse, CustomError>> {
@@ -104,7 +111,7 @@ final class UserService: CoreService, UserServiceType {
             }
             .asObservable()
             .map(MyResult.success)
-            .catchError { err in .just(.error(getError(err)))}
+            .catch { err in .just(.error(getError(err)))}
     }
 
     func data() -> Observable<MyResult<MailResponse, CustomError>> {
@@ -117,7 +124,7 @@ final class UserService: CoreService, UserServiceType {
             }
             .asObservable()
             .map(MyResult.success)
-            .catchError { err in .just(.error(getError(err)))}
+            .catch { err in .just(.error(getError(err)))}
     }
 
     func updateDeviceToken(_ deviceToken: String) {

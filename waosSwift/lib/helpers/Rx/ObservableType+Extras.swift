@@ -1,14 +1,14 @@
-//
-//  ObservableType+Extras.swift
-//  Papr
-//
-//  Created by Joan Disho on 07.01.18.
-//  Copyright © 2018 Joan Disho. All rights reserved.
-//
+/**
+ * Dependencies
+ */
 
 import Foundation
 import RxSwift
 import RxCocoa
+
+/**
+ * extension
+ */
 
 extension ObservableType {
 

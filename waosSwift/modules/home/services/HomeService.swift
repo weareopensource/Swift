@@ -1,4 +1,10 @@
 /**
+ * Dependencies
+ */
+
+import RxSwift
+
+/**
  * Service
  */
 
@@ -30,6 +36,6 @@ final class HomeService: CoreService, HomeServiceType {
             }
             .asObservable()
             .map(MyResult.success)
-            .catchError { err in .just(.error(getError(err)))}
+            .catch { err in .just(.error(getError(err)))}
     }
 }

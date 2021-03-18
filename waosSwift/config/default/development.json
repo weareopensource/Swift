@@ -113,9 +113,6 @@
             "duration": 3
         },
         "loader": {
-            "width": 50,
-            "height": 50,
-            "displayTimeThreshold": 1000,
             "minimumDisplayTime": 2000,
         },
         "themes": {

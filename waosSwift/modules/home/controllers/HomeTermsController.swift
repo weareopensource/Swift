@@ -5,12 +5,14 @@
 import UIKit
 import ReactorKit
 import WebKit
+import SwiftMessages
+import MessageUI
 
 /**
  * Controller
  */
 
-class HomeTermsController: CoreController, View, NVActivityIndicatorViewable {
+class HomeTermsController: CoreController, View {
 
     // MARK: UI
 

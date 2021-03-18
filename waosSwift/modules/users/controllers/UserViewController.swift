@@ -7,12 +7,15 @@ import ReactorKit
 import Eureka
 import SafariServices
 import ImageRow
+import RxRelay
+import SwiftMessages
+import MessageUI
 
 /**
  * Controller
  */
 
-class UserViewController: CoreFormController, View, NVActivityIndicatorViewable {
+class UserViewController: CoreFormController, View {
 
     // MARK: Constant
 

@@ -1,3 +1,13 @@
+/**
+ * Controller
+ */
+
+import UIKit
+
+/**
+ * IBDesignable
+ */
+
 @IBDesignable class CoreUIRefreshControl: UIRefreshControl {
 
     // MARK: Constants

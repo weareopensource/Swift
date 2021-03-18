@@ -1,4 +1,14 @@
 /**
+ * Dependencies
+ */
+
+import UIKit
+
+/**
+ * Functions
+ */
+
+/**
 * @desc make circular view, must be called in override func layoutSubviews
 * @param {UIView} _view,
 */

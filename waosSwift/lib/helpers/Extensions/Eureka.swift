@@ -2,7 +2,9 @@
  * Dependencies
  */
 
+import UIKit
 import Eureka
+import FontAwesome
 
 /**
 * Extension

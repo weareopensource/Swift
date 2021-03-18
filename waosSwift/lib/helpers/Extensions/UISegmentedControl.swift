@@ -1,3 +1,13 @@
+/**
+ * Dependencies
+ */
+
+import UIKit
+
+/**
+ * extension
+ */
+
 extension UISegmentedControl {
 
     func updateTitle(_ titles: [String?]) {

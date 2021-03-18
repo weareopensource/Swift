@@ -2,7 +2,9 @@
  * Dependencies
  */
 
+import RxSwift
 import KeychainAccess
+import UIKit
 
 /**
  * Struct

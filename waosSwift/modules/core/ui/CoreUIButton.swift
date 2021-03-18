@@ -1,3 +1,13 @@
+/**
+ * Controller
+ */
+
+import UIKit
+
+/**
+ * IBDesignable
+ */
+
 @IBDesignable class CoreUIButton: UIButton {
 
     // MARK: Constants

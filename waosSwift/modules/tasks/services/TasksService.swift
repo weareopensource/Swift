@@ -1,4 +1,11 @@
 /**
+ * Dependencies
+ */
+
+import UIKit
+import RxSwift
+
+/**
  * Service
  */
 
@@ -33,7 +40,7 @@ final class TasksService: CoreService, TasksServiceType {
             }
             .asObservable()
             .map(MyResult.success)
-            .catchError { err in .just(.error(getError(err)))}
+            .catch { err in .just(.error(getError(err)))}
     }
 
     func create(_ task: Tasks) -> Observable<MyResult<TaskResponse, CustomError>> {
@@ -48,7 +55,7 @@ final class TasksService: CoreService, TasksServiceType {
             }
             .asObservable()
             .map(MyResult.success)
-            .catchError { err in .just(.error(getError(err)))}
+            .catch { err in .just(.error(getError(err)))}
     }
 
     func update(_ task: Tasks) -> Observable<MyResult<TaskResponse, CustomError>> {
@@ -65,7 +72,7 @@ final class TasksService: CoreService, TasksServiceType {
             }
             .asObservable()
             .map(MyResult.success)
-            .catchError { err in .just(.error(getError(err)))}
+            .catch { err in .just(.error(getError(err)))}
     }
 
     func delete(_ task: Tasks) -> Observable<MyResult<DeleteResponse, CustomError>> {
@@ -82,6 +89,6 @@ final class TasksService: CoreService, TasksServiceType {
             }
             .asObservable()
             .map(MyResult.success)
-            .catchError { err in .just(.error(getError(err)))}
+            .catch { err in .just(.error(getError(err)))}
     }
 }

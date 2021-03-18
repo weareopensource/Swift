@@ -4,12 +4,16 @@
 
 import UIKit
 import ReactorKit
+import RxFlow
+import RxRelay
+import SwiftMessages
+import MessageUI
 
 /**
  * Controller
  */
 
-final class AuthForgotController: CoreController, View, Stepper, NVActivityIndicatorViewable {
+final class AuthForgotController: CoreController, View, Stepper {
 
     var width: CGFloat = 0
 

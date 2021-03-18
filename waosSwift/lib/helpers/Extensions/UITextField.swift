@@ -1,3 +1,14 @@
+/**
+ * Dependencies
+ */
+
+import UIKit
+import FontAwesome
+
+/**
+ * extension
+ */
+
 extension UITextField {
     /**
     * @desc set left font awesome icon on

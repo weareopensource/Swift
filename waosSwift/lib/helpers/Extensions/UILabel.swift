@@ -1,3 +1,13 @@
+/**
+ * Dependencies
+ */
+
+import UIKit
+
+/**
+ * extension
+ */
+
 extension UILabel {
     /**
     * @desc set new spacing for uilabel, line and letters

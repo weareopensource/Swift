@@ -1,8 +1,16 @@
 #if os(iOS) || os(tvOS)
-import UIKit
 
+/**
+ * Dependencies
+ */
+
+import UIKit
 import RxCocoa
 import RxSwift
+
+/**
+ * extension
+ */
 
 public extension Reactive where Base: UIViewController {
     var viewDidLoad: ControlEvent<Void> {

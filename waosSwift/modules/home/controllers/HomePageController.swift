@@ -3,14 +3,17 @@
  */
 
 import UIKit
+import RxSwift
 import ReactorKit
 import WebKit
+import MessageUI
+import SwiftMessages
 
 /**
  * Controller
  */
 
-class HomePageController: CoreController, View, NVActivityIndicatorViewable {
+class HomePageController: CoreController, View {
 
     // MARK: UI
 

@@ -5,12 +5,14 @@
 import UIKit
 import ReactorKit
 import Eureka
+import SwiftMessages
+import MessageUI
 
 /**
  * Controller
  */
 
-class UserPreferenceController: CoreFormController, View, NVActivityIndicatorViewable {
+class UserPreferenceController: CoreFormController, View {
 
     // MARK: UI
 

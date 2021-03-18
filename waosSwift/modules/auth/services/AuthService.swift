@@ -1,4 +1,11 @@
 /**
+ * Dependencies
+ */
+
+import UIKit
+import RxSwift
+
+/**
  * Service
  */
 
@@ -31,7 +38,7 @@ final class AuthService: CoreService, AuthServiceType {
             }
             .asObservable()
             .map(MyResult.success)
-            .catchError { err in .just(.error(getError(err)))}
+            .catch { err in .just(.error(getError(err)))}
     }
 
     func signIn(email: String, password: String) -> Observable<MyResult<SignResponse, CustomError>> {
@@ -46,7 +53,7 @@ final class AuthService: CoreService, AuthServiceType {
             }
             .asObservable()
             .map(MyResult.success)
-            .catchError { err in .just(.error(getError(err)))}
+            .catch { err in .just(.error(getError(err)))}
     }
 
     func token() -> Observable<MyResult<TokenResponse, CustomError>> {
@@ -60,7 +67,7 @@ final class AuthService: CoreService, AuthServiceType {
             }
             .asObservable()
             .map(MyResult.success)
-            .catchError { err in .just(.error(getError(err)))}
+            .catch { err in .just(.error(getError(err)))}
     }
 
     func forgot(email: String) -> Observable<MyResult<ForgotResponse, CustomError>> {
@@ -73,7 +80,7 @@ final class AuthService: CoreService, AuthServiceType {
             }
             .asObservable()
             .map(MyResult.success)
-            .catchError { err in .just(.error(getError(err)))}
+            .catch { err in .just(.error(getError(err)))}
     }
 
     func oauth(strategy: Bool, key: String, value: String, firstName: String, lastName: String, email: String) -> Observable<MyResult<SignResponse, CustomError>> {
@@ -87,7 +94,7 @@ final class AuthService: CoreService, AuthServiceType {
                }
                .asObservable()
                .map(MyResult.success)
-               .catchError { err in .just(.error(getError(err)))}
+                .catch { err in .just(.error(getError(err)))}
        }
 
 }

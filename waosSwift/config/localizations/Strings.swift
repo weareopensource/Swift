@@ -37,8 +37,6 @@ internal enum L10n {
   internal static let linksTerms = L10n.tr("Localizable", "links_terms")
   /// https://weareopensource.me/us/
   internal static let linksUs = L10n.tr("Localizable", "links_us")
-  /// Loading ...
-  internal static let loaderMessagee = L10n.tr("Localizable", "loader_messagee")
   /// Cancel
   internal static let modalConfirmationCancel = L10n.tr("Localizable", "modal_confirmation_cancel")
   /// are you sure ?
