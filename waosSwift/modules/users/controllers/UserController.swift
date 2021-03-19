@@ -32,9 +32,11 @@ class UserController: CoreFormController, View {
     let labelName = CoreUILabel().then {
         $0.textAlignment = .center
     }
-    let labelEmail = CoreUILabel().then {
-        $0.textAlignment = .center
-        $0.textColor = .gray
+    let buttonInfo = CoreUIButton().then {
+        $0.setTitleColor(Metric.secondary, for: .normal)
+        $0.backgroundColor = Metric.background ?? .white
+        $0.setBackgroundColor(color: Metric.background ?? .white, forState: .normal)
+        $0.setBackgroundColor(color: Metric.background ?? .white, forState: .highlighted)
     }
 
     // buttons profil
@@ -131,12 +133,12 @@ class UserController: CoreFormController, View {
 
         form
             +++ Section { section in
-                var header = HeaderFooterView<UILabel>(.class)
-                header.height = { 175 }
+                var header = HeaderFooterView<UIButton>(.class)
+                header.height = { 190 }
                 header.onSetupView = {view, _ in
                     view.addSubview(self.imageAvatar)
                     view.addSubview(self.labelName)
-                    view.addSubview(self.labelEmail)
+                    view.addSubview(self.buttonInfo)
                     self.imageAvatar.snp.makeConstraints { (make) -> Void in
                         make.width.height.equalTo(Metric.avatar)
                         make.centerX.equalTo(view)
@@ -146,9 +148,9 @@ class UserController: CoreFormController, View {
                         make.centerX.equalTo(view)
                         make.top.equalTo(self.imageAvatar.snp.bottom).offset(Metric.margin/2)
                     }
-                    self.labelEmail.snp.makeConstraints { (make) -> Void in
-                        make.centerX.equalTo(view)
-                        make.top.equalTo(self.labelName.snp.bottom)
+                    self.buttonInfo.snp.makeConstraints { (make) -> Void in
+                        make.right.left.equalTo(view)
+                        make.top.equalTo(self.labelName.snp.bottom).offset(5)
                     }
                 }
                 section.header = header
@@ -389,6 +391,18 @@ private extension UserController {
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         // buttons
+        self.buttonInfo.rx.tap
+            .subscribe(onNext: { _ in
+                if let buttonTitle = self.buttonInfo.title(for: .normal), let role = reactor.currentState.user.roles?.last {
+                    if buttonTitle == reactor.currentState.user.email {
+                        self.buttonInfo.setTitle(role, for: .normal)
+                    } else {
+                        self.buttonInfo.setTitle(reactor.currentState.user.email, for: .normal)
+                    }
+                }
+
+            })
+            .disposed(by: self.disposeBag)
         self.buttonData.rx.tap
             .throttle(.milliseconds(Metric.timesButtonsThrottle), latest: false, scheduler: MainScheduler.instance)
             .subscribe(onNext: { _ in
@@ -504,7 +518,9 @@ private extension UserController {
         reactor.state
             .map { $0.user.email }
             .distinctUntilChanged()
-            .bind(to: self.labelEmail.rx.text)
+            .subscribe(onNext: { email in
+                self.buttonInfo.setTitle(email, for: .normal)
+            })
             .disposed(by: self.disposeBag)
         // refreshing
         reactor.state
