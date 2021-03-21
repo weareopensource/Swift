@@ -32,11 +32,9 @@ class UserController: CoreFormController, View {
     let labelName = CoreUILabel().then {
         $0.textAlignment = .center
     }
-    let buttonInfo = CoreUIButton().then {
+    let buttonInfo = UIButton().then {
         $0.setTitleColor(Metric.secondary, for: .normal)
         $0.backgroundColor = Metric.background ?? .white
-        $0.setBackgroundColor(color: Metric.background ?? .white, forState: .normal)
-        $0.setBackgroundColor(color: Metric.background ?? .white, forState: .highlighted)
     }
 
     // buttons profil
@@ -520,6 +518,13 @@ private extension UserController {
             .distinctUntilChanged()
             .subscribe(onNext: { email in
                 self.buttonInfo.setTitle(email, for: .normal)
+            })
+            .disposed(by: self.disposeBag)
+        reactor.state
+            .map { $0.user.roles }
+            .distinctUntilChanged()
+            .subscribe(onNext: { roles in
+                self.buttonInfo.setTitle(roles?.last, for: .normal)
             })
             .disposed(by: self.disposeBag)
         // refreshing
