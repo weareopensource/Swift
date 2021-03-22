@@ -1,0 +1,12 @@
+{
+    "aps" : {
+        "alert" : {
+            "title" : "sarunw.com",
+            "body" : "A weekly blog about iOS development",
+            "link_url": "openTask:5f5d562f71cbbaf22bad3b13"
+        },
+        "badge" : 1
+    },
+  "Simulator Target Bundle": "me.weareopensoruce.vue.testing",
+}
+

@@ -104,7 +104,10 @@ In develompment
 
 ### Notifications
 
-* `xcrun simctl push XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX me.weareopensoruce.vue.testing example.apn` (xx => device token)
+* enable notifications in config/default/development.json
+* Or `xcrun simctl push booted me.weareopensoruce.vue.testing example.apn` (on simulator launched)
+* Or `xcrun simctl push XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX me.weareopensoruce.vue.testing example.apn` (xx => device token)
+* Or drag and drop example.apns on device
 *  [article](https://www.raywenderlich.com/11395893-push-notifications-tutorial-getting-started)
 
 ## :pencil2: [Contribute](https://blog.weareopensource.me/how-to-contribute/)
