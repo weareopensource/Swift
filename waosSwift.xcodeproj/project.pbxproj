@@ -350,6 +350,7 @@
 		BFCAA24B250B58DE0065FB69 /* forgot.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = forgot.json; sourceTree = "<group>"; };
 		BFD9CB20238435B20034837F /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		BFD9CB22238435CB0034837F /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		BFDAAD8326089336007CB80C /* waosSwift.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = waosSwift.xcconfig; sourceTree = "<group>"; };
 		BFDE25FD227B052D008CBD30 /* NSViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSViewController+Rx.swift"; sourceTree = "<group>"; };
 		BFDE25FF227B053D008CBD30 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		BFDE2601227B17D4008CBD30 /* AppServicesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServicesProvider.swift; sourceTree = "<group>"; };
@@ -673,6 +674,7 @@
 		BF425477221EBB9700395AE6 = {
 			isa = PBXGroup;
 			children = (
+				BFDAAD8326089336007CB80C /* waosSwift.xcconfig */,
 				BF7369A525191A2A00A5BDAB /* README.md */,
 				BF425482221EBB9700395AE6 /* waosSwift */,
 				BF425499221EBB9800395AE6 /* waosSwiftTests */,
