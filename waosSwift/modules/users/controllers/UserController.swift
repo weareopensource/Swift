@@ -140,7 +140,7 @@ class UserController: CoreFormController, View {
                     self.imageAvatar.snp.makeConstraints { (make) -> Void in
                         make.width.height.equalTo(Metric.avatar)
                         make.centerX.equalTo(view)
-                        make.top.equalTo(view).offset(Metric.margin)
+                        make.top.equalTo(view).offset(Metric.margin*1.2)
                     }
                     self.labelName.snp.makeConstraints { (make) -> Void in
                         make.centerX.equalTo(view)
@@ -148,7 +148,7 @@ class UserController: CoreFormController, View {
                     }
                     self.buttonInfo.snp.makeConstraints { (make) -> Void in
                         make.right.left.equalTo(view)
-                        make.top.equalTo(self.labelName.snp.bottom).offset(5)
+                        make.top.equalTo(self.labelName.snp.bottom)
                     }
                 }
                 section.header = header
