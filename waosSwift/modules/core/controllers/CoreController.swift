@@ -28,6 +28,7 @@ class CoreController: UIViewController {
         static let tabBarBorder = NSString(string: config["theme"]["tabBar"]["border"].string ?? "").boolValue
         static let timesButtonsThrottle = Int(config["times"]["buttons"]["throttle"].int ?? 2000)
         static let timesErrorsDebounce = Int(config["times"]["errors"]["debounce"].int ?? 2000)
+        static let timesRefreshData = Int(config["times"]["refresh"]["data"].int ?? 60000)
         static let margin = Int(config["theme"]["global"]["margin"].int ?? 15)
         static let error = UIColor(named: config["theme"]["themes"]["waos"]["error"].string ?? "")
     }

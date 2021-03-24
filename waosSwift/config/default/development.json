@@ -84,6 +84,9 @@
     },
     "notifications": false,
     "times": {
+        "refresh": {
+            "data": 30000
+        },
         "buttons": {
             "throttle": 3000
         },

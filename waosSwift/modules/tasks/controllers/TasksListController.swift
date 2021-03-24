@@ -142,10 +142,9 @@ private extension TasksListController {
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         // init
-        Observable.of(self.application.rx.didOpenApp.map { $0 }, self.rx.viewDidLoad.map { $0 })
-            .merge()
-            .throttle(.milliseconds(Metric.timesButtonsThrottle), latest: false, scheduler: MainScheduler.instance)
-            .map { Reactor.Action.get }
+        self.rx.viewWillAppear
+            .throttle(.milliseconds(Metric.timesRefreshData), latest: false, scheduler: MainScheduler.instance)
+            .map { _ in Reactor.Action.get }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         // refresh
