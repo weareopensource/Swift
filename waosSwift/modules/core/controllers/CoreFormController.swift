@@ -41,6 +41,7 @@ class CoreFormController: FormViewController {
         static let margin = CGFloat(config["theme"]["global"]["margin"].int ?? 0)
         static let radius = CGFloat(config["theme"]["global"]["radius"].int ?? 0)
         static let timesButtonsThrottle = Int(config["times"]["buttons"]["throttle"].int ?? 2000)
+        static let timesRefreshData = Int(config["times"]["refresh"]["data"].int ?? 60000)
         static let timesErrorsDebounce = Int(config["times"]["errors"]["debounce"].int ?? 2000)
         static let timesErrorsShort = Int(config["times"]["errors"]["short"].int ?? 500)
         static let avatar = CGFloat(100)
