@@ -454,7 +454,7 @@ private extension UserController {
             .distinctUntilChanged()
             .subscribe(onNext: { avatar in
                 if (avatar != "") {
-                    self.imageAvatar.setImage(url: setUploadImageUrl(avatar, size: "256"), options: [.requestModifier(cookieModifier)])
+                    self.imageAvatar.setImage(url: setUploadImageUrl(avatar, sizes: [256, 512]), options: [.requestModifier(cookieModifier)])
                 } else {
                     self.imageAvatar.setImage(url: "https://secure.gravatar.com/avatar/\(reactor.currentState.user.email.md5)?s=200&d=mp")
                 }
