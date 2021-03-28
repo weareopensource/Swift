@@ -27,12 +27,12 @@ func getUrl(_protocol: String, _host: String, _port: String, _path: String) -> U
 
 /**
  * @desc generate an upload image url with options (from http://toto.png to http://toto-300-blur.png)
- * @param {String} _url,
- * @param {String} _size,
- * @param {String} _operation,
+ * @param {String} image,
+ * @param {[Int]} sizes,
+ * @param {String} operation,
  * @return {String}
  */
-func setUploadImageUrl(_ image: String, size: String? = nil, operation: String? = nil) -> String! {
+func setUploadImageUrl(_ image: String, sizes: [Int]? = [], operation: String? = nil) -> String! {
 
     let baseUrl: String = getUrl(_protocol: config["api"]["protocol"].string ?? "http",
     _host: config["api"]["host"].string ?? "localhost",
@@ -48,8 +48,16 @@ func setUploadImageUrl(_ image: String, size: String? = nil, operation: String? 
     } else {
         _image = "\(base[0])"
     }
-    if let _size = size {
-        _image = "\(_image)-\(_size)"
+    if sizes?.count ?? 0 > 0 {
+        if(sizes!.count == 2) {
+            if(UIDevice.current.userInterfaceIdiom == .phone) {
+                _image = "\(_image)-\(sizes![0])"
+            } else {
+                _image = "\(_image)-\(sizes![1])"
+            }
+        } else {
+            _image = "\(_image)-\(sizes![0])"
+        }
     }
     if let _operation = operation {
         _image = "\(_image)-\(_operation)"
