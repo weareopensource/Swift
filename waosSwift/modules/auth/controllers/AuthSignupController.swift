@@ -340,6 +340,7 @@ private extension AuthSignUpController {
             .map { $0.isDismissed }
             .distinctUntilChanged()
             .filter { $0 }
+            .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] _ in
                 self?.dismiss(animated: true, completion: nil)
             })
