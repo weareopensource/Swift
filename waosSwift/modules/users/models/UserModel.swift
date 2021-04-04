@@ -10,10 +10,12 @@ import Validator
 
 struct UserResponse {
     var data: User
+    var policy: UsersPolicy?
 }
 extension UserResponse: Codable {
     enum MeResponseCodingKeys: String, CodingKey {
         case data
+        case policy
     }
 }
 

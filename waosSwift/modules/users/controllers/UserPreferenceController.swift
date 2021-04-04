@@ -16,7 +16,8 @@ class UserPreferenceController: CoreFormController, View {
 
     // MARK: UI
 
-    let barButtonClose = UIBarButtonItem(barButtonSystemItem: .close, target: nil, action: nil)
+    let barButtonCancel = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: nil)
+    let barButtonDone = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: nil)
 
     // inputs
     let switchBackground = SwitchRow {
@@ -43,8 +44,8 @@ class UserPreferenceController: CoreFormController, View {
             +++ Section(header: L10n.userPreferencesSection, footer: "")
             <<< self.switchBackground
 
-        self.navigationController?.clear()
-        self.navigationItem.leftBarButtonItem = self.barButtonClose
+        self.navigationItem.leftBarButtonItem = self.barButtonCancel
+        self.navigationItem.rightBarButtonItem = self.barButtonDone
 
         self.view.addSubview(self.tableView)
     }
@@ -73,7 +74,7 @@ private extension UserPreferenceController {
 
     func bindView(_ reactor: UserPreferenceReactor) {
         // cancel
-        self.barButtonClose.rx.tap
+        self.barButtonCancel.rx.tap
             .subscribe(onNext: { [weak self] _ in
                 guard let `self` = self else { return }
                 self.dismiss(animated: true, completion: nil)
@@ -97,6 +98,12 @@ private extension UserPreferenceController {
     // MARK: actions (View -> Reactor)
 
     func bindAction(_ reactor: UserPreferenceReactor) {
+        // buttons
+        self.barButtonDone.rx.tap
+            .throttle(.milliseconds(Metric.timesButtonsThrottle), latest: false, scheduler: MainScheduler.instance)
+            .map { Reactor.Action.done }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
         // inputs
         self.switchBackground.rx.text
             .filterNil()
@@ -113,8 +120,8 @@ private extension UserPreferenceController {
         reactor.state
             .map { $0.background }
             .distinctUntilChanged()
-            .subscribe(onNext: { _ in
-                self.switchBackground.value = reactor.currentState.background
+            .subscribe(onNext: { background in
+                self.switchBackground.value = background
                 self.switchBackground.updateCell()
             })
             .disposed(by: self.disposeBag)

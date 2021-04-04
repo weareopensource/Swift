@@ -208,7 +208,7 @@ private extension UserController {
             .disposed(by: disposeBag)
         self.buttonPreferences.rx.tap
             .subscribe(onNext: { _ in
-                let viewController = UserPreferenceController(reactor: reactor.preferenceReactor())
+                let viewController = UserPreferenceController(reactor: reactor.preferenceReactor(reactor.currentState.user, reactor.currentState.policy))
                 let navigationController = UINavigationController(rootViewController: viewController)
                 self.present(navigationController, animated: true, completion: nil)
             })
