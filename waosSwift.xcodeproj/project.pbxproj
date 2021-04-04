@@ -174,6 +174,7 @@
 		BFDE2604227B185E008CBD30 /* CoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDE2603227B185E008CBD30 /* CoreService.swift */; };
 		BFE4BB47226CC7BD00739735 /* TasksViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE4BB46226CC7BD00739735 /* TasksViewReactor.swift */; };
 		BFF663B523A8A9CE00BB66CC /* CoreUiRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF663B423A8A9CE00BB66CC /* CoreUiRefreshControl.swift */; };
+		BFFFB7E3261A00F90058369E /* UserPolicyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFFB7E2261A00F90058369E /* UserPolicyModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -356,6 +357,7 @@
 		BFDE2603227B185E008CBD30 /* CoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreService.swift; sourceTree = "<group>"; };
 		BFE4BB46226CC7BD00739735 /* TasksViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewReactor.swift; sourceTree = "<group>"; };
 		BFF663B423A8A9CE00BB66CC /* CoreUiRefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreUiRefreshControl.swift; sourceTree = "<group>"; };
+		BFFFB7E2261A00F90058369E /* UserPolicyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPolicyModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -510,10 +512,10 @@
 		BF10C81B25F78B8C00327730 /* users */ = {
 			isa = PBXGroup;
 			children = (
-				BF10C81C25F78B8C00327730 /* reactors */,
-				BF10C82125F78B8C00327730 /* models */,
 				BF10C82425F78B8C00327730 /* controllers */,
 				BF10C82925F78B8C00327730 /* flows */,
+				BF10C82125F78B8C00327730 /* models */,
+				BF10C81C25F78B8C00327730 /* reactors */,
 				BF10C82B25F78B8C00327730 /* services */,
 			);
 			path = users;
@@ -522,10 +524,10 @@
 		BF10C81C25F78B8C00327730 /* reactors */ = {
 			isa = PBXGroup;
 			children = (
-				BF10C81D25F78B8C00327730 /* UserMoreReactor.swift */,
 				BF10C81E25F78B8C00327730 /* UserReactor.swift */,
-				BF10C81F25F78B8C00327730 /* UserPreferenceReactor.swift */,
 				BF10C82025F78B8C00327730 /* UserViewReactor.swift */,
+				BF10C81F25F78B8C00327730 /* UserPreferenceReactor.swift */,
+				BF10C81D25F78B8C00327730 /* UserMoreReactor.swift */,
 			);
 			path = reactors;
 			sourceTree = "<group>";
@@ -533,8 +535,9 @@
 		BF10C82125F78B8C00327730 /* models */ = {
 			isa = PBXGroup;
 			children = (
-				BF10C82225F78B8C00327730 /* ComplementaryModel.swift */,
 				BF10C82325F78B8C00327730 /* UserModel.swift */,
+				BFFFB7E2261A00F90058369E /* UserPolicyModel.swift */,
+				BF10C82225F78B8C00327730 /* ComplementaryModel.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -542,10 +545,10 @@
 		BF10C82425F78B8C00327730 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BF10C82525F78B8C00327730 /* UserViewController.swift */,
-				BF10C82625F78B8C00327730 /* UserMoreController.swift */,
-				BF10C82725F78B8C00327730 /* UserPreferenceController.swift */,
 				BF10C82825F78B8C00327730 /* UserController.swift */,
+				BF10C82525F78B8C00327730 /* UserViewController.swift */,
+				BF10C82725F78B8C00327730 /* UserPreferenceController.swift */,
+				BF10C82625F78B8C00327730 /* UserMoreController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -1362,6 +1365,7 @@
 				BF7F894D2383F0BB00F98D98 /* UITricks.swift in Sources */,
 				BF49EA0D2362CC2D00FF06E9 /* L10n.swift in Sources */,
 				BF19509622B7CEEB00C593E5 /* Url.swift in Sources */,
+				BFFFB7E3261A00F90058369E /* UserPolicyModel.swift in Sources */,
 				BFDE2600227B053D008CBD30 /* UIViewController+Rx.swift in Sources */,
 				BFCAA24A250A7CFF0065FB69 /* AuthForgotReactor.swift in Sources */,
 				BF794D3A22671CD8000B19F3 /* TasksModel.swift in Sources */,

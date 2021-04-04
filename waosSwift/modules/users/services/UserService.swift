@@ -38,6 +38,7 @@ final class UserService: CoreService, UserServiceType {
             .request(.me)
             .map(UserResponse.self)
             .map { response in
+                self.userSubject.onNext(response.data)
                 return response
             }
             .asObservable()
