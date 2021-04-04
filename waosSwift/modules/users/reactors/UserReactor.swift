@@ -25,6 +25,8 @@ final class UserReactor: Reactor {
     enum Mutation {
         // user
         case set(User)
+        case setPolicy(UsersPolicy?)
+        // work
         case setRefreshing(Bool)
         // default
         case success(String)
@@ -34,12 +36,14 @@ final class UserReactor: Reactor {
     // the current view state
     struct State {
         var user: User
+        var policy: UsersPolicy
         var isRefreshing: Bool
         var error: DisplayError?
         var configuration = config
 
         init() {
             self.user = User()
+            self.policy = UsersPolicy()
             self.isRefreshing = false
         }
     }
@@ -84,7 +88,7 @@ final class UserReactor: Reactor {
                     .me()
                     .map { result in
                         switch result {
-                        case let .success(result): return .set(result.data)
+                        case let .success(response): return .setPolicy(response.policy)
                         case let .error(err): return .error(err)
                         }
                     },
@@ -127,20 +131,25 @@ final class UserReactor: Reactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
-        // refreshing
-        case let .setRefreshing(isRefreshing):
-            log.verbose("♻️ Mutation -> State : setRefreshing")
-            state.error = nil
-            state.isRefreshing = isRefreshing
         // set
         case let .set(user):
             log.verbose("♻️ Mutation -> State : set", user.email)
             state.error = nil
             state.user = user
+        case let .setPolicy(policy):
+            log.verbose("♻️ Mutation -> State : set policy")
+            if policy != nil {
+                state.policy = policy!
+            }
+        // work
+        case let .setRefreshing(isRefreshing):
+            log.verbose("♻️ Mutation -> State : setRefreshing")
+            state.error = nil
+            state.isRefreshing = isRefreshing
+        // default
         case let .success(success):
             log.verbose("♻️ Mutation -> State : succes \(success)")
             state.error = nil
-        // error
         case let .error(error):
             log.verbose("♻️ Mutation -> State : error")
             let _error: DisplayError = getDisplayError(error, self.provider.preferencesService.isLogged)
@@ -156,8 +165,8 @@ final class UserReactor: Reactor {
         return UserViewReactor(provider: self.provider, user: user)
     }
 
-    func preferenceReactor() -> UserPreferenceReactor {
-        return UserPreferenceReactor(provider: self.provider)
+    func preferenceReactor(_ user: User, _ policy: UsersPolicy) -> UserPreferenceReactor {
+        return UserPreferenceReactor(provider: self.provider, user: user, policy: policy)
     }
 
     func pageReactor(name: String) -> HomePageReactor {

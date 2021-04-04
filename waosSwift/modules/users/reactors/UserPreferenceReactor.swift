@@ -16,27 +16,39 @@ final class UserPreferenceReactor: Reactor {
     enum Action {
         // inputs
         case updateBackground(Bool)
+        // work
+        case done
     }
 
     // state changes
     enum Mutation {
         // inputs
         case updateBackground(Bool)
+        // work
         case dismiss
+        // default
         case success(String)
         case error(CustomError)
     }
 
     // the current view state
     struct State {
+        var user: User
+        var policy: UsersPolicy
         var background: Bool
+        // work
         var isDismissed: Bool
+        // default
         var errors: [DisplayError]
         var error: DisplayError?
 
-        init(background: Bool) {
+        init(background: Bool, user: User, policy: UsersPolicy) {
+            self.user = user
+            self.policy = policy
             self.background = background
+            // work
             self.isDismissed = false
+            // default
             self.errors = []
         }
     }
@@ -48,9 +60,9 @@ final class UserPreferenceReactor: Reactor {
 
     // MARK: Initialization
 
-    init(provider: AppServicesProviderType) {
+    init(provider: AppServicesProviderType, user: User, policy: UsersPolicy) {
         self.provider = provider
-        self.initialState = State(background: self.provider.preferencesService.isBackground)
+        self.initialState = State(background: self.provider.preferencesService.isBackground, user: user, policy: policy)
     }
 
     // MARK: Action -> Mutation (mutate() receives an Action and generates an Observable<Mutation>)
@@ -61,6 +73,16 @@ final class UserPreferenceReactor: Reactor {
         case let .updateBackground(background):
             self.provider.preferencesService.isBackground = background
             return .just(.updateBackground(background))
+        // done
+        case .done:
+            return self.provider.userService
+                .update(self.currentState.user)
+                .map { result in
+                    switch result {
+                    case .success: return .dismiss
+                    case let .error(err): return .error(err)
+                    }
+                }
         }
     }
 
