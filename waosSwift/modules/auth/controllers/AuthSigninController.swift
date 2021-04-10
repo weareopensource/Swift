@@ -59,6 +59,7 @@ final class AuthSignInController: CoreController, View, Stepper {
     }
     let buttonSignInApple = ASAuthorizationAppleIDButton().then {
         $0.isHidden = !(config["oAuth"]["apple"].bool ?? false)
+        $0.cornerRadius = Metric.radius
     }
 
     // background
