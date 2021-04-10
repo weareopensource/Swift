@@ -87,6 +87,7 @@ final class AuthForgotController: CoreController, View, Stepper {
         self.view.addSubview(self.labelSuccess)
         // config
         self.view.backgroundColor = Metric.primary
+        self.navigationController?.clear()
     }
 
     override func setupConstraints() {

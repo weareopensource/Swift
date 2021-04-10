@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		BF00138B237427670044C01A /* Eureka.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF00138A237427660044C01A /* Eureka.swift */; };
+		BF01C99B2621935A00143475 /* UIScrollView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01C99A2621935A00143475 /* UIScrollView+Rx.swift */; };
+		BF01C9A12621937800143475 /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF01C9A02621937800143475 /* UIScrollView.swift */; };
 		BF058D772282BCAC00E2A077 /* AuthSigninController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF058D762282BCAC00E2A077 /* AuthSigninController.swift */; };
 		BF058D792282BCB600E2A077 /* AuthFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF058D782282BCB600E2A077 /* AuthFlow.swift */; };
 		BF058D7B2282BCC500E2A077 /* AuthSigninReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF058D7A2282BCC500E2A077 /* AuthSigninReactor.swift */; };
@@ -209,6 +211,8 @@
 
 /* Begin PBXFileReference section */
 		BF00138A237427660044C01A /* Eureka.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eureka.swift; sourceTree = "<group>"; };
+		BF01C99A2621935A00143475 /* UIScrollView+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Rx.swift"; sourceTree = "<group>"; };
+		BF01C9A02621937800143475 /* UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollView.swift; sourceTree = "<group>"; };
 		BF05418D2361964F008628CF /* waosSwift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = waosSwift.entitlements; sourceTree = "<group>"; };
 		BF058D762282BCAC00E2A077 /* AuthSigninController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSigninController.swift; sourceTree = "<group>"; };
 		BF058D782282BCB600E2A077 /* AuthFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlow.swift; sourceTree = "<group>"; };
@@ -755,8 +759,8 @@
 			children = (
 				BF4A2F88225C9AFF0001B4CE /* app */,
 				BF4A2F4F225B7C200001B4CE /* core */,
-				BF058D712282BC5300E2A077 /* auth */,
 				BF4A2F5C225B7C200001B4CE /* onBoarding */,
+				BF058D712282BC5300E2A077 /* auth */,
 				BF4A2F77225BB65E0001B4CE /* tasks */,
 				BF4A2F78225BB6690001B4CE /* secondController */,
 				BF10C81B25F78B8C00327730 /* users */,
@@ -878,6 +882,7 @@
 				BF1D704C245F561100F8EA36 /* Data.swift */,
 				BFBBE1AD2566F4D50067510D /* UIButton.swift */,
 				BFA1E4582587C9FF009210B5 /* UINavigationController.swift */,
+				BF01C9A02621937800143475 /* UIScrollView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1076,6 +1081,7 @@
 				BF62ADA623E45ECC000D5225 /* UIAlertController+Rx.swift */,
 				BFBA338B2403FBB500CF9299 /* UIImageView+Kingfisher.swift */,
 				BF1211B926038C3800C57F1F /* SwiftSpinner+Rx.swift */,
+				BF01C99A2621935A00143475 /* UIScrollView+Rx.swift */,
 			);
 			path = Rx;
 			sourceTree = "<group>";
@@ -1396,6 +1402,7 @@
 				BF4A2F87225C8F160001B4CE /* UILocalizations.swift in Sources */,
 				BF058D7E2282BCDD00E2A077 /* AuthService.swift in Sources */,
 				BF9A3674228DFDAE00EE2AB8 /* TasksResponses.swift in Sources */,
+				BF01C9A12621937800143475 /* UIScrollView.swift in Sources */,
 				BF8C6727227C43E80012B5A8 /* Array+SectionModel.swift in Sources */,
 				BF71BD9322A12A2E002CF9DE /* Validations.swift in Sources */,
 				BF4A2F71225BB2CD0001B4CE /* CoreFlow.swift in Sources */,
@@ -1439,6 +1446,7 @@
 				BF7975042531E8B700B92B0D /* UITextField.swift in Sources */,
 				BF8C672C2280177E0012B5A8 /* UICollectionView+ReusableKit.swift in Sources */,
 				BFA92D2F237C050C006A3B8D /* CoreFormController.swift in Sources */,
+				BF01C99B2621935A00143475 /* UIScrollView+Rx.swift in Sources */,
 				BF5BA0F0251206FA005DCDDD /* ASAuthorizationControllerProxy.swift in Sources */,
 				BFCAA248250A7CE40065FB69 /* AuthForgotController.swift in Sources */,
 				BF00138B237427670044C01A /* Eureka.swift in Sources */,
