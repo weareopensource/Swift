@@ -108,6 +108,7 @@ final class AuthSignUpController: CoreController, View, Stepper {
         self.view.addSubview(self.labelErrors)
         // config
         self.view.backgroundColor = Metric.primary
+        self.navigationController?.clear()
     }
 
     override func setupConstraints() {
