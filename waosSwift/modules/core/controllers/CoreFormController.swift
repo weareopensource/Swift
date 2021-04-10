@@ -38,6 +38,7 @@ class CoreFormController: FormViewController {
         static let tabBarTitle = NSString(string: config["theme"]["tabBar"]["title"].string ?? "").boolValue
         static let tabBarBorder = NSString(string: config["theme"]["tabBar"]["border"].string ?? "").boolValue
         static let imgCompression = CGFloat(config["img"]["compresion"].float ?? 1.0)
+        static let imgMax = CGFloat(config["img"]["max"].float ?? 4096)
         static let margin = CGFloat(config["theme"]["global"]["margin"].int ?? 0)
         static let radius = CGFloat(config["theme"]["global"]["radius"].int ?? 0)
         static let timesButtonsThrottle = Int(config["times"]["buttons"]["throttle"].int ?? 2000)

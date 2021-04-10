@@ -74,6 +74,7 @@
     ],
     "img": {
         "compresion": 0.25,
+        "max": 4096,
         "styles": {
             "blured": 10,
             "overlayFraction": 0.9

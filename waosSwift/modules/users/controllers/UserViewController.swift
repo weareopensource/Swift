@@ -142,7 +142,7 @@ class UserViewController: CoreFormController, View {
             <<< self.inputAvatar.cellUpdate { cell, _ in
                 cell.accessoryView?.layer.cornerRadius = (cell.accessoryView?.frame.height ?? 20)/2
             }.onChange({ (img) in
-                if let aux = img.value?.adjustOrientation() {
+                if let aux = img.value?.adjustOrientation()?.resizeImage(targetSize: CGSize(width: Metric.imgMax, height: Metric.imgMax)) {
                     self.avatar.accept(aux.jpegData(compressionQuality: Metric.imgCompression))
                 } else {
                     self.avatar.accept(nil)
