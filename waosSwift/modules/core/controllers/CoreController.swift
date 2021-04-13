@@ -31,6 +31,7 @@ class CoreController: UIViewController {
         static let timesRefreshData = Int(config["times"]["refresh"]["data"].int ?? 60000)
         static let margin = Int(config["theme"]["global"]["margin"].int ?? 15)
         static let error = UIColor(named: config["theme"]["themes"]["waos"]["error"].string ?? "")
+        static let radius = CGFloat(config["theme"]["global"]["radius"].int ?? 0)
     }
 
     lazy private(set) var className: String = {
