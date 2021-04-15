@@ -228,7 +228,7 @@ private extension AuthSignUpController {
                     mvc.mailComposeDelegate = self
                     mvc.setToRecipients([(config["app"]["mails"]["report"].string ?? "")])
                     mvc.setSubject(L10n.userReport)
-                    mvc.setMessageBody(setMailError(reactor.currentState.error?.source), isHTML: true)
+                    mvc.setMessageBody(setMailError("\(reactor.currentState.error?.title ?? "") \n \(reactor.currentState.error?.description ?? "") \n  \(reactor.currentState.error?.source ?? "")"), isHTML: true)
                     self.present(mvc, animated: true)
                 }
             })
@@ -402,7 +402,7 @@ private extension AuthSignUpController {
             .filterNil()
             .throttle(.milliseconds(Metric.timesButtonsThrottle), latest: false, scheduler: MainScheduler.instance)
             .subscribe(onNext: { error in
-                self.error.configureContent(title: error.title, body: error.description)
+                self.error.configureContent(title: error.title, body: error.description == "" ? error.title : error.description)
                 self.error.button?.isHidden = (error.source != nil && error.code != 401) ? false : true
                 SwiftMessages.hideAll()
                 SwiftMessages.show(config: self.popupConfig, view: self.error)
