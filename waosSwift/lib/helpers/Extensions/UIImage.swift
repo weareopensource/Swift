@@ -27,7 +27,7 @@ extension UIImage {
         guard let cgImage2 = ciContext.createCGImage(resultImage, from: inputImage.extent) else { return self }
         return UIImage(cgImage: cgImage2)
     }
-    
+
     /**
      * @desc lighter image
      * @param {CGFloat} percentage,
@@ -35,7 +35,7 @@ extension UIImage {
     func lighter(by percentage: CGFloat = 30) -> UIImage? {
         return self.adjust(by: abs(percentage) )
     }
-    
+
     /**
      * @desc darker image
      * @param {CGFloat} percentage,
@@ -43,7 +43,7 @@ extension UIImage {
     func darker(by percentage: CGFloat = 30) -> UIImage? {
         return self.adjust(by: -1 * abs(percentage) )
     }
-    
+
     /**
      * @desc adjust image darkness / lightness from coefficient
      * @param {CGFloat} percentage,
@@ -59,7 +59,7 @@ extension UIImage {
         guard let cgImage2 = ciContext.createCGImage(resultImage, from: inputImage.extent) else { return self }
         return UIImage(cgImage: cgImage2)
     }
-    
+
     /**
      * @desc adjust image orientation if needed in exif
      */
@@ -75,7 +75,7 @@ extension UIImage {
             return result
         }
     }
-    
+
     /**
      * @desc resizeImage width max target Size
      */
@@ -85,12 +85,12 @@ extension UIImage {
         let heightRatio = targetSize.height / size.height
         let newSize = widthRatio > heightRatio ?  CGSize(width: size.width * heightRatio, height: size.height * heightRatio) : CGSize(width: size.width * widthRatio, height: size.height * widthRatio)
         let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
-        
+
         UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
         self.draw(in: rect)
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        
+
         return newImage
     }
 }
