@@ -15,14 +15,9 @@
     "yarn": ">=1.13.0"
   },
   "scripts": {
-    "commit": "npx git-cz",
+    "commit": "npx cz",
     "release": "standard-version",
     "release:auto": "npx semantic-release"
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.1",
