@@ -1,3 +1,58 @@
+# [1.1.0](https://github.com/weareopensource/Swift/compare/v1.0.0...v1.1.0) (2021-04-30)
+
+
+### Bug Fixes
+
+* **build:** add version number for appstore publication 🐛 ([52fe994](https://github.com/weareopensource/Swift/commit/52fe9944c78f069c53996a6a06767ea08dc99509))
+* **config:** remote notification warning 🐛 ([3f390ac](https://github.com/weareopensource/Swift/commit/3f390ac86ee4446918b8b817e172d8df78008d24))
+* **config, user:** short debounce on txt change 🐛 ([f44f9af](https://github.com/weareopensource/Swift/commit/f44f9af42bca3ebe9971156808f61428d09bd27b))
+* **core:** fix loader color 🐛 ([7b01044](https://github.com/weareopensource/Swift/commit/7b01044ef8fe2f62ece29224a73363572e2240f6))
+* **core:** missing metric 🐛 ([f911257](https://github.com/weareopensource/Swift/commit/f91125726f2a791be6474bfccf2d2ed2d5c32250))
+* **global:** data refresh logic 🐛 ([0743234](https://github.com/weareopensource/Swift/commit/0743234499bf597a0bf7a7c2ce11c99d7d89d375))
+* **global:** project warning 🐛 ([295608a](https://github.com/weareopensource/Swift/commit/295608a4b35f1ae95a708119939edd338ec56a6c))
+* **global:** protect reentrancy rxswift error 🐛 ([4d517ee](https://github.com/weareopensource/Swift/commit/4d517eeb4ff244a09e650a831b83f5765a4988b8))
+* **helpers, user:** rotation image before upload if needed 🐛 ([c911fee](https://github.com/weareopensource/Swift/commit/c911fee9c7281bf4dff06e553c71f34970e3638e))
+* **home:** changelog url mngt, Pierre's feedback 🐛 ([1db15cf](https://github.com/weareopensource/Swift/commit/1db15cfa90405b9621e5fa29b0296860366a0e47))
+* **home, task, user:** fix data get multi request 🐛 ([88c5519](https://github.com/weareopensource/Swift/commit/88c5519e3ea94d103053da593cc327275f284983))
+* **services:** background default alignment 🐛 ([3d68d6f](https://github.com/weareopensource/Swift/commit/3d68d6f744587aa9adefd9dfe02530ef35343b24))
+* **spm:** rwswift inclusion 🐛 ([7679605](https://github.com/weareopensource/Swift/commit/767960587629f601589686aa9590f9476b51ad5f))
+* **spm:** useless nvactivity 🐛 ([25c8c24](https://github.com/weareopensource/Swift/commit/25c8c240acde26ffa73d1541b42c48413f3d1076))
+* **tasks:** notification opening 🐛 ([b92d5fd](https://github.com/weareopensource/Swift/commit/b92d5fd4c91ec59b73d54671adc02dd1cedc13f7))
+* **travis:** rxswift strict requirement 🐛 ([0d20969](https://github.com/weareopensource/Swift/commit/0d20969ff947ff4cd22cd56a458806134c48657d))
+* **travis:** strict requirement 🐛 ([cb3c3ef](https://github.com/weareopensource/Swift/commit/cb3c3efad50b31bcc2a2c0daf4a570bcaa948ea9))
+* **user:** avatar update 🐛 ([26e3576](https://github.com/weareopensource/Swift/commit/26e3576fecc805151277ea3069c9911d491d2a84))
+* **user:** edition state sync bug on release build 🐛 ([8ee5769](https://github.com/weareopensource/Swift/commit/8ee576975992ed00373f736368a11d46e1bd174c))
+* **user:** fix missing title string in french 🐛 ([d5165ff](https://github.com/weareopensource/Swift/commit/d5165ff51fc44071fd75837ae27fc7b962cf95e5))
+* **user:** icon on dark mode 🐛 ([431d207](https://github.com/weareopensource/Swift/commit/431d207312e18c12a9e01c93874d0ed8f0be31f8))
+* **user:** lowercased social network fix 🐛 ([82306c3](https://github.com/weareopensource/Swift/commit/82306c392645ad3e8aeec688f9dc9ba2855ec6a2))
+* **user:** sign in up forgot colors 🐛 ([4a3762a](https://github.com/weareopensource/Swift/commit/4a3762add57148b9c7b2dec007a29eee77cd1a90))
+* **users:** roles/mail button color fix 🐛 ([1a124af](https://github.com/weareopensource/Swift/commit/1a124afc2a3d5f0aa2cbb21aa521b117e5395d7c))
+
+
+### Features
+
+* **auth:** add progress strength check for sinup password ✨ ([e957dab](https://github.com/weareopensource/Swift/commit/e957dab64b5c8d76be436af842ae17c4b619074f))
+* **auth:** example of custom with background ✨ ([fae51e1](https://github.com/weareopensource/Swift/commit/fae51e10c1a064dffbafa481498b843b9204d9c2))
+* **auth:** password reset option ✨ ([bbb7f2c](https://github.com/weareopensource/Swift/commit/bbb7f2c018f8f20dea41a8164a37f0a0d8dc5b15))
+* **config, auth:** apple oAuth with node stack ✨ ([196cda9](https://github.com/weareopensource/Swift/commit/196cda948e32e4c6c4b28bf9146b5b1dc2bfe7f1))
+* **config, core:** add config option to disable tabbar border ✨ ([99976a7](https://github.com/weareopensource/Swift/commit/99976a7b294adfaff2fdc697b71cf163a0e2a392))
+* **config, lib, core, user:** add social network conf ✨ ([4f5e071](https://github.com/weareopensource/Swift/commit/4f5e071c2f1e1c9b04b6c60fdc2e58b8b34f3d47))
+* **config, user, app:** add device token saved to complementary data ✨ ([6809c4e](https://github.com/weareopensource/Swift/commit/6809c4edfe3d030c553a68a2661687eb0e859df5))
+* **global:** migrate to SPM ✨ ([764f471](https://github.com/weareopensource/Swift/commit/764f4713ef5b01aed8feb5a276a6bd9bdc3f2158))
+* **global:** switch schem to prod as default for quick launch ✨ ([6acfa79](https://github.com/weareopensource/Swift/commit/6acfa797d8d28131b642c8348aeeb71f00a31a8c))
+* **global:** xCode 12, Swift 5, Upgrade all dependencies ✨ ([5184678](https://github.com/weareopensource/Swift/commit/5184678d28fe4e3df2a0d1cc098ffe0e9e469645))
+* **helpers:** add resize image before compression ✨ ([#356](https://github.com/weareopensource/Swift/issues/356)) ([49844c8](https://github.com/weareopensource/Swift/commit/49844c82b165a3e4b0075d10bda17367124fda01))
+* **helpers:** mardown dark theme ✨ ([d83c8ea](https://github.com/weareopensource/Swift/commit/d83c8eae6588fc4d0681540bb3e6589649136ba4))
+* **home, lib, core, user:** add markdown reader page example ✨ ([dd686d5](https://github.com/weareopensource/Swift/commit/dd686d537de6bcb4d8dd7a7156d6683d97dc4703))
+* **home, users, tasks:** set term sign auto detection based on date & page viewer ✨ ([31a9f7c](https://github.com/weareopensource/Swift/commit/31a9f7c4c06bd539a3d919e94946bde01ce6b9f1))
+* **lib:** image quality decision review ✨ ([ff8e782](https://github.com/weareopensource/Swift/commit/ff8e7829aaf6d4f56318187ef46d170ada21d5f0))
+* **services:** add release configuration file ✨ ([54bd1d9](https://github.com/weareopensource/Swift/commit/54bd1d994fac402a59f5cfad6506835962d89af8))
+* **tasks, user, app:** add notification example ✨ ([ef786c4](https://github.com/weareopensource/Swift/commit/ef786c48c4c01739a1af12be5a048b5f1502921f))
+* **users:** add role ✨ ([b0ac894](https://github.com/weareopensource/Swift/commit/b0ac8944af4a51cc8588d91751cdc600c142147d))
+* **users:** add social links & rework section ✨ ([0457dd1](https://github.com/weareopensource/Swift/commit/0457dd1f620a6e5277e8a8bf1311420c01afff1b))
+* **users:** direct link between apps for social networks ✨ ([fea5e1b](https://github.com/weareopensource/Swift/commit/fea5e1bfa05866de3756a2813cd295e09bef8de4))
+* **users,home:** review page design if no action ✨ ([a4e6f2f](https://github.com/weareopensource/Swift/commit/a4e6f2f7ded7ad5c48f0b8d11764a821cd842d4e))
+
 # 1.0.0 (2020-07-25)
 
 
