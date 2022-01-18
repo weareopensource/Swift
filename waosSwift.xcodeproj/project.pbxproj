@@ -46,10 +46,6 @@
 		BF19509622B7CEEB00C593E5 /* Url.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF19509522B7CEEB00C593E5 /* Url.swift */; };
 		BF1D704D245F561100F8EA36 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1D704C245F561100F8EA36 /* Data.swift */; };
 		BF3533002602BBEF005EA507 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = BF3532FF2602BBEF005EA507 /* ReactorKit */; };
-		BF3533052602BD4F005EA507 /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = BF3533042602BD4F005EA507 /* ReactiveMoya */; };
-		BF3533072602BD4F005EA507 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = BF3533062602BD4F005EA507 /* CombineMoya */; };
-		BF3533092602BD4F005EA507 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = BF3533082602BD4F005EA507 /* RxMoya */; };
-		BF35330B2602BD4F005EA507 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = BF35330A2602BD4F005EA507 /* Moya */; };
 		BF3533102602BD78005EA507 /* RxOptional in Frameworks */ = {isa = PBXBuildFile; productRef = BF35330F2602BD78005EA507 /* RxOptional */; };
 		BF3533152602BD97005EA507 /* RxFlow in Frameworks */ = {isa = PBXBuildFile; productRef = BF3533142602BD97005EA507 /* RxFlow */; };
 		BF35331F2602BE6C005EA507 /* CocoaLumberjackSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BF35331E2602BE6C005EA507 /* CocoaLumberjackSwift */; };
@@ -125,6 +121,8 @@
 		BF7975042531E8B700B92B0D /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7975032531E8B700B92B0D /* UITextField.swift */; };
 		BF7DD80625358B1E008BD4C9 /* MarkDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7DD80525358B1E008BD4C9 /* MarkDown.swift */; };
 		BF7F894D2383F0BB00F98D98 /* UITricks.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7F894C2383F0BB00F98D98 /* UITricks.swift */; };
+		BF8A37772775C226001E604E /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = BF8A37762775C226001E604E /* Moya */; };
+		BF8A37792775C226001E604E /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = BF8A37782775C226001E604E /* RxMoya */; };
 		BF8BD5F7235F30660083B912 /* KeyboardConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8BD5F6235F30660083B912 /* KeyboardConstraints.swift */; };
 		BF8C6723227C3E1E0012B5A8 /* TasksCellReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8C6722227C3E1E0012B5A8 /* TasksCellReactor.swift */; };
 		BF8C6725227C3E310012B5A8 /* TasksCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8C6724227C3E310012B5A8 /* TasksCellController.swift */; };
@@ -371,10 +369,9 @@
 			files = (
 				BF3533552602BFE5005EA507 /* Down in Frameworks */,
 				BF3533692602C112005EA507 /* Differentiator in Frameworks */,
+				BF8A37772775C226001E604E /* Moya in Frameworks */,
 				BFDAAD782608903D007CB80C /* RxSwift in Frameworks */,
-				BF3533072602BD4F005EA507 /* CombineMoya in Frameworks */,
 				BF35333F2602BF08005EA507 /* KeychainAccess in Frameworks */,
-				BF35330B2602BD4F005EA507 /* Moya in Frameworks */,
 				BF35331F2602BE6C005EA507 /* CocoaLumberjackSwift in Frameworks */,
 				BF35332B2602BE9D005EA507 /* SwiftyJSON in Frameworks */,
 				BF3533152602BD97005EA507 /* RxFlow in Frameworks */,
@@ -386,12 +383,11 @@
 				BF3533442602BF3A005EA507 /* FontAwesome in Frameworks */,
 				BF3533102602BD78005EA507 /* RxOptional in Frameworks */,
 				BF35336B2602C112005EA507 /* RxDataSources in Frameworks */,
-				BF3533092602BD4F005EA507 /* RxMoya in Frameworks */,
 				BFDAAD7E2608903D007CB80C /* RxCocoa in Frameworks */,
 				BF3533642602C0D7005EA507 /* Validator in Frameworks */,
 				BF35333A2602BEEF005EA507 /* SnapKit in Frameworks */,
 				BF3533352602BED3005EA507 /* RxAppState in Frameworks */,
-				BF3533052602BD4F005EA507 /* ReactiveMoya in Frameworks */,
+				BF8A37792775C226001E604E /* RxMoya in Frameworks */,
 				BFDAAD7C2608903D007CB80C /* RxRelay in Frameworks */,
 				BF3533002602BBEF005EA507 /* ReactorKit in Frameworks */,
 				BF3533302602BEB8005EA507 /* Eureka in Frameworks */,
@@ -1107,10 +1103,6 @@
 			name = waosSwift;
 			packageProductDependencies = (
 				BF3532FF2602BBEF005EA507 /* ReactorKit */,
-				BF3533042602BD4F005EA507 /* ReactiveMoya */,
-				BF3533062602BD4F005EA507 /* CombineMoya */,
-				BF3533082602BD4F005EA507 /* RxMoya */,
-				BF35330A2602BD4F005EA507 /* Moya */,
 				BF35330F2602BD78005EA507 /* RxOptional */,
 				BF3533142602BD97005EA507 /* RxFlow */,
 				BF35331E2602BE6C005EA507 /* CocoaLumberjackSwift */,
@@ -1133,6 +1125,8 @@
 				BFDAAD772608903D007CB80C /* RxSwift */,
 				BFDAAD7B2608903D007CB80C /* RxRelay */,
 				BFDAAD7D2608903D007CB80C /* RxCocoa */,
+				BF8A37762775C226001E604E /* Moya */,
+				BF8A37782775C226001E604E /* RxMoya */,
 			);
 			productName = waosSwift;
 			productReference = BF425480221EBB9700395AE6 /* waosSwift.app */;
@@ -1215,7 +1209,6 @@
 			mainGroup = BF425477221EBB9700395AE6;
 			packageReferences = (
 				BF3532FE2602BBEF005EA507 /* XCRemoteSwiftPackageReference "ReactorKit" */,
-				BF3533032602BD4F005EA507 /* XCRemoteSwiftPackageReference "Moya" */,
 				BF35330E2602BD78005EA507 /* XCRemoteSwiftPackageReference "RxOptional" */,
 				BF3533132602BD97005EA507 /* XCRemoteSwiftPackageReference "RxFlow" */,
 				BF35331D2602BE6C005EA507 /* XCRemoteSwiftPackageReference "CocoaLumberjack" */,
@@ -1234,6 +1227,7 @@
 				BF3533672602C112005EA507 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 				BF1211B426038A7B00C57F1F /* XCRemoteSwiftPackageReference "SwiftSpinner" */,
 				BFDAAD762608903D007CB80C /* XCRemoteSwiftPackageReference "RxSwift" */,
+				BF8A37752775C226001E604E /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			productRefGroup = BF425481221EBB9700395AE6 /* Products */;
 			projectDirPath = "";
@@ -1958,15 +1952,7 @@
 			repositoryURL = "https://github.com/ReactorKit/ReactorKit.git";
 			requirement = {
 				kind = exactVersion;
-				version = 3.0.0;
-			};
-		};
-		BF3533032602BD4F005EA507 /* XCRemoteSwiftPackageReference "Moya" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/PierreBrisorgueil/Moya.git";
-			requirement = {
-				branch = nimblefix;
-				kind = branch;
+				version = 3.1.0;
 			};
 		};
 		BF35330E2602BD78005EA507 /* XCRemoteSwiftPackageReference "RxOptional" */ = {
@@ -1974,7 +1960,7 @@
 			repositoryURL = "https://github.com/RxSwiftCommunity/RxOptional.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.1;
+				minimumVersion = 5.0.4;
 			};
 		};
 		BF3533132602BD97005EA507 /* XCRemoteSwiftPackageReference "RxFlow" */ = {
@@ -1982,7 +1968,7 @@
 			repositoryURL = "https://github.com/RxSwiftCommunity/RxFlow.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.12.0;
+				minimumVersion = 2.12.4;
 			};
 		};
 		BF35331D2602BE6C005EA507 /* XCRemoteSwiftPackageReference "CocoaLumberjack" */ = {
@@ -1990,7 +1976,7 @@
 			repositoryURL = "https://github.com/CocoaLumberjack/CocoaLumberjack.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.7.0;
+				minimumVersion = 3.7.4;
 			};
 		};
 		BF3533242602BE87005EA507 /* XCRemoteSwiftPackageReference "Reusable" */ = {
@@ -1998,7 +1984,7 @@
 			repositoryURL = "https://github.com/AliSoftware/Reusable.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 4.1.1;
+				minimumVersion = 4.1.2;
 			};
 		};
 		BF3533292602BE9D005EA507 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
@@ -2014,7 +2000,7 @@
 			repositoryURL = "https://github.com/xmartlabs/Eureka.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.3.3;
+				minimumVersion = 5.3.4;
 			};
 		};
 		BF3533332602BED3005EA507 /* XCRemoteSwiftPackageReference "RxAppState" */ = {
@@ -2022,7 +2008,7 @@
 			repositoryURL = "https://github.com/pixeldock/RxAppState.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.7.0;
+				minimumVersion = 1.7.1;
 			};
 		};
 		BF3533382602BEEF005EA507 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
@@ -2054,7 +2040,7 @@
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 6.2.1;
+				minimumVersion = 7.1.2;
 			};
 		};
 		BF3533532602BFE5005EA507 /* XCRemoteSwiftPackageReference "Down" */ = {
@@ -2062,7 +2048,7 @@
 			repositoryURL = "https://github.com/iwasrobbed/Down.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.10.0;
+				minimumVersion = 0.11.0;
 			};
 		};
 		BF3533582602C006005EA507 /* XCRemoteSwiftPackageReference "SwiftMessages" */ = {
@@ -2070,7 +2056,7 @@
 			repositoryURL = "https://github.com/SwiftKickMobile/SwiftMessages.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
+				minimumVersion = 9.0.5;
 			};
 		};
 		BF35335D2602C063005EA507 /* XCRemoteSwiftPackageReference "ImageRow" */ = {
@@ -2097,12 +2083,20 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		BF8A37752775C226001E604E /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.0;
+			};
+		};
 		BFDAAD762608903D007CB80C /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 6.1.0;
+				minimumVersion = 6.2.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -2117,26 +2111,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BF3532FE2602BBEF005EA507 /* XCRemoteSwiftPackageReference "ReactorKit" */;
 			productName = ReactorKit;
-		};
-		BF3533042602BD4F005EA507 /* ReactiveMoya */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BF3533032602BD4F005EA507 /* XCRemoteSwiftPackageReference "Moya" */;
-			productName = ReactiveMoya;
-		};
-		BF3533062602BD4F005EA507 /* CombineMoya */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BF3533032602BD4F005EA507 /* XCRemoteSwiftPackageReference "Moya" */;
-			productName = CombineMoya;
-		};
-		BF3533082602BD4F005EA507 /* RxMoya */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BF3533032602BD4F005EA507 /* XCRemoteSwiftPackageReference "Moya" */;
-			productName = RxMoya;
-		};
-		BF35330A2602BD4F005EA507 /* Moya */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BF3533032602BD4F005EA507 /* XCRemoteSwiftPackageReference "Moya" */;
-			productName = Moya;
 		};
 		BF35330F2602BD78005EA507 /* RxOptional */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -2227,6 +2201,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BF3533672602C112005EA507 /* XCRemoteSwiftPackageReference "RxDataSources" */;
 			productName = RxDataSources;
+		};
+		BF8A37762775C226001E604E /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF8A37752775C226001E604E /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		BF8A37782775C226001E604E /* RxMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF8A37752775C226001E604E /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = RxMoya;
 		};
 		BFDAAD772608903D007CB80C /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
