@@ -74,10 +74,16 @@ class CoreController: UIViewController {
 
     override func viewDidLoad() {
         self.view.setNeedsUpdateConstraints()
-        self.navigationController?.navigationBar.barTintColor = Metric.primary
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Metric.onPrimary!]
+        // navigation
+        self.navigationController?.navigationBar.standardAppearance = UINavigationBarAppearance().then {
+            $0.backgroundColor = Metric.primary
+            $0.titleTextAttributes = [.foregroundColor: Metric.onPrimary!]
+        }
+        self.navigationController?.navigationBar.scrollEdgeAppearance = UINavigationBarAppearance().then {
+            $0.backgroundColor = Metric.primary?.withAlphaComponent(0.9)
+            $0.titleTextAttributes = [.foregroundColor: Metric.onPrimary!]
+        }
         self.navigationController?.navigationBar.tintColor = Metric.onPrimary
-        self.navigationController?.navigationBar.shadowImage = UIImage()
         // tabar
         if Metric.tabBarColor == true {
             self.tabBarController?.tabBar.barTintColor = Metric.primary
