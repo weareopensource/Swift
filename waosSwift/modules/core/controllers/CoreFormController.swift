@@ -89,8 +89,14 @@ class CoreFormController: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // navigation
-        self.navigationController?.navigationBar.barTintColor = Metric.primary
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Metric.onPrimary!]
+        self.navigationController?.navigationBar.standardAppearance = UINavigationBarAppearance().then {
+            $0.backgroundColor = Metric.primary
+            $0.titleTextAttributes = [.foregroundColor: Metric.onPrimary!]
+        }
+        self.navigationController?.navigationBar.scrollEdgeAppearance = UINavigationBarAppearance().then {
+            $0.backgroundColor = Metric.primary?.withAlphaComponent(0.9)
+            $0.titleTextAttributes = [.foregroundColor: Metric.onPrimary!]
+        }
         self.navigationController?.navigationBar.tintColor = Metric.onPrimary
         // tabar
         if Metric.tabBarColor == true {

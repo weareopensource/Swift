@@ -20,14 +20,14 @@
     "release:auto": "npx semantic-release"
   },
   "devDependencies": {
-    "@commitlint/cli": "^15.0.0",
-    "@commitlint/config-conventional": "^15.0.0",
+    "@commitlint/cli": "^16.1.0",
+    "@commitlint/config-conventional": "^16.0.0",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/git": "^10.0.1",
     "@weareopensource/conventional-changelog": "^1.7.0",
     "commitizen": "^4.2.4",
     "husky": "^7.0.4",
-    "semantic-release": "^18.0.1",
+    "semantic-release": "^19.0.2",
     "standard-version": "^9.3.2"
   },
   "release": {
