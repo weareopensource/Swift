@@ -60,14 +60,12 @@
 		BF3533492602BF5D005EA507 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = BF3533482602BF5D005EA507 /* Kingfisher */; };
 		BF3533552602BFE5005EA507 /* Down in Frameworks */ = {isa = PBXBuildFile; productRef = BF3533542602BFE5005EA507 /* Down */; };
 		BF35335A2602C006005EA507 /* SwiftMessages in Frameworks */ = {isa = PBXBuildFile; productRef = BF3533592602C006005EA507 /* SwiftMessages */; };
-		BF35335F2602C063005EA507 /* ImageRow in Frameworks */ = {isa = PBXBuildFile; productRef = BF35335E2602C063005EA507 /* ImageRow */; };
 		BF3533642602C0D7005EA507 /* Validator in Frameworks */ = {isa = PBXBuildFile; productRef = BF3533632602C0D7005EA507 /* Validator */; };
-		BF3533692602C112005EA507 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = BF3533682602C112005EA507 /* Differentiator */; };
-		BF35336B2602C112005EA507 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = BF35336A2602C112005EA507 /* RxDataSources */; };
 		BF3B775523608F4400ECD30A /* CoreUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B775423608F4400ECD30A /* CoreUIButton.swift */; };
 		BF3B77572360985700ECD30A /* CoreUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B77562360985700ECD30A /* CoreUILabel.swift */; };
 		BF3B775A2360C01F00ECD30A /* CoreUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B77592360C01F00ECD30A /* CoreUITextField.swift */; };
 		BF3B775C2360C35D00ECD30A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3B775B2360C35D00ECD30A /* UIColor.swift */; };
+		BF3D3D09279BFEB6001C32CC /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = BF3D3D08279BFEB6001C32CC /* RxDataSources */; };
 		BF425484221EBB9700395AE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF425483221EBB9700395AE6 /* AppDelegate.swift */; };
 		BF425486221EBB9700395AE6 /* TasksListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF425485221EBB9700395AE6 /* TasksListController.swift */; };
 		BF425488221EBB9700395AE6 /* SecondController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF425487221EBB9700395AE6 /* SecondController.swift */; };
@@ -119,6 +117,9 @@
 		BF794D51226880FB000B19F3 /* TasksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF794D50226880FB000B19F3 /* TasksService.swift */; };
 		BF794D532269C4FB000B19F3 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF794D522269C4FB000B19F3 /* TasksViewController.swift */; };
 		BF7975042531E8B700B92B0D /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7975032531E8B700B92B0D /* UITextField.swift */; };
+		BF79A1DB279C523E00D15421 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = BF79A1DA279C523E00D15421 /* Moya */; };
+		BF79A1DD279C523E00D15421 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = BF79A1DC279C523E00D15421 /* RxMoya */; };
+		BF79A1E0279C524900D15421 /* ImageRow in Frameworks */ = {isa = PBXBuildFile; productRef = BF79A1DF279C524900D15421 /* ImageRow */; };
 		BF7DD80625358B1E008BD4C9 /* MarkDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7DD80525358B1E008BD4C9 /* MarkDown.swift */; };
 		BF7F894D2383F0BB00F98D98 /* UITricks.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF7F894C2383F0BB00F98D98 /* UITricks.swift */; };
 		BF8A37772775C226001E604E /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = BF8A37762775C226001E604E /* Moya */; };
@@ -368,8 +369,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF3533552602BFE5005EA507 /* Down in Frameworks */,
-				BF3533692602C112005EA507 /* Differentiator in Frameworks */,
-				BF8A37772775C226001E604E /* Moya in Frameworks */,
 				BFDAAD782608903D007CB80C /* RxSwift in Frameworks */,
 				BF35333F2602BF08005EA507 /* KeychainAccess in Frameworks */,
 				BF35331F2602BE6C005EA507 /* CocoaLumberjackSwift in Frameworks */,
@@ -377,17 +376,18 @@
 				BF3533152602BD97005EA507 /* RxFlow in Frameworks */,
 				BF3533212602BE6C005EA507 /* CocoaLumberjack in Frameworks */,
 				BF1211B626038A7B00C57F1F /* SwiftSpinner in Frameworks */,
-				BF35335F2602C063005EA507 /* ImageRow in Frameworks */,
 				BF35335A2602C006005EA507 /* SwiftMessages in Frameworks */,
 				BF3533262602BE88005EA507 /* Reusable in Frameworks */,
 				BF3533442602BF3A005EA507 /* FontAwesome in Frameworks */,
 				BF3533102602BD78005EA507 /* RxOptional in Frameworks */,
-				BF35336B2602C112005EA507 /* RxDataSources in Frameworks */,
 				BFDAAD7E2608903D007CB80C /* RxCocoa in Frameworks */,
+				BF79A1DD279C523E00D15421 /* RxMoya in Frameworks */,
 				BF3533642602C0D7005EA507 /* Validator in Frameworks */,
 				BF35333A2602BEEF005EA507 /* SnapKit in Frameworks */,
+				BF3D3D09279BFEB6001C32CC /* RxDataSources in Frameworks */,
+				BF79A1DB279C523E00D15421 /* Moya in Frameworks */,
 				BF3533352602BED3005EA507 /* RxAppState in Frameworks */,
-				BF8A37792775C226001E604E /* RxMoya in Frameworks */,
+				BF79A1E0279C524900D15421 /* ImageRow in Frameworks */,
 				BFDAAD7C2608903D007CB80C /* RxRelay in Frameworks */,
 				BF3533002602BBEF005EA507 /* ReactorKit in Frameworks */,
 				BF3533302602BEB8005EA507 /* Eureka in Frameworks */,
@@ -1117,16 +1117,15 @@
 				BF3533482602BF5D005EA507 /* Kingfisher */,
 				BF3533542602BFE5005EA507 /* Down */,
 				BF3533592602C006005EA507 /* SwiftMessages */,
-				BF35335E2602C063005EA507 /* ImageRow */,
 				BF3533632602C0D7005EA507 /* Validator */,
-				BF3533682602C112005EA507 /* Differentiator */,
-				BF35336A2602C112005EA507 /* RxDataSources */,
 				BF1211B526038A7B00C57F1F /* SwiftSpinner */,
 				BFDAAD772608903D007CB80C /* RxSwift */,
 				BFDAAD7B2608903D007CB80C /* RxRelay */,
 				BFDAAD7D2608903D007CB80C /* RxCocoa */,
-				BF8A37762775C226001E604E /* Moya */,
-				BF8A37782775C226001E604E /* RxMoya */,
+				BF3D3D08279BFEB6001C32CC /* RxDataSources */,
+				BF79A1DA279C523E00D15421 /* Moya */,
+				BF79A1DC279C523E00D15421 /* RxMoya */,
+				BF79A1DF279C524900D15421 /* ImageRow */,
 			);
 			productName = waosSwift;
 			productReference = BF425480221EBB9700395AE6 /* waosSwift.app */;
@@ -1222,12 +1221,12 @@
 				BF3533472602BF5D005EA507 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				BF3533532602BFE5005EA507 /* XCRemoteSwiftPackageReference "Down" */,
 				BF3533582602C006005EA507 /* XCRemoteSwiftPackageReference "SwiftMessages" */,
-				BF35335D2602C063005EA507 /* XCRemoteSwiftPackageReference "ImageRow" */,
 				BF3533622602C0D7005EA507 /* XCRemoteSwiftPackageReference "Validator" */,
-				BF3533672602C112005EA507 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 				BF1211B426038A7B00C57F1F /* XCRemoteSwiftPackageReference "SwiftSpinner" */,
 				BFDAAD762608903D007CB80C /* XCRemoteSwiftPackageReference "RxSwift" */,
-				BF8A37752775C226001E604E /* XCRemoteSwiftPackageReference "Moya" */,
+				BF3D3D07279BFEB6001C32CC /* XCRemoteSwiftPackageReference "RxDataSources" */,
+				BF79A1D9279C523E00D15421 /* XCRemoteSwiftPackageReference "Moya" */,
+				BF79A1DE279C524900D15421 /* XCRemoteSwiftPackageReference "ImageRow" */,
 			);
 			productRefGroup = BF425481221EBB9700395AE6 /* Products */;
 			projectDirPath = "";
@@ -1652,6 +1651,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensoruce.vue.testing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1678,6 +1679,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensoruce.vue.testing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1849,6 +1852,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.weareopensoruce.vue.testing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1952,7 +1957,7 @@
 			repositoryURL = "https://github.com/ReactorKit/ReactorKit.git";
 			requirement = {
 				kind = exactVersion;
-				version = 3.1.0;
+				version = 3.2.0;
 			};
 		};
 		BF35330E2602BD78005EA507 /* XCRemoteSwiftPackageReference "RxOptional" */ = {
@@ -2056,15 +2061,7 @@
 			repositoryURL = "https://github.com/SwiftKickMobile/SwiftMessages.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.5;
-			};
-		};
-		BF35335D2602C063005EA507 /* XCRemoteSwiftPackageReference "ImageRow" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/EurekaCommunity/ImageRow.git";
-			requirement = {
-				branch = master;
-				kind = branch;
+				minimumVersion = 9.0.6;
 			};
 		};
 		BF3533622602C0D7005EA507 /* XCRemoteSwiftPackageReference "Validator" */ = {
@@ -2075,12 +2072,28 @@
 				kind = branch;
 			};
 		};
-		BF3533672602C112005EA507 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+		BF3D3D07279BFEB6001C32CC /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/thedavidharris/RxDataSources.git";
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				minimumVersion = 5.0.2;
+			};
+		};
+		BF79A1D9279C523E00D15421 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		BF79A1DE279C524900D15421 /* XCRemoteSwiftPackageReference "ImageRow" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/EurekaCommunity/ImageRow.git";
+			requirement = {
+				branch = master;
+				kind = branch;
 			};
 		};
 		BF8A37752775C226001E604E /* XCRemoteSwiftPackageReference "Moya" */ = {
@@ -2096,7 +2109,7 @@
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 6.2.0;
+				minimumVersion = 6.5.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -2182,25 +2195,30 @@
 			package = BF3533582602C006005EA507 /* XCRemoteSwiftPackageReference "SwiftMessages" */;
 			productName = SwiftMessages;
 		};
-		BF35335E2602C063005EA507 /* ImageRow */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BF35335D2602C063005EA507 /* XCRemoteSwiftPackageReference "ImageRow" */;
-			productName = ImageRow;
-		};
 		BF3533632602C0D7005EA507 /* Validator */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BF3533622602C0D7005EA507 /* XCRemoteSwiftPackageReference "Validator" */;
 			productName = Validator;
 		};
-		BF3533682602C112005EA507 /* Differentiator */ = {
+		BF3D3D08279BFEB6001C32CC /* RxDataSources */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = BF3533672602C112005EA507 /* XCRemoteSwiftPackageReference "RxDataSources" */;
-			productName = Differentiator;
-		};
-		BF35336A2602C112005EA507 /* RxDataSources */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BF3533672602C112005EA507 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			package = BF3D3D07279BFEB6001C32CC /* XCRemoteSwiftPackageReference "RxDataSources" */;
 			productName = RxDataSources;
+		};
+		BF79A1DA279C523E00D15421 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF79A1D9279C523E00D15421 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		BF79A1DC279C523E00D15421 /* RxMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF79A1D9279C523E00D15421 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = RxMoya;
+		};
+		BF79A1DF279C524900D15421 /* ImageRow */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF79A1DE279C524900D15421 /* XCRemoteSwiftPackageReference "ImageRow" */;
+			productName = ImageRow;
 		};
 		BF8A37762775C226001E604E /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;
