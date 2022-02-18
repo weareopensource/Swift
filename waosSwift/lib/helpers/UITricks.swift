@@ -9,10 +9,11 @@ import UIKit
  */
 
 /**
-* @desc make circular view, must be called in override func layoutSubviews
-* @param {UIView} _view,
+* @desc make CircleUIButton
 */
-func makeCircular(_ view: UIView) {
-    view.layer.cornerRadius = view.bounds.size.width / 2.0
-    view.clipsToBounds = true
+class CircleUIButton: UIButton {
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layer.cornerRadius = bounds.height / 2
+    }
 }
