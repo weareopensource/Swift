@@ -30,6 +30,7 @@ class CoreFormController: FormViewController {
         static let twitter = UIColor(named: config["theme"]["themes"]["waos"]["twitter"].string ?? "")
         static let linkedin = UIColor(named: config["theme"]["themes"]["waos"]["linkedin"].string ?? "")
         static let facebook = UIColor(named: config["theme"]["themes"]["waos"]["facebook"].string ?? "")
+        static let navigationBarShadow = NSString(string: config["theme"]["navigationBar"]["shadow"].string ?? "").boolValue
         static let tableViewRowHeight = CGFloat(config["theme"]["tableView"]["rowHeight"].int ?? 0)
         static let tableViewSectionHeaderHeight = CGFloat(config["theme"]["tableView"]["sectionHeaderHeight"].int ?? 0)
         static let tableViewSectionFooterHeight = CGFloat(config["theme"]["tableView"]["sectionFooterHeight"].int ?? 0)
@@ -93,9 +94,15 @@ class CoreFormController: FormViewController {
             $0.backgroundColor = Metric.primary
             $0.titleTextAttributes = [.foregroundColor: Metric.onPrimary!]
         }
+        if Metric.navigationBarShadow == false {
+            self.navigationController?.navigationBar.standardAppearance.shadowColor = .clear
+        }
         self.navigationController?.navigationBar.scrollEdgeAppearance = UINavigationBarAppearance().then {
             $0.backgroundColor = Metric.primary?.withAlphaComponent(0.9)
             $0.titleTextAttributes = [.foregroundColor: Metric.onPrimary!]
+        }
+        if Metric.navigationBarShadow == false {
+            self.navigationController?.navigationBar.scrollEdgeAppearance?.shadowColor = .clear
         }
         self.navigationController?.navigationBar.tintColor = Metric.onPrimary
         // tabar

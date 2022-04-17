@@ -101,6 +101,9 @@
             "radius": 5,
             "margin": 15,
         },
+        "navigationBar": {
+            "shadow": "false",
+        },
         "tableView": {
             "rowHeight": 60,
             "sectionFooterHeight": 25,
