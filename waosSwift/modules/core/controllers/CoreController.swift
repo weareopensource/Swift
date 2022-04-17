@@ -22,6 +22,7 @@ class CoreController: UIViewController {
         static let secondary = UIColor(named: config["theme"]["themes"]["waos"]["secondary"].string ?? "")
         static let background = UIColor(named: config["theme"]["themes"]["waos"]["background"].string ?? "")
         static let onBackground = UIColor(named: config["theme"]["themes"]["waos"]["onBackground"].string ?? "")
+        static let navigationBarShadow = NSString(string: config["theme"]["navigationBar"]["shadow"].string ?? "").boolValue
         static let tabBarColor = NSString(string: config["theme"]["tabBar"]["color"].string ?? "").boolValue
         static let tabBarTintColor = NSString(string: config["theme"]["tabBar"]["tintColor"].string ?? "").boolValue
         static let tabBarTitle = NSString(string: config["theme"]["tabBar"]["title"].string ?? "").boolValue
@@ -79,9 +80,15 @@ class CoreController: UIViewController {
             $0.backgroundColor = Metric.primary
             $0.titleTextAttributes = [.foregroundColor: Metric.onPrimary!]
         }
+        if Metric.navigationBarShadow == false {
+            self.navigationController?.navigationBar.standardAppearance.shadowColor = .clear
+        }
         self.navigationController?.navigationBar.scrollEdgeAppearance = UINavigationBarAppearance().then {
             $0.backgroundColor = Metric.primary?.withAlphaComponent(0.9)
             $0.titleTextAttributes = [.foregroundColor: Metric.onPrimary!]
+        }
+        if Metric.navigationBarShadow == false {
+            self.navigationController?.navigationBar.scrollEdgeAppearance?.shadowColor = .clear
         }
         self.navigationController?.navigationBar.tintColor = Metric.onPrimary
         // tabar
