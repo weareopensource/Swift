@@ -42,6 +42,9 @@ class HomeTermsController: CoreController, View {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.standardAppearance = self.clearNavigationBar
+        self.navigationController?.navigationBar.scrollEdgeAppearance = self.clearNavigationBar
+        
         self.view.addSubview(self.webView)
         self.view.addSubview(self.buttonAccept)
     }

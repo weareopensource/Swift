@@ -40,7 +40,12 @@ class CoreController: UIViewController {
     }()
 
     // MARK: UI
-
+    
+    let clearNavigationBar = UINavigationBarAppearance().then {
+        $0.backgroundColor = .clear
+        $0.titleTextAttributes = [.foregroundColor: Metric.onPrimary!]
+    }
+    
     let error = MessageView.viewFromNib(layout: .cardView).then {
         $0.configureTheme(.error, iconStyle: .subtle)
         $0.backgroundView.backgroundColor = Metric.error?.withAlphaComponent(CGFloat(config["theme"]["popup"]["alpha"].float ?? 0.9))
@@ -80,15 +85,14 @@ class CoreController: UIViewController {
             $0.backgroundColor = Metric.primary
             $0.titleTextAttributes = [.foregroundColor: Metric.onPrimary!]
         }
-        if Metric.navigationBarShadow == false {
-            self.navigationController?.navigationBar.standardAppearance.shadowColor = .clear
-        }
         self.navigationController?.navigationBar.scrollEdgeAppearance = UINavigationBarAppearance().then {
             $0.backgroundColor = Metric.primary?.withAlphaComponent(0.9)
             $0.titleTextAttributes = [.foregroundColor: Metric.onPrimary!]
         }
         if Metric.navigationBarShadow == false {
             self.navigationController?.navigationBar.scrollEdgeAppearance?.shadowColor = .clear
+            self.navigationController?.navigationBar.standardAppearance.shadowColor = .clear
+            self.clearNavigationBar.shadowColor = .clear
         }
         self.navigationController?.navigationBar.tintColor = Metric.onPrimary
         // tabar
