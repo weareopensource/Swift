@@ -28,7 +28,7 @@
     "commitizen": "^4.2.4",
     "husky": "^7.0.4",
     "semantic-release": "^19.0.2",
-    "standard-version": "^9.3.2"
+    "standard-version": "^9.5.0"
   },
   "release": {
     "branches": [
