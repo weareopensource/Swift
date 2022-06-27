@@ -20,6 +20,8 @@ final class AuthSignUpController: CoreController, View, Stepper {
 
     // MARK: UI
 
+    let barButtonClose = UIBarButtonItem(barButtonSystemItem: .close, target: nil, action: nil)
+    
     let inputFirstName = CoreUITextField().then {
         $0.autocorrectionType = .no
         $0.setFontAwesomeIcon("fa-user")
@@ -50,9 +52,6 @@ final class AuthSignUpController: CoreController, View, Stepper {
         $0.setProgress(0, animated: true)
     }
 
-    let buttonSignin = CoreUIButton().then {
-        $0.setTitle(L10n.authSignInTitle, for: .normal)
-    }
     let buttonSignup = CoreUIButton().then {
         $0.setTitle(L10n.authSignUpTitle, for: .normal)
         $0.setTitleColor(Metric.secondary, for: .normal)
@@ -66,12 +65,8 @@ final class AuthSignUpController: CoreController, View, Stepper {
     // background
     let backgroundImage = UIImageView().then {
         $0.contentMode = .scaleToFill
-        $0.alpha = 1
         $0.image = UIImage(named: "authBackground")
         $0.alpha = 0.4
-    }
-    let backgroundView = UIView().then {
-        $0.backgroundColor = .clear
     }
 
     // MARK: Properties
@@ -93,9 +88,11 @@ final class AuthSignUpController: CoreController, View, Stepper {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // navigation
+        self.navigationController?.navigationBar.standardAppearance = self.transparentNavigationBar
+        self.navigationController?.navigationBar.scrollEdgeAppearance = self.transparentNavigationBar
         // background
         self.view.addSubview(self.backgroundImage)
-        self.view.addSubview(self.backgroundView)
         // content
         self.view.registerAutomaticKeyboardConstraints() // active layout with snapkit
         self.view.addSubview(self.inputFirstName)
@@ -103,12 +100,12 @@ final class AuthSignUpController: CoreController, View, Stepper {
         self.view.addSubview(self.inputEmail)
         self.view.addSubview(self.inputPassword)
         self.view.addSubview(self.progressPassword)
-        self.view.addSubview(self.buttonSignin)
         self.view.addSubview(self.buttonSignup)
         self.view.addSubview(self.labelErrors)
         // config
-        self.view.backgroundColor = Metric.primary
         self.navigationController?.clear()
+        self.view.backgroundColor = Metric.primary
+        self.navigationItem.rightBarButtonItem = self.barButtonClose
     }
 
     override func setupConstraints() {
@@ -163,21 +160,12 @@ final class AuthSignUpController: CoreController, View, Stepper {
         }
 
         buttonSignup.snp.makeConstraints { (make) -> Void in
-            make.width.equalTo(140)
+            make.width.equalTo(300)
             make.height.equalTo(50)
-            make.centerX.equalTo(self.view).offset(80)
+            make.centerX.equalTo(self.view)
             make.centerY.equalTo(self.view).offset(140).keyboard(false, in: self.view)
         }
         buttonSignup.snp.prepareConstraints { (make) -> Void in
-            make.centerY.equalTo(self.view).offset(40).keyboard(true, in: self.view)
-        }
-        buttonSignin.snp.makeConstraints { (make) -> Void in
-            make.width.equalTo(140)
-            make.height.equalTo(50)
-            make.centerX.equalTo(self.view).offset(-80)
-            make.centerY.equalTo(self.view).offset(140).keyboard(false, in: self.view)
-        }
-        buttonSignin.snp.prepareConstraints { (make) -> Void in
             make.centerY.equalTo(self.view).offset(40).keyboard(true, in: self.view)
         }
         labelErrors.snp.makeConstraints {  (make) -> Void in
@@ -190,11 +178,6 @@ final class AuthSignUpController: CoreController, View, Stepper {
             make.centerY.equalTo(self.view).offset(60).keyboard(true, in: self.view)
         }
         // background
-        self.backgroundView.snp.makeConstraints { make in
-            make.bottom.equalTo(self.view)
-            make.width.equalTo(self.view)
-            make.height.equalTo(self.view.snp.width)
-        }
         self.backgroundImage.snp.makeConstraints { make in
             make.top.equalTo(self.view)
             make.centerX.equalTo(self.view)
@@ -220,6 +203,13 @@ private extension AuthSignUpController {
     // MARK: views (View -> View)
 
     func bindView(_ reactor: AuthSignUpReactor) {
+        // cancel
+        self.barButtonClose.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                guard let `self` = self else { return }
+                self.dismiss(animated: true, completion: nil)
+            })
+            .disposed(by: self.disposeBag)
         // error
         self.error.button?.rx.tap
             .subscribe(onNext: { _ in
@@ -238,11 +228,6 @@ private extension AuthSignUpController {
     // MARK: actions (View -> Reactor)
 
     func bindAction(_ reactor: AuthSignUpReactor) {
-        // button signin
-        buttonSignin.rx.tap
-            .map { _ in Reactor.Action.signIn }
-            .bind(to: reactor.action)
-            .disposed(by: self.disposeBag)
         // button signup
         buttonSignup.rx.tap
             .throttle(.milliseconds(Metric.timesButtonsThrottle), latest: false, scheduler: MainScheduler.instance)

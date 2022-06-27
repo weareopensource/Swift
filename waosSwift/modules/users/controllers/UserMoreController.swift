@@ -57,8 +57,8 @@ class UserMoreController: CoreFormController, View {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.standardAppearance = self.clearNavigationBar
-        self.navigationController?.navigationBar.scrollEdgeAppearance = self.clearNavigationBar
+        self.navigationController?.navigationBar.standardAppearance = self.transparentNavigationBar
+        self.navigationController?.navigationBar.scrollEdgeAppearance = self.transparentNavigationBar
         
         form
             +++ Section(header: L10n.userSectionAbout, footer: "")
@@ -68,8 +68,7 @@ class UserMoreController: CoreFormController, View {
             <<< self.buttonLegalNotice
 
         self.navigationController?.clear()
-        self.navigationItem.leftBarButtonItem = self.barButtonClose
-
+        self.navigationItem.rightBarButtonItem = self.barButtonClose
         self.view.addSubview(self.tableView)
     }
 

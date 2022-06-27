@@ -18,6 +18,8 @@ final class AuthForgotController: CoreController, View, Stepper {
     var width: CGFloat = 0
 
     // MARK: UI
+    
+    let barButtonClose = UIBarButtonItem(barButtonSystemItem: .close, target: nil, action: nil)
 
     let inputEmail = CoreUITextField().then {
         $0.autocorrectionType = .no
@@ -30,9 +32,6 @@ final class AuthForgotController: CoreController, View, Stepper {
     let buttonReset = CoreUIButton().then {
         $0.setTitle(L10n.authReset, for: .normal)
         $0.setTitleColor(Metric.secondary, for: .normal)
-    }
-    let buttonSignin = CoreUIButton().then {
-        $0.setTitle(L10n.authSignInTitle, for: .normal)
     }
     let labelErrors = CoreUILabel().then {
         $0.numberOfLines = 4
@@ -48,12 +47,8 @@ final class AuthForgotController: CoreController, View, Stepper {
     // background
     let backgroundImage = UIImageView().then {
         $0.contentMode = .scaleToFill
-        $0.alpha = 1
         $0.image = UIImage(named: "authBackground")
         $0.alpha = 0.4
-    }
-    let backgroundView = UIView().then {
-        $0.backgroundColor = .clear
     }
 
     // MARK: Properties
@@ -75,19 +70,21 @@ final class AuthForgotController: CoreController, View, Stepper {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // navigation
+        self.navigationController?.navigationBar.standardAppearance = self.transparentNavigationBar
+        self.navigationController?.navigationBar.scrollEdgeAppearance = self.transparentNavigationBar
         // background
         self.view.addSubview(self.backgroundImage)
-        self.view.addSubview(self.backgroundView)
         // content
         self.view.registerAutomaticKeyboardConstraints() // active layout with snapkit
         self.view.addSubview(self.inputEmail)
         self.view.addSubview(self.buttonReset)
-        self.view.addSubview(self.buttonSignin)
         self.view.addSubview(self.labelErrors)
         self.view.addSubview(self.labelSuccess)
         // config
-        self.view.backgroundColor = Metric.primary
         self.navigationController?.clear()
+        self.view.backgroundColor = Metric.primary
+        self.navigationItem.rightBarButtonItem = self.barButtonClose
     }
 
     override func setupConstraints() {
@@ -111,19 +108,11 @@ final class AuthForgotController: CoreController, View, Stepper {
         inputEmail.snp.prepareConstraints { (make) -> Void in
             make.centerY.equalTo(self.view).offset(-130).keyboard(true, in: self.view)
         }
-        buttonSignin.snp.makeConstraints { (make) -> Void in
-            make.width.equalTo(140)
-            make.height.equalTo(50)
-            make.centerX.equalTo(self.view).offset(-80)
-            make.centerY.equalTo(self.view).offset(30).keyboard(false, in: self.view)
-        }
-        buttonSignin.snp.prepareConstraints { (make) -> Void in
-            make.centerY.equalTo(self.view).offset(-70).keyboard(true, in: self.view)
-        }
         buttonReset.snp.makeConstraints { (make) -> Void in
-            make.width.equalTo(140)
+            make.width.equalTo(300)
+
             make.height.equalTo(50)
-            make.centerX.equalTo(self.view).offset(80)
+            make.centerX.equalTo(self.view)
             make.centerY.equalTo(self.view).offset(30).keyboard(false, in: self.view)
         }
         buttonReset.snp.prepareConstraints { (make) -> Void in
@@ -139,11 +128,6 @@ final class AuthForgotController: CoreController, View, Stepper {
             make.centerY.equalTo(self.view).offset(20).keyboard(true, in: self.view)
         }
         // background
-        self.backgroundView.snp.makeConstraints { make in
-            make.bottom.equalTo(self.view)
-            make.width.equalTo(self.view)
-            make.height.equalTo(self.view.snp.width)
-        }
         self.backgroundImage.snp.makeConstraints { make in
             make.top.equalTo(self.view)
             make.centerX.equalTo(self.view)
@@ -169,6 +153,13 @@ private extension AuthForgotController {
     // MARK: views (View -> View)
 
     func bindView(_ reactor: AuthForgotReactor) {
+        // cancel
+        self.barButtonClose.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                guard let `self` = self else { return }
+                self.dismiss(animated: true, completion: nil)
+            })
+            .disposed(by: self.disposeBag)
         // error
         self.error.button?.rx.tap
             .subscribe(onNext: { _ in
@@ -191,11 +182,6 @@ private extension AuthForgotController {
         buttonReset.rx.tap
             .throttle(.milliseconds(Metric.timesButtonsThrottle), latest: false, scheduler: MainScheduler.instance)
             .map { _ in Reactor.Action.reset }
-            .bind(to: reactor.action)
-            .disposed(by: self.disposeBag)
-        // button signin
-        buttonSignin.rx.tap
-            .map { _ in Reactor.Action.signIn }
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         // form
@@ -244,15 +230,6 @@ private extension AuthForgotController {
             .debounce(.milliseconds(2000), scheduler: MainScheduler.instance)
             .subscribe(onNext: { success in
                 self.labelSuccess.text = success
-            })
-            .disposed(by: self.disposeBag)
-        reactor.state
-            .map { $0.success }
-            .filter { $0 != "" && $0 != "email" }
-            .distinctUntilChanged()
-            .debounce(.milliseconds(7000), scheduler: MainScheduler.instance)
-            .subscribe(onNext: { _ in
-                self.buttonSignin.sendActions(for: .touchUpInside)
             })
             .disposed(by: self.disposeBag)
         // validation errors

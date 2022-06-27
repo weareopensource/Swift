@@ -65,12 +65,8 @@ final class AuthSignInController: CoreController, View, Stepper {
     // background
     let backgroundImage = UIImageView().then {
         $0.contentMode = .scaleToFill
-        $0.alpha = 1
         $0.image = UIImage(named: "authBackground")
         $0.alpha = 0.4
-    }
-    let backgroundView = UIView().then {
-        $0.backgroundColor = .clear
     }
 
     // MARK: Properties
@@ -92,9 +88,11 @@ final class AuthSignInController: CoreController, View, Stepper {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // navigation
+        self.navigationController?.navigationBar.standardAppearance = self.transparentNavigationBar
+        self.navigationController?.navigationBar.scrollEdgeAppearance = self.transparentNavigationBar
         // background
         self.view.addSubview(self.backgroundImage)
-        self.view.addSubview(self.backgroundView)
         // content
         self.view.registerAutomaticKeyboardConstraints() // active layout with snapkit
         self.view.addSubview(self.inputEmail)
@@ -106,7 +104,6 @@ final class AuthSignInController: CoreController, View, Stepper {
         self.view.addSubview(self.buttonSignInApple)
         // config
         self.view.backgroundColor = Metric.primary
-        self.navigationController?.navigationBar.isHidden = true
     }
 
     override func setupConstraints() {
@@ -177,11 +174,6 @@ final class AuthSignInController: CoreController, View, Stepper {
             make.bottom.equalTo(self.view).offset(-25)
         }
         // background
-        self.backgroundView.snp.makeConstraints { make in
-            make.bottom.equalTo(self.view)
-            make.width.equalTo(self.view)
-            make.height.equalTo(self.view.snp.width)
-        }
         self.backgroundImage.snp.makeConstraints { make in
             make.top.equalTo(self.view)
             make.centerX.equalTo(self.view)
@@ -224,7 +216,6 @@ private extension AuthSignInController {
             .subscribe(onNext: { [weak self] reactor in
                 guard let `self` = self else { return }
                 let viewController = AuthForgotController(reactor: reactor)
-                viewController.title = L10n.authForgot
                 let navigationController = UINavigationController(rootViewController: viewController)
                 self.present(navigationController, animated: true, completion: nil)
             })
