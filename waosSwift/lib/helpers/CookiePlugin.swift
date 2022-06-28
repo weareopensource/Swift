@@ -49,13 +49,15 @@ struct CookieStorager {
         guard let cookie = httpReq.allHeaderFields["Set-Cookie"] as? String else {
             return false
         }
-        do {
-            try keychain.set(cookie, key: "Cookie")
-            return true
-        } catch let error {
-            print(error)
-            return false
+        if(cookie.contains("TOKEN")) {
+            do {
+                try keychain.set(cookie, key: "Cookie")
+            } catch let error {
+                print(error)
+                return false
+            }
         }
+        return false
     }
 }
 
