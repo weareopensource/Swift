@@ -23,10 +23,10 @@ final class AuthForgotController: CoreController, View, Stepper {
 
     let inputEmail = CoreUITextField().then {
         $0.autocorrectionType = .no
-        $0.setFontAwesomeIcon("fa-envelope")
         $0.placeholder = L10n.authMail + "..."
         $0.autocapitalizationType = .none
         $0.textContentType = .username
+        $0.icon="fa-envelope"
         //$0.text = "test@waos.me"
     }
     let buttonReset = CoreUIButton().then {
@@ -89,6 +89,13 @@ final class AuthForgotController: CoreController, View, Stepper {
 
     override func setupConstraints() {
         self.width = self.view.frame.width
+        // errors
+        labelErrors.snp.makeConstraints {  (make) -> Void in
+            make.width.equalTo(300)
+            make.height.equalTo(50)
+            make.centerX.equalTo(self.view)
+            make.bottom.equalTo(self.inputEmail.snp.top).offset(-10)
+        }
         // inputs
         labelSuccess.snp.makeConstraints { (make) -> Void in
             make.left.equalTo(25)
@@ -117,15 +124,6 @@ final class AuthForgotController: CoreController, View, Stepper {
         }
         buttonReset.snp.prepareConstraints { (make) -> Void in
             make.centerY.equalTo(self.view).offset(-70).keyboard(true, in: self.view)
-        }
-        labelErrors.snp.makeConstraints {  (make) -> Void in
-            make.left.equalTo(25)
-            make.right.equalTo(-25)
-            make.centerX.equalTo(self.view)
-            make.centerY.equalTo(self.view).offset(120).keyboard(false, in: self.view)
-        }
-        labelErrors.snp.prepareConstraints {  (make) -> Void in
-            make.centerY.equalTo(self.view).offset(20).keyboard(true, in: self.view)
         }
         // background
         self.backgroundImage.snp.makeConstraints { make in
@@ -234,23 +232,18 @@ private extension AuthForgotController {
             .disposed(by: self.disposeBag)
         // validation errors
         reactor.state
-            .map { $0.errors }
-            .filter { $0.count > 0 }
-            .distinctUntilChanged { $0.count == $1.count }
-            .subscribe(onNext: { errors in
-                self.error.configureContent(title: "Schema", body: errors.map { "\($0.description)." }.joined(separator: "\n"))
-                self.error.button?.isHidden = true
-                SwiftMessages.show(config: self.popupConfig, view: self.error)
-            })
-            .disposed(by: self.disposeBag)
-        reactor.state
             .map { $0.errors.count }
             .distinctUntilChanged()
-            .subscribe(onNext: { _ in
-                if reactor.currentState.errors.firstIndex(where: { $0.title ==  "\(User.Validators.email)" }) != nil {
-                    self.inputEmail.layer.borderWidth = 1.0
+            .subscribe(onNext: { count in
+                if(count > 0) {
+                    self.labelErrors.text = reactor.currentState.errors.first?.description
                 } else {
-                    self.inputEmail.layer.borderWidth = 0
+                    self.labelErrors.text = ""
+                }
+                if reactor.currentState.errors.firstIndex(where: { $0.title ==  "\(User.Validators.email)" }) != nil {
+                    self.inputEmail.error()
+                } else {
+                    self.inputEmail.valid()
                 }
             })
             .disposed(by: self.disposeBag)

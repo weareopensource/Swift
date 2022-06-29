@@ -10,6 +10,12 @@ import FontAwesome
  */
 
 extension UITextField {
+    // MARK: Constants
+
+    struct Metric {
+        static let error = UIColor(named: config["theme"]["themes"]["waos"]["error"].string ?? "")
+    }
+    
     /**
     * @desc set left font awesome icon on
     * @param {String} icon code,
@@ -28,5 +34,4 @@ extension UITextField {
         leftView = outerView
         leftViewMode = .always
     }
-
 }

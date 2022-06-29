@@ -24,29 +24,29 @@ final class AuthSignUpController: CoreController, View, Stepper {
     
     let inputFirstName = CoreUITextField().then {
         $0.autocorrectionType = .no
-        $0.setFontAwesomeIcon("fa-user")
         $0.placeholder = L10n.authFirstname + "..."
+        $0.icon="fa-user"
     }
     let inputLastName = CoreUITextField().then {
         $0.autocorrectionType = .no
-        $0.setFontAwesomeIcon("fa-user")
         $0.placeholder = L10n.authLastname + "..."
+        $0.icon="fa-user"
     }
     let inputEmail = CoreUITextField().then {
         $0.autocorrectionType = .no
-        $0.setFontAwesomeIcon("fa-envelope")
         $0.placeholder = L10n.authMail + "..."
         $0.autocapitalizationType = .none
         $0.textContentType = .username
+        $0.icon="fa-envelope"
     }
     let inputPassword = CoreUITextField().then {
         $0.autocorrectionType = .no
-        $0.setFontAwesomeIcon("fa-key")
         $0.placeholder = L10n.authPassword + "..."
         $0.autocapitalizationType = .none
         $0.returnKeyType = .done
         $0.isSecureTextEntry = true
         $0.textContentType = .password
+        $0.icon="fa-key"
     }
     let progressPassword = UIProgressView().then {
         $0.setProgress(0, animated: true)
@@ -57,9 +57,9 @@ final class AuthSignUpController: CoreController, View, Stepper {
         $0.setTitleColor(Metric.secondary, for: .normal)
     }
     let labelErrors = CoreUILabel().then {
-        $0.numberOfLines = 5
+        $0.numberOfLines = 2
         $0.textAlignment = .center
-        $0.textColor = UIColor.red
+        $0.textColor = Metric.onPrimary
     }
 
     // background
@@ -110,6 +110,13 @@ final class AuthSignUpController: CoreController, View, Stepper {
 
     override func setupConstraints() {
         self.width = self.view.frame.width
+        // errors
+        labelErrors.snp.makeConstraints {  (make) -> Void in
+            make.width.equalTo(300)
+            make.height.equalTo(50)
+            make.centerX.equalTo(self.view)
+            make.bottom.equalTo(self.inputFirstName.snp.top).offset(-10)
+        }
         // inputs
         inputFirstName.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(300)
@@ -138,7 +145,6 @@ final class AuthSignUpController: CoreController, View, Stepper {
         inputEmail.snp.prepareConstraints { (make) -> Void in
             make.centerY.equalTo(self.view).offset(-100).keyboard(true, in: self.view)
         }
-
         inputPassword.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(300)
             make.height.equalTo(50)
@@ -148,7 +154,6 @@ final class AuthSignUpController: CoreController, View, Stepper {
         inputPassword.snp.prepareConstraints { (make) -> Void in
             make.centerY.equalTo(self.view).offset(-40).keyboard(true, in: self.view)
         }
-
         progressPassword.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(300)
             make.height.equalTo(5)
@@ -158,7 +163,7 @@ final class AuthSignUpController: CoreController, View, Stepper {
         progressPassword.snp.prepareConstraints { (make) -> Void in
             make.centerY.equalTo(self.view).offset(-5).keyboard(true, in: self.view)
         }
-
+        // buttons
         buttonSignup.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(300)
             make.height.equalTo(50)
@@ -167,15 +172,6 @@ final class AuthSignUpController: CoreController, View, Stepper {
         }
         buttonSignup.snp.prepareConstraints { (make) -> Void in
             make.centerY.equalTo(self.view).offset(40).keyboard(true, in: self.view)
-        }
-        labelErrors.snp.makeConstraints {  (make) -> Void in
-            make.left.equalTo(25)
-            make.right.equalTo(-25)
-            make.centerX.equalTo(self.view)
-            make.centerY.equalTo(self.view).offset(160).keyboard(false, in: self.view)
-        }
-        labelErrors.snp.prepareConstraints { (make) -> Void in
-            make.centerY.equalTo(self.view).offset(60).keyboard(true, in: self.view)
         }
         // background
         self.backgroundImage.snp.makeConstraints { make in
@@ -333,39 +329,33 @@ private extension AuthSignUpController {
             .disposed(by: self.disposeBag)
         // validation errors
         reactor.state
-            .map { $0.errors }
-            .filter { $0.count > 0 }
-            .distinctUntilChanged { $0.count == $1.count }
-            .subscribe(onNext: { errors in
-                self.error.configureContent(title: "Schema", body: errors.map { "\($0.description)." }.joined(separator: "\n"))
-                self.error.button?.isHidden = true
-                SwiftMessages.hideAll()
-                SwiftMessages.show(config: self.popupConfig, view: self.error)
-            })
-            .disposed(by: self.disposeBag)
-        reactor.state
             .map { $0.errors.count }
             .distinctUntilChanged()
-            .subscribe(onNext: { _ in
-                if reactor.currentState.errors.firstIndex(where: { $0.title == "\(User.Validators.firstname)" }) != nil {
-                    self.inputFirstName.layer.borderWidth = 1.0
+            .subscribe(onNext: { count in
+                if(count > 0) {
+                    self.labelErrors.text = reactor.currentState.errors.first?.description
                 } else {
-                    self.inputFirstName.layer.borderWidth = 0
+                    self.labelErrors.text = ""
+                }
+                if reactor.currentState.errors.firstIndex(where: { $0.title == "\(User.Validators.firstname)" }) != nil {
+                    self.inputFirstName.error()
+                } else {
+                    self.inputFirstName.valid()
                 }
                 if reactor.currentState.errors.firstIndex(where: { $0.title ==  "\(User.Validators.lastname)" }) != nil {
-                    self.inputLastName.layer.borderWidth = 1.0
+                    self.inputLastName.error()
                 } else {
-                    self.inputLastName.layer.borderWidth = 0
+                    self.inputLastName.valid()
                 }
                 if reactor.currentState.errors.firstIndex(where: { $0.title ==  "\(User.Validators.email)" }) != nil {
-                    self.inputEmail.layer.borderWidth = 1.0
+                    self.inputEmail.error()
                 } else {
-                    self.inputEmail.layer.borderWidth = 0
+                    self.inputEmail.valid()
                 }
                 if reactor.currentState.errors.firstIndex(where: { $0.title ==  "\(User.Validators.password)" }) != nil {
-                    self.inputPassword.layer.borderWidth = 1.0
+                    self.inputPassword.error()
                 } else {
-                    self.inputPassword.layer.borderWidth = 0
+                    self.inputPassword.valid()
                 }
             })
             .disposed(by: self.disposeBag)
