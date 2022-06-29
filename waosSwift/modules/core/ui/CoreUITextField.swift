@@ -12,6 +12,7 @@ import UIKit
 
     // MARK: Constants
 
+    var icon: String = ""
     struct Metric {
         static let surface = UIColor(named: config["theme"]["themes"]["waos"]["surface"].string ?? "")
         static let error = UIColor(named: config["theme"]["themes"]["waos"]["error"].string ?? "")
@@ -33,7 +34,13 @@ import UIKit
         super.prepareForInterfaceBuilder()
         shared()
     }
-
+    
+    override func didMoveToSuperview() {
+        if(self.icon != "") {
+            self.setFontAwesomeIcon(self.icon)
+        }
+    }
+    
     func shared() {
         self.backgroundColor = Metric.surface
         self.borderStyle = .none
@@ -42,6 +49,16 @@ import UIKit
         self.layer.cornerRadius = Metric.radius
         // prepare for error
         self.layer.borderColor = Metric.error?.withAlphaComponent(0.75).cgColor
+    }
+    
+    public func error() {
+        self.layer.borderWidth = 1.0
+        self.setFontAwesomeIcon(icon, Metric.error?.lighter() ?? .red)
+    }
+    
+    public func valid() {
+        self.layer.borderWidth = 0
+        self.setFontAwesomeIcon(icon, .gray)
     }
 
 }
