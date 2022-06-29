@@ -34,7 +34,7 @@
 "auth_firstname"= "Prénom";
 "auth_lastname"= "Nom";
 "auth_forgot"= "Mot de passe oublié?";
-"auth_reset"= "Reset";
+"auth_reset"= "Reset du mot de passe";
 
 // task
 "tasks_title"= "Tasks";

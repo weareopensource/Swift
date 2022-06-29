@@ -30,6 +30,7 @@ class CoreFormController: FormViewController {
         static let twitter = UIColor(named: config["theme"]["themes"]["waos"]["twitter"].string ?? "")
         static let linkedin = UIColor(named: config["theme"]["themes"]["waos"]["linkedin"].string ?? "")
         static let facebook = UIColor(named: config["theme"]["themes"]["waos"]["facebook"].string ?? "")
+        static let navigationBarTransparent = NSString(string: config["theme"]["navigationBar"]["transparent"].string ?? "").boolValue
         static let navigationBarShadow = NSString(string: config["theme"]["navigationBar"]["shadow"].string ?? "").boolValue
         static let tableViewRowHeight = CGFloat(config["theme"]["tableView"]["rowHeight"].int ?? 0)
         static let tableViewSectionHeaderHeight = CGFloat(config["theme"]["tableView"]["sectionHeaderHeight"].int ?? 0)
@@ -55,8 +56,13 @@ class CoreFormController: FormViewController {
 
     // MARK: UI
 
-    let clearNavigationBar = UINavigationBarAppearance().then {
-        $0.backgroundColor = .clear
+    let transparentNavigationBar = UINavigationBarAppearance().then {
+        $0.configureWithTransparentBackground()
+        $0.titleTextAttributes = [.foregroundColor: Metric.onPrimary!]
+    }
+    let defaultNavigationBar = UINavigationBarAppearance().then {
+        $0.configureWithDefaultBackground()
+        $0.backgroundColor = Metric.primary
         $0.titleTextAttributes = [.foregroundColor: Metric.onPrimary!]
     }
     
@@ -95,18 +101,17 @@ class CoreFormController: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // navigation
-        self.navigationController?.navigationBar.standardAppearance = UINavigationBarAppearance().then {
-            $0.backgroundColor = Metric.primary
-            $0.titleTextAttributes = [.foregroundColor: Metric.onPrimary!]
-        }
-        self.navigationController?.navigationBar.scrollEdgeAppearance = UINavigationBarAppearance().then {
-            $0.backgroundColor = Metric.primary?.withAlphaComponent(0.9)
-            $0.titleTextAttributes = [.foregroundColor: Metric.onPrimary!]
+        if Metric.navigationBarTransparent == true {
+            self.navigationController?.navigationBar.standardAppearance = self.transparentNavigationBar
+            self.navigationController?.navigationBar.scrollEdgeAppearance = self.transparentNavigationBar
+        } else {
+            self.navigationController?.navigationBar.standardAppearance = self.defaultNavigationBar
+            self.navigationController?.navigationBar.scrollEdgeAppearance = self.defaultNavigationBar
         }
         if Metric.navigationBarShadow == false {
             self.navigationController?.navigationBar.scrollEdgeAppearance?.shadowColor = .clear
             self.navigationController?.navigationBar.standardAppearance.shadowColor = .clear
-            self.clearNavigationBar.shadowColor = .clear
+            self.transparentNavigationBar.shadowColor = .clear
         }
         self.navigationController?.navigationBar.tintColor = Metric.onPrimary
         // tabar

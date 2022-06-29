@@ -40,7 +40,6 @@ final class AuthFlow: Flow {
     private func navigateToAuthScreen() -> FlowContributors {
         let reactor = AuthSigninReactor(provider: self.services)
         let viewController = AuthSignInController(reactor: reactor)
-        viewController.title = L10n.authSignInTitle
         self.rootViewController.pushViewController(viewController, animated: false)
         return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: viewController))
 
