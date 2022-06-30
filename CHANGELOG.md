@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/weareopensource/Swift/compare/v1.2.0...v1.3.0) (2022-06-30)
+
+
+### Features
+
+* **global:** upgrade dependencies ✨ ([#451](https://github.com/weareopensource/Swift/issues/451)) ([99a008f](https://github.com/weareopensource/Swift/commit/99a008fbc9e8c24ce47efe59c2819dcc51a7e366))
+
 # [1.2.0](https://github.com/weareopensource/Swift/compare/v1.1.0...v1.2.0) (2022-06-30)
 
 ### Bug Fixes
