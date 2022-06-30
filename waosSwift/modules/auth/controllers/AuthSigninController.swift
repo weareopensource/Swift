@@ -129,39 +129,29 @@ final class AuthSignInController: CoreController, View, Stepper {
             make.width.equalTo(300)
             make.height.equalTo(50)
             make.centerX.equalTo(self.view)
-            make.centerY.equalTo(self.view).keyboard(false, in: self.view)
-        }
-        inputPassword.snp.prepareConstraints { (make) -> Void in
-            make.centerY.equalTo(self.view).offset(-100).keyboard(true, in: self.view)
+            make.top.equalTo(self.inputEmail.snp.bottom).offset(10)
         }
         // buttons
         buttonSignup.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(140)
             make.height.equalTo(50)
             make.centerX.equalTo(self.view).offset(-80)
-            make.centerY.equalTo(self.view).offset(60).keyboard(false, in: self.view)
-        }
-        buttonSignup.snp.prepareConstraints { (make) -> Void in
-            make.centerY.equalTo(self.view).offset(-40).keyboard(true, in: self.view)
+            make.top.equalTo(self.inputPassword.snp.bottom).offset(10)
         }
         buttonSignin.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(140)
             make.height.equalTo(50)
             make.centerX.equalTo(self.view).offset(80)
-            make.centerY.equalTo(self.view).offset(60).keyboard(false, in: self.view)
-        }
-        buttonSignin.snp.prepareConstraints { (make) -> Void in
-            make.centerY.equalTo(self.view).offset(-40).keyboard(true, in: self.view)
+            make.top.equalTo(self.inputPassword.snp.bottom).offset(10)
         }
         buttonSignInApple.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(300)
             make.height.equalTo(50)
             make.centerX.equalTo(self.view).keyboard(false, in: self.view)
-            make.centerY.equalTo(self.view).offset(140).keyboard(false, in: self.view)
+            make.top.equalTo(self.buttonSignin.snp.bottom).offset(20)
         }
         buttonSignInApple.snp.prepareConstraints { (make) -> Void in
             make.right.equalTo(self.view.snp.left).keyboard(true, in: self.view)
-            make.centerY.equalTo(self.view).offset(65).keyboard(true, in: self.view)
         }
         // forgot
         buttonForgot.snp.makeConstraints {  (make) -> Void in

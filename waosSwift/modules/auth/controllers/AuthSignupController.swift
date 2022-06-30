@@ -122,56 +122,41 @@ final class AuthSignUpController: CoreController, View, Stepper {
             make.width.equalTo(300)
             make.height.equalTo(50)
             make.centerX.equalTo(self.view)
-            make.centerY.equalTo(self.view).offset(-120).keyboard(false, in: self.view)
+            make.centerY.equalTo(self.view).offset(-140).keyboard(false, in: self.view)
         }
         inputFirstName.snp.prepareConstraints { (make) -> Void in
-            make.centerY.equalTo(self.view).offset(-220).keyboard(true, in: self.view)
+            make.centerY.equalTo(self.view).offset(-240).keyboard(true, in: self.view)
         }
         inputLastName.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(300)
             make.height.equalTo(50)
             make.centerX.equalTo(self.view)
-            make.centerY.equalTo(self.view).offset(-60).keyboard(false, in: self.view)
-        }
-        inputLastName.snp.prepareConstraints { (make) -> Void in
-            make.centerY.equalTo(self.view).offset(-160).keyboard(true, in: self.view)
+            make.top.equalTo(self.inputFirstName.snp.bottom).offset(10)
         }
         inputEmail.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(300)
             make.height.equalTo(50)
             make.centerX.equalTo(self.view)
-            make.centerY.equalTo(self.view).offset(0).keyboard(false, in: self.view)
-        }
-        inputEmail.snp.prepareConstraints { (make) -> Void in
-            make.centerY.equalTo(self.view).offset(-100).keyboard(true, in: self.view)
+            make.top.equalTo(self.inputLastName.snp.bottom).offset(10)
         }
         inputPassword.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(300)
             make.height.equalTo(50)
             make.centerX.equalTo(self.view)
-            make.centerY.equalTo(self.view).offset(60).keyboard(false, in: self.view)
-        }
-        inputPassword.snp.prepareConstraints { (make) -> Void in
-            make.centerY.equalTo(self.view).offset(-40).keyboard(true, in: self.view)
+            make.top.equalTo(self.inputEmail.snp.bottom).offset(10)
         }
         progressPassword.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(300)
             make.height.equalTo(5)
             make.centerX.equalTo(self.view)
-            make.centerY.equalTo(self.view).offset(95).keyboard(false, in: self.view)
-        }
-        progressPassword.snp.prepareConstraints { (make) -> Void in
-            make.centerY.equalTo(self.view).offset(-5).keyboard(true, in: self.view)
+            make.top.equalTo(self.inputPassword.snp.bottom).offset(10)
         }
         // buttons
         buttonSignup.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(300)
             make.height.equalTo(50)
             make.centerX.equalTo(self.view)
-            make.centerY.equalTo(self.view).offset(140).keyboard(false, in: self.view)
-        }
-        buttonSignup.snp.prepareConstraints { (make) -> Void in
-            make.centerY.equalTo(self.view).offset(40).keyboard(true, in: self.view)
+            make.top.equalTo(self.progressPassword.snp.bottom).offset(10)
         }
         // background
         self.backgroundImage.snp.makeConstraints { make in

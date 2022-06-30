@@ -34,9 +34,9 @@ final class AuthForgotController: CoreController, View, Stepper {
         $0.setTitleColor(Metric.secondary, for: .normal)
     }
     let labelErrors = CoreUILabel().then {
-        $0.numberOfLines = 4
+        $0.numberOfLines = 2
         $0.textAlignment = .center
-        $0.textColor = UIColor.red
+        $0.textColor = Metric.onPrimary
     }
     let labelSuccess = CoreUILabel().then {
         $0.numberOfLines = 2
@@ -101,10 +101,7 @@ final class AuthForgotController: CoreController, View, Stepper {
             make.left.equalTo(25)
             make.right.equalTo(-25)
             make.centerX.equalTo(self.view)
-            make.centerY.equalTo(self.view).offset(-90).keyboard(false, in: self.view)
-        }
-        labelSuccess.snp.prepareConstraints { (make) -> Void in
-            make.centerY.equalTo(self.view).offset(-190).keyboard(true, in: self.view)
+            make.bottom.equalTo(self.inputEmail.snp.top).offset(-10)
         }
         inputEmail.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(300)
@@ -117,13 +114,9 @@ final class AuthForgotController: CoreController, View, Stepper {
         }
         buttonReset.snp.makeConstraints { (make) -> Void in
             make.width.equalTo(300)
-
             make.height.equalTo(50)
             make.centerX.equalTo(self.view)
-            make.centerY.equalTo(self.view).offset(30).keyboard(false, in: self.view)
-        }
-        buttonReset.snp.prepareConstraints { (make) -> Void in
-            make.centerY.equalTo(self.view).offset(-70).keyboard(true, in: self.view)
+            make.top.equalTo(self.inputEmail.snp.bottom).offset(10)
         }
         // background
         self.backgroundImage.snp.makeConstraints { make in
