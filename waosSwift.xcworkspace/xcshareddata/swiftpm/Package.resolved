@@ -1,223 +1,221 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "Alamofire",
-        "repositoryURL": "https://github.com/Alamofire/Alamofire.git",
-        "state": {
-          "branch": null,
-          "revision": "f82c23a8a7ef8dc1a49a8bfc6a96883e79121864",
-          "version": "5.5.0"
-        }
-      },
-      {
-        "package": "CocoaLumberjack",
-        "repositoryURL": "https://github.com/CocoaLumberjack/CocoaLumberjack.git",
-        "state": {
-          "branch": null,
-          "revision": "80ada1f753b0d53d9b57c465936a7c4169375002",
-          "version": "3.7.4"
-        }
-      },
-      {
-        "package": "Down",
-        "repositoryURL": "https://github.com/iwasrobbed/Down.git",
-        "state": {
-          "branch": null,
-          "revision": "f34b166be1f1db4aa8f573067e901d72f2a6be57",
-          "version": "0.11.0"
-        }
-      },
-      {
-        "package": "Eureka",
-        "repositoryURL": "https://github.com/xmartlabs/Eureka.git",
-        "state": {
-          "branch": null,
-          "revision": "975e8d5e0ea3c86aff828537b2d4abe4430d6312",
-          "version": "5.3.4"
-        }
-      },
-      {
-        "package": "FontAwesome",
-        "repositoryURL": "https://github.com/thii/FontAwesome.swift.git",
-        "state": {
-          "branch": null,
-          "revision": "07883a32d49dfc7bdedbeea115067b53dfbeeb43",
-          "version": "1.9.1"
-        }
-      },
-      {
-        "package": "ImageRow",
-        "repositoryURL": "https://github.com/EurekaCommunity/ImageRow.git",
-        "state": {
-          "branch": "master",
-          "revision": "9e87f2c15b1567f836da09377d97abbf6eca2529",
-          "version": null
-        }
-      },
-      {
-        "package": "KeychainAccess",
-        "repositoryURL": "https://github.com/kishikawakatsumi/KeychainAccess.git",
-        "state": {
-          "branch": null,
-          "revision": "84e546727d66f1adc5439debad16270d0fdd04e7",
-          "version": "4.2.2"
-        }
-      },
-      {
-        "package": "Kingfisher",
-        "repositoryURL": "https://github.com/onevcat/Kingfisher.git",
-        "state": {
-          "branch": null,
-          "revision": "0c02c46cfdc0656ce74fd0963a75e5000a0b7f23",
-          "version": "7.1.2"
-        }
-      },
-      {
-        "package": "Moya",
-        "repositoryURL": "https://github.com/Moya/Moya.git",
-        "state": {
-          "branch": "master",
-          "revision": "6959c4440315a6dcf7227ed70728c2c3d5eb28ee",
-          "version": null
-        }
-      },
-      {
-        "package": "ReactiveSwift",
-        "repositoryURL": "https://github.com/ReactiveCocoa/ReactiveSwift.git",
-        "state": {
-          "branch": null,
-          "revision": "c43bae3dac73fdd3cb906bd5a1914686ca71ed3c",
-          "version": "6.7.0"
-        }
-      },
-      {
-        "package": "ReactorKit",
-        "repositoryURL": "https://github.com/ReactorKit/ReactorKit.git",
-        "state": {
-          "branch": null,
-          "revision": "8fa33f09c6f6621a2aa536d739956d53b84dd139",
-          "version": "3.2.0"
-        }
-      },
-      {
-        "package": "Reusable",
-        "repositoryURL": "https://github.com/AliSoftware/Reusable.git",
-        "state": {
-          "branch": null,
-          "revision": "18674709421360e210c2ecd4e8e08b217d4ea61d",
-          "version": "4.1.2"
-        }
-      },
-      {
-        "package": "RxAppState",
-        "repositoryURL": "https://github.com/pixeldock/RxAppState.git",
-        "state": {
-          "branch": null,
-          "revision": "956f438ea16481c1bd9a8ca3bc169af7435aaf0b",
-          "version": "1.7.1"
-        }
-      },
-      {
-        "package": "RxDataSources",
-        "repositoryURL": "https://github.com/RxSwiftCommunity/RxDataSources.git",
-        "state": {
-          "branch": null,
-          "revision": "90c29b48b628479097fe775ed1966d75ac374518",
-          "version": "5.0.2"
-        }
-      },
-      {
-        "package": "RxFlow",
-        "repositoryURL": "https://github.com/RxSwiftCommunity/RxFlow.git",
-        "state": {
-          "branch": null,
-          "revision": "8114d4781b9c5de693ed225cfb28ca3b695b023a",
-          "version": "2.12.4"
-        }
-      },
-      {
-        "package": "RxOptional",
-        "repositoryURL": "https://github.com/RxSwiftCommunity/RxOptional.git",
-        "state": {
-          "branch": null,
-          "revision": "f116ec9c727a76e92fabc1724bb7f57e4772402f",
-          "version": "5.0.4"
-        }
-      },
-      {
-        "package": "RxSwift",
-        "repositoryURL": "https://github.com/ReactiveX/RxSwift.git",
-        "state": {
-          "branch": null,
-          "revision": "b4307ba0b6425c0ba4178e138799946c3da594f8",
-          "version": "6.5.0"
-        }
-      },
-      {
-        "package": "SnapKit",
-        "repositoryURL": "https://github.com/SnapKit/SnapKit.git",
-        "state": {
-          "branch": null,
-          "revision": "d458564516e5676af9c70b4f4b2a9178294f1bc6",
-          "version": "5.0.1"
-        }
-      },
-      {
-        "package": "swift-log",
-        "repositoryURL": "https://github.com/apple/swift-log.git",
-        "state": {
-          "branch": null,
-          "revision": "5d66f7ba25daf4f94100e7022febf3c75e37a6c7",
-          "version": "1.4.2"
-        }
-      },
-      {
-        "package": "SwiftMessages",
-        "repositoryURL": "https://github.com/SwiftKickMobile/SwiftMessages.git",
-        "state": {
-          "branch": null,
-          "revision": "b29dd21090b708aa0ae9ecbaf6e2d0487028dc3f",
-          "version": "9.0.6"
-        }
-      },
-      {
-        "package": "SwiftSpinner",
-        "repositoryURL": "https://github.com/icanzilb/SwiftSpinner",
-        "state": {
-          "branch": null,
-          "revision": "f6cfeb6f1780571bdef8bdaf924ccdb573d23e33",
-          "version": "2.2.0"
-        }
-      },
-      {
-        "package": "SwiftyJSON",
-        "repositoryURL": "https://github.com/SwiftyJSON/SwiftyJSON.git",
-        "state": {
-          "branch": null,
-          "revision": "2b6054efa051565954e1d2b9da831680026cd768",
-          "version": "5.0.0"
-        }
-      },
-      {
-        "package": "Validator",
-        "repositoryURL": "https://github.com/adamwaite/Validator.git",
-        "state": {
-          "branch": "master",
-          "revision": "8dacfee6a28b1b8ffe3aa082b0647328dde454d7",
-          "version": null
-        }
-      },
-      {
-        "package": "WeakMapTable",
-        "repositoryURL": "https://github.com/ReactorKit/WeakMapTable.git",
-        "state": {
-          "branch": null,
-          "revision": "9580560169b4b48ba2affe7badba6a7f360495f4",
-          "version": "1.2.0"
-        }
+  "pins" : [
+    {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire.git",
+      "state" : {
+        "revision" : "f82c23a8a7ef8dc1a49a8bfc6a96883e79121864",
+        "version" : "5.5.0"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "cocoalumberjack",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/CocoaLumberjack/CocoaLumberjack.git",
+      "state" : {
+        "revision" : "80ada1f753b0d53d9b57c465936a7c4169375002",
+        "version" : "3.7.4"
+      }
+    },
+    {
+      "identity" : "down",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/iwasrobbed/Down.git",
+      "state" : {
+        "revision" : "f34b166be1f1db4aa8f573067e901d72f2a6be57",
+        "version" : "0.11.0"
+      }
+    },
+    {
+      "identity" : "eureka",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/xmartlabs/Eureka.git",
+      "state" : {
+        "revision" : "a7523afdfe38478c6d5706a8ac01d26590835493",
+        "version" : "5.3.6"
+      }
+    },
+    {
+      "identity" : "fontawesome.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/thii/FontAwesome.swift.git",
+      "state" : {
+        "revision" : "07883a32d49dfc7bdedbeea115067b53dfbeeb43",
+        "version" : "1.9.1"
+      }
+    },
+    {
+      "identity" : "imagerow",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/EurekaCommunity/ImageRow.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "9e87f2c15b1567f836da09377d97abbf6eca2529"
+      }
+    },
+    {
+      "identity" : "keychainaccess",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kishikawakatsumi/KeychainAccess.git",
+      "state" : {
+        "revision" : "84e546727d66f1adc5439debad16270d0fdd04e7",
+        "version" : "4.2.2"
+      }
+    },
+    {
+      "identity" : "kingfisher",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onevcat/Kingfisher.git",
+      "state" : {
+        "revision" : "022e4eeb79f817748544b318b991d9a70036bbf8",
+        "version" : "7.2.4"
+      }
+    },
+    {
+      "identity" : "moya",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Moya/Moya.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "6959c4440315a6dcf7227ed70728c2c3d5eb28ee"
+      }
+    },
+    {
+      "identity" : "reactiveswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ReactiveCocoa/ReactiveSwift.git",
+      "state" : {
+        "revision" : "c43bae3dac73fdd3cb906bd5a1914686ca71ed3c",
+        "version" : "6.7.0"
+      }
+    },
+    {
+      "identity" : "reactorkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ReactorKit/ReactorKit.git",
+      "state" : {
+        "revision" : "8fa33f09c6f6621a2aa536d739956d53b84dd139",
+        "version" : "3.2.0"
+      }
+    },
+    {
+      "identity" : "reusable",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AliSoftware/Reusable.git",
+      "state" : {
+        "revision" : "18674709421360e210c2ecd4e8e08b217d4ea61d",
+        "version" : "4.1.2"
+      }
+    },
+    {
+      "identity" : "rxappstate",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pixeldock/RxAppState.git",
+      "state" : {
+        "revision" : "956f438ea16481c1bd9a8ca3bc169af7435aaf0b",
+        "version" : "1.7.1"
+      }
+    },
+    {
+      "identity" : "rxdatasources",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/RxSwiftCommunity/RxDataSources.git",
+      "state" : {
+        "revision" : "90c29b48b628479097fe775ed1966d75ac374518",
+        "version" : "5.0.2"
+      }
+    },
+    {
+      "identity" : "rxflow",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/RxSwiftCommunity/RxFlow.git",
+      "state" : {
+        "revision" : "d8d4e53d05239f1ec1bd8bec173907868afa0fa1",
+        "version" : "2.13.0"
+      }
+    },
+    {
+      "identity" : "rxoptional",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/RxSwiftCommunity/RxOptional.git",
+      "state" : {
+        "revision" : "10820dd92601e8cf7b71c763fc7a1cf4d1bb14f5",
+        "version" : "5.0.5"
+      }
+    },
+    {
+      "identity" : "rxswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ReactiveX/RxSwift.git",
+      "state" : {
+        "revision" : "b4307ba0b6425c0ba4178e138799946c3da594f8",
+        "version" : "6.5.0"
+      }
+    },
+    {
+      "identity" : "snapkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SnapKit/SnapKit.git",
+      "state" : {
+        "revision" : "f222cbdf325885926566172f6f5f06af95473158",
+        "version" : "5.6.0"
+      }
+    },
+    {
+      "identity" : "swift-log",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-log.git",
+      "state" : {
+        "revision" : "5d66f7ba25daf4f94100e7022febf3c75e37a6c7",
+        "version" : "1.4.2"
+      }
+    },
+    {
+      "identity" : "swiftmessages",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwiftKickMobile/SwiftMessages.git",
+      "state" : {
+        "revision" : "b29dd21090b708aa0ae9ecbaf6e2d0487028dc3f",
+        "version" : "9.0.6"
+      }
+    },
+    {
+      "identity" : "swiftspinner",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/icanzilb/SwiftSpinner",
+      "state" : {
+        "revision" : "f6cfeb6f1780571bdef8bdaf924ccdb573d23e33",
+        "version" : "2.2.0"
+      }
+    },
+    {
+      "identity" : "swiftyjson",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwiftyJSON/SwiftyJSON.git",
+      "state" : {
+        "revision" : "2b6054efa051565954e1d2b9da831680026cd768",
+        "version" : "5.0.0"
+      }
+    },
+    {
+      "identity" : "validator",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/adamwaite/Validator.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "8dacfee6a28b1b8ffe3aa082b0647328dde454d7"
+      }
+    },
+    {
+      "identity" : "weakmaptable",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ReactorKit/WeakMapTable.git",
+      "state" : {
+        "revision" : "9580560169b4b48ba2affe7badba6a7f360495f4",
+        "version" : "1.2.0"
+      }
+    }
+  ],
+  "version" : 2
 }
