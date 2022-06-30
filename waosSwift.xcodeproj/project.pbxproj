@@ -1963,7 +1963,7 @@
 			repositoryURL = "https://github.com/RxSwiftCommunity/RxOptional.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.4;
+				minimumVersion = 5.0.5;
 			};
 		};
 		BF3533132602BD97005EA507 /* XCRemoteSwiftPackageReference "RxFlow" */ = {
@@ -1971,7 +1971,7 @@
 			repositoryURL = "https://github.com/RxSwiftCommunity/RxFlow.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.12.4;
+				minimumVersion = 2.13.0;
 			};
 		};
 		BF35331D2602BE6C005EA507 /* XCRemoteSwiftPackageReference "CocoaLumberjack" */ = {
@@ -2003,7 +2003,7 @@
 			repositoryURL = "https://github.com/xmartlabs/Eureka.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.3.4;
+				minimumVersion = 5.3.6;
 			};
 		};
 		BF3533332602BED3005EA507 /* XCRemoteSwiftPackageReference "RxAppState" */ = {
@@ -2019,7 +2019,7 @@
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.1;
+				minimumVersion = 5.6.0;
 			};
 		};
 		BF35333D2602BF07005EA507 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
@@ -2043,7 +2043,7 @@
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 7.1.2;
+				minimumVersion = 7.2.4;
 			};
 		};
 		BF3533532602BFE5005EA507 /* XCRemoteSwiftPackageReference "Down" */ = {

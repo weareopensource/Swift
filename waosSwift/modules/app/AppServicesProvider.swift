@@ -1,4 +1,4 @@
-protocol AppServicesProviderType: class {
+protocol AppServicesProviderType: AnyObject {
     var tasksService: TasksServiceType { get }
     var authService: AuthServiceType { get }
     var userService: UserServiceType { get }
