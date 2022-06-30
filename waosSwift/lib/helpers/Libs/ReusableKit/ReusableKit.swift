@@ -1,7 +1,7 @@
 #if os(iOS)
 import UIKit
 
-public protocol CellType: class {
+public protocol CellType: AnyObject {
     var reuseIdentifier: String? { get }
 }
 
@@ -34,7 +34,7 @@ public struct ReusableCell<Cell: CellType> {
     }
 }
 
-public protocol ViewType: class {
+public protocol ViewType: AnyObject {
 }
 
 /// A generic class that represents reusable views.

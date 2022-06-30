@@ -227,7 +227,7 @@ public struct Popup<PopupContent>: ViewModifier where PopupContent: View {
                 }
                 .frame(width: screenSize.width)
                 .offset(x: 0, y: currentOffset)
-                .animation(animation)
+                .animation(animation, value: true)
             }
         }
     }
