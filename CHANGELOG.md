@@ -1,3 +1,26 @@
+# [1.2.0](https://github.com/weareopensource/Swift/compare/v1.1.0...v1.2.0) (2022-06-30)
+
+
+### Bug Fixes
+
+* **lib:** protect from non jwt cookies 🐛 ([#448](https://github.com/weareopensource/Swift/issues/448)) ([fa05892](https://github.com/weareopensource/Swift/commit/fa05892d12298ea6c587d8b0a797e8584ed40529))
+* Gemfile & Gemfile.lock to reduce vulnerabilities ([#373](https://github.com/weareopensource/Swift/issues/373)) ([3ed2510](https://github.com/weareopensource/Swift/commit/3ed25103c07cc6b26ff520f5afe74b25fc5be233))
+* Gemfile & Gemfile.lock to reduce vulnerabilities ([#378](https://github.com/weareopensource/Swift/issues/378)) ([983c2cd](https://github.com/weareopensource/Swift/commit/983c2cdfaf089ffb15bb7d74d68954d0a553a066))
+* Gemfile & Gemfile.lock to reduce vulnerabilities ([#396](https://github.com/weareopensource/Swift/issues/396)) ([ab13293](https://github.com/weareopensource/Swift/commit/ab132934dad9e9ab46aed2dbaaca9209eac6b9bf))
+* Gemfile & Gemfile.lock to reduce vulnerabilities ([#436](https://github.com/weareopensource/Swift/issues/436)) ([fcb7395](https://github.com/weareopensource/Swift/commit/fcb7395e92f8f1e1ce61ae2f22f5ff9fe34a07b6))
+* Gemfile & Gemfile.lock to reduce vulnerabilities ([#443](https://github.com/weareopensource/Swift/issues/443)) ([96036ac](https://github.com/weareopensource/Swift/commit/96036ac9d4e6e4a9f440902524c3f34ed48af0b2))
+* Gemfile.lock to reduce vulnerabilities ([#424](https://github.com/weareopensource/Swift/issues/424)) ([0f58fcb](https://github.com/weareopensource/Swift/commit/0f58fcb2b970b642864823750a814025d7176215))
+* **core:** add option to handle navigation shadow 🐛 ([#425](https://github.com/weareopensource/Swift/issues/425)) ([1ed4de1](https://github.com/weareopensource/Swift/commit/1ed4de18b976d88cc4c3801e0bd6018d7d3d15d3))
+* **helper:** uibutton circle fix 🐛 ([#419](https://github.com/weareopensource/Swift/issues/419)) ([4a326e2](https://github.com/weareopensource/Swift/commit/4a326e2cee663ccce11bb8f43cda0f996d74ae5b))
+
+
+### Features
+
+* **auth, core, home, user:** improve signin/up & navigation bar style ✨ ([#447](https://github.com/weareopensource/Swift/issues/447)) ([9aba6ef](https://github.com/weareopensource/Swift/commit/9aba6efea06a70acd3831423fa1408daa00ec383))
+* **dependencies:** end upgrade ✨ ([#416](https://github.com/weareopensource/Swift/issues/416)) ([6737559](https://github.com/weareopensource/Swift/commit/6737559310401e75728a9f19029a67c192b311c6))
+* **global:** clean navigation bar option ✨ ([#426](https://github.com/weareopensource/Swift/issues/426)) ([e2403b3](https://github.com/weareopensource/Swift/commit/e2403b3c021492246c667310e1327788c6b747fc))
+* **global:** dependencies upgrade ✨ ([#450](https://github.com/weareopensource/Swift/issues/450)) ([8a40e91](https://github.com/weareopensource/Swift/commit/8a40e913c3c1dcdc14744825595fd41e7ffb20bf))
+
 # [1.1.0](https://github.com/weareopensource/Swift/compare/v1.0.0...v1.1.0) (2021-04-30)
 
 
