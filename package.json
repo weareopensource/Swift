@@ -27,7 +27,7 @@
     "@weareopensource/conventional-changelog": "^1.7.0",
     "commitizen": "^4.2.4",
     "husky": "^8.0.1",
-    "semantic-release": "^19.0.3",
+    "semantic-release": "^19.0.5",
     "standard-version": "^9.5.0"
   },
   "release": {
