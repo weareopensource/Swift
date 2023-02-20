@@ -20,7 +20,7 @@
     "release:auto": "npx semantic-release"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.4.3",
+    "@commitlint/cli": "^17.4.4",
     "@commitlint/config-conventional": "^17.4.3",
     "@semantic-release/changelog": "^6.0.2",
     "@semantic-release/git": "^10.0.1",
