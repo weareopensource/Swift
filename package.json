@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.1",
-    "@commitlint/config-conventional": "^17.6.0",
+    "@commitlint/config-conventional": "^17.6.1",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@weareopensource/conventional-changelog": "^1.7.0",
